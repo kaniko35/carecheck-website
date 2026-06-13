@@ -1,29 +1,30 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Home from './pages/Home';
+import InfantCare from './pages/InfantCare';
+import ToddlerSolutions from './pages/ToddlerSolutions';
+import OfficeSolutions from './pages/OfficeSolutions';
+import Essentials from './pages/Essentials';
+import Academy from './pages/Academy';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import './App.css';
+
 function App() {
   return (
-    <div style={{ padding: "40px", fontFamily: "Arial" }}>
-      <h1>CareCheck Technologies</h1>
-
-      <h2>Childcare Safety & Compliance Solutions</h2>
-
-      <p>
-        Helping childcare centers improve safety, compliance,
-        organization, and documentation.
-      </p>
-
-      <hr />
-
-      <h3>Featured Products</h3>
-
-      <ul>
-        <li>CribCheck™</li>
-        <li>BottleCheck™</li>
-        <li>DiaperCheck™</li>
-        <li>TempCheck™</li>
-        <li>CloseCheck™</li>
-      </ul>
-
-      <button>Join Waitlist</button>
-    </div>
+    <Router>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/infant-care" element={<InfantCare />} />
+        <Route path="/toddler" element={<ToddlerSolutions />} />
+        <Route path="/office" element={<OfficeSolutions />} />
+        <Route path="/essentials" element={<Essentials />} />
+        <Route path="/academy" element={<Academy />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,21 +1,40 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* App-level styles - minimal since components handle their own styling */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+:root {
+  --carecheck-green: #2d8e5f;
+  --carecheck-green-light: #4da876;
+  --carecheck-green-dark: #1f5f42;
+  --carecheck-white: #ffffff;
+  --carecheck-gray-50: #fafbfc;
+  --carecheck-gray-100: #f3f4f6;
+  --carecheck-gray-200: #e9ecef;
+  --carecheck-gray-400: #9ca3af;
+  --carecheck-gray-600: #6c757d;
+  --carecheck-text: #212529;
+  --carecheck-border: #dee2e6;
 }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  background: var(--carecheck-white);
+  color: var(--carecheck-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--carecheck-green);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--carecheck-green-dark);
+}
+
 
 .hero {
   position: relative;
