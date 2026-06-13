@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="640" viewBox="0 0 900 640" role="img" aria-labelledby="title desc">
+  <title id="title">Organized classroom safety placeholder</title>
+  <desc id="desc">A clean placeholder graphic for classroom safety tools.</desc>
+  <rect width="900" height="640" rx="40" fill="#e9f6ee"/>
+  <rect x="90" y="96" width="720" height="448" rx="30" fill="#ffffff" stroke="#cfe4d7" stroke-width="4"/>
+  <rect x="142" y="150" width="250" height="152" rx="22" fill="#f7fbf8" stroke="#dce9e1" stroke-width="3"/>
+  <rect x="142" y="338" width="616" height="56" rx="18" fill="#f7fbf8" stroke="#dce9e1" stroke-width="3"/>
+  <rect x="142" y="424" width="616" height="56" rx="18" fill="#f7fbf8" stroke="#dce9e1" stroke-width="3"/>
+  <circle cx="660" cy="224" r="74" fill="#1d7a46"/>
+  <path d="M628 225l23 23 47-58" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="142" y="258" fill="#163226" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Classroom Safety</text>
+  <text x="142" y="375" fill="#5d7067" font-family="Arial, Helvetica, sans-serif" font-size="28">Daily checks and organized routines</text>
+  <text x="142" y="461" fill="#5d7067" font-family="Arial, Helvetica, sans-serif" font-size="28">Licensing-ready visual systems</text>
+</svg>
