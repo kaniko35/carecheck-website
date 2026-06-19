@@ -3,37 +3,2957 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop Printables | CareCheck Technologies</title>
+    <title>CareCheck Ready Labels&trade;</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="index.html"><span class="brand-mark">C</span><span><strong>CareCheck</strong><small>Technologies</small></span></a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
-      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a><a href="shop-printables.html" aria-current="page">Shop Printables</a><a href="infant-care.html">Infant Care Solutions</a><a href="toddler-solutions.html">Toddler Solutions</a><a href="office-solutions.html">Office Solutions</a><a href="essentials.html">CareCheck Essentials</a><a href="academy.html">CareCheck Academy</a><a href="celebrations.html">CareCheck Celebrations</a><a href="innovation-lab.html">Innovation Lab</a><a href="founding-partners.html">Founding Partners</a><a href="recommended-resources.html">Recommended Resources</a><a href="contact.html">Contact</a>
-      </nav>
-    </header>
-    <main>
-      <section class="page-hero">
-        <div>
-          <p class="eyebrow">Shop Printables</p>
-          <h1>Printable tools for safer, calmer childcare routines.</h1>
-          <p>Downloadable classroom labels, checklists, signs, and procedure helpers designed for childcare teams that need clear systems quickly.</p>
-          <div class="hero-actions page-cta"><a class="button button-primary" href="contact.html">Request a Printable</a><a class="button button-secondary" href="essentials.html">Browse Essentials</a></div>
+  <body class="labels-app-body">
+    <main id="ready-labels-app" class="labels-app-root">
+      <div class="ready-app" data-prototype="carecheck-ready-labels">
+        <header class="ready-header">
+          <div class="ready-brand" aria-label="CareCheck Ready Labels">
+            <span class="ready-brand-mark">CC</span>
+            <span>
+              <strong>CareCheck Ready Labels&trade;</strong>
+              <small>Label generation prototype</small>
+            </span>
+          </div>
+          <nav class="ready-section-tabs" aria-label="Prototype sections">
+            <a class="is-active" href="#classroom-labels">Classroom Labels</a>
+            <a href="#infant-feeding-labels">Infant Feeding Labels</a>
+            <a href="#bulk-upload">Bulk Upload</a>
+          </nav>
+        </header>
+
+        <div class="ready-workspace">
+          <section id="child-profile" class="ready-profile-panel" data-section="Child Profile">
+            <div>
+              <p class="ready-eyebrow">Child Profile</p>
+              <h1>Profile details</h1>
+            </div>
+
+            <label>
+              Child Name
+              <input id="child-name-input" type="text" value="Maya Johnson" aria-label="Child name" />
+            </label>
+
+            <label>
+              Date of Birth
+              <input id="child-dob-input" type="date" value="2024-03-18" aria-label="Date of birth" />
+            </label>
+
+            <label>
+              Classroom
+              <input id="classroom-input" type="text" value="Infant Room A" aria-label="Classroom" />
+            </label>
+
+            <label>
+              Child Photo
+              <input id="child-photo-upload" type="file" accept="image/*" aria-label="Child photo upload" />
+            </label>
+
+            <div class="ready-photo-status">
+              <div class="ready-photo-thumb" data-child-photo>
+                <span>Photo</span>
+                <img alt="" hidden />
+              </div>
+              <span>Photo preview updates all label previews</span>
+            </div>
+
+            <article class="ready-child-card">
+              <p class="ready-eyebrow">Live Child Profile Card</p>
+              <div class="ready-child-photo" data-child-photo>
+                <span>Photo</span>
+                <img alt="" hidden />
+              </div>
+              <h2>Maya Johnson</h2>
+              <dl>
+                <div>
+                  <dt>DOB</dt>
+                  <dd>03/18/2024</dd>
+                </div>
+                <div>
+                  <dt>Classroom</dt>
+                  <dd>Infant Room A</dd>
+                </div>
+              </dl>
+            </article>
+          </section>
+
+          <div class="prototype-main-stack">
+            <section id="classroom-labels" class="ready-product-panel" data-section="Classroom Labels">
+              <div class="ready-panel-heading">
+                <div>
+                  <p class="ready-eyebrow">Classroom Labels</p>
+                  <h2>Classroom label previews</h2>
+                </div>
+                <span>Live preview only</span>
+              </div>
+
+              <section id="avery-labels" class="classroom-label-group" data-section="Avery Labels">
+                <div>
+                  <h3>Avery Labels</h3>
+                  <p class="ready-panel-note">Use child photo, child name, classroom, and selected classroom label type.</p>
+                </div>
+
+                <label>
+                  Avery Template
+                  <select id="avery-template-select" aria-label="Avery classroom template">
+                    <option value="94207" selected>Avery 94207 - Small, 2&quot; x 4&quot;</option>
+                    <option value="6874">Avery 6874 - Medium, 3&quot; x 3.75&quot;</option>
+                    <option value="94256">Avery 94256 - Large, 5&quot; x 3.5&quot;</option>
+                  </select>
+                </label>
+
+                <fieldset class="ready-fieldset">
+                  <legend>Classroom label types</legend>
+                  <div class="ready-checkbox-grid">
+                    <label class="ready-checkbox-card"><input type="checkbox" checked data-label-type="Cubby" /> Cubby</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" checked data-label-type="Crib" /> Crib</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" checked data-label-type="Cot" /> Cot</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" checked data-label-type="Diapers" /> Diapers</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Clothes" /> Clothes</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Snacks" /> Snacks</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Backpack" /> Backpack</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="ready-fieldset label-quantity-fieldset">
+                  <legend>Label quantities</legend>
+                  <div class="label-quantity-grid" data-label-quantities>
+                    <label class="label-quantity-row">
+                      <span>Cubby</span>
+                      <input type="number" min="0" max="99" value="1" inputmode="numeric" data-label-quantity="Cubby" />
+                    </label>
+                    <label class="label-quantity-row">
+                      <span>Crib</span>
+                      <input type="number" min="0" max="99" value="1" inputmode="numeric" data-label-quantity="Crib" />
+                    </label>
+                    <label class="label-quantity-row">
+                      <span>Cot</span>
+                      <input type="number" min="0" max="99" value="1" inputmode="numeric" data-label-quantity="Cot" />
+                    </label>
+                    <label class="label-quantity-row">
+                      <span>Diapers</span>
+                      <input type="number" min="0" max="99" value="1" inputmode="numeric" data-label-quantity="Diapers" />
+                    </label>
+                    <label class="label-quantity-row">
+                      <span>Clothes</span>
+                      <input type="number" min="0" max="99" value="1" inputmode="numeric" data-label-quantity="Clothes" />
+                    </label>
+                    <label class="label-quantity-row">
+                      <span>Snacks</span>
+                      <input type="number" min="0" max="99" value="1" inputmode="numeric" data-label-quantity="Snacks" />
+                    </label>
+                    <label class="label-quantity-row">
+                      <span>Backpack</span>
+                      <input type="number" min="0" max="99" value="1" inputmode="numeric" data-label-quantity="Backpack" />
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="ready-fieldset classroom-output-fieldset">
+                  <legend>Generated outputs</legend>
+                  <div class="ready-checkbox-grid">
+                    <label class="ready-checkbox-card"><input id="welcome-sign-single-toggle" type="checkbox" /> Welcome Sign PDF</label>
+                    <label class="ready-checkbox-card"><input id="welcome-sign-photo-toggle" type="checkbox" checked /> Include Photo</label>
+                  </div>
+                </fieldset>
+
+                <section class="print-sheet-preview" aria-labelledby="print-sheet-preview-title">
+                  <div class="print-sheet-heading">
+                    <div>
+                      <p class="ready-eyebrow">Print Sheet Preview</p>
+                      <h3 id="print-sheet-preview-title">Avery 94207 sheet layout</h3>
+                    </div>
+                    <div class="print-sheet-actions">
+                      <span data-sheet-count>10 labels per sheet</span>
+                      <button id="download-pdf-button" class="download-pdf-button" type="button">Download PDF</button>
+                      <button id="download-welcome-sign-button" class="download-pdf-button secondary-action" type="button" disabled>Download Welcome Sign PDF</button>
+                    </div>
+                  </div>
+                  <div class="print-sheet-frame" data-template="94207" aria-label="Selected Avery print sheet preview">
+                    <div class="print-sheet-page" data-print-sheet></div>
+                  </div>
+
+                  <aside class="printing-instructions" aria-labelledby="printing-instructions-title">
+                    <h4 id="printing-instructions-title">Printing Instructions</h4>
+                    <div class="printing-instructions-grid">
+                      <div>
+                        <h5>Before Printing</h5>
+                        <ol>
+                          <li>Print on plain paper first.</li>
+                          <li>Hold the test sheet behind your Avery label sheet.</li>
+                          <li>Verify alignment.</li>
+                          <li>If alignment looks correct, print on labels.</li>
+                        </ol>
+                      </div>
+                      <div>
+                        <h5>Printer Settings</h5>
+                        <ul>
+                          <li>Paper Size: Letter (8.5&quot; x 11&quot;)</li>
+                          <li>Scale: 100%</li>
+                          <li>Actual Size</li>
+                        </ul>
+                        <p>Do NOT select Fit to Page, Shrink to Fit, or Scale to Printable Area.</p>
+                      </div>
+                    </div>
+                    <p class="template-reminder">Please confirm that the Avery template selected in CareCheck Ready&trade; matches the label sheet loaded in your printer.</p>
+                  </aside>
+                </section>
+              </section>
+
+              <section id="community-playthings-labels" class="classroom-label-group" data-section="Community Playthings Labels">
+                <div>
+                  <h3>Community Playthings Labels</h3>
+                  <p class="ready-panel-note">Simple insert labels use only child photo and child name.</p>
+                </div>
+
+                <fieldset class="ready-fieldset">
+                  <legend>Community Playthings label types</legend>
+                  <div class="ready-checkbox-grid community-checkbox-grid">
+                    <label class="ready-checkbox-card"><input type="checkbox" checked data-community-label-type="standard" /> Standard Cubby Insert</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" checked data-community-label-type="compact" /> Compact Cubby Insert</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" checked data-community-label-type="infant" /> Infant Cubby Insert</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" checked data-community-label-type="basket" /> Basket Label</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="ready-fieldset">
+                  <legend>Standard and Compact Cubby photo</legend>
+                  <div class="ready-checkbox-grid community-checkbox-grid">
+                    <label class="ready-checkbox-card"><input id="community-cubby-photo-toggle" type="checkbox" checked /> Include Photo</label>
+                  </div>
+                </fieldset>
+
+                <div class="community-export-actions">
+                  <button id="download-community-pdf-button" class="download-pdf-button" type="button">Download Community Playthings PDF</button>
+                </div>
+
+                <div class="community-label-grid" aria-label="Community Playthings label previews">
+                  <article class="community-label-card community-standard-label">
+                    <div class="community-label-face" data-community-geometry-shape="standard">
+                      <div class="community-label-photo" data-child-photo>
+                        <span>Photo</span>
+                        <img alt="" hidden />
+                      </div>
+                      <div class="community-label-copy">
+                        <h3>Maya Johnson</h3>
+                      </div>
+                    </div>
+                    <p class="community-label-note">Standard Cubby Insert</p>
+                  </article>
+                  <article class="community-label-card community-compact-label">
+                    <div class="community-label-face" data-community-geometry-shape="compact">
+                      <div class="community-label-photo" data-child-photo>
+                        <span>Photo</span>
+                        <img alt="" hidden />
+                      </div>
+                      <div class="community-label-copy">
+                        <h3>Maya Johnson</h3>
+                      </div>
+                    </div>
+                    <p class="community-label-note">Compact Cubby Insert</p>
+                  </article>
+                  <article class="community-label-card community-infant-label">
+                    <div class="community-label-face" data-community-geometry-shape="infant">
+                      <div class="community-label-photo" data-child-photo>
+                        <span>Photo</span>
+                        <img alt="" hidden />
+                      </div>
+                      <div class="community-label-copy">
+                        <h3>Maya Johnson</h3>
+                      </div>
+                    </div>
+                    <p class="community-label-note">Infant Cubby Insert</p>
+                  </article>
+                  <article class="community-label-card community-basket-label">
+                    <div class="community-label-face">
+                      <div class="community-basket-photo" data-child-photo>
+                        <span>Photo</span>
+                        <img alt="" hidden />
+                      </div>
+                      <h3>Maya Johnson</h3>
+                    </div>
+                    <p class="community-label-note">Basket Label - 1.5&quot; x 5&quot; finished label.</p>
+                  </article>
+                </div>
+              </section>
+            </section>
+
+            <section id="infant-feeding-labels" class="ready-product-panel" data-section="Infant Feeding Labels">
+              <div class="ready-panel-heading">
+                <div>
+                  <p class="ready-eyebrow">Infant Feeding Labels</p>
+                  <h2>Formula and breast milk labels</h2>
+                </div>
+                <span data-feeding-template-badge>Avery 61503</span>
+              </div>
+
+              <p class="ready-panel-note">
+                Full-sheet infant feeding labels with blank writing fields for daily classroom use.
+              </p>
+
+              <label class="feeding-template-control">
+                Avery Template
+                <select id="feeding-template-select" aria-label="Infant feeding label template">
+                  <option value="61503" selected>Avery 61503 - 2&quot; x 3-3/4&quot; Removable bottle labels</option>
+                  <option value="94069">Avery 94069 - 2&quot; x 2&quot; Square waterproof label format</option>
+                </select>
+              </label>
+
+              <fieldset class="ready-fieldset feeding-output-fieldset">
+                <legend>Label type</legend>
+                <div class="ready-checkbox-grid">
+                  <label class="ready-checkbox-card"><input type="radio" name="feeding-sheet-type" value="formula" checked /> Formula Labels</label>
+                  <label class="ready-checkbox-card"><input type="radio" name="feeding-sheet-type" value="breastmilk" /> Breast Milk Labels</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="ready-fieldset feeding-output-fieldset">
+                <legend>Photo option</legend>
+                <div class="ready-checkbox-grid">
+                  <label class="ready-checkbox-card"><input id="feeding-sheet-photo-toggle" type="checkbox" /> Include Photo</label>
+                </div>
+              </fieldset>
+
+              <section class="feeding-sheet-preview" aria-labelledby="feeding-sheet-preview-title">
+                <div class="print-sheet-heading">
+                  <div>
+                    <p class="ready-eyebrow">Full-Sheet Preview</p>
+                    <h3 id="feeding-sheet-preview-title">Formula Labels</h3>
+                    <p class="feeding-print-info" data-feeding-print-info>Avery 61503 • 2&quot; x 3-3/4&quot; • Removable bottle labels • 10 labels per sheet</p>
+                  </div>
+                  <div class="print-sheet-actions">
+                    <button id="download-feeding-sheet-button" class="download-pdf-button" type="button">Download Feeding Labels PDF</button>
+                  </div>
+                </div>
+                <div class="feeding-sheet-frame" aria-label="Selected Avery feeding label sheet preview">
+                  <div class="feeding-sheet-page" data-feeding-sheet-preview></div>
+                </div>
+              </section>
+            </section>
+
+            <section id="bulk-upload" class="ready-product-panel bulk-upload-panel" data-section="Bulk Upload">
+              <div class="ready-panel-heading">
+                <div>
+                  <p class="ready-eyebrow">Roster Labels</p>
+                  <h2>Bulk Upload</h2>
+                </div>
+                <span>No photos required</span>
+              </div>
+
+              <p class="ready-panel-note">Upload a classroom roster to quickly generate labels for multiple children.</p>
+
+              <div class="bulk-upload-layout">
+                <section class="bulk-upload-card" aria-labelledby="bulk-upload-title">
+                  <div>
+                    <h3 id="bulk-upload-title">Upload roster</h3>
+                    <p class="ready-panel-note">Supported columns: First Name, Last Name, Child Name, Classroom.</p>
+                  </div>
+
+                  <label class="bulk-dropzone">
+                    <input id="bulk-roster-upload" type="file" accept=".csv,.xlsx" />
+                    <span>Choose .xlsx or .csv roster file</span>
+                    <small data-bulk-file-status>No roster selected</small>
+                  </label>
+
+                  <button id="download-bulk-template-button" class="download-pdf-button" type="button">Download sample template</button>
+                </section>
+
+                <section class="bulk-upload-card" aria-labelledby="bulk-options-title">
+                  <div>
+                    <h3 id="bulk-options-title">Output Library</h3>
+                    <p class="ready-panel-note">Choose one label or document output for the selected children.</p>
+                  </div>
+
+                  <fieldset class="ready-fieldset bulk-label-fieldset">
+                    <legend>Output type</legend>
+                    <div class="bulk-output-groups">
+                      <section class="bulk-output-group" aria-label="Label outputs">
+                        <h4>Label Outputs</h4>
+                        <div class="bulk-label-options">
+                          <label class="ready-checkbox-card bulk-output-card"><input type="radio" name="bulk-label-type" value="Student Name + Water" checked /><span>Student Name + Water</span><small>Avery 94200 • 1&quot; x 2-5/8&quot; • 30 labels/sheet</small></label>
+                          <label class="ready-checkbox-card bulk-output-card"><input type="radio" name="bulk-label-type" value="Student Name + Milk" /><span>Student Name + Milk</span><small>Avery 94200 • 1&quot; x 2-5/8&quot; • 30 labels/sheet</small></label>
+                          <label class="ready-checkbox-card bulk-output-card"><input type="radio" name="bulk-label-type" value="Formula Labels" /><span>Formula Labels</span><small>Avery 94069 • 2&quot; x 2&quot; • 20 labels/sheet</small></label>
+                          <label class="ready-checkbox-card bulk-output-card"><input type="radio" name="bulk-label-type" value="Breast Milk Labels" /><span>Breast Milk Labels</span><small>Avery 94069 • 2&quot; x 2&quot; • 20 labels/sheet</small></label>
+                          <label class="ready-checkbox-card bulk-output-card"><input type="radio" name="bulk-label-type" value="Clothing Labels" /><span>Clothing Labels</span><small>Avery 94208 • 2/3&quot; x 1-3/4&quot; • 60 labels/sheet</small></label>
+                          <label class="ready-checkbox-card bulk-output-card"><input type="radio" name="bulk-label-type" value="Cubby Labels" /><span>Cubby Labels</span><small>Avery 94207 • 2&quot; x 4&quot; • 10 labels/sheet</small></label>
+                          <label class="ready-checkbox-card bulk-output-card"><input type="radio" name="bulk-label-type" value="Cot Labels" /><span>Cot Labels</span><small>Avery 94207 • 2&quot; x 4&quot; • 10 labels/sheet</small></label>
+                          <label class="ready-checkbox-card bulk-output-card"><input type="radio" name="bulk-label-type" value="Crib Labels" /><span>Crib Labels</span><small>Avery 94207 • 2&quot; x 4&quot; • 10 labels/sheet</small></label>
+                        </div>
+                      </section>
+
+                      <section class="bulk-output-group" aria-label="Document outputs">
+                        <h4>Document Outputs</h4>
+                        <div class="bulk-label-options bulk-document-options">
+                          <label class="ready-checkbox-card bulk-output-card"><input type="radio" name="bulk-label-type" value="Welcome Sign PDF" /><span>Welcome Sign PDF</span><small>Letter Paper • 8.5&quot; x 11&quot; • Portrait orientation</small></label>
+                        </div>
+                      </section>
+                    </div>
+                  </fieldset>
+
+                  <div class="bulk-actions">
+                    <button id="bulk-select-all-button" class="download-pdf-button secondary-action" type="button">Select all children</button>
+                    <button id="bulk-download-pdf-button" class="download-pdf-button" type="button" disabled>Generate printable PDF</button>
+                  </div>
+                </section>
+              </div>
+
+              <section class="bulk-preview-card" aria-labelledby="bulk-preview-title">
+                <div class="bulk-preview-heading">
+                  <div>
+                    <h3 id="bulk-preview-title">Roster preview</h3>
+                    <p class="ready-panel-note" data-bulk-summary>Upload a roster to preview children here.</p>
+                  </div>
+                </div>
+
+                <div class="bulk-table-wrap">
+                  <table class="bulk-roster-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Select</th>
+                        <th scope="col">Child Name</th>
+                        <th scope="col">Classroom</th>
+                      </tr>
+                    </thead>
+                    <tbody id="bulk-roster-body">
+                      <tr class="bulk-empty-row">
+                        <td colspan="3">No roster uploaded yet.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </section>
+          </div>
         </div>
-        <img src="assets/essentials.svg" alt="Shop printables placeholder" />
-      </section>
-      <section class="section section-soft">
-        <div class="product-grid">
-          <article class="product-card"><h2>Classroom Labels</h2><p>Clean labels for supplies, shelves, cubbies, and learning zones.</p></article>
-          <article class="product-card"><h2>Daily Checklists</h2><p>Printable prompts for opening, closing, cleaning, and safety review.</p></article>
-          <article class="product-card"><h2>Sanitation Signs</h2><p>Warm, professional reminders for hygiene and classroom care.</p></article>
-          <article class="product-card"><h2>Licensing Prep</h2><p>Simple printable organization aids for center readiness and inspections.</p></article>
-        </div>
-      </section>
+      </div>
     </main>
-    <footer class="site-footer"><div><strong>CareCheck Technologies</strong><p>Practical childcare safety, compliance, and organization tools.</p></div><a href="contact.html">Start a conversation</a></footer>
-    <script src="script.js"></script>
+    <script>
+      const averyTemplates = {
+        94207: {
+          title: "Avery 94207 sheet layout",
+          countLabel: "10 labels per sheet",
+          className: "sheet-94207",
+          scaleClass: "avery-template-small",
+          labelSize: "2\" x 4\"",
+          labelsPerSheet: 10,
+        },
+        6874: {
+          title: "Avery 6874 sheet layout",
+          countLabel: "6 labels per sheet",
+          className: "sheet-6874",
+          scaleClass: "avery-template-medium",
+          labelSize: "3\" x 3.75\"",
+          labelsPerSheet: 6,
+        },
+        94256: {
+          title: "Avery 94256 sheet layout",
+          countLabel: "4 labels per sheet",
+          className: "sheet-94256",
+          scaleClass: "avery-template-large",
+          labelSize: "5\" x 3.5\"",
+          labelsPerSheet: 4,
+        },
+      };
+
+      const communityGeometry = {
+        standard: {
+          shape: "arch",
+          viewBox: "0 0 640 108",
+          currentBorderPath: "M12 1 H628 Q639 1 639 14 V88 Q639 104 621 101 Q320 43 19 101 Q1 104 1 88 V14 Q1 1 12 1 Z",
+          intendedCutPath: "M12 1 H628 Q639 1 639 14 V88 Q639 104 621 101 Q320 43 19 101 Q1 104 1 88 V14 Q1 1 12 1 Z",
+          safeRect: { x: 14, y: 10, width: 582, height: 54 },
+          midpoint: { x: 320, y: 52 },
+        },
+        compact: {
+          shape: "arch",
+          viewBox: "0 0 640 108",
+          currentBorderPath: "M12 1 H628 Q639 1 639 14 V88 Q639 104 621 101 Q320 43 19 101 Q1 104 1 88 V14 Q1 1 12 1 Z",
+          intendedCutPath: "M12 1 H628 Q639 1 639 14 V88 Q639 104 621 101 Q320 43 19 101 Q1 104 1 88 V14 Q1 1 12 1 Z",
+          safeRect: { x: 16, y: 10, width: 574, height: 56 },
+          midpoint: { x: 320, y: 50 },
+        },
+        infant: {
+          shape: "oval",
+          viewBox: "0 0 260 350",
+          currentBorderPath: "M253 175 C253 267.78 197.93 343 130 343 C62.07 343 7 267.78 7 175 C7 82.22 62.07 7 130 7 C197.93 7 253 82.22 253 175 Z",
+          intendedCutPath: "M253 175 C253 267.78 197.93 343 130 343 C62.07 343 7 267.78 7 175 C7 82.22 62.07 7 130 7 C197.93 7 253 82.22 253 175 Z",
+          safeRect: { x: 28, y: 34, width: 204, height: 268 },
+          midpoint: { x: 130, y: 175 },
+        },
+      };
+
+      const communityPlaythingsTemplates = {
+        standard: {
+          title: "Standard Cubby Insert",
+          geometryKey: "standard",
+          printMode: "single",
+          pageWidth: 1008,
+          pageHeight: 612,
+          slots: [
+            { x: 74, y: 410, width: 860, height: 154, type: "arch", photo: 88, safeLeft: 14, safeRight: 44, safeTop: 10, curveReserve: 54, archCenterRatio: 0.5, nameMaxRatio: 0.74 },
+            { x: 74, y: 232, width: 860, height: 154, type: "arch", photo: 88, safeLeft: 14, safeRight: 44, safeTop: 10, curveReserve: 54, archCenterRatio: 0.5, nameMaxRatio: 0.74 },
+            { x: 74, y: 54, width: 860, height: 154, type: "arch", photo: 88, safeLeft: 14, safeRight: 44, safeTop: 10, curveReserve: 54, archCenterRatio: 0.5, nameMaxRatio: 0.74 },
+          ],
+          nameSize: 78,
+          nameMin: 24,
+          classroomSize: 18,
+        },
+        compact: {
+          title: "Compact Cubby Insert",
+          geometryKey: "compact",
+          printMode: "single",
+          pageWidth: 612,
+          pageHeight: 792,
+          slots: [
+            { x: 60, y: 632, width: 492, height: 116, type: "arch", photo: 64, safeLeft: 12, safeRight: 32, safeTop: 10, curveReserve: 42, archCenterRatio: 0.5, nameMaxRatio: 0.72 },
+            { x: 60, y: 492, width: 492, height: 116, type: "arch", photo: 64, safeLeft: 12, safeRight: 32, safeTop: 10, curveReserve: 42, archCenterRatio: 0.5, nameMaxRatio: 0.72 },
+            { x: 60, y: 352, width: 492, height: 116, type: "arch", photo: 64, safeLeft: 12, safeRight: 32, safeTop: 10, curveReserve: 42, archCenterRatio: 0.5, nameMaxRatio: 0.72 },
+            { x: 60, y: 212, width: 492, height: 116, type: "arch", photo: 64, safeLeft: 12, safeRight: 32, safeTop: 10, curveReserve: 42, archCenterRatio: 0.5, nameMaxRatio: 0.72 },
+            { x: 60, y: 72, width: 492, height: 116, type: "arch", photo: 64, safeLeft: 12, safeRight: 32, safeTop: 10, curveReserve: 42, archCenterRatio: 0.5, nameMaxRatio: 0.72 },
+          ],
+          nameSize: 58,
+          nameMin: 16,
+          classroomSize: 14,
+        },
+        infant: {
+          title: "Infant Cubby Insert",
+          geometryKey: "infant",
+          printMode: "single",
+          pageWidth: 792,
+          pageHeight: 612,
+          slots: [
+            { x: 56, y: 74, width: 302, height: 440, type: "oval", photo: 188 },
+            { x: 434, y: 74, width: 302, height: 440, type: "oval", photo: 188 },
+          ],
+          nameSize: 42,
+          nameMin: 22,
+          classroomSize: 18,
+        },
+        basket: {
+          title: "Basket Label",
+          printMode: "single",
+          pageWidth: 360,
+          pageHeight: 108,
+          includeFooter: false,
+          slots: [
+            { x: 4, y: 4, width: 352, height: 100, type: "basket", photo: 58 },
+          ],
+          nameSize: 20,
+          nameMin: 12,
+        },
+      };
+
+      const childNameInput = document.querySelector("#child-name-input");
+      const childDobInput = document.querySelector("#child-dob-input");
+      const classroomInput = document.querySelector("#classroom-input");
+      const childPhotoInput = document.querySelector("#child-photo-upload");
+      const averyTemplateSelect = document.querySelector("#avery-template-select");
+      const feedingTemplateSelect = document.querySelector("#feeding-template-select");
+      const feedingSheetPhotoToggle = document.querySelector("#feeding-sheet-photo-toggle");
+      const feedingSheetPreview = document.querySelector("[data-feeding-sheet-preview]");
+      const feedingSheetTitle = document.querySelector("#feeding-sheet-preview-title");
+      const feedingPrintInfo = document.querySelector("[data-feeding-print-info]");
+      const downloadFeedingSheetButton = document.querySelector("#download-feeding-sheet-button");
+      const averyLabelsSection = document.querySelector("#avery-labels");
+      const printSheetTitle = document.querySelector("#print-sheet-preview-title");
+      const printSheetCount = document.querySelector("[data-sheet-count]");
+      const printSheetFrame = document.querySelector(".print-sheet-frame");
+      const printSheet = document.querySelector("[data-print-sheet]");
+      const downloadPdfButton = document.querySelector("#download-pdf-button");
+      const welcomeSignSingleToggle = document.querySelector("#welcome-sign-single-toggle");
+      const welcomeSignPhotoToggle = document.querySelector("#welcome-sign-photo-toggle");
+      const downloadWelcomeSignButton = document.querySelector("#download-welcome-sign-button");
+      const downloadCommunityPdfButton = document.querySelector("#download-community-pdf-button");
+      const communityCubbyPhotoToggle = document.querySelector("#community-cubby-photo-toggle");
+      const bulkRosterUpload = document.querySelector("#bulk-roster-upload");
+      const bulkRosterBody = document.querySelector("#bulk-roster-body");
+      const bulkSummary = document.querySelector("[data-bulk-summary]");
+      const bulkFileStatus = document.querySelector("[data-bulk-file-status]");
+      const bulkSelectAllButton = document.querySelector("#bulk-select-all-button");
+      const bulkDownloadPdfButton = document.querySelector("#bulk-download-pdf-button");
+      const bulkTemplateButton = document.querySelector("#download-bulk-template-button");
+      const labelQuantityInputs = new Map(
+        Array.from(document.querySelectorAll("[data-label-quantity]")).map((input) => [input.dataset.labelQuantity, input]),
+      );
+      let currentPhotoUrl = "";
+      let bulkRoster = [];
+      let scheduledAveryFrame = 0;
+      let scheduledFeedingFrame = 0;
+      let scheduledCommunityFrame = 0;
+
+      const shouldIncludeCommunityCubbyPhoto = () => communityCubbyPhotoToggle?.checked !== false;
+
+      const createCommunityCutGuideLayer = (geometryKey) => {
+        const geometry = communityGeometry[geometryKey];
+
+        if (!geometry) {
+          return null;
+        }
+
+        const layer = document.createElement("div");
+        layer.className = "community-cut-guide-layer";
+        layer.setAttribute("aria-hidden", "true");
+
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("viewBox", geometry.viewBox);
+        svg.setAttribute("preserveAspectRatio", "none");
+
+        const cutLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        cutLine.setAttribute("class", geometry.shape === "oval" ? "community-cut-guide-line community-cut-guide-line-green" : "community-cut-guide-line");
+        cutLine.setAttribute("d", geometry.intendedCutPath);
+
+        svg.append(cutLine);
+        layer.append(svg);
+        return layer;
+      };
+
+      const renderCommunityCutGuides = (root = document) => {
+        root.querySelectorAll(".community-cut-guide-layer").forEach((layer) => layer.remove());
+
+        root.querySelectorAll("[data-community-geometry-shape]").forEach((face) => {
+          const layer = createCommunityCutGuideLayer(face.dataset.communityGeometryShape);
+
+          if (layer) {
+            face.prepend(layer);
+          }
+        });
+      };
+
+      const bulkAvery94200LabelTypes = new Set(["Student Name + Water", "Student Name + Milk"]);
+      const bulkAvery94069LabelTypes = new Set(["Formula Labels", "Breast Milk Labels"]);
+      const bulkAvery94208LabelType = "Clothing Labels";
+      const bulkWelcomeSignLabelType = "Welcome Sign PDF";
+      const bulkPdfLayouts = {
+        default: {
+          labelsPerSheet: 10,
+          pageClass: "bulk-pdf-page bulk-pdf-94207-page",
+        },
+        avery94200: {
+          labelsPerSheet: 30,
+          pageClass: "bulk-pdf-page bulk-pdf-94200-page",
+        },
+        avery94069: {
+          labelsPerSheet: 20,
+          pageClass: "bulk-pdf-page bulk-pdf-94069-page",
+        },
+        avery94208: {
+          labelsPerSheet: 60,
+          pageClass: "bulk-pdf-page bulk-pdf-94208-page",
+        },
+      };
+
+      const debounce = (callback, delay = 140) => {
+        let timer = 0;
+
+        return () => {
+          window.clearTimeout(timer);
+          timer = window.setTimeout(callback, delay);
+        };
+      };
+
+      const scheduleAveryNameFit = () => {
+        window.cancelAnimationFrame(scheduledAveryFrame);
+        scheduledAveryFrame = window.requestAnimationFrame(fitAveryNames);
+      };
+
+      const scheduleFeedingPreviewUpdate = () => {
+        window.cancelAnimationFrame(scheduledFeedingFrame);
+        scheduledFeedingFrame = window.requestAnimationFrame(updateInfantFeedingPreviews);
+      };
+
+      const scheduleCommunityPreviewUpdate = () => {
+        window.cancelAnimationFrame(scheduledCommunityFrame);
+        scheduledCommunityFrame = window.requestAnimationFrame(updateCommunityPlaythingsPreviews);
+      };
+
+      const getChildPhotoSlots = () => document.querySelectorAll("[data-child-photo]");
+
+      const resetPhotoSlots = () => {
+        currentPhotoUrl = "";
+        getChildPhotoSlots().forEach((slot) => {
+          const image = slot.querySelector("img");
+          const placeholder = slot.querySelector("span");
+
+          slot.classList.remove("has-photo");
+          if (image) {
+            image.hidden = true;
+            image.removeAttribute("src");
+          }
+          if (placeholder) {
+            placeholder.hidden = false;
+          }
+        });
+      };
+
+      const applyPhotoToSlots = (photoUrl) => {
+        currentPhotoUrl = photoUrl;
+        getChildPhotoSlots().forEach((slot) => {
+          const image = slot.querySelector("img");
+          const placeholder = slot.querySelector("span");
+
+          if (!image) {
+            return;
+          }
+
+          image.onerror = () => {
+            image.hidden = true;
+            image.removeAttribute("src");
+            if (placeholder) {
+              placeholder.hidden = false;
+            }
+            slot.classList.remove("has-photo");
+          };
+
+          image.src = photoUrl;
+          image.hidden = false;
+          if (placeholder) {
+            placeholder.hidden = true;
+          }
+          slot.classList.add("has-photo");
+        });
+      };
+
+      const createPreviewPhotoDataUrl = (file) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+
+          reader.addEventListener("error", () => reject(new Error("Unable to read the selected image.")), { once: true });
+          reader.addEventListener("load", () => {
+            const image = new Image();
+
+            image.addEventListener("error", () => reject(new Error("Unable to load the selected image.")), { once: true });
+            image.addEventListener("load", () => {
+              const maxSize = 640;
+              const scale = Math.min(1, maxSize / Math.max(image.naturalWidth, image.naturalHeight));
+              const width = Math.max(1, Math.round(image.naturalWidth * scale));
+              const height = Math.max(1, Math.round(image.naturalHeight * scale));
+              const canvas = document.createElement("canvas");
+              const context = canvas.getContext("2d");
+
+              canvas.width = width;
+              canvas.height = height;
+              context.drawImage(image, 0, 0, width, height);
+              resolve(canvas.toDataURL("image/jpeg", 0.82));
+            }, { once: true });
+            image.src = reader.result;
+          }, { once: true });
+          reader.readAsDataURL(file);
+        });
+      };
+
+      const getSelectedClassroomLabels = () => {
+        return Array.from(document.querySelectorAll("#avery-labels [data-label-type]"))
+          .filter((checkbox) => checkbox.checked)
+          .flatMap((checkbox) => {
+            const labelTitle = checkbox.dataset.labelType;
+            const quantityInput = labelQuantityInputs.get(labelTitle);
+            const quantity = Math.max(0, Number.parseInt(quantityInput?.value || "0", 10) || 0);
+
+            return Array.from({ length: quantity }, () => labelTitle);
+          });
+      };
+
+      const chunkLabelsForSheets = (labels, labelsPerSheet) => {
+        const sourceLabels = labels.length ? labels : [];
+        const pageCount = Math.max(1, Math.ceil(sourceLabels.length / labelsPerSheet));
+
+        return Array.from({ length: pageCount }, (_, pageIndex) => {
+          const start = pageIndex * labelsPerSheet;
+          return Array.from({ length: labelsPerSheet }, (__, slotIndex) => sourceLabels[start + slotIndex] || "");
+        });
+      };
+
+      const getAverySheetPages = (template) => {
+        return chunkLabelsForSheets(getSelectedClassroomLabels(), template.labelsPerSheet);
+      };
+
+      const getOptionalClassroom = () => classroomInput?.value.trim() || "";
+
+      const updateOptionalClassroomElement = (element, classroom) => {
+        if (!element) {
+          return;
+        }
+
+        element.textContent = classroom;
+        element.hidden = !classroom;
+      };
+
+      const getNameFitConfig = (templateKey, context) => {
+        const configs = {
+          preview: {
+            94207: { max: 21.6, min: 15 },
+            6874: { max: 30, min: 18 },
+            94256: { max: 38, min: 21 },
+          },
+          sheet: {
+            94207: { max: 17.6, min: 10 },
+            6874: { max: 26, min: 14 },
+            94256: { max: 30, min: 16 },
+          },
+        };
+
+        return configs[context]?.[templateKey] || configs[context]["94207"];
+      };
+
+      const fitNameElement = (element, config) => {
+        if (!element) {
+          return;
+        }
+
+        element.classList.remove("allow-name-wrap");
+        element.style.fontSize = `${config.max}px`;
+        element.style.whiteSpace = "nowrap";
+
+        const availableWidth = element.parentElement?.clientWidth || element.clientWidth;
+        let fontSize = config.max;
+
+        while (fontSize > config.min && element.scrollWidth > availableWidth) {
+          fontSize -= 0.5;
+          element.style.fontSize = `${fontSize}px`;
+        }
+
+        if (element.scrollWidth > availableWidth) {
+          element.classList.add("allow-name-wrap");
+          element.style.whiteSpace = "";
+        }
+      };
+
+      const fitSingleLineElement = (element, maxSize, minSize, options = {}) => {
+        if (!element) {
+          return;
+        }
+
+        let fontSize = maxSize;
+        element.style.fontSize = `${fontSize}px`;
+        element.style.whiteSpace = options.allowWrap ? "normal" : "nowrap";
+        if (element.parentElement?.clientWidth) {
+          const elementStyle = window.getComputedStyle(element);
+          const previousPhoto = !options.allowWrap
+            && elementStyle.position !== "absolute"
+            && element.previousElementSibling?.classList?.contains("community-pdf-photo")
+            ? element.previousElementSibling
+            : null;
+          const parentStyle = window.getComputedStyle(element.parentElement);
+          const gap = Number.parseFloat(parentStyle.columnGap || parentStyle.gap || "0") || 0;
+          const availableWidth = previousPhoto
+            ? element.parentElement.clientWidth - previousPhoto.clientWidth - gap - 8
+            : element.parentElement.clientWidth;
+
+          element.style.width = `${Math.max(1, availableWidth)}px`;
+        }
+
+        const fits = () => {
+          const parent = element.parentElement;
+          const availableWidth = Math.max(1, element.clientWidth || parent?.clientWidth || 1);
+          const shouldCheckHeight = Boolean(element.closest(".community-pdf-render-root") || options.checkHeight);
+          let availableHeight = Math.max(1, element.clientHeight || 1);
+
+          if (parent?.clientHeight) {
+            const siblingsHeight = Array.from(parent.children)
+              .filter((child) => child !== element && !child.hidden)
+              .reduce((sum, child) => sum + child.scrollHeight, 0);
+            const parentStyle = window.getComputedStyle(parent);
+            const rowGap = Number.parseFloat(parentStyle.rowGap || parentStyle.gap || "0") || 0;
+            const visibleSiblingCount = Array.from(parent.children)
+              .filter((child) => child !== element && !child.hidden).length;
+            const reservedGap = visibleSiblingCount ? rowGap * visibleSiblingCount : 0;
+
+            availableHeight = Math.max(1, parent.clientHeight - siblingsHeight - reservedGap);
+          }
+
+          const maxHeight = options.maxHeight || availableHeight;
+          return element.scrollWidth <= availableWidth && (!shouldCheckHeight || element.scrollHeight <= maxHeight);
+        };
+
+        while (fontSize > minSize && !fits()) {
+          fontSize -= 0.5;
+          element.style.fontSize = `${fontSize}px`;
+        }
+
+      };
+
+      const fitFixedCommunityNameElement = (element, fontSize, minSize) => {
+        if (!element) {
+          return;
+        }
+
+        let currentSize = fontSize;
+        element.style.fontSize = `${currentSize}px`;
+        element.style.whiteSpace = "normal";
+        element.style.overflowWrap = "normal";
+        element.style.wordBreak = "normal";
+        element.style.textOverflow = "clip";
+        element.style.width = "100%";
+
+        const fits = () => {
+          const computed = window.getComputedStyle(element);
+          const lineHeight = Number.parseFloat(computed.lineHeight) || currentSize * 1.1;
+          const parentHeight = element.parentElement?.clientHeight || Number.POSITIVE_INFINITY;
+          const maxHeight = Math.min(lineHeight * 2 + 2, parentHeight);
+          const availableWidth = Math.max(1, element.clientWidth || element.parentElement?.clientWidth || 1);
+
+          return element.scrollWidth <= availableWidth && element.scrollHeight <= maxHeight;
+        };
+
+        while (currentSize > minSize && !fits()) {
+          currentSize -= 0.5;
+          element.style.fontSize = `${currentSize}px`;
+        }
+      };
+
+      const getCommunityPreviewFitConfig = (name) => {
+        const card = name.closest(".community-label-card");
+
+        if (card?.classList.contains("community-standard-label")) {
+          return { fixed: true, size: 36, min: 24 };
+        }
+
+        if (card?.classList.contains("community-compact-label")) {
+          return { fixed: true, size: 27, min: 18 };
+        }
+
+        if (card?.classList.contains("community-infant-label")) {
+          return { max: 22, min: 15, allowWrap: true, checkHeight: true, maxHeight: 86 };
+        }
+
+        if (card?.classList.contains("community-basket-label")) {
+          return { max: 34, min: 12 };
+        }
+
+        return { max: 32, min: 10 };
+      };
+
+      const fitCommunityPreviewNames = () => {
+        document.querySelectorAll(".community-label-card h3").forEach((name) => {
+          const config = getCommunityPreviewFitConfig(name);
+          if (config.fixed) {
+            fitFixedCommunityNameElement(name, config.size, config.min);
+          } else {
+            fitSingleLineElement(name, config.max, config.min, config);
+          }
+        });
+      };
+
+      const fitAveryNames = () => {
+        const templateKey = averyTemplateSelect.value;
+        const previewConfig = getNameFitConfig(templateKey, "preview");
+        const sheetConfig = getNameFitConfig(templateKey, "sheet");
+
+        document.querySelectorAll("#avery-labels .classroom-label-card h3").forEach((name) => {
+          fitNameElement(name, previewConfig);
+        });
+        document.querySelectorAll("[data-print-sheet] .sheet-label-copy h4").forEach((name) => {
+          fitNameElement(name, sheetConfig);
+        });
+      };
+
+      const updateIndividualAveryPreviews = () => {
+        const childName = childNameInput?.value.trim() || "Child Name";
+        const classroom = getOptionalClassroom();
+
+        document.querySelectorAll("#avery-labels .classroom-label-card h3").forEach((name) => {
+          name.textContent = childName;
+        });
+        document.querySelectorAll("#avery-labels .classroom-label-card small").forEach((room) => {
+          updateOptionalClassroomElement(room, classroom);
+        });
+      };
+
+      const updateCommunityPlaythingsPreviews = () => {
+        const childName = childNameInput?.value.trim() || "Child Name";
+        const includeCubbyPhoto = shouldIncludeCommunityCubbyPhoto();
+
+        document.querySelectorAll(".community-label-card h3").forEach((name) => {
+          name.textContent = childName;
+        });
+        document.querySelectorAll(".community-standard-label .community-label-photo, .community-compact-label .community-label-photo").forEach((photo) => {
+          photo.hidden = !includeCubbyPhoto;
+        });
+        renderCommunityCutGuides();
+        fitCommunityPreviewNames();
+      };
+
+      const updateSelectedCommunityVisibility = () => {
+        const selectedTypes = new Set(
+          Array.from(document.querySelectorAll("[data-community-label-type]"))
+            .filter((checkbox) => checkbox.checked)
+            .map((checkbox) => checkbox.dataset.communityLabelType),
+        );
+        const cardMap = {
+          standard: document.querySelector(".community-standard-label"),
+          compact: document.querySelector(".community-compact-label"),
+          infant: document.querySelector(".community-infant-label"),
+          basket: document.querySelector(".community-basket-label"),
+        };
+
+        Object.entries(cardMap).forEach(([key, card]) => {
+          if (card) {
+            card.hidden = !selectedTypes.has(key);
+          }
+        });
+        renderCommunityCutGuides();
+        fitCommunityPreviewNames();
+      };
+
+      const formatDob = (value) => {
+        if (!value) {
+          return "DOB";
+        }
+
+        const [year, month, day] = value.split("-");
+
+        if (!year || !month || !day) {
+          return "DOB";
+        }
+
+        return `DOB ${month}/${day}/${year}`;
+      };
+
+      const updateInfantFeedingPreviews = () => {
+        renderFeedingSheetPreview();
+      };
+
+      const getSelectedFeedingSheetType = () => {
+        return document.querySelector("[name='feeding-sheet-type']:checked")?.value || "formula";
+      };
+
+      const feedingSheetTemplates = {
+        61503: {
+          label: "Avery 61503",
+          sizeLabel: '2" x 3-3/4"',
+          materialLabel: "Removable bottle labels",
+          labelsPerSheet: 10,
+          pageClass: "feeding-sheet-page feeding-sheet-61503",
+        },
+        94069: {
+          label: "Avery 94069",
+          sizeLabel: '2" x 2"',
+          materialLabel: "Square waterproof label format",
+          labelsPerSheet: 20,
+          pageClass: "feeding-sheet-page feeding-sheet-94069",
+        },
+      };
+
+      const getSelectedFeedingTemplate = () => {
+        return feedingSheetTemplates[feedingTemplateSelect?.value] || feedingSheetTemplates["61503"];
+      };
+
+      const getFeedingSheetConfig = () => {
+        const type = getSelectedFeedingSheetType();
+        const template = getSelectedFeedingTemplate();
+
+        if (type === "breastmilk") {
+          return {
+            title: "Breast Milk Labels",
+            labelTitle: "Breast Milk",
+            className: "feeding-breastmilk-label",
+            fields: ["Ounces", "Date"],
+            checks: ["Fresh", "Thawed"],
+            followUpFields: ["Date Pumped", "Date Thawed"],
+            filename: `carecheck-breast-milk-labels-${feedingTemplateSelect?.value || "61503"}.pdf`,
+            template,
+          };
+        }
+
+        return {
+          title: "Formula Labels",
+          labelTitle: "Formula",
+          className: "feeding-formula-label",
+          fields: ["Ounces", "Date/Week of"],
+          weekdays: ["M", "T", "W", "TH", "F"],
+          filename: `carecheck-formula-labels-${feedingTemplateSelect?.value || "61503"}.pdf`,
+          template,
+        };
+      };
+
+      const shouldIncludeFeedingSheetPhoto = () => feedingSheetPhotoToggle?.checked === true && Boolean(currentPhotoUrl);
+
+      const getFeedingFieldClass = (fieldLabel) => {
+        return `feeding-field-${fieldLabel.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+      };
+
+      const createFeedingSheetLabel = (config) => {
+        const label = document.createElement("article");
+        const header = document.createElement("div");
+        const title = document.createElement("p");
+        const name = document.createElement("h4");
+        const fields = document.createElement("div");
+        const includePhoto = shouldIncludeFeedingSheetPhoto();
+        let photoWrap = null;
+
+        label.className = `feeding-sheet-label ${config.className} ${includePhoto ? "has-photo" : "has-no-photo"}`;
+        if (config.className === "feeding-breastmilk-label" && includePhoto && config.template?.label === "Avery 61503") {
+          label.classList.add("breastmilk-61503-photo-layout");
+        }
+        header.className = "feeding-sheet-label-header";
+        title.textContent = config.labelTitle;
+        name.textContent = childNameInput?.value.trim() || "Child Name";
+
+        const copy = document.createElement("div");
+        const dob = document.createElement("small");
+
+        dob.textContent = formatDob(childDobInput?.value);
+        copy.append(title, name, dob);
+        header.append(copy);
+
+        if (includePhoto) {
+          const image = document.createElement("img");
+
+          photoWrap = document.createElement("div");
+          photoWrap.className = "feeding-sheet-label-photo";
+          image.alt = "";
+          image.src = currentPhotoUrl;
+          photoWrap.append(image);
+          if (config.className !== "feeding-breastmilk-label") {
+            header.append(photoWrap);
+          }
+        }
+
+        fields.className = "feeding-sheet-fields";
+        (config.fields || []).forEach((fieldLabel) => {
+          const row = document.createElement("div");
+          const labelText = document.createElement("span");
+          const line = document.createElement("i");
+
+          row.className = `feeding-sheet-field ${getFeedingFieldClass(fieldLabel)}`;
+          labelText.textContent = fieldLabel;
+          row.append(labelText, line);
+          fields.append(row);
+        });
+
+        if (config.checks?.length) {
+          const checkGrid = document.createElement("div");
+
+          checkGrid.className = "feeding-sheet-check-grid feeding-field-checks";
+          config.checks.forEach((checkLabel) => {
+            const item = document.createElement("span");
+            const box = document.createElement("i");
+            const text = document.createElement("strong");
+
+            text.textContent = checkLabel;
+            item.append(box, text);
+            checkGrid.append(item);
+          });
+          fields.append(checkGrid);
+        }
+
+        (config.followUpFields || []).forEach((fieldLabel) => {
+          const row = document.createElement("div");
+          const labelText = document.createElement("span");
+          const line = document.createElement("i");
+
+          row.className = `feeding-sheet-field ${getFeedingFieldClass(fieldLabel)}`;
+          labelText.textContent = fieldLabel;
+          row.append(labelText, line);
+          fields.append(row);
+        });
+
+        if (config.weekdays?.length) {
+          const weekdays = document.createElement("div");
+
+          weekdays.className = "feeding-sheet-weekdays";
+          config.weekdays.forEach((day) => {
+            const item = document.createElement("span");
+            const dayText = document.createElement("strong");
+            const box = document.createElement("i");
+
+            dayText.textContent = day;
+            item.append(dayText, box);
+            weekdays.append(item);
+          });
+          fields.append(weekdays);
+        }
+
+        if (photoWrap && config.className === "feeding-breastmilk-label") {
+          label.append(header, fields, photoWrap);
+        } else {
+          label.append(header, fields);
+        }
+        return label;
+      };
+
+      const makeFeedingSheetPage = () => {
+        const config = getFeedingSheetConfig();
+        const page = document.createElement("section");
+
+        page.className = config.template.pageClass;
+        Array.from({ length: config.template.labelsPerSheet }, () => {
+          page.append(createFeedingSheetLabel(config));
+        });
+        return page;
+      };
+
+      const renderFeedingSheetPreview = () => {
+        if (!feedingSheetPreview) {
+          return;
+        }
+
+        const config = getFeedingSheetConfig();
+        feedingSheetTitle.textContent = config.title;
+        if (feedingPrintInfo) {
+          feedingPrintInfo.textContent = `${config.template.label} • ${config.template.sizeLabel} • ${config.template.materialLabel} • ${config.template.labelsPerSheet} labels per sheet`;
+        }
+        document.querySelectorAll("[data-feeding-template-badge]").forEach((badge) => {
+          badge.textContent = config.template.label;
+        });
+        feedingSheetPreview.className = config.template.pageClass;
+        feedingSheetPreview.replaceChildren(...Array.from({ length: config.template.labelsPerSheet }, () => createFeedingSheetLabel(config)));
+        fitFeedingSheetNames(feedingSheetPreview);
+      };
+
+      const fitFeedingSheetNames = (root = document) => {
+        root.querySelectorAll(".feeding-sheet-label p").forEach((title) => {
+          const label = title.closest(".feeding-sheet-label");
+          const page = label?.closest(".feeding-sheet-page");
+          const maxSize = 11;
+          const minSize = 6;
+
+          fitSingleLineElement(title, maxSize, minSize);
+        });
+
+        root.querySelectorAll(".feeding-sheet-label h4").forEach((name) => {
+          const label = name.closest(".feeding-sheet-label");
+          const hasPhoto = label?.classList.contains("has-photo");
+          const shouldFitBreastMilkPhotoName = label?.classList.contains("breastmilk-61503-photo-layout");
+          const maxSize = shouldFitBreastMilkPhotoName ? 38 : hasPhoto ? 18 : 20;
+          const minSize = 9;
+
+          fitSingleLineElement(name, maxSize, minSize, {
+            allowWrap: !hasPhoto,
+            checkHeight: !hasPhoto || shouldFitBreastMilkPhotoName,
+            maxHeight: !hasPhoto || shouldFitBreastMilkPhotoName ? name.parentElement?.clientHeight : undefined,
+          });
+        });
+
+        root.querySelectorAll(".bottle-label-preview h3").forEach((name) => {
+          const preview = name.closest(".bottle-label-preview");
+          const isLargeBottle = preview?.classList.contains("bottle-template-61503");
+          const maxSize = isLargeBottle ? 34 : 24;
+
+          fitSingleLineElement(name, maxSize, 12, { allowWrap: true, checkHeight: true });
+        });
+      };
+
+      const downloadFeedingSheetPdf = async () => {
+        if (!downloadFeedingSheetButton) {
+          return;
+        }
+
+        const originalText = downloadFeedingSheetButton.textContent;
+        downloadFeedingSheetButton.disabled = true;
+        downloadFeedingSheetButton.textContent = "Building PDF...";
+
+        try {
+          const config = getFeedingSheetConfig();
+
+          await ensurePdfLibraries();
+
+          if (!window.html2canvas || !window.jspdf?.jsPDF) {
+            throw new Error("The PDF tools could not load. Please check your connection and try again.");
+          }
+
+          await document.fonts?.ready;
+
+          const wrapper = document.createElement("div");
+          wrapper.className = "feeding-sheet-pdf-render-root";
+          wrapper.append(makeFeedingSheetPage());
+          document.body.append(wrapper);
+          fitFeedingSheetNames(wrapper);
+
+          try {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF({ orientation: "portrait", unit: "pt", format: "letter" });
+            const pageElement = wrapper.firstElementChild;
+            const canvas = await window.html2canvas(pageElement, {
+              backgroundColor: "#ffffff",
+              height: pageElement.offsetHeight,
+              scale: 3,
+              width: pageElement.offsetWidth,
+              windowHeight: pageElement.offsetHeight + 48,
+              windowWidth: pageElement.offsetWidth,
+            });
+
+            pdf.addImage(canvas.toDataURL("image/jpeg", 0.96), "JPEG", 0, 0, 612, 792);
+            pdf.save(config.filename);
+          } finally {
+            wrapper.remove();
+          }
+        } catch (error) {
+          console.error("Unable to create feeding labels PDF.", error);
+          alert(error.message || "The feeding labels PDF could not be created. Please try again.");
+        } finally {
+          downloadFeedingSheetButton.textContent = originalText;
+          downloadFeedingSheetButton.disabled = false;
+        }
+      };
+
+      const createPhotoSlot = () => {
+        const photo = document.createElement("div");
+        photo.className = "sheet-label-photo";
+        photo.setAttribute("data-child-photo", "");
+
+        const placeholder = document.createElement("span");
+        placeholder.textContent = "Photo";
+
+        const image = document.createElement("img");
+        image.alt = "";
+        image.hidden = true;
+
+        photo.append(placeholder, image);
+        return photo;
+      };
+
+      const createSheetLabel = (labelTitle) => {
+        const label = document.createElement("article");
+        label.className = "sheet-label";
+
+        const photo = createPhotoSlot();
+        const copy = document.createElement("div");
+        copy.className = "sheet-label-copy";
+
+        const title = document.createElement("p");
+        title.textContent = labelTitle;
+
+        const name = document.createElement("h4");
+        name.textContent = childNameInput?.value.trim() || "Child Name";
+
+        const classroomText = getOptionalClassroom();
+
+        copy.append(title, name);
+        if (classroomText) {
+          const classroom = document.createElement("small");
+          classroom.textContent = classroomText;
+          copy.append(classroom);
+        }
+        label.append(photo, copy);
+        return label;
+      };
+
+      const createBlankSheetSpace = () => {
+        const label = document.createElement("article");
+        label.className = "sheet-label sheet-label-empty";
+        label.setAttribute("aria-label", "Blank Avery label position");
+        return label;
+      };
+
+      const createPrintSheetPage = (template, pageLabels) => {
+        const page = document.createElement("div");
+        page.className = `print-sheet-page ${template.className}`;
+        page.setAttribute("data-print-sheet", "");
+
+        Array.from({ length: template.labelsPerSheet }, (_, index) => {
+          const labelTitle = pageLabels[index];
+          page.append(labelTitle ? createSheetLabel(labelTitle) : createBlankSheetSpace());
+        });
+
+        return page;
+      };
+
+      const renderPrintSheetPreview = () => {
+        if (!printSheetFrame || !averyTemplateSelect) {
+          return;
+        }
+
+        const template = averyTemplates[averyTemplateSelect.value] || averyTemplates["94207"];
+        const sheetPages = getAverySheetPages(template);
+
+        printSheetTitle.textContent = template.title;
+        printSheetCount.textContent = sheetPages.length > 1
+          ? `${template.countLabel} - ${sheetPages.length} pages`
+          : template.countLabel;
+        printSheetFrame.dataset.template = averyTemplateSelect.value;
+        averyLabelsSection?.classList.remove("avery-template-small", "avery-template-medium", "avery-template-large");
+        averyLabelsSection?.classList.add(template.scaleClass);
+        updateIndividualAveryPreviews();
+        printSheetFrame.replaceChildren(...sheetPages.map((pageLabels) => createPrintSheetPage(template, pageLabels)));
+
+        if (currentPhotoUrl) {
+          applyPhotoToSlots(currentPhotoUrl);
+        }
+
+        scheduleAveryNameFit();
+      };
+
+      const loadScript = (src, globalCheck) => {
+        if (globalCheck()) {
+          return Promise.resolve();
+        }
+
+        return new Promise((resolve, reject) => {
+          const timeout = window.setTimeout(() => {
+            reject(new Error(`Timed out loading ${src}`));
+          }, 8000);
+          const existingScript = document.querySelector(`script[src="${src}"]`);
+
+          if (existingScript) {
+            existingScript.addEventListener("load", () => {
+              window.clearTimeout(timeout);
+              resolve();
+            }, { once: true });
+            existingScript.addEventListener("error", (error) => {
+              window.clearTimeout(timeout);
+              reject(error);
+            }, { once: true });
+            return;
+          }
+
+          const script = document.createElement("script");
+          script.src = src;
+          script.async = true;
+          script.addEventListener("load", () => {
+            window.clearTimeout(timeout);
+            resolve();
+          }, { once: true });
+          script.addEventListener("error", (error) => {
+            window.clearTimeout(timeout);
+            reject(error);
+          }, { once: true });
+          document.head.append(script);
+        });
+      };
+
+      const ensurePdfLibraries = async () => {
+        try {
+          await loadScript(
+            "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",
+            () => Boolean(window.html2canvas),
+          );
+          await loadScript(
+            "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
+            () => Boolean(window.jspdf?.jsPDF),
+          );
+        } catch (error) {
+          console.warn("Using built-in PDF fallback because export libraries are unavailable.", error);
+        }
+      };
+
+      const ensureSpreadsheetLibrary = async () => {
+        await loadScript(
+          "https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js",
+          () => Boolean(window.XLSX),
+        );
+      };
+
+      const pdfText = new TextEncoder();
+
+      const encodeText = (value) => pdfText.encode(value);
+
+      const escapePdfText = (value) => String(value).replace(/[\\()]/g, "\\$&");
+
+      const makePdfObject = (id, body) => ({
+        id,
+        bytes: encodeText(`${id} 0 obj\n${body}\nendobj\n`),
+      });
+
+      const buildPdfBytes = (objects) => {
+        const header = encodeText("%PDF-1.4\n%\xE2\xE3\xCF\xD3\n");
+        let offset = header.length;
+        const offsets = [0];
+        const chunks = [header];
+
+        objects.forEach((object) => {
+          offsets[object.id] = offset;
+          chunks.push(object.bytes);
+          offset += object.bytes.length;
+        });
+
+        const xrefStart = offset;
+        const xrefRows = ["0000000000 65535 f "];
+
+        for (let index = 1; index < offsets.length; index += 1) {
+          xrefRows.push(`${String(offsets[index]).padStart(10, "0")} 00000 n `);
+        }
+
+        const trailer = encodeText(
+          `xref\n0 ${offsets.length}\n${xrefRows.join("\n")}\ntrailer\n<< /Size ${offsets.length} /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF`,
+        );
+        chunks.push(trailer);
+
+        const totalLength = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+        const pdfBytes = new Uint8Array(totalLength);
+        let cursor = 0;
+
+        chunks.forEach((chunk) => {
+          pdfBytes.set(chunk, cursor);
+          cursor += chunk.length;
+        });
+
+        return pdfBytes;
+      };
+
+      const dataUrlToBytes = (dataUrl) => {
+        const base64 = dataUrl.split(",")[1] || "";
+        const binary = window.atob(base64);
+        const bytes = new Uint8Array(binary.length);
+
+        for (let index = 0; index < binary.length; index += 1) {
+          bytes[index] = binary.charCodeAt(index);
+        }
+
+        return bytes;
+      };
+
+      const getPdfPhoto = () => {
+        if (!currentPhotoUrl) {
+          return Promise.resolve(null);
+        }
+
+        return new Promise((resolve) => {
+          const image = new Image();
+          image.onload = () => {
+            const size = 512;
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+            const imageRatio = image.width / image.height;
+            const cropSize = imageRatio > 1 ? image.height : image.width;
+            const sourceX = imageRatio > 1 ? (image.width - cropSize) / 2 : 0;
+            const sourceY = imageRatio > 1 ? 0 : (image.height - cropSize) / 2;
+
+            canvas.width = size;
+            canvas.height = size;
+            context.drawImage(image, sourceX, sourceY, cropSize, cropSize, 0, 0, size, size);
+            resolve({
+              bytes: dataUrlToBytes(canvas.toDataURL("image/jpeg", 0.88)),
+              size,
+            });
+          };
+          image.onerror = () => resolve(null);
+          image.src = currentPhotoUrl;
+        });
+      };
+
+      const getSheetLabelsForPdf = (template) => {
+        return getAverySheetPages(template);
+      };
+
+      const getSelectedCommunityTemplates = () => {
+        return Array.from(document.querySelectorAll("[data-community-label-type]"))
+          .filter((checkbox) => checkbox.checked)
+          .map((checkbox) => {
+            const template = communityPlaythingsTemplates[checkbox.dataset.communityLabelType];
+            return template ? { ...template, id: checkbox.dataset.communityLabelType } : null;
+          })
+          .filter(Boolean);
+      };
+
+      const getUniqueCommunityTemplatesForChild = (templates, childName) => {
+        const seen = new Set();
+
+        return templates.filter((template) => {
+          const key = `${childName}::${template.id || template.title}`;
+
+          if (seen.has(key)) {
+            return false;
+          }
+
+          seen.add(key);
+          return true;
+        });
+      };
+
+      const getCommunityPdfPages = (templates, childName) => {
+        return getUniqueCommunityTemplatesForChild(templates, childName).map((template) => {
+          if (template.printMode !== "single") {
+            return {
+              ...template,
+              printableSlots: template.slots,
+            };
+          }
+
+          const sourceSlot = template.slots[0];
+          const margin = template.pdfMargin || 14;
+          const printableSlot = {
+            ...sourceSlot,
+            x: margin,
+            y: margin,
+          };
+
+          return {
+            ...template,
+            pageWidth: sourceSlot.width + margin * 2,
+            pageHeight: sourceSlot.height + margin * 2,
+            printableSlots: [printableSlot],
+          };
+        });
+      };
+
+      const makeCommunityArchPath = (x, y, width, height) => {
+        const radius = 11;
+        const sideBottom = y + 20;
+        const archTop = y + Math.min(height * 0.36, 52);
+        const top = y + height;
+        const right = x + width;
+        const center = x + width / 2;
+
+        return [
+          `${(x + radius).toFixed(2)} ${top.toFixed(2)} m`,
+          `${(right - radius).toFixed(2)} ${top.toFixed(2)} l`,
+          `${right.toFixed(2)} ${top.toFixed(2)} ${right.toFixed(2)} ${top.toFixed(2)} ${right.toFixed(2)} ${(top - radius).toFixed(2)} c`,
+          `${right.toFixed(2)} ${sideBottom.toFixed(2)} l`,
+          `${(right - 13).toFixed(2)} ${(y + 2).toFixed(2)} ${(right - 30).toFixed(2)} ${(y + 8).toFixed(2)} ${(right - 48).toFixed(2)} ${(y + 14).toFixed(2)} c`,
+          `${(center + width * 0.18).toFixed(2)} ${archTop.toFixed(2)} ${(center - width * 0.18).toFixed(2)} ${archTop.toFixed(2)} ${(x + 48).toFixed(2)} ${(y + 14).toFixed(2)} c`,
+          `${(x + 30).toFixed(2)} ${(y + 8).toFixed(2)} ${(x + 13).toFixed(2)} ${(y + 2).toFixed(2)} ${x.toFixed(2)} ${sideBottom.toFixed(2)} c`,
+          `${x.toFixed(2)} ${(top - radius).toFixed(2)} l`,
+          `${x.toFixed(2)} ${top.toFixed(2)} ${x.toFixed(2)} ${top.toFixed(2)} ${(x + radius).toFixed(2)} ${top.toFixed(2)} c`,
+          "h",
+        ].join(" ");
+      };
+
+      const makeEllipsePath = (x, y, width, height) => {
+        const kappa = 0.5522847498;
+        const cx = x + width / 2;
+        const cy = y + height / 2;
+        const rx = width / 2;
+        const ry = height / 2;
+
+        return [
+          `${(cx + rx).toFixed(2)} ${cy.toFixed(2)} m`,
+          `${(cx + rx).toFixed(2)} ${(cy + ry * kappa).toFixed(2)} ${(cx + rx * kappa).toFixed(2)} ${(cy + ry).toFixed(2)} ${cx.toFixed(2)} ${(cy + ry).toFixed(2)} c`,
+          `${(cx - rx * kappa).toFixed(2)} ${(cy + ry).toFixed(2)} ${(cx - rx).toFixed(2)} ${(cy + ry * kappa).toFixed(2)} ${(cx - rx).toFixed(2)} ${cy.toFixed(2)} c`,
+          `${(cx - rx).toFixed(2)} ${(cy - ry * kappa).toFixed(2)} ${(cx - rx * kappa).toFixed(2)} ${(cy - ry).toFixed(2)} ${cx.toFixed(2)} ${(cy - ry).toFixed(2)} c`,
+          `${(cx + rx * kappa).toFixed(2)} ${(cy - ry).toFixed(2)} ${(cx + rx).toFixed(2)} ${(cy - ry * kappa).toFixed(2)} ${(cx + rx).toFixed(2)} ${cy.toFixed(2)} c`,
+          "h",
+        ].join(" ");
+      };
+
+      const makeCommunityOutlineCommand = (slot) => {
+        if (slot.type === "oval") {
+          const inset = 4;
+          return `q 0.04 0.48 0.20 RG 1.2 w ${makeEllipsePath(slot.x + inset, slot.y + inset, slot.width - inset * 2, slot.height - inset * 2)} S Q`;
+        }
+
+        if (slot.type === "basket") {
+          return `q 0.04 0.48 0.20 RG 1.1 w ${slot.x.toFixed(2)} ${slot.y.toFixed(2)} ${slot.width.toFixed(2)} ${slot.height.toFixed(2)} re S Q`;
+        }
+
+        return `q 0.62 0.64 0.62 RG 0.8 w ${makeCommunityArchPath(slot.x, slot.y, slot.width, slot.height)} S Q`;
+      };
+
+      const makePdfPhotoCommand = (photo, x, y, size) => {
+        if (photo) {
+          return `q ${size.toFixed(2)} 0 0 ${size.toFixed(2)} ${x.toFixed(2)} ${y.toFixed(2)} cm /Im1 Do Q`;
+        }
+
+        const textSize = Math.min(10, size * 0.16);
+        return [
+          `q 0.93 0.95 0.94 rg ${x.toFixed(2)} ${y.toFixed(2)} ${size.toFixed(2)} ${size.toFixed(2)} re f Q`,
+          makeCenteredTextCommand("Photo", x + size / 2, y + size * 0.48, textSize, size, "F1", "0.36 0.42 0.39"),
+        ].join("\n");
+      };
+
+      const makeCommunitySlotCommands = (template, slot, childName, photo, options = {}) => {
+        const commands = [makeCommunityOutlineCommand(slot)];
+        const centerX = slot.x + slot.width / 2;
+
+        if (slot.type === "basket") {
+          const photoSize = slot.photo;
+          const photoX = slot.x + 18;
+          const photoY = slot.y + (slot.height - photoSize) / 2;
+          const nameX = photoX + photoSize + 22;
+          const nameMaxWidth = slot.width - (nameX - slot.x) - 20;
+          const nameSize = getFittedPdfSize(childName, template.nameSize, template.nameMin, nameMaxWidth);
+
+          commands.push(makePdfPhotoCommand(photo, photoX, photoY, photoSize));
+          commands.push(makeCenteredTextCommand(childName, nameX + nameMaxWidth / 2, slot.y + slot.height * 0.48, nameSize, nameMaxWidth, "F2", "0.08 0.13 0.10"));
+          return commands.join("\n");
+        }
+
+        if (slot.type === "oval") {
+          const photoSize = slot.photo;
+          const photoX = centerX - photoSize / 2;
+          const photoY = slot.y + slot.height * 0.48;
+          const nameMaxWidth = slot.width * 0.82;
+          const nameSize = getFittedPdfSize(childName, template.nameSize, template.nameMin, nameMaxWidth);
+
+          commands.push(makePdfPhotoCommand(photo, photoX, photoY, photoSize));
+          commands.push(makeCenteredTextCommand(childName, centerX, slot.y + slot.height * 0.28, nameSize, nameMaxWidth, "F2", "0.08 0.13 0.10"));
+          return commands.join("\n");
+        }
+
+        const photoSize = slot.photo;
+        const safeLeft = slot.safeLeft || 12;
+        const safeRight = slot.safeRight || 36;
+        const safeTop = slot.safeTop || 12;
+        const curveReserve = slot.curveReserve || Math.max(36, slot.height * 0.34);
+        const safeX = slot.x + safeLeft;
+        const safeY = slot.y + curveReserve;
+        const safeWidth = slot.width - safeLeft - safeRight;
+        const safeHeight = slot.height - safeTop - curveReserve;
+        const photoX = safeX;
+        const photoY = slot.y + slot.height - safeTop - photoSize;
+        const nameWidth = Math.min(safeWidth, slot.width * (slot.nameMaxRatio || 0.72));
+        const nameCenterX = slot.x + slot.width * (slot.archCenterRatio || 0.5);
+        const nameCenterY = safeY + safeHeight / 2;
+        const nameSize = getFittedPdfSize(childName, template.nameSize, template.nameMin, nameWidth);
+
+        if (options.includeCubbyPhoto) {
+          commands.push(makePdfPhotoCommand(photo, photoX, photoY, photoSize));
+        }
+        commands.push(makeCenteredTextCommand(childName, nameCenterX, nameCenterY, nameSize, nameWidth, "F2", "0.08 0.13 0.10"));
+        return commands.join("\n");
+      };
+
+      const makeCommunityPlaythingsPdf = async () => {
+        const templates = getSelectedCommunityTemplates();
+
+        if (!templates.length) {
+          throw new Error("Choose at least one Community Playthings label type.");
+        }
+
+        const photo = await getPdfPhoto();
+        const childName = childNameInput?.value.trim() || "Child Name";
+        const footerDate = `Date Generated: ${getGeneratedDate()}`;
+        const includeCubbyPhoto = shouldIncludeCommunityCubbyPhoto();
+        const pages = getCommunityPdfPages(templates, childName).map((template) => {
+          const commands = [
+            `q 1 1 1 rg 0 0 ${template.pageWidth.toFixed(2)} ${template.pageHeight.toFixed(2)} re f Q`,
+          ];
+
+          template.printableSlots.forEach((slot) => {
+            commands.push(makeCommunitySlotCommands(template, slot, childName, photo, { includeCubbyPhoto }));
+          });
+
+          if (template.includeFooter !== false && template.printMode !== "single") {
+            commands.push(makeTextCommand("Generated by CareCheck Ready™", 28, 20, 7, "F2", "0.04 0.48 0.20"));
+            commands.push(makeTextCommand(footerDate, 28, 10, 6.5, "F1", "0.36 0.42 0.39"));
+          }
+
+          return {
+            width: template.pageWidth,
+            height: template.pageHeight,
+            content: commands.join("\n"),
+          };
+        });
+
+        const pageObjects = [];
+        const contentObjects = [];
+        const fontRegularId = 3 + pages.length * 2;
+        const fontBoldId = fontRegularId + 1;
+        const imageId = photo ? fontBoldId + 1 : null;
+
+        pages.forEach((page, index) => {
+          const pageId = 3 + index * 2;
+          const contentId = pageId + 1;
+          pageObjects.push(makePdfObject(
+            pageId,
+            `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${page.width.toFixed(2)} ${page.height.toFixed(2)}] /Resources << /Font << /F1 ${fontRegularId} 0 R /F2 ${fontBoldId} 0 R >>${photo ? ` /XObject << /Im1 ${imageId} 0 R >>` : ""} >> /Contents ${contentId} 0 R >>`,
+          ));
+          contentObjects.push(makePdfObject(contentId, `<< /Length ${encodeText(page.content).length} >>\nstream\n${page.content}\nendstream`));
+        });
+
+        const objects = [
+          makePdfObject(1, "<< /Type /Catalog /Pages 2 0 R >>"),
+          makePdfObject(2, `<< /Type /Pages /Kids [${pageObjects.map((object) => `${object.id} 0 R`).join(" ")}] /Count ${pages.length} >>`),
+          ...pageObjects.flatMap((pageObject, index) => [pageObject, contentObjects[index]]),
+          makePdfObject(fontRegularId, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>"),
+          makePdfObject(fontBoldId, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>"),
+        ];
+
+        if (photo) {
+          const imageHeader = encodeText(`${imageId} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${photo.size} /Height ${photo.size} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${photo.bytes.length} >>\nstream\n`);
+          const imageFooter = encodeText("\nendstream\nendobj\n");
+          const imageBytes = new Uint8Array(imageHeader.length + photo.bytes.length + imageFooter.length);
+          imageBytes.set(imageHeader, 0);
+          imageBytes.set(photo.bytes, imageHeader.length);
+          imageBytes.set(imageFooter, imageHeader.length + photo.bytes.length);
+          objects.push({ id: imageId, bytes: imageBytes });
+        }
+
+        return buildPdfBytes(objects);
+      };
+
+      const createCommunityPdfPhoto = (className = "community-pdf-photo") => {
+        const photo = document.createElement("div");
+        photo.className = className;
+
+        if (currentPhotoUrl) {
+          const image = document.createElement("img");
+          image.src = currentPhotoUrl;
+          image.alt = "";
+          photo.append(image);
+          photo.classList.add("has-photo");
+        } else {
+          const placeholder = document.createElement("span");
+          placeholder.textContent = "Photo";
+          photo.append(placeholder);
+        }
+
+        return photo;
+      };
+
+      const fitCommunityPdfNames = (root) => {
+        root.querySelectorAll("[data-community-pdf-name]").forEach((name) => {
+          const max = Number.parseFloat(name.dataset.maxSize || "60");
+          const min = Number.parseFloat(name.dataset.minSize || "24");
+
+          const isStandardOrCompact = Boolean(name.closest(".community-pdf-standard, .community-pdf-compact"));
+          if (isStandardOrCompact) {
+            fitFixedCommunityNameElement(name, max, min);
+            return;
+          }
+
+          const isInfant = name.closest(".community-pdf-oval");
+          fitSingleLineElement(name, max, min, {
+            allowWrap: Boolean(isInfant),
+            checkHeight: Boolean(isInfant),
+            maxHeight: isInfant ? 150 : undefined,
+          });
+        });
+      };
+
+      const makeCommunityPdfArtwork = (template, childName, options = {}) => {
+        const page = document.createElement("section");
+        const slot = template.printableSlots[0];
+
+        page.className = `community-pdf-page community-pdf-${template.id || "label"}`;
+        page.style.width = `${template.pageWidth}px`;
+        page.style.height = `${template.pageHeight}px`;
+
+        if (slot.type === "basket") {
+          const label = document.createElement("div");
+          label.className = "community-pdf-label community-pdf-basket";
+          label.style.left = `${slot.x}px`;
+          label.style.top = `${template.pageHeight - slot.y - slot.height}px`;
+          label.style.width = `${slot.width}px`;
+          label.style.height = `${slot.height}px`;
+
+          const name = document.createElement("strong");
+          name.dataset.communityPdfName = "";
+          name.dataset.maxSize = template.nameSize;
+          name.dataset.minSize = template.nameMin;
+          name.textContent = childName;
+
+          label.append(createCommunityPdfPhoto(), name);
+          page.append(label);
+          return page;
+        }
+
+        const label = document.createElement("div");
+        label.className = `community-pdf-label ${slot.type === "oval" ? "community-pdf-oval" : "community-pdf-arch"}`;
+        label.dataset.communityGeometryShape = template.geometryKey || template.id || slot.type;
+        label.style.left = `${slot.x}px`;
+        label.style.top = `${template.pageHeight - slot.y - slot.height}px`;
+        label.style.width = `${slot.width}px`;
+        label.style.height = `${slot.height}px`;
+
+        const content = document.createElement("div");
+        content.className = "community-pdf-content";
+
+        const name = document.createElement("strong");
+        name.dataset.communityPdfName = "";
+        name.dataset.maxSize = template.nameSize;
+        name.dataset.minSize = template.nameMin;
+        name.textContent = childName;
+        const includePhoto = slot.type !== "arch" || options.includeCubbyPhoto;
+        if (includePhoto) {
+          const photo = createCommunityPdfPhoto();
+          photo.style.width = `${slot.photo}px`;
+          photo.style.height = `${slot.photo}px`;
+          content.append(photo);
+        }
+        content.append(name);
+
+        if (slot.type === "oval") {
+          label.append(content);
+        } else {
+          label.append(content);
+        }
+
+        const cutGuideLayer = createCommunityCutGuideLayer(label.dataset.communityGeometryShape);
+
+        if (cutGuideLayer) {
+          label.prepend(cutGuideLayer);
+        }
+
+        page.append(label);
+        return page;
+      };
+
+      const makeCommunityPlaythingsCanvasPdf = async (filename) => {
+        await ensurePdfLibraries();
+
+        if (!window.html2canvas || !window.jspdf?.jsPDF) {
+          return false;
+        }
+
+        await document.fonts?.ready;
+
+        const templates = getSelectedCommunityTemplates();
+        const childName = childNameInput?.value.trim() || "Child Name";
+        const pages = getCommunityPdfPages(templates, childName);
+        const includeCubbyPhoto = shouldIncludeCommunityCubbyPhoto();
+
+        if (!pages.length) {
+          throw new Error("Choose at least one Community Playthings label type.");
+        }
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "community-pdf-render-root";
+        pages.forEach((template) => {
+          wrapper.append(makeCommunityPdfArtwork(template, childName, { includeCubbyPhoto }));
+        });
+        document.body.append(wrapper);
+        fitCommunityPdfNames(wrapper);
+
+        try {
+          const { jsPDF } = window.jspdf;
+          const firstPage = pages[0];
+          const pdf = new jsPDF({
+            orientation: firstPage.pageWidth > firstPage.pageHeight ? "landscape" : "portrait",
+            unit: "pt",
+            format: [firstPage.pageWidth, firstPage.pageHeight],
+          });
+
+          for (const [index, template] of pages.entries()) {
+            const pageElement = wrapper.children[index];
+            const canvas = await window.html2canvas(pageElement, {
+              backgroundColor: "#ffffff",
+              scale: 3,
+              useCORS: true,
+            });
+            const imageData = canvas.toDataURL("image/jpeg", 0.96);
+
+            if (index > 0) {
+              pdf.addPage(
+                [template.pageWidth, template.pageHeight],
+                template.pageWidth > template.pageHeight ? "landscape" : "portrait",
+              );
+            }
+
+            pdf.addImage(imageData, "JPEG", 0, 0, template.pageWidth, template.pageHeight);
+          }
+
+          pdf.save(filename);
+          return true;
+        } finally {
+          wrapper.remove();
+        }
+      };
+
+      const getPdfLayout = (templateKey) => {
+        const layouts = {
+          94207: {
+            cols: 2,
+            rows: 5,
+            marginX: 33,
+            marginY: 41,
+            gapX: 28,
+            gapY: 17,
+            padding: 9,
+            photoRatio: 0.34,
+            photoMax: 70,
+            typeSize: 10,
+            nameSize: 17,
+            nameMin: 10,
+            classroomSize: 9.5,
+            typeToNameGap: 22,
+            nameToClassroomGap: 40,
+          },
+          6874: {
+            cols: 2,
+            rows: 3,
+            marginX: 40,
+            marginY: 65,
+            gapX: 31,
+            gapY: 32,
+            padding: 15,
+            photoRatio: 0.34,
+            photoMax: 78,
+            typeSize: 11,
+            nameSize: 18,
+            nameMin: 12,
+            classroomSize: 10,
+            typeToNameGap: 24,
+            nameToClassroomGap: 43,
+          },
+          94256: {
+            cols: 2,
+            rows: 2,
+            marginX: 32,
+            marginY: 103,
+            gapX: 37,
+            gapY: 63,
+            padding: 18,
+            photoRatio: 0.36,
+            photoMax: 102,
+            typeSize: 13,
+            nameSize: 23,
+            nameMin: 14,
+            classroomSize: 12.5,
+            typeToNameGap: 31,
+            nameToClassroomGap: 56,
+          },
+        };
+
+        return layouts[templateKey] || layouts["94207"];
+      };
+
+      const makeTextCommand = (text, x, y, size, font = "F1", color = "0 0 0") => {
+        return `BT /${font} ${size} Tf ${color} rg ${x.toFixed(2)} ${y.toFixed(2)} Td (${escapePdfText(text)}) Tj ET`;
+      };
+
+      const estimatePdfTextWidth = (text, size) => String(text).length * size * 0.56;
+
+      const getFittedPdfSize = (text, maxSize, minSize, maxWidth) => {
+        let size = maxSize;
+
+        while (size > minSize && estimatePdfTextWidth(text, size) > maxWidth) {
+          size -= 0.5;
+        }
+
+        return size;
+      };
+
+      const makeCenteredTextCommand = (text, centerX, y, size, maxWidth, font = "F1", color = "0 0 0") => {
+        const textWidth = Math.min(estimatePdfTextWidth(text, size), maxWidth);
+        return makeTextCommand(text, centerX - textWidth / 2, y, size, font, color);
+      };
+
+      const getSelectedAveryTemplateName = () => {
+        return averyTemplateSelect?.selectedOptions?.[0]?.textContent.trim() || "Selected Avery Template";
+      };
+
+      const getGeneratedDate = () => {
+        return new Date().toLocaleDateString(undefined, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      };
+
+      const makeFallbackPdf = async () => {
+        const templateKey = averyTemplateSelect.value;
+        const template = averyTemplates[templateKey] || averyTemplates["94207"];
+        const layout = getPdfLayout(templateKey);
+        const pageWidth = 612;
+        const pageHeight = 792;
+        const labelWidth = (pageWidth - layout.marginX * 2 - layout.gapX * (layout.cols - 1)) / layout.cols;
+        const labelHeight = (pageHeight - layout.marginY * 2 - layout.gapY * (layout.rows - 1)) / layout.rows;
+        const labels = getSheetLabelsForPdf(template);
+        const photo = await getPdfPhoto();
+        const commands = [
+          "q 1 1 1 rg 0 0 612 792 re f Q",
+        ];
+        const childName = childNameInput?.value.trim() || "Child Name";
+        const classroom = getOptionalClassroom();
+        const footerTemplate = `Template: ${getSelectedAveryTemplateName()}`;
+        const footerDate = `Date Generated: ${getGeneratedDate()}`;
+
+        labels.forEach((labelTitle, index) => {
+          const col = index % layout.cols;
+          const row = Math.floor(index / layout.cols);
+          const x = layout.marginX + col * (labelWidth + layout.gapX);
+          const y = pageHeight - layout.marginY - labelHeight - row * (labelHeight + layout.gapY);
+
+          commands.push(`q 0.04 0.48 0.20 RG [3 3] 0 d ${x.toFixed(2)} ${y.toFixed(2)} ${labelWidth.toFixed(2)} ${labelHeight.toFixed(2)} re S Q`);
+
+          if (!labelTitle) {
+            return;
+          }
+
+          const padding = Math.min(layout.padding, labelHeight * 0.16);
+
+          if (templateKey === "94207") {
+            const photoSize = Math.min(labelHeight - padding * 2, labelWidth * layout.photoRatio, layout.photoMax);
+            const photoX = x + padding;
+            const photoY = y + (labelHeight - photoSize) / 2;
+            const textX = photoX + photoSize + Math.max(9, padding * 0.65);
+            const textMaxWidth = labelWidth - (textX - x) - padding;
+            const topY = y + labelHeight - padding - layout.typeSize - 2;
+            const fittedNameSize = getFittedPdfSize(childName, layout.nameSize, layout.nameMin, textMaxWidth);
+
+            if (photo) {
+              commands.push(`q ${photoSize.toFixed(2)} 0 0 ${photoSize.toFixed(2)} ${photoX.toFixed(2)} ${photoY.toFixed(2)} cm /Im1 Do Q`);
+            } else {
+              commands.push(`q 0.93 0.95 0.94 rg ${photoX.toFixed(2)} ${photoY.toFixed(2)} ${photoSize.toFixed(2)} ${photoSize.toFixed(2)} re f Q`);
+              commands.push(makeTextCommand("Photo", photoX + photoSize * 0.22, photoY + photoSize * 0.48, Math.min(8, photoSize * 0.16), "F1", "0.36 0.42 0.39"));
+            }
+
+            commands.push(makeTextCommand(labelTitle, textX, topY, layout.typeSize, "F2", "0.04 0.48 0.20"));
+            commands.push(makeTextCommand(childName, textX, topY - layout.typeToNameGap, fittedNameSize, "F2", "0.08 0.13 0.10"));
+            if (classroom) {
+              commands.push(makeTextCommand(classroom, textX, topY - layout.nameToClassroomGap, layout.classroomSize, "F1", "0.36 0.42 0.39"));
+            }
+            return;
+          }
+
+          const centerX = x + labelWidth / 2;
+          const photoSize = Math.min(labelHeight * 0.46, labelWidth * layout.photoRatio, layout.photoMax);
+          const photoX = centerX - photoSize / 2;
+          const photoY = y + labelHeight - padding - photoSize;
+          const textMaxWidth = labelWidth - padding * 2;
+          const fittedNameSize = getFittedPdfSize(childName, layout.nameSize, layout.nameMin, textMaxWidth);
+          const nameY = photoY - Math.max(15, fittedNameSize * 0.85);
+          const classroomY = nameY - fittedNameSize - Math.max(8, layout.classroomSize * 0.75);
+          const typeY = classroom
+            ? classroomY - layout.classroomSize - Math.max(8, layout.typeSize * 0.65)
+            : classroomY;
+
+          if (photo) {
+            commands.push(`q ${photoSize.toFixed(2)} 0 0 ${photoSize.toFixed(2)} ${photoX.toFixed(2)} ${photoY.toFixed(2)} cm /Im1 Do Q`);
+          } else {
+            commands.push(`q 0.93 0.95 0.94 rg ${photoX.toFixed(2)} ${photoY.toFixed(2)} ${photoSize.toFixed(2)} ${photoSize.toFixed(2)} re f Q`);
+            commands.push(makeCenteredTextCommand("Photo", centerX, photoY + photoSize * 0.48, Math.min(9, photoSize * 0.14), photoSize, "F1", "0.36 0.42 0.39"));
+          }
+
+          commands.push(makeCenteredTextCommand(childName, centerX, nameY, fittedNameSize, textMaxWidth, "F2", "0.08 0.13 0.10"));
+          if (classroom) {
+            commands.push(makeCenteredTextCommand(classroom, centerX, classroomY, layout.classroomSize, textMaxWidth, "F1", "0.36 0.42 0.39"));
+          }
+          commands.push(makeCenteredTextCommand(labelTitle, centerX, typeY, layout.typeSize, textMaxWidth, "F2", "0.04 0.48 0.20"));
+        });
+
+        commands.push(makeTextCommand("Generated by CareCheck Ready™", 33, 28, 7, "F2", "0.04 0.48 0.20"));
+        commands.push(makeTextCommand(footerTemplate, 33, 18, 6.5, "F1", "0.36 0.42 0.39"));
+        commands.push(makeTextCommand(footerDate, 33, 9, 6.5, "F1", "0.36 0.42 0.39"));
+
+        const content = commands.join("\n");
+        const objects = [
+          makePdfObject(1, "<< /Type /Catalog /Pages 2 0 R >>"),
+          makePdfObject(2, "<< /Type /Pages /Kids [3 0 R] /Count 1 >>"),
+          makePdfObject(
+            3,
+            `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >>${photo ? " /XObject << /Im1 7 0 R >>" : ""} >> /Contents 6 0 R >>`,
+          ),
+          makePdfObject(4, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>"),
+          makePdfObject(5, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>"),
+          makePdfObject(6, `<< /Length ${encodeText(content).length} >>\nstream\n${content}\nendstream`),
+        ];
+
+        if (photo) {
+          const imageHeader = encodeText(`7 0 obj\n<< /Type /XObject /Subtype /Image /Width ${photo.size} /Height ${photo.size} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${photo.bytes.length} >>\nstream\n`);
+          const imageFooter = encodeText("\nendstream\nendobj\n");
+          const imageBytes = new Uint8Array(imageHeader.length + photo.bytes.length + imageFooter.length);
+          imageBytes.set(imageHeader, 0);
+          imageBytes.set(photo.bytes, imageHeader.length);
+          imageBytes.set(imageFooter, imageHeader.length + photo.bytes.length);
+          objects.push({ id: 7, bytes: imageBytes });
+        }
+
+        return buildPdfBytes(objects);
+      };
+
+      const makeFallbackMultiPagePdf = async () => {
+        const templateKey = averyTemplateSelect.value;
+        const template = averyTemplates[templateKey] || averyTemplates["94207"];
+        const layout = getPdfLayout(templateKey);
+        const pageWidth = 612;
+        const pageHeight = 792;
+        const labelWidth = (pageWidth - layout.marginX * 2 - layout.gapX * (layout.cols - 1)) / layout.cols;
+        const labelHeight = (pageHeight - layout.marginY * 2 - layout.gapY * (layout.rows - 1)) / layout.rows;
+        const sheetPages = getSheetLabelsForPdf(template);
+        const photo = await getPdfPhoto();
+        const childName = childNameInput?.value.trim() || "Child Name";
+        const classroom = getOptionalClassroom();
+        const footerTemplate = `Template: ${getSelectedAveryTemplateName()}`;
+        const footerDate = `Date Generated: ${getGeneratedDate()}`;
+
+        const makePageContent = (labels) => {
+          const commands = ["q 1 1 1 rg 0 0 612 792 re f Q"];
+
+          labels.forEach((labelTitle, index) => {
+            const col = index % layout.cols;
+            const row = Math.floor(index / layout.cols);
+            const x = layout.marginX + col * (labelWidth + layout.gapX);
+            const y = pageHeight - layout.marginY - labelHeight - row * (labelHeight + layout.gapY);
+
+            commands.push(`q 0.04 0.48 0.20 RG [3 3] 0 d ${x.toFixed(2)} ${y.toFixed(2)} ${labelWidth.toFixed(2)} ${labelHeight.toFixed(2)} re S Q`);
+
+            if (!labelTitle) {
+              return;
+            }
+
+            const padding = Math.min(layout.padding, labelHeight * 0.16);
+
+            if (templateKey === "94207") {
+              const photoSize = Math.min(labelHeight - padding * 2, labelWidth * layout.photoRatio, layout.photoMax);
+              const photoX = x + padding;
+              const photoY = y + (labelHeight - photoSize) / 2;
+              const textX = photoX + photoSize + Math.max(9, padding * 0.65);
+              const textMaxWidth = labelWidth - (textX - x) - padding;
+              const topY = y + labelHeight - padding - layout.typeSize - 2;
+              const fittedNameSize = getFittedPdfSize(childName, layout.nameSize, layout.nameMin, textMaxWidth);
+
+              if (photo) {
+                commands.push(`q ${photoSize.toFixed(2)} 0 0 ${photoSize.toFixed(2)} ${photoX.toFixed(2)} ${photoY.toFixed(2)} cm /Im1 Do Q`);
+              } else {
+                commands.push(`q 0.93 0.95 0.94 rg ${photoX.toFixed(2)} ${photoY.toFixed(2)} ${photoSize.toFixed(2)} ${photoSize.toFixed(2)} re f Q`);
+                commands.push(makeTextCommand("Photo", photoX + photoSize * 0.22, photoY + photoSize * 0.48, Math.min(8, photoSize * 0.16), "F1", "0.36 0.42 0.39"));
+              }
+
+              commands.push(makeTextCommand(labelTitle, textX, topY, layout.typeSize, "F2", "0.04 0.48 0.20"));
+              commands.push(makeTextCommand(childName, textX, topY - layout.typeToNameGap, fittedNameSize, "F2", "0.08 0.13 0.10"));
+              if (classroom) {
+                commands.push(makeTextCommand(classroom, textX, topY - layout.nameToClassroomGap, layout.classroomSize, "F1", "0.36 0.42 0.39"));
+              }
+              return;
+            }
+
+            const centerX = x + labelWidth / 2;
+            const photoSize = Math.min(labelHeight * 0.46, labelWidth * layout.photoRatio, layout.photoMax);
+            const photoX = centerX - photoSize / 2;
+            const photoY = y + labelHeight - padding - photoSize;
+            const textMaxWidth = labelWidth - padding * 2;
+            const fittedNameSize = getFittedPdfSize(childName, layout.nameSize, layout.nameMin, textMaxWidth);
+            const nameY = photoY - Math.max(15, fittedNameSize * 0.85);
+            const classroomY = nameY - fittedNameSize - Math.max(8, layout.classroomSize * 0.75);
+            const typeY = classroom
+              ? classroomY - layout.classroomSize - Math.max(8, layout.typeSize * 0.65)
+              : classroomY;
+
+            if (photo) {
+              commands.push(`q ${photoSize.toFixed(2)} 0 0 ${photoSize.toFixed(2)} ${photoX.toFixed(2)} ${photoY.toFixed(2)} cm /Im1 Do Q`);
+            } else {
+              commands.push(`q 0.93 0.95 0.94 rg ${photoX.toFixed(2)} ${photoY.toFixed(2)} ${photoSize.toFixed(2)} ${photoSize.toFixed(2)} re f Q`);
+              commands.push(makeCenteredTextCommand("Photo", centerX, photoY + photoSize * 0.48, Math.min(9, photoSize * 0.14), photoSize, "F1", "0.36 0.42 0.39"));
+            }
+
+            commands.push(makeCenteredTextCommand(childName, centerX, nameY, fittedNameSize, textMaxWidth, "F2", "0.08 0.13 0.10"));
+            if (classroom) {
+              commands.push(makeCenteredTextCommand(classroom, centerX, classroomY, layout.classroomSize, textMaxWidth, "F1", "0.36 0.42 0.39"));
+            }
+            commands.push(makeCenteredTextCommand(labelTitle, centerX, typeY, layout.typeSize, textMaxWidth, "F2", "0.04 0.48 0.20"));
+          });
+
+          commands.push(makeTextCommand("Generated by CareCheck Ready™", 33, 28, 7, "F2", "0.04 0.48 0.20"));
+          commands.push(makeTextCommand(footerTemplate, 33, 18, 6.5, "F1", "0.36 0.42 0.39"));
+          commands.push(makeTextCommand(footerDate, 33, 9, 6.5, "F1", "0.36 0.42 0.39"));
+
+          return commands.join("\n");
+        };
+
+        const pageContents = sheetPages.map((labels) => makePageContent(labels));
+        const pageObjects = [];
+        const contentObjects = [];
+        const fontRegularId = 3 + pageContents.length * 2;
+        const fontBoldId = fontRegularId + 1;
+        const imageId = photo ? fontBoldId + 1 : null;
+
+        pageContents.forEach((content, index) => {
+          const pageId = 3 + index * 2;
+          const contentId = pageId + 1;
+          pageObjects.push(makePdfObject(
+            pageId,
+            `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 ${fontRegularId} 0 R /F2 ${fontBoldId} 0 R >>${photo ? ` /XObject << /Im1 ${imageId} 0 R >>` : ""} >> /Contents ${contentId} 0 R >>`,
+          ));
+          contentObjects.push(makePdfObject(contentId, `<< /Length ${encodeText(content).length} >>\nstream\n${content}\nendstream`));
+        });
+
+        const objects = [
+          makePdfObject(1, "<< /Type /Catalog /Pages 2 0 R >>"),
+          makePdfObject(2, `<< /Type /Pages /Kids [${pageObjects.map((object) => `${object.id} 0 R`).join(" ")}] /Count ${pageContents.length} >>`),
+          ...pageObjects.flatMap((pageObject, index) => [pageObject, contentObjects[index]]),
+          makePdfObject(fontRegularId, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>"),
+          makePdfObject(fontBoldId, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>"),
+        ];
+
+        if (photo) {
+          const imageHeader = encodeText(`${imageId} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${photo.size} /Height ${photo.size} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${photo.bytes.length} >>\nstream\n`);
+          const imageFooter = encodeText("\nendstream\nendobj\n");
+          const imageBytes = new Uint8Array(imageHeader.length + photo.bytes.length + imageFooter.length);
+          imageBytes.set(imageHeader, 0);
+          imageBytes.set(photo.bytes, imageHeader.length);
+          imageBytes.set(imageFooter, imageHeader.length + photo.bytes.length);
+          objects.push({ id: imageId, bytes: imageBytes });
+        }
+
+        return buildPdfBytes(objects);
+      };
+
+      const saveBytesAsPdf = (bytes, filename) => {
+        const blob = new Blob([bytes], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = filename;
+        document.body.append(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      };
+
+      const normalizeRosterKey = (key) => String(key || "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+
+      const parseCsvRows = (text) => {
+        const rows = [];
+        let row = [];
+        let value = "";
+        let quoted = false;
+
+        for (let index = 0; index < text.length; index += 1) {
+          const char = text[index];
+          const next = text[index + 1];
+
+          if (char === '"' && quoted && next === '"') {
+            value += '"';
+            index += 1;
+          } else if (char === '"') {
+            quoted = !quoted;
+          } else if (char === "," && !quoted) {
+            row.push(value);
+            value = "";
+          } else if ((char === "\n" || char === "\r") && !quoted) {
+            if (char === "\r" && next === "\n") {
+              index += 1;
+            }
+            row.push(value);
+            if (row.some((cell) => cell.trim())) {
+              rows.push(row);
+            }
+            row = [];
+            value = "";
+          } else {
+            value += char;
+          }
+        }
+
+        row.push(value);
+        if (row.some((cell) => cell.trim())) {
+          rows.push(row);
+        }
+
+        return rows;
+      };
+
+      const rowsToRoster = (rows) => {
+        if (!rows.length) {
+          return [];
+        }
+
+        const headers = rows[0].map(normalizeRosterKey);
+        const findIndex = (...keys) => headers.findIndex((header) => keys.includes(header));
+        const firstNameIndex = findIndex("firstname");
+        const lastNameIndex = findIndex("lastname");
+        const childNameIndex = findIndex("childname", "name", "studentname");
+        const classroomIndex = findIndex("classroom", "room", "class");
+
+        return rows.slice(1).map((row, index) => {
+          const firstName = String(row[firstNameIndex] || "").trim();
+          const lastName = String(row[lastNameIndex] || "").trim();
+          const childName = String(row[childNameIndex] || "").trim() || [firstName, lastName].filter(Boolean).join(" ");
+          const classroom = String(row[classroomIndex] || "").trim();
+
+          return {
+            id: `bulk-child-${index}`,
+            childName,
+            classroom,
+            selected: Boolean(childName),
+          };
+        }).filter((child) => child.childName);
+      };
+
+      const parseRosterFile = async (file) => {
+        const extension = file.name.split(".").pop()?.toLowerCase();
+
+        if (extension === "csv") {
+          return rowsToRoster(parseCsvRows(await file.text()));
+        }
+
+        if (extension === "xlsx") {
+          await ensureSpreadsheetLibrary();
+          const workbook = window.XLSX.read(await file.arrayBuffer(), { type: "array" });
+          const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+          return rowsToRoster(window.XLSX.utils.sheet_to_json(firstSheet, { header: 1, defval: "" }));
+        }
+
+        throw new Error("Please upload a .csv or .xlsx roster file.");
+      };
+
+      const getSelectedBulkLabelType = () => {
+        return document.querySelector("[name='bulk-label-type']:checked")?.value || "Student Name + Water";
+      };
+
+      const getSelectedBulkChildren = () => bulkRoster.filter((child) => child.selected);
+
+      const makeWelcomeChildSection = (child) => {
+        const section = document.createElement("article");
+        const hasPhoto = Boolean(child.photoUrl);
+        const copy = document.createElement("div");
+        const name = document.createElement("h4");
+        const classroom = document.createElement("p");
+
+        section.className = `welcome-child-section ${hasPhoto ? "has-photo" : "has-no-photo"}`;
+        copy.className = "welcome-child-copy";
+        name.textContent = child.childName || "Child Name";
+        classroom.textContent = child.classroom || "";
+        classroom.hidden = !child.classroom;
+
+        if (hasPhoto) {
+          const photoWrap = document.createElement("div");
+          const photo = document.createElement("img");
+
+          photoWrap.className = "welcome-child-photo";
+          photo.alt = "";
+          photo.src = child.photoUrl;
+          photoWrap.append(photo);
+          section.append(photoWrap);
+        }
+
+        copy.append(name, classroom);
+        section.append(copy);
+        return section;
+      };
+
+      const makeWelcomeSignPage = (child) => {
+        const page = document.createElement("section");
+        const accentTop = document.createElement("div");
+        const accentBottom = document.createElement("div");
+        const heading = document.createElement("div");
+        const title = document.createElement("h3");
+        const subtitle = document.createElement("p");
+
+        page.className = "welcome-pdf-page";
+        accentTop.className = "welcome-botanical welcome-botanical-top";
+        accentTop.setAttribute("aria-hidden", "true");
+        accentBottom.className = "welcome-botanical welcome-botanical-bottom";
+        accentBottom.setAttribute("aria-hidden", "true");
+        heading.className = "welcome-pdf-heading";
+        title.textContent = "WELCOME";
+        subtitle.textContent = "We're happy you're here!";
+        heading.append(title, subtitle);
+        page.append(accentTop, accentBottom, heading, makeWelcomeChildSection(child));
+        return page;
+      };
+
+      const fitWelcomeSignNames = (root) => {
+        root.querySelectorAll(".welcome-child-copy h4").forEach((name) => {
+          const section = name.closest(".welcome-child-section");
+          const hasNoPhoto = section?.classList.contains("has-no-photo");
+          const maxSize = hasNoPhoto ? 78 : 66;
+
+          fitSingleLineElement(name, maxSize, 34, { allowWrap: true, checkHeight: true });
+        });
+      };
+
+      const downloadWelcomeSignPdf = async (child, filename) => {
+        if (!child?.childName) {
+          alert("Choose one child before generating a welcome sign PDF.");
+          return;
+        }
+
+        await ensurePdfLibraries();
+
+        if (!window.html2canvas || !window.jspdf?.jsPDF) {
+          throw new Error("The PDF tools could not load. Please check your connection and try again.");
+        }
+
+        await document.fonts?.ready;
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "welcome-pdf-render-root";
+        wrapper.append(makeWelcomeSignPage(child));
+        document.body.append(wrapper);
+        fitWelcomeSignNames(wrapper);
+
+        try {
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF({ orientation: "portrait", unit: "pt", format: "letter" });
+
+          for (const [index, page] of Array.from(wrapper.children).entries()) {
+            const canvas = await window.html2canvas(page, {
+              backgroundColor: "#ffffff",
+              scale: 3,
+            });
+
+            if (index > 0) {
+              pdf.addPage("letter", "portrait");
+            }
+            pdf.addImage(canvas.toDataURL("image/jpeg", 0.96), "JPEG", 0, 0, 612, 792);
+          }
+
+          pdf.save(filename);
+        } finally {
+          wrapper.remove();
+        }
+      };
+
+      const updateWelcomeSignAction = () => {
+        if (downloadWelcomeSignButton) {
+          downloadWelcomeSignButton.disabled = !welcomeSignSingleToggle?.checked;
+        }
+      };
+
+      const downloadSingleWelcomeSignPdf = async () => {
+        if (!downloadWelcomeSignButton) {
+          return;
+        }
+
+        const originalText = downloadWelcomeSignButton.textContent;
+        downloadWelcomeSignButton.disabled = true;
+        downloadWelcomeSignButton.textContent = "Building PDF...";
+
+        try {
+          const includePhoto = welcomeSignPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
+          const childName = childNameInput?.value.trim() || "Child Name";
+          const classroom = getOptionalClassroom();
+          const safeChildName = childName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "child";
+
+          await downloadWelcomeSignPdf({
+            childName,
+            classroom,
+            photoUrl: includePhoto ? currentPhotoUrl : "",
+          }, `carecheck-welcome-sign-${safeChildName}.pdf`);
+        } catch (error) {
+          console.error("Unable to create welcome sign PDF.", error);
+          alert(error.message || "The welcome sign PDF could not be created. Please try again.");
+        } finally {
+          downloadWelcomeSignButton.textContent = originalText;
+          updateWelcomeSignAction();
+        }
+      };
+
+      const updateBulkActions = () => {
+        const selectedCount = getSelectedBulkChildren().length;
+        const totalCount = bulkRoster.length;
+
+        if (bulkDownloadPdfButton) {
+          bulkDownloadPdfButton.disabled = selectedCount === 0;
+        }
+        if (bulkSummary) {
+          bulkSummary.textContent = totalCount
+            ? `${selectedCount} of ${totalCount} children selected.`
+            : "Upload a roster to preview children here.";
+        }
+      };
+
+      const renderBulkRosterTable = () => {
+        if (!bulkRosterBody) {
+          return;
+        }
+
+        bulkRosterBody.replaceChildren();
+
+        if (!bulkRoster.length) {
+          const row = document.createElement("tr");
+          row.className = "bulk-empty-row";
+          row.innerHTML = '<td colspan="3">No roster uploaded yet.</td>';
+          bulkRosterBody.append(row);
+          updateBulkActions();
+          return;
+        }
+
+        bulkRoster.forEach((child) => {
+          const row = document.createElement("tr");
+          const selectCell = document.createElement("td");
+          const nameCell = document.createElement("td");
+          const classroomCell = document.createElement("td");
+          const checkbox = document.createElement("input");
+
+          checkbox.type = "checkbox";
+          checkbox.checked = child.selected;
+          checkbox.addEventListener("change", () => {
+            child.selected = checkbox.checked;
+            updateBulkActions();
+          });
+
+          selectCell.append(checkbox);
+          nameCell.textContent = child.childName;
+          classroomCell.textContent = child.classroom || "";
+          row.append(selectCell, nameCell, classroomCell);
+          bulkRosterBody.append(row);
+        });
+
+        updateBulkActions();
+      };
+
+      const downloadBulkSampleTemplate = () => {
+        const csv = "First Name,Last Name,Child Name,Classroom\nMaya,Johnson,,Infant Room A\nAlexander,Thompson,,Toddler Room B\n,,Charlotte Elizabeth,Preschool 1\n";
+        const blob = new Blob([csv], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "carecheck-ready-bulk-upload-template.csv";
+        link.click();
+        URL.revokeObjectURL(url);
+      };
+
+      const makeBulkLabelElement = (child, labelType) => {
+        const label = document.createElement("article");
+        const title = document.createElement("p");
+        const name = document.createElement("h4");
+        const classroom = document.createElement("small");
+
+        if (bulkAvery94200LabelTypes.has(labelType)) {
+          label.className = "bulk-pdf-label bulk-water-label";
+          title.textContent = labelType === "Student Name + Milk" ? "Milk" : "Water";
+        } else if (labelType === bulkAvery94208LabelType) {
+          label.className = "bulk-pdf-label bulk-clothing-label";
+          title.textContent = "Clothing";
+        } else {
+          label.className = "bulk-pdf-label";
+          title.textContent = labelType;
+        }
+
+        name.textContent = child.childName;
+        classroom.textContent = child.classroom;
+        classroom.hidden = bulkAvery94200LabelTypes.has(labelType) || labelType === bulkAvery94208LabelType || !child.classroom;
+
+        if (bulkAvery94200LabelTypes.has(labelType)) {
+          label.append(name, title);
+        } else if (labelType === bulkAvery94208LabelType) {
+          label.append(name);
+        } else {
+          label.append(title, name, classroom);
+        }
+
+        return label;
+      };
+
+      const makeBulkPdfPage = (children, labelType, layout) => {
+        const page = document.createElement("section");
+        page.className = layout.pageClass;
+
+        Array.from({ length: layout.labelsPerSheet }, (_, index) => {
+          const child = children[index];
+          const slot = document.createElement("div");
+          slot.className = "bulk-pdf-slot";
+
+          if (child) {
+            slot.append(makeBulkLabelElement(child, labelType));
+          }
+
+          page.append(slot);
+          return slot;
+        });
+
+        return page;
+      };
+
+      const fitBulkPdfNames = (root) => {
+        root.querySelectorAll(".bulk-pdf-label h4").forEach((name) => {
+          const isWaterLabel = name.closest(".bulk-water-label");
+          const isClothingLabel = name.closest(".bulk-clothing-label");
+          const maxSize = isWaterLabel ? 21 : isClothingLabel ? 10 : 29;
+          const minSize = isWaterLabel ? 11 : isClothingLabel ? 6 : 14;
+
+          fitSingleLineElement(name, maxSize, minSize);
+        });
+      };
+
+      const downloadBulkRosterPdf = async () => {
+        const selectedChildren = getSelectedBulkChildren();
+
+        if (!selectedChildren.length) {
+          alert("Select at least one child before generating a PDF.");
+          return;
+        }
+
+        if (!bulkDownloadPdfButton) {
+          return;
+        }
+
+        const originalText = bulkDownloadPdfButton.textContent;
+        bulkDownloadPdfButton.disabled = true;
+        bulkDownloadPdfButton.textContent = "Building PDF...";
+
+        try {
+          await ensurePdfLibraries();
+
+          if (!window.html2canvas || !window.jspdf?.jsPDF) {
+            throw new Error("The PDF tools could not load. Please check your connection and try again.");
+          }
+
+          await document.fonts?.ready;
+
+          const labelType = getSelectedBulkLabelType();
+
+          if (labelType === bulkWelcomeSignLabelType) {
+            if (selectedChildren.length !== 1) {
+              alert("Welcome Sign PDF is single-child only for the MVP. Select exactly one child.");
+              return;
+            }
+
+            const child = selectedChildren[0];
+            await downloadWelcomeSignPdf({
+              childName: child.childName,
+              classroom: child.classroom,
+              photoUrl: "",
+            }, `carecheck-welcome-sign-${child.childName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "child"}.pdf`);
+            return;
+          }
+
+          const layout = bulkAvery94200LabelTypes.has(labelType)
+            ? bulkPdfLayouts.avery94200
+            : bulkAvery94069LabelTypes.has(labelType)
+              ? bulkPdfLayouts.avery94069
+              : labelType === bulkAvery94208LabelType
+                ? bulkPdfLayouts.avery94208
+                : bulkPdfLayouts.default;
+          const pageChunks = chunkLabelsForSheets(selectedChildren, layout.labelsPerSheet);
+          const wrapper = document.createElement("div");
+          wrapper.className = "bulk-pdf-render-root";
+
+          pageChunks.forEach((children) => {
+            wrapper.append(makeBulkPdfPage(children, labelType, layout));
+          });
+          document.body.append(wrapper);
+          fitBulkPdfNames(wrapper);
+
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF({ orientation: "portrait", unit: "pt", format: "letter" });
+
+          for (const [index, page] of Array.from(wrapper.children).entries()) {
+            const canvas = await window.html2canvas(page, {
+              backgroundColor: "#ffffff",
+              scale: 3,
+            });
+
+            if (index > 0) {
+              pdf.addPage("letter", "portrait");
+            }
+            pdf.addImage(canvas.toDataURL("image/jpeg", 0.96), "JPEG", 0, 0, 612, 792);
+          }
+
+          wrapper.remove();
+          pdf.save(`carecheck-bulk-${labelType.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.pdf`);
+        } catch (error) {
+          console.error("Unable to create bulk roster PDF.", error);
+          alert(error.message || "The bulk upload PDF could not be created. Please try again.");
+        } finally {
+          bulkDownloadPdfButton.disabled = getSelectedBulkChildren().length === 0;
+          bulkDownloadPdfButton.textContent = originalText;
+        }
+      };
+
+      const downloadPrintSheetPdf = async () => {
+        if (!printSheetFrame || !downloadPdfButton) {
+          return;
+        }
+
+        const originalText = downloadPdfButton.textContent;
+        downloadPdfButton.disabled = true;
+        downloadPdfButton.textContent = "Building PDF...";
+
+        try {
+          const template = averyTemplates[averyTemplateSelect.value] || averyTemplates["94207"];
+          const childName = childNameInput?.value.trim() || "child";
+          const safeChildName = childName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+          const filename = `carecheck-${template.className}-${safeChildName || "labels"}.pdf`;
+
+          await ensurePdfLibraries();
+
+          if (window.html2canvas && window.jspdf?.jsPDF) {
+            {
+              await new Promise((resolve) => requestAnimationFrame(resolve));
+
+              const sheetPages = Array.from(printSheetFrame.querySelectorAll("[data-print-sheet]"));
+              const { jsPDF } = window.jspdf;
+              const pdf = new jsPDF({
+                orientation: "portrait",
+                unit: "in",
+                format: "letter",
+              });
+
+              for (const [index, sheetPage] of sheetPages.entries()) {
+                const canvas = await window.html2canvas(sheetPage, {
+                  backgroundColor: "#ffffff",
+                  scale: Math.max(2, window.devicePixelRatio || 1),
+                  useCORS: true,
+                });
+                const imageData = canvas.toDataURL("image/png");
+
+                if (index > 0) {
+                  pdf.addPage("letter", "portrait");
+                }
+
+                pdf.addImage(imageData, "PNG", 0, 0, 8.5, 11);
+                pdf.setFont("helvetica", "bold");
+                pdf.setFontSize(7);
+                pdf.setTextColor(11, 122, 52);
+                pdf.text("Generated by CareCheck Ready™", 0.46, 10.62);
+                pdf.setFont("helvetica", "normal");
+                pdf.setFontSize(6.5);
+                pdf.setTextColor(91, 106, 98);
+                pdf.text(`Template: ${getSelectedAveryTemplateName()}`, 0.46, 10.78);
+                pdf.text(`Date Generated: ${getGeneratedDate()}`, 0.46, 10.92);
+              }
+
+              pdf.save(filename);
+              return;
+            }
+
+            const canvas = await window.html2canvas(printSheet, {
+              backgroundColor: "#ffffff",
+              scale: Math.max(2, window.devicePixelRatio || 1),
+              useCORS: true,
+            });
+            const imageData = canvas.toDataURL("image/png");
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF({
+              orientation: "portrait",
+              unit: "in",
+              format: "letter",
+            });
+
+            pdf.addImage(imageData, "PNG", 0, 0, 8.5, 11);
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(7);
+            pdf.setTextColor(11, 122, 52);
+            pdf.text("Generated by CareCheck Ready™", 0.46, 10.62);
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(6.5);
+            pdf.setTextColor(91, 106, 98);
+            pdf.text(`Template: ${getSelectedAveryTemplateName()}`, 0.46, 10.78);
+            pdf.text(`Date Generated: ${getGeneratedDate()}`, 0.46, 10.92);
+            pdf.save(filename);
+            return;
+          }
+
+          saveBytesAsPdf(await makeFallbackMultiPagePdf(), filename);
+        } catch (error) {
+          console.error("Unable to create Avery sheet PDF.", error);
+          alert("The PDF could not be created. Please try again.");
+        } finally {
+          downloadPdfButton.disabled = false;
+          downloadPdfButton.textContent = originalText;
+        }
+      };
+
+      const downloadCommunityPlaythingsPdf = async () => {
+        if (!downloadCommunityPdfButton) {
+          return;
+        }
+
+        const originalText = downloadCommunityPdfButton.textContent;
+        downloadCommunityPdfButton.disabled = true;
+        downloadCommunityPdfButton.textContent = "Building PDF...";
+
+        try {
+          const childName = childNameInput?.value.trim() || "child";
+          const safeChildName = childName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+          const filename = `carecheck-community-playthings-${safeChildName || "labels"}.pdf`;
+
+          const renderedWithQuicksand = await makeCommunityPlaythingsCanvasPdf(filename);
+          if (!renderedWithQuicksand) {
+            throw new Error("The Community Playthings PDF tools could not load. Please check your connection and try again.");
+          }
+        } catch (error) {
+          console.error("Unable to create Community Playthings PDF.", error);
+          alert(error.message || "The Community Playthings PDF could not be created. Please try again.");
+        } finally {
+          downloadCommunityPdfButton.disabled = false;
+          downloadCommunityPdfButton.textContent = originalText;
+        }
+      };
+
+      const scheduleProfilePreviewUpdate = debounce(() => {
+        renderPrintSheetPreview();
+        scheduleCommunityPreviewUpdate();
+        scheduleFeedingPreviewUpdate();
+      });
+      const scheduleAveryPreviewUpdate = debounce(renderPrintSheetPreview);
+      const scheduleBottlePreviewUpdate = debounce(updateInfantFeedingPreviews);
+
+      childPhotoInput?.addEventListener("change", async (event) => {
+        const file = event.target.files?.[0];
+
+        if (!file) {
+          resetPhotoSlots();
+          updateInfantFeedingPreviews();
+          return;
+        }
+
+        try {
+          applyPhotoToSlots(await createPreviewPhotoDataUrl(file));
+          updateInfantFeedingPreviews();
+        } catch (error) {
+          console.error("Unable to prepare child photo preview.", error);
+          resetPhotoSlots();
+          updateInfantFeedingPreviews();
+          alert("The selected photo could not be prepared. Please try a different image.");
+        }
+      });
+
+      averyTemplateSelect?.addEventListener("change", renderPrintSheetPreview);
+      feedingTemplateSelect?.addEventListener("change", updateInfantFeedingPreviews);
+      childNameInput?.addEventListener("input", () => {
+        scheduleProfilePreviewUpdate();
+      });
+      childDobInput?.addEventListener("input", scheduleBottlePreviewUpdate);
+      classroomInput?.addEventListener("input", () => {
+        scheduleAveryPreviewUpdate();
+        scheduleCommunityPreviewUpdate();
+        scheduleBottlePreviewUpdate();
+      });
+      document.querySelectorAll("#avery-labels .ready-checkbox-card input").forEach((checkbox) => {
+        checkbox.addEventListener("change", renderPrintSheetPreview);
+      });
+      document.querySelectorAll("[data-label-quantity]").forEach((quantityInput) => {
+        quantityInput.addEventListener("input", scheduleAveryPreviewUpdate);
+      });
+      document.querySelectorAll("[data-community-label-type]").forEach((checkbox) => {
+        checkbox.addEventListener("change", updateSelectedCommunityVisibility);
+      });
+      communityCubbyPhotoToggle?.addEventListener("change", updateCommunityPlaythingsPreviews);
+      document.querySelectorAll("[name='feeding-sheet-type']").forEach((radio) => {
+        radio.addEventListener("change", updateInfantFeedingPreviews);
+      });
+      feedingSheetPhotoToggle?.addEventListener("change", updateInfantFeedingPreviews);
+      downloadFeedingSheetButton?.addEventListener("click", downloadFeedingSheetPdf);
+      bulkRosterUpload?.addEventListener("change", async (event) => {
+        const file = event.target.files?.[0];
+
+        if (!file) {
+          bulkRoster = [];
+          if (bulkFileStatus) {
+            bulkFileStatus.textContent = "No roster selected";
+          }
+          renderBulkRosterTable();
+          return;
+        }
+
+        if (bulkFileStatus) {
+          bulkFileStatus.textContent = `Reading ${file.name}...`;
+        }
+
+        try {
+          bulkRoster = await parseRosterFile(file);
+          if (bulkFileStatus) {
+            bulkFileStatus.textContent = bulkRoster.length
+              ? `${file.name} loaded`
+              : `${file.name} had no usable child rows`;
+          }
+          renderBulkRosterTable();
+        } catch (error) {
+          console.error("Unable to parse roster file.", error);
+          bulkRoster = [];
+          if (bulkFileStatus) {
+            bulkFileStatus.textContent = "Roster could not be loaded";
+          }
+          renderBulkRosterTable();
+          alert(error.message || "The roster file could not be parsed. Please check the columns and try again.");
+        }
+      });
+      bulkSelectAllButton?.addEventListener("click", () => {
+        bulkRoster.forEach((child) => {
+          child.selected = true;
+        });
+        renderBulkRosterTable();
+      });
+      bulkTemplateButton?.addEventListener("click", downloadBulkSampleTemplate);
+      bulkDownloadPdfButton?.addEventListener("click", downloadBulkRosterPdf);
+      downloadPdfButton?.addEventListener("click", downloadPrintSheetPdf);
+      welcomeSignSingleToggle?.addEventListener("change", updateWelcomeSignAction);
+      downloadWelcomeSignButton?.addEventListener("click", downloadSingleWelcomeSignPdf);
+      downloadCommunityPdfButton?.addEventListener("click", downloadCommunityPlaythingsPdf);
+
+      renderPrintSheetPreview();
+      renderBulkRosterTable();
+      updateWelcomeSignAction();
+      updateCommunityPlaythingsPreviews();
+      updateSelectedCommunityVisibility();
+      updateInfantFeedingPreviews();
+      document.fonts?.ready?.then?.(() => {
+        fitCommunityPreviewNames();
+        fitFeedingSheetNames(feedingSheetPreview);
+      });
+    </script>
   </body>
 </html>
