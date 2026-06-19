@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="520" viewBox="0 0 820 520" role="img" aria-labelledby="title desc">
+  <title id="title">CareCheck Academy placeholder</title>
+  <desc id="desc">A clean placeholder graphic for staff training resources.</desc>
+  <rect width="820" height="520" rx="34" fill="#e9f6ee"/>
+  <rect x="82" y="78" width="656" height="364" rx="28" fill="#ffffff" stroke="#cfe4d7" stroke-width="4"/>
+  <rect x="138" y="132" width="544" height="68" rx="18" fill="#f7fbf8"/>
+  <rect x="138" y="232" width="244" height="118" rx="20" fill="#f7fbf8" stroke="#dce9e1" stroke-width="3"/>
+  <rect x="438" y="232" width="244" height="118" rx="20" fill="#f7fbf8" stroke="#dce9e1" stroke-width="3"/>
+  <circle cx="184" cy="291" r="28" fill="#1d7a46"/>
+  <circle cx="484" cy="291" r="28" fill="#1d7a46"/>
+  <text x="138" y="176" fill="#163226" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">CareCheck Academy</text>
+  <text x="138" y="396" fill="#5d7067" font-family="Arial, Helvetica, sans-serif" font-size="26">Training resources for safe procedures</text>
+</svg>
