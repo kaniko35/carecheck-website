@@ -484,3 +484,94 @@ if (appRoot && window.React && window.ReactDOM) {
     window.ReactDOM.render(h(CareCheckReadyLabelsApp), appRoot);
   }
 }
+
+const careCheckComplianceDisclaimer =
+  "CareCheck products and services are designed to support childcare operations and administrative workflows. They do not replace licensing requirements, accreditation standards, active supervision, professional judgment, or regulatory compliance obligations.";
+
+const careCheckDevelopmentNotice =
+  "CareCheck Technologies\u2122 is currently in active development. Features, specifications, integrations, pricing, and product availability may change prior to commercial release.";
+
+function getCareCheckPathPrefix() {
+  const nestedStylesheet = document.querySelector('link[href^="../styles.css"]');
+
+  return nestedStylesheet ? "../" : "";
+}
+
+function normalizeCareCheckFooter() {
+  const footer = document.querySelector(".site-footer");
+
+  if (!footer) {
+    return;
+  }
+
+  const prefix = getCareCheckPathPrefix();
+
+  footer.innerHTML = `
+    <div class="site-footer-main">
+      <div>
+        <strong>CareCheck Technologies</strong>
+        <p>${careCheckDevelopmentNotice}</p>
+      </div>
+      <nav class="site-footer-links" aria-label="Legal and contact links">
+        <a href="${prefix}privacy/">Privacy Policy</a>
+        <a href="${prefix}terms/">Terms of Use</a>
+        <a href="${prefix}product-disclaimer/">Product Disclaimer</a>
+        <a href="${prefix}contact.html">Contact</a>
+      </nav>
+    </div>
+    <p class="site-footer-disclaimer">${careCheckComplianceDisclaimer}</p>
+    <p class="site-footer-trademark">CareCheck&trade;, CareCheck Ready&trade;, CribCheck&trade;, BottleCheck&trade;, DiaperCheck&trade;, TempCheck&trade;, DoorCheck&trade;, CloseCheck&trade;, and related names are trademarks or trademarks pending of CareCheck Technologies LLC.</p>
+    <p class="site-footer-copyright">&copy; 2026 CareCheck Technologies LLC. All Rights Reserved.</p>
+  `;
+}
+
+function normalizeCareCheckNavigation() {
+  document.querySelectorAll('a[href$="shop-printables.html"]').forEach((link) => {
+    if (link.textContent.trim() === "Shop Printables") {
+      link.textContent = "CareCheck Ready\u2122";
+    }
+  });
+}
+
+function addCareCheckDevelopmentBanner() {
+  const path = window.location.pathname.toLowerCase();
+  const developmentPages = [
+    "infant-care",
+    "toddler-solutions",
+    "office-solutions",
+    "essentials",
+    "academy",
+    "celebrations",
+    "innovation-lab",
+    "founding-partners",
+    "recommended-resources",
+  ];
+  const isDevelopmentPage = developmentPages.some((page) => path.includes(page));
+  const main = document.querySelector("main");
+  const pageAlreadyMarked = main?.querySelector(".page-hero h1")?.textContent.trim() === "Under Development";
+
+  if (!isDevelopmentPage || !main || pageAlreadyMarked || document.querySelector(".development-banner")) {
+    return;
+  }
+
+  const banner = document.createElement("section");
+  banner.className = "development-banner";
+  banner.setAttribute("aria-label", "Under Development notice");
+  banner.innerHTML = `
+    <p class="eyebrow">Under Development</p>
+    <h2>CareCheck operational support tools are currently in development.</h2>
+    <p>These hardware and operational product concepts are not yet commercially available. CareCheck Ready remains available as a session-based MVP document generator for creating downloadable childcare materials.</p>
+    <p class="development-banner-disclaimer">${careCheckComplianceDisclaimer}</p>
+  `;
+
+  const hero = main.querySelector(".page-hero, .hero");
+  if (hero?.nextSibling) {
+    main.insertBefore(banner, hero.nextSibling);
+  } else {
+    main.prepend(banner);
+  }
+}
+
+normalizeCareCheckNavigation();
+normalizeCareCheckFooter();
+addCareCheckDevelopmentBanner();

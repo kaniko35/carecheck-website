@@ -432,31 +432,31 @@
         </div>
       </div>
     </main>
+    <script src="src/labelTemplates.js"></script>
+    <script src="src/labelRenderer.js"></script>
+    <script src="src/fixedPrintRenderer.js"></script>
     <script>
+      const labelRegistry = window.CareCheckLabelRegistry;
+      const printRenderer = window.CareCheckPrintRenderer;
+      const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
       const averyTemplates = {
         94207: {
-          title: "Avery 94207 sheet layout",
-          countLabel: "10 labels per sheet",
-          className: "sheet-94207",
-          scaleClass: "avery-template-small",
+          ...labelRegistry.get("avery-94207-classroom").css,
           labelSize: "2\" x 4\"",
-          labelsPerSheet: 10,
+          labelsPerSheet: labelRegistry.get("avery-94207-classroom").capacity,
+          registryId: "avery-94207-classroom",
         },
         6874: {
-          title: "Avery 6874 sheet layout",
-          countLabel: "6 labels per sheet",
-          className: "sheet-6874",
-          scaleClass: "avery-template-medium",
+          ...labelRegistry.get("avery-6874-classroom").css,
           labelSize: "3\" x 3.75\"",
-          labelsPerSheet: 6,
+          labelsPerSheet: labelRegistry.get("avery-6874-classroom").capacity,
+          registryId: "avery-6874-classroom",
         },
         94256: {
-          title: "Avery 94256 sheet layout",
-          countLabel: "4 labels per sheet",
-          className: "sheet-94256",
-          scaleClass: "avery-template-large",
+          ...labelRegistry.get("avery-94256-classroom").css,
           labelSize: "5\" x 3.5\"",
-          labelsPerSheet: 4,
+          labelsPerSheet: labelRegistry.get("avery-94256-classroom").capacity,
+          registryId: "avery-94256-classroom",
         },
       };
 
@@ -489,6 +489,7 @@
 
       const communityPlaythingsTemplates = {
         standard: {
+          ...labelRegistry.get("community-standard-cubby").css,
           title: "Standard Cubby Insert",
           geometryKey: "standard",
           printMode: "single",
@@ -499,11 +500,13 @@
             { x: 74, y: 232, width: 860, height: 154, type: "arch", photo: 88, safeLeft: 14, safeRight: 44, safeTop: 10, curveReserve: 54, archCenterRatio: 0.5, nameMaxRatio: 0.74 },
             { x: 74, y: 54, width: 860, height: 154, type: "arch", photo: 88, safeLeft: 14, safeRight: 44, safeTop: 10, curveReserve: 54, archCenterRatio: 0.5, nameMaxRatio: 0.74 },
           ],
-          nameSize: 78,
-          nameMin: 24,
+          nameSize: labelRegistry.get("community-standard-cubby").css.nameSize,
+          nameMin: labelRegistry.get("community-standard-cubby").css.nameMin,
           classroomSize: 18,
+          registryId: "community-standard-cubby",
         },
         compact: {
+          ...labelRegistry.get("community-compact-cubby").css,
           title: "Compact Cubby Insert",
           geometryKey: "compact",
           printMode: "single",
@@ -516,11 +519,13 @@
             { x: 60, y: 212, width: 492, height: 116, type: "arch", photo: 64, safeLeft: 12, safeRight: 32, safeTop: 10, curveReserve: 42, archCenterRatio: 0.5, nameMaxRatio: 0.72 },
             { x: 60, y: 72, width: 492, height: 116, type: "arch", photo: 64, safeLeft: 12, safeRight: 32, safeTop: 10, curveReserve: 42, archCenterRatio: 0.5, nameMaxRatio: 0.72 },
           ],
-          nameSize: 58,
-          nameMin: 16,
+          nameSize: labelRegistry.get("community-compact-cubby").css.nameSize,
+          nameMin: labelRegistry.get("community-compact-cubby").css.nameMin,
           classroomSize: 14,
+          registryId: "community-compact-cubby",
         },
         infant: {
+          ...labelRegistry.get("community-infant-cubby").css,
           title: "Infant Cubby Insert",
           geometryKey: "infant",
           printMode: "single",
@@ -530,11 +535,13 @@
             { x: 56, y: 74, width: 302, height: 440, type: "oval", photo: 188 },
             { x: 434, y: 74, width: 302, height: 440, type: "oval", photo: 188 },
           ],
-          nameSize: 42,
-          nameMin: 22,
+          nameSize: labelRegistry.get("community-infant-cubby").css.nameSize,
+          nameMin: labelRegistry.get("community-infant-cubby").css.nameMin,
           classroomSize: 18,
+          registryId: "community-infant-cubby",
         },
         basket: {
+          ...labelRegistry.get("community-basket-label").css,
           title: "Basket Label",
           printMode: "single",
           pageWidth: 360,
@@ -543,8 +550,9 @@
           slots: [
             { x: 4, y: 4, width: 352, height: 100, type: "basket", photo: 58 },
           ],
-          nameSize: 20,
-          nameMin: 12,
+          nameSize: labelRegistry.get("community-basket-label").css.nameSize,
+          nameMin: labelRegistry.get("community-basket-label").css.nameMin,
+          registryId: "community-basket-label",
         },
       };
 
@@ -587,6 +595,10 @@
       let scheduledCommunityFrame = 0;
 
       const shouldIncludeCommunityCubbyPhoto = () => communityCubbyPhotoToggle?.checked !== false;
+      const shouldShowBlankLabelSlots = () => !new URLSearchParams(window.location.search).has("hideBlankLabels")
+        && window.localStorage?.getItem("carecheckHideBlankLabels") !== "1";
+      const shouldIncludePdfFooter = () => new URLSearchParams(window.location.search).has("showPdfFooter")
+        || window.localStorage?.getItem("carecheckShowPdfFooter") === "1";
 
       const createCommunityCutGuideLayer = (geometryKey) => {
         const geometry = communityGeometry[geometryKey];
@@ -630,20 +642,24 @@
       const bulkWelcomeSignLabelType = "Welcome Sign PDF";
       const bulkPdfLayouts = {
         default: {
-          labelsPerSheet: 10,
+          labelsPerSheet: labelRegistry.get("avery-94207-classroom").capacity,
           pageClass: "bulk-pdf-page bulk-pdf-94207-page",
+          registryId: "avery-94207-classroom",
         },
         avery94200: {
-          labelsPerSheet: 30,
-          pageClass: "bulk-pdf-page bulk-pdf-94200-page",
+          labelsPerSheet: labelRegistry.get("avery-94200-water-milk").capacity,
+          pageClass: labelRegistry.get("avery-94200-water-milk").css.pageClass,
+          registryId: "avery-94200-water-milk",
         },
         avery94069: {
-          labelsPerSheet: 20,
+          labelsPerSheet: labelRegistry.get("avery-94069-feeding").capacity,
           pageClass: "bulk-pdf-page bulk-pdf-94069-page",
+          registryId: "avery-94069-feeding",
         },
         avery94208: {
-          labelsPerSheet: 60,
-          pageClass: "bulk-pdf-page bulk-pdf-94208-page",
+          labelsPerSheet: labelRegistry.get("avery-94208-clothing").capacity,
+          pageClass: labelRegistry.get("avery-94208-clothing").css.pageClass,
+          registryId: "avery-94208-clothing",
         },
       };
 
@@ -759,13 +775,8 @@
       };
 
       const chunkLabelsForSheets = (labels, labelsPerSheet) => {
-        const sourceLabels = labels.length ? labels : [];
-        const pageCount = Math.max(1, Math.ceil(sourceLabels.length / labelsPerSheet));
-
-        return Array.from({ length: pageCount }, (_, pageIndex) => {
-          const start = pageIndex * labelsPerSheet;
-          return Array.from({ length: labelsPerSheet }, (__, slotIndex) => sourceLabels[start + slotIndex] || "");
-        });
+        return printRenderer.chunkItems(labels.length ? labels : [], labelsPerSheet)
+          .map((chunk) => printRenderer.fillToCapacity(chunk, labelsPerSheet).map((item) => item || ""));
       };
 
       const getAverySheetPages = (template) => {
@@ -784,20 +795,14 @@
       };
 
       const getNameFitConfig = (templateKey, context) => {
-        const configs = {
-          preview: {
-            94207: { max: 21.6, min: 15 },
-            6874: { max: 30, min: 18 },
-            94256: { max: 38, min: 21 },
-          },
-          sheet: {
-            94207: { max: 17.6, min: 10 },
-            6874: { max: 26, min: 14 },
-            94256: { max: 30, min: 16 },
-          },
-        };
+        const template = labelRegistry.get(averyTemplates[templateKey]?.registryId || templateKey) || labelRegistry.get("avery-94207-classroom");
+        const rules = template.textRules.name;
+        const previewBump = context === "preview" ? 1.22 : 1;
 
-        return configs[context]?.[templateKey] || configs[context]["94207"];
+        return {
+          max: rules.max * previewBump,
+          min: Math.max(8, rules.min * previewBump),
+        };
       };
 
       const fitNameElement = (element, config) => {
@@ -824,57 +829,7 @@
       };
 
       const fitSingleLineElement = (element, maxSize, minSize, options = {}) => {
-        if (!element) {
-          return;
-        }
-
-        let fontSize = maxSize;
-        element.style.fontSize = `${fontSize}px`;
-        element.style.whiteSpace = options.allowWrap ? "normal" : "nowrap";
-        if (element.parentElement?.clientWidth) {
-          const elementStyle = window.getComputedStyle(element);
-          const previousPhoto = !options.allowWrap
-            && elementStyle.position !== "absolute"
-            && element.previousElementSibling?.classList?.contains("community-pdf-photo")
-            ? element.previousElementSibling
-            : null;
-          const parentStyle = window.getComputedStyle(element.parentElement);
-          const gap = Number.parseFloat(parentStyle.columnGap || parentStyle.gap || "0") || 0;
-          const availableWidth = previousPhoto
-            ? element.parentElement.clientWidth - previousPhoto.clientWidth - gap - 8
-            : element.parentElement.clientWidth;
-
-          element.style.width = `${Math.max(1, availableWidth)}px`;
-        }
-
-        const fits = () => {
-          const parent = element.parentElement;
-          const availableWidth = Math.max(1, element.clientWidth || parent?.clientWidth || 1);
-          const shouldCheckHeight = Boolean(element.closest(".community-pdf-render-root") || options.checkHeight);
-          let availableHeight = Math.max(1, element.clientHeight || 1);
-
-          if (parent?.clientHeight) {
-            const siblingsHeight = Array.from(parent.children)
-              .filter((child) => child !== element && !child.hidden)
-              .reduce((sum, child) => sum + child.scrollHeight, 0);
-            const parentStyle = window.getComputedStyle(parent);
-            const rowGap = Number.parseFloat(parentStyle.rowGap || parentStyle.gap || "0") || 0;
-            const visibleSiblingCount = Array.from(parent.children)
-              .filter((child) => child !== element && !child.hidden).length;
-            const reservedGap = visibleSiblingCount ? rowGap * visibleSiblingCount : 0;
-
-            availableHeight = Math.max(1, parent.clientHeight - siblingsHeight - reservedGap);
-          }
-
-          const maxHeight = options.maxHeight || availableHeight;
-          return element.scrollWidth <= availableWidth && (!shouldCheckHeight || element.scrollHeight <= maxHeight);
-        };
-
-        while (fontSize > minSize && !fits()) {
-          fontSize -= 0.5;
-          element.style.fontSize = `${fontSize}px`;
-        }
-
+        printRenderer.fitText(element, maxSize, minSize, options);
       };
 
       const fitFixedCommunityNameElement = (element, fontSize, minSize) => {
@@ -1026,16 +981,18 @@
         61503: {
           label: "Avery 61503",
           sizeLabel: '2" x 3-3/4"',
-          materialLabel: "Removable bottle labels",
-          labelsPerSheet: 10,
-          pageClass: "feeding-sheet-page feeding-sheet-61503",
+          materialLabel: labelRegistry.get("avery-61503-feeding").material,
+          labelsPerSheet: labelRegistry.get("avery-61503-feeding").capacity,
+          pageClass: labelRegistry.get("avery-61503-feeding").css.pageClass,
+          registryId: "avery-61503-feeding",
         },
         94069: {
           label: "Avery 94069",
           sizeLabel: '2" x 2"',
-          materialLabel: "Square waterproof label format",
-          labelsPerSheet: 20,
-          pageClass: "feeding-sheet-page feeding-sheet-94069",
+          materialLabel: labelRegistry.get("avery-94069-feeding").material,
+          labelsPerSheet: labelRegistry.get("avery-94069-feeding").capacity,
+          pageClass: labelRegistry.get("avery-94069-feeding").css.pageClass,
+          registryId: "avery-94069-feeding",
         },
       };
 
@@ -1046,28 +1003,31 @@
       const getFeedingSheetConfig = () => {
         const type = getSelectedFeedingSheetType();
         const template = getSelectedFeedingTemplate();
+        const contentTemplate = labelRegistry.get(type);
 
         if (type === "breastmilk") {
           return {
             title: "Breast Milk Labels",
-            labelTitle: "Breast Milk",
+            labelTitle: contentTemplate.fieldModel.title,
             className: "feeding-breastmilk-label",
-            fields: ["Ounces", "Date"],
-            checks: ["Fresh", "Thawed"],
-            followUpFields: ["Date Pumped", "Date Thawed"],
+            fields: contentTemplate.fieldModel.fields,
+            checks: contentTemplate.fieldModel.checks,
+            followUpFields: contentTemplate.fieldModel.followUpFields,
             filename: `carecheck-breast-milk-labels-${feedingTemplateSelect?.value || "61503"}.pdf`,
             template,
+            contentTemplate,
           };
         }
 
         return {
           title: "Formula Labels",
-          labelTitle: "Formula",
+          labelTitle: contentTemplate.fieldModel.title,
           className: "feeding-formula-label",
-          fields: ["Ounces", "Date/Week of"],
-          weekdays: ["M", "T", "W", "TH", "F"],
+          fields: contentTemplate.fieldModel.fields,
+          weekdays: contentTemplate.fieldModel.weekdays,
           filename: `carecheck-formula-labels-${feedingTemplateSelect?.value || "61503"}.pdf`,
           template,
+          contentTemplate,
         };
       };
 
@@ -1179,13 +1139,14 @@
 
       const makeFeedingSheetPage = () => {
         const config = getFeedingSheetConfig();
-        const page = document.createElement("section");
-
-        page.className = config.template.pageClass;
-        Array.from({ length: config.template.labelsPerSheet }, () => {
-          page.append(createFeedingSheetLabel(config));
+        return fixedPrintRenderer.createFeedingSheet({
+          template: labelRegistry.get(config.template.registryId),
+          variant: getSelectedFeedingSheetType(),
+          childName: childNameInput?.value.trim() || "Child Name",
+          dob: formatDob(childDobInput?.value),
+          photoUrl: currentPhotoUrl,
+          includePhoto: shouldIncludeFeedingSheetPhoto(),
         });
-        return page;
       };
 
       const renderFeedingSheetPreview = () => {
@@ -1201,9 +1162,9 @@
         document.querySelectorAll("[data-feeding-template-badge]").forEach((badge) => {
           badge.textContent = config.template.label;
         });
-        feedingSheetPreview.className = config.template.pageClass;
-        feedingSheetPreview.replaceChildren(...Array.from({ length: config.template.labelsPerSheet }, () => createFeedingSheetLabel(config)));
-        fitFeedingSheetNames(feedingSheetPreview);
+        feedingSheetPreview.className = `fixed-preview-scale ${config.template.pageClass}`;
+        feedingSheetPreview.replaceChildren(...Array.from(makeFeedingSheetPage().children));
+        fixedPrintRenderer.fitFixedText(feedingSheetPreview);
       };
 
       const fitFeedingSheetNames = (root = document) => {
@@ -1342,16 +1303,14 @@
       };
 
       const createPrintSheetPage = (template, pageLabels) => {
-        const page = document.createElement("div");
-        page.className = `print-sheet-page ${template.className}`;
-        page.setAttribute("data-print-sheet", "");
-
-        Array.from({ length: template.labelsPerSheet }, (_, index) => {
-          const labelTitle = pageLabels[index];
-          page.append(labelTitle ? createSheetLabel(labelTitle) : createBlankSheetSpace());
+        return printRenderer.createSheetPage({
+          template: labelRegistry.get(template.registryId),
+          items: pageLabels,
+          pageClass: `print-sheet-page ${template.className}`,
+          dataAttribute: "data-print-sheet",
+          renderItem: (labelTitle) => createSheetLabel(labelTitle),
+          renderBlank: createBlankSheetSpace,
         });
-
-        return page;
       };
 
       const renderPrintSheetPreview = () => {
@@ -1885,7 +1844,7 @@
 
         const templates = getSelectedCommunityTemplates();
         const childName = childNameInput?.value.trim() || "Child Name";
-        const pages = getCommunityPdfPages(templates, childName);
+        const pages = getUniqueCommunityTemplatesForChild(templates, childName).map((template) => labelRegistry.get(template.registryId));
         const includeCubbyPhoto = shouldIncludeCommunityCubbyPhoto();
 
         if (!pages.length) {
@@ -1893,39 +1852,52 @@
         }
 
         const wrapper = document.createElement("div");
-        wrapper.className = "community-pdf-render-root";
+        wrapper.className = "fixed-pdf-render-root";
         pages.forEach((template) => {
-          wrapper.append(makeCommunityPdfArtwork(template, childName, { includeCubbyPhoto }));
+          wrapper.append(fixedPrintRenderer.createCommunityLabel({
+            template,
+            childName,
+            photoUrl: currentPhotoUrl,
+            includePhoto: includeCubbyPhoto,
+          }));
         });
         document.body.append(wrapper);
-        fitCommunityPdfNames(wrapper);
+        fixedPrintRenderer.fitFixedText(wrapper);
 
         try {
           const { jsPDF } = window.jspdf;
           const firstPage = pages[0];
+          const firstWidth = labelRegistry.toPoints(firstPage.pageSize.width);
+          const firstHeight = labelRegistry.toPoints(firstPage.pageSize.height);
           const pdf = new jsPDF({
-            orientation: firstPage.pageWidth > firstPage.pageHeight ? "landscape" : "portrait",
+            orientation: firstWidth > firstHeight ? "landscape" : "portrait",
             unit: "pt",
-            format: [firstPage.pageWidth, firstPage.pageHeight],
+            format: [firstWidth, firstHeight],
           });
 
           for (const [index, template] of pages.entries()) {
             const pageElement = wrapper.children[index];
+            const pageWidth = labelRegistry.toPoints(template.pageSize.width);
+            const pageHeight = labelRegistry.toPoints(template.pageSize.height);
             const canvas = await window.html2canvas(pageElement, {
               backgroundColor: "#ffffff",
               scale: 3,
               useCORS: true,
+              width: pageWidth,
+              height: pageHeight,
+              windowWidth: pageWidth,
+              windowHeight: pageHeight,
             });
             const imageData = canvas.toDataURL("image/jpeg", 0.96);
 
             if (index > 0) {
               pdf.addPage(
-                [template.pageWidth, template.pageHeight],
-                template.pageWidth > template.pageHeight ? "landscape" : "portrait",
+                [pageWidth, pageHeight],
+                pageWidth > pageHeight ? "landscape" : "portrait",
               );
             }
 
-            pdf.addImage(imageData, "JPEG", 0, 0, template.pageWidth, template.pageHeight);
+            pdf.addImage(imageData, "JPEG", 0, 0, pageWidth, pageHeight);
           }
 
           pdf.save(filename);
@@ -1936,61 +1908,29 @@
       };
 
       const getPdfLayout = (templateKey) => {
-        const layouts = {
-          94207: {
-            cols: 2,
-            rows: 5,
-            marginX: 33,
-            marginY: 41,
-            gapX: 28,
-            gapY: 17,
-            padding: 9,
-            photoRatio: 0.34,
-            photoMax: 70,
-            typeSize: 10,
-            nameSize: 17,
-            nameMin: 10,
-            classroomSize: 9.5,
-            typeToNameGap: 22,
-            nameToClassroomGap: 40,
-          },
-          6874: {
-            cols: 2,
-            rows: 3,
-            marginX: 40,
-            marginY: 65,
-            gapX: 31,
-            gapY: 32,
-            padding: 15,
-            photoRatio: 0.34,
-            photoMax: 78,
-            typeSize: 11,
-            nameSize: 18,
-            nameMin: 12,
-            classroomSize: 10,
-            typeToNameGap: 24,
-            nameToClassroomGap: 43,
-          },
-          94256: {
-            cols: 2,
-            rows: 2,
-            marginX: 32,
-            marginY: 103,
-            gapX: 37,
-            gapY: 63,
-            padding: 18,
-            photoRatio: 0.36,
-            photoMax: 102,
-            typeSize: 13,
-            nameSize: 23,
-            nameMin: 14,
-            classroomSize: 12.5,
-            typeToNameGap: 31,
-            nameToClassroomGap: 56,
-          },
-        };
+        const registryTemplate = labelRegistry.get(averyTemplates[templateKey]?.registryId || templateKey) || labelRegistry.get("avery-94207-classroom");
+        const metrics = labelRegistry.getSheetMetrics(registryTemplate);
+        const textRules = registryTemplate.textRules;
+        const photoWidth = registryTemplate.photoBox ? labelRegistry.toPoints(registryTemplate.photoBox.width) : metrics.labelWidth * 0.3;
+        const safeLeft = labelRegistry.toPoints(registryTemplate.safeZone.left);
 
-        return layouts[templateKey] || layouts["94207"];
+        return {
+          cols: metrics.cols,
+          rows: metrics.rows,
+          marginX: metrics.marginX,
+          marginY: metrics.marginY,
+          gapX: metrics.gapX,
+          gapY: metrics.gapY,
+          padding: safeLeft,
+          photoRatio: photoWidth / metrics.labelWidth,
+          photoMax: photoWidth,
+          typeSize: textRules.title.max,
+          nameSize: textRules.name.max,
+          nameMin: textRules.name.min,
+          classroomSize: textRules.classroom.max,
+          typeToNameGap: templateKey === "94207" ? 22 : 24,
+          nameToClassroomGap: templateKey === "94256" ? 56 : 42,
+        };
       };
 
       const makeTextCommand = (text, x, y, size, font = "F1", color = "0 0 0") => {
@@ -2607,23 +2547,23 @@
       };
 
       const makeBulkPdfPage = (children, labelType, layout) => {
-        const page = document.createElement("section");
-        page.className = layout.pageClass;
-
-        Array.from({ length: layout.labelsPerSheet }, (_, index) => {
-          const child = children[index];
+        return printRenderer.createSheetPage({
+          template: labelRegistry.get(layout.registryId),
+          items: children,
+          pageClass: layout.pageClass,
+          dataAttribute: "data-bulk-sheet",
+          renderItem: (child) => {
+            const slot = document.createElement("div");
+            slot.className = "bulk-pdf-slot";
+            slot.append(makeBulkLabelElement(child, labelType));
+            return slot;
+          },
+          renderBlank: () => {
           const slot = document.createElement("div");
           slot.className = "bulk-pdf-slot";
-
-          if (child) {
-            slot.append(makeBulkLabelElement(child, labelType));
-          }
-
-          page.append(slot);
           return slot;
+          },
         });
-
-        return page;
       };
 
       const fitBulkPdfNames = (root) => {
@@ -2743,7 +2683,19 @@
             {
               await new Promise((resolve) => requestAnimationFrame(resolve));
 
-              const sheetPages = Array.from(printSheetFrame.querySelectorAll("[data-print-sheet]"));
+              const sheetPages = getSheetLabelsForPdf(template).map((pageLabels) => fixedPrintRenderer.createClassroomSheet({
+                template: labelRegistry.get(template.registryId),
+                labels: pageLabels.filter(Boolean),
+                childName: childNameInput?.value.trim() || "Child Name",
+                classroom: getOptionalClassroom(),
+                photoUrl: currentPhotoUrl,
+                showBlankSlots: shouldShowBlankLabelSlots(),
+              }));
+              const wrapper = document.createElement("div");
+              wrapper.className = "fixed-pdf-render-root";
+              sheetPages.forEach((page) => wrapper.append(page));
+              document.body.append(wrapper);
+              fixedPrintRenderer.fitFixedText(wrapper);
               const { jsPDF } = window.jspdf;
               const pdf = new jsPDF({
                 orientation: "portrait",
@@ -2751,11 +2703,16 @@
                 format: "letter",
               });
 
-              for (const [index, sheetPage] of sheetPages.entries()) {
+              try {
+              for (const [index, sheetPage] of Array.from(wrapper.children).entries()) {
                 const canvas = await window.html2canvas(sheetPage, {
                   backgroundColor: "#ffffff",
                   scale: Math.max(2, window.devicePixelRatio || 1),
                   useCORS: true,
+                  width: 612,
+                  height: 792,
+                  windowWidth: 612,
+                  windowHeight: 792,
                 });
                 const imageData = canvas.toDataURL("image/png");
 
@@ -2764,6 +2721,9 @@
                 }
 
                 pdf.addImage(imageData, "PNG", 0, 0, 8.5, 11);
+                if (!shouldIncludePdfFooter()) {
+                  continue;
+                }
                 pdf.setFont("helvetica", "bold");
                 pdf.setFontSize(7);
                 pdf.setTextColor(11, 122, 52);
@@ -2776,6 +2736,9 @@
               }
 
               pdf.save(filename);
+              } finally {
+                wrapper.remove();
+              }
               return;
             }
 
@@ -2806,7 +2769,7 @@
             return;
           }
 
-          saveBytesAsPdf(await makeFallbackMultiPagePdf(), filename);
+          throw new Error("The PDF tools could not load. Please check your connection and try again.");
         } catch (error) {
           console.error("Unable to create Avery sheet PDF.", error);
           alert("The PDF could not be created. Please try again.");
