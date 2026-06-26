@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260625-40" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260625-43" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -24,6 +24,7 @@
             <button class="is-active" type="button" data-ready-tab="classroom-labels">Classroom Labels</button>
             <button type="button" data-ready-tab="community-playthings-labels">Community Playthings</button>
             <button type="button" data-ready-tab="infant-feeding-labels">Infant Feeding</button>
+            <button type="button" data-ready-tab="health-labels">Allergies, Food & Medication</button>
             <button type="button" data-ready-tab="bulk-upload">Bulk Upload</button>
           </nav>
         </header>
@@ -250,6 +251,106 @@
               <p class="template-reminder ready-page-footer">Always double check that your labels meet the appropriate licensing standards before putting into use.</p>
             </section>
 
+            <section id="health-labels" class="ready-product-panel health-labels-panel" data-ready-page data-section="Allergies, Food Preferences and Medication" hidden>
+              <div class="ready-panel-heading">
+                <div>
+                  <p class="ready-eyebrow">Allergies, Food Preferences and Medication</p>
+                  <h2>Student health label previews</h2>
+                  <p class="ready-panel-note">Print allergy, food preference, and medication labels from the current child profile.</p>
+                </div>
+              </div>
+
+              <div class="health-controls-grid">
+                <section class="health-control-card health-template-card">
+                  <h3>Template</h3>
+                  <label>
+                    Avery Template
+                    <select id="health-template-select" aria-label="Health label Avery template">
+                      <option value="94207" selected>Avery 94207 - Small, 2&quot; x 4&quot;</option>
+                      <option value="6874">Avery 6874 - Medium, 3&quot; x 3.75&quot;</option>
+                      <option value="94256">Avery 94256 - Large, 5&quot; x 3.5&quot;</option>
+                    </select>
+                  </label>
+                  <label class="ready-checkbox-card health-photo-option"><input id="health-photo-toggle" type="checkbox" checked /> Include Photo</label>
+                </section>
+
+                <section class="health-control-card health-allergy-card">
+                  <div class="health-section-heading">
+                    <h3>Allergies</h3>
+                    <label>Quantity <input id="health-allergy-quantity" type="number" min="0" max="30" value="1" /></label>
+                  </div>
+                  <div class="health-option-grid">
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-allergy="Tree Nuts" /> Tree Nuts</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-allergy="Soy" /> Soy</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-allergy="Dairy" /> Dairy</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-allergy="Sesame" /> Sesame</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-allergy="Gluten" /> Gluten</label>
+                  </div>
+                  <div class="health-custom-grid">
+                    <label class="health-custom-row"><span><input type="checkbox" data-health-allergy-custom-toggle /> Custom</span><input type="text" data-health-allergy-custom placeholder="Custom allergy" aria-label="Custom allergy 1" /></label>
+                    <label class="health-custom-row"><span><input type="checkbox" data-health-allergy-custom-toggle /> Custom</span><input type="text" data-health-allergy-custom placeholder="Custom allergy" aria-label="Custom allergy 2" /></label>
+                  </div>
+                </section>
+
+                <section class="health-control-card health-food-card">
+                  <div class="health-section-heading">
+                    <h3>Food Preferences</h3>
+                    <label>Quantity <input id="health-food-quantity" type="number" min="0" max="30" value="1" /></label>
+                  </div>
+                  <div class="health-option-grid">
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-food="Vegetarian" /> Vegetarian</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-food="Vegan" /> Vegan</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-food="Gluten Free" /> Gluten Free</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-food="Dairy Free" /> Dairy Free</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-food="Kosher" /> Kosher</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-health-food="No Beef" /> No Beef</label>
+                  </div>
+                  <div class="health-custom-grid">
+                    <label class="health-custom-row"><span><input type="checkbox" data-health-food-custom-toggle /> Custom</span><input type="text" data-health-food-custom placeholder="Custom food preference" aria-label="Custom food preference" /></label>
+                  </div>
+                </section>
+
+                <section class="health-control-card health-medication-card">
+                  <div class="health-section-heading">
+                    <h3>Medication</h3>
+                    <label>Quantity <input id="health-medication-quantity" type="number" min="0" max="30" value="1" /></label>
+                  </div>
+                  <div class="health-medication-grid">
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Albuterol" /> Albuterol</span><input type="text" data-health-expiration-for="Albuterol" placeholder="Expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="EPI" /> EPI</span><input type="text" data-health-expiration-for="EPI" placeholder="Expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="AviQ" /> AviQ</span><input type="text" data-health-expiration-for="AviQ" placeholder="Expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Benadryl" /> Benadryl</span><input type="text" data-health-expiration-for="Benadryl" placeholder="Expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Zyrtec" /> Zyrtec</span><input type="text" data-health-expiration-for="Zyrtec" placeholder="Expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Tylenol" /> Tylenol</span><input type="text" data-health-expiration-for="Tylenol" placeholder="Expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Ibuprofen" /> Ibuprofen</span><input type="text" data-health-expiration-for="Ibuprofen" placeholder="Expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Prescription Lotion" /> Prescription Lotion</span><input type="text" data-health-expiration-for="Prescription Lotion" placeholder="Expiration date" /></label>
+                    <label class="health-medication-row health-antibiotic-row">
+                      <span><input type="checkbox" data-health-medication="Antibiotics" /> Antibiotics</span>
+                      <input id="health-antibiotic-name" type="text" placeholder="Antibiotic name" aria-label="Antibiotic name" />
+                      <input type="text" data-health-expiration-for="Antibiotics" placeholder="Expiration date" />
+                    </label>
+                  </div>
+                </section>
+              </div>
+
+              <section class="health-sheet-preview" aria-labelledby="health-sheet-preview-title">
+                <div class="print-sheet-heading">
+                  <div>
+                    <p class="ready-eyebrow">Print Sheet Preview</p>
+                    <h3 id="health-sheet-preview-title">Health labels sheet layout</h3>
+                    <p class="health-print-info" data-health-print-info>Avery 94207 - 10 labels per sheet</p>
+                  </div>
+                  <div class="print-sheet-actions">
+                    <button id="download-health-pdf-button" class="download-pdf-button" type="button">Download PDF</button>
+                  </div>
+                </div>
+                <div class="health-sheet-frame" data-health-template="94207" aria-label="Selected health label sheet preview">
+                  <div class="health-sheet-pages" data-health-sheet-preview></div>
+                </div>
+              </section>
+              <p class="template-reminder ready-page-footer">Always double check that your labels meet the appropriate licensing standards before putting into use.</p>
+            </section>
+
             <section id="bulk-upload" class="ready-product-panel bulk-upload-panel" data-ready-page data-section="Bulk Upload" hidden>
               <section class="bulk-upload-card bulk-upload-header-card" aria-labelledby="bulk-upload-title">
                 <div>
@@ -322,15 +423,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260625-40"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260625-40"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260625-40"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260625-40"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260625-43"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260625-43"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260625-43"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260625-43"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260625-40";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260625-43";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -483,14 +584,24 @@
       const bulkCustomLabelInput = document.querySelector("#bulk-custom-label-input");
       const bulkPreviewName = document.querySelector("[data-bulk-preview-name]");
       const bulkPreviewTitle = document.querySelector("[data-bulk-preview-title]");
+      const healthTemplateSelect = document.querySelector("#health-template-select");
+      const healthPhotoToggle = document.querySelector("#health-photo-toggle");
+      const healthSheetPreview = document.querySelector("[data-health-sheet-preview]");
+      const healthSheetFrame = document.querySelector(".health-sheet-frame");
+      const healthSheetTitle = document.querySelector("#health-sheet-preview-title");
+      const healthPrintInfo = document.querySelector("[data-health-print-info]");
+      const downloadHealthPdfButton = document.querySelector("#download-health-pdf-button");
+      const healthAntibioticNameInput = document.querySelector("#health-antibiotic-name");
       let currentPhotoUrl = "";
       let bulkRoster = [];
       let scheduledAveryFrame = 0;
       let scheduledFeedingFrame = 0;
       let scheduledCommunityFrame = 0;
+      let scheduledHealthFrame = 0;
 
       const shouldIncludeClassroomPhoto = () => welcomeSignPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldIncludeCommunityCubbyPhoto = () => communityCubbyPhotoToggle?.checked !== false;
+      const shouldIncludeHealthPhoto = () => healthPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldShowBlankLabelSlots = () => !new URLSearchParams(window.location.search).has("hideBlankLabels")
         && window.localStorage?.getItem("carecheckHideBlankLabels") !== "1";
       const shouldIncludePdfFooter = () => new URLSearchParams(window.location.search).has("showPdfFooter")
@@ -519,6 +630,8 @@
           scheduleFeedingPreviewUpdate();
         } else if (pageId === "classroom-labels") {
           scheduleAveryPreviewUpdate();
+        } else if (pageId === "health-labels") {
+          scheduleHealthPreviewUpdate();
         } else if (pageId === "bulk-upload") {
           requestAnimationFrame(() => updateBulkCellPreview());
         }
@@ -591,6 +704,11 @@
       const scheduleCommunityPreviewUpdate = () => {
         window.cancelAnimationFrame(scheduledCommunityFrame);
         scheduledCommunityFrame = window.requestAnimationFrame(updateCommunityPlaythingsPreviews);
+      };
+
+      const scheduleHealthPreviewUpdate = () => {
+        window.cancelAnimationFrame(scheduledHealthFrame);
+        scheduledHealthFrame = window.requestAnimationFrame(renderHealthSheetPreview);
       };
 
       const getChildPhotoSlots = () => document.querySelectorAll("[data-child-photo]");
@@ -1181,6 +1299,246 @@
         } finally {
           activeDownloadFeedingSheetButton.textContent = originalText;
           activeDownloadFeedingSheetButton.disabled = false;
+        }
+      };
+
+      const healthTemplateOptions = {
+        94207: {
+          ...averyTemplates["94207"],
+          registryId: "avery-94207-classroom",
+        },
+        6874: {
+          ...averyTemplates["6874"],
+          registryId: "avery-6874-classroom",
+        },
+        94256: {
+          ...averyTemplates["94256"],
+          registryId: "avery-94256-classroom",
+        },
+      };
+
+      const getPositiveQuantity = (selector) => {
+        const value = Number.parseInt(document.querySelector(selector)?.value || "0", 10);
+        return Number.isFinite(value) ? Math.max(0, Math.min(value, 30)) : 0;
+      };
+
+      const getSelectedHealthTemplate = () => healthTemplateOptions[healthTemplateSelect?.value] || healthTemplateOptions["94207"];
+
+      const getSelectedHealthValues = (selector) => Array.from(document.querySelectorAll(selector))
+        .filter((input) => input.checked)
+        .map((input) => input.dataset.healthAllergy || input.dataset.healthFood)
+        .filter(Boolean);
+
+      const getSelectedHealthAllergies = () => {
+        const selected = getSelectedHealthValues("[data-health-allergy]");
+        const custom = Array.from(document.querySelectorAll(".health-custom-row"))
+          .filter((row) => row.querySelector("[data-health-allergy-custom-toggle]")?.checked)
+          .map((row) => row.querySelector("[data-health-allergy-custom]")?.value.trim() || "")
+          .filter(Boolean);
+
+        return [...selected, ...custom];
+      };
+
+      const getSelectedHealthFoods = () => {
+        const selected = getSelectedHealthValues("[data-health-food]");
+        const custom = Array.from(document.querySelectorAll(".health-custom-row"))
+          .filter((row) => row.querySelector("[data-health-food-custom-toggle]")?.checked)
+          .map((row) => row.querySelector("[data-health-food-custom]")?.value.trim() || "")
+          .filter(Boolean);
+
+        return [...selected, ...custom];
+      };
+
+      const getSelectedHealthMedications = () => Array.from(document.querySelectorAll("[data-health-medication]"))
+        .filter((input) => input.checked)
+        .map((input) => {
+          const medication = input.dataset.healthMedication;
+          const expiration = document.querySelector(`[data-health-expiration-for="${medication}"]`)?.value.trim() || "";
+          const antibioticName = medication === "Antibiotics" ? healthAntibioticNameInput?.value.trim() : "";
+          const name = antibioticName ? `Antibiotic: ${antibioticName}` : medication;
+
+          return expiration ? `${name} - Exp. ${expiration}` : name;
+        });
+
+      const repeatHealthLabel = (items, quantity, label) => {
+        if (!items.length || quantity <= 0) {
+          return [];
+        }
+
+        return Array.from({ length: quantity }, () => ({
+          ...label,
+          items,
+        }));
+      };
+
+      const getHealthLabels = () => [
+        ...repeatHealthLabel(getSelectedHealthAllergies(), getPositiveQuantity("#health-allergy-quantity"), {
+          type: "allergy",
+          title: "Allergies",
+          accent: "red",
+        }),
+        ...repeatHealthLabel(getSelectedHealthFoods(), getPositiveQuantity("#health-food-quantity"), {
+          type: "food",
+          title: "Food Preferences",
+          accent: "green",
+        }),
+        ...repeatHealthLabel(getSelectedHealthMedications(), getPositiveQuantity("#health-medication-quantity"), {
+          type: "medication",
+          title: "Medication",
+          accent: "blue",
+        }),
+      ];
+
+      const createHealthBlankLabel = () => {
+        const label = document.createElement("article");
+        label.className = "health-label health-label-empty";
+        label.setAttribute("aria-label", "Blank Avery health label position");
+        return label;
+      };
+
+      const createHealthLabel = (labelData) => {
+        const label = document.createElement("article");
+        const hasPhoto = shouldIncludeHealthPhoto();
+        const header = document.createElement("div");
+        const copy = document.createElement("div");
+        const name = document.createElement("h4");
+        const meta = document.createElement("small");
+        const title = document.createElement("p");
+        const list = document.createElement("ul");
+
+        label.className = `health-label health-label-${labelData.type} ${hasPhoto ? "has-photo" : "has-no-photo"}`;
+        header.className = "health-label-profile";
+        copy.className = "health-label-copy";
+        name.textContent = childNameInput?.value.trim() || "Child Name";
+        meta.textContent = [formatDob(childDobInput?.value), getOptionalClassroom()].filter(Boolean).join(" - ");
+        title.textContent = labelData.title;
+        title.className = `health-label-title health-accent-${labelData.accent}`;
+        list.className = "health-label-list";
+
+        labelData.items.slice(0, 8).forEach((item) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = item;
+          list.append(listItem);
+        });
+
+        if (hasPhoto) {
+          const photo = createPhotoSlot();
+          photo.classList.add("health-label-photo");
+          header.append(photo);
+        }
+
+        copy.append(name, meta);
+        header.append(copy);
+        label.append(header, title, list);
+        return label;
+      };
+
+      const getHealthSheetPages = () => {
+        const template = getSelectedHealthTemplate();
+        const labels = getHealthLabels();
+
+        return printRenderer.chunkItems(labels, template.labelsPerSheet)
+          .map((chunk) => printRenderer.fillToCapacity(chunk, template.labelsPerSheet));
+      };
+
+      const createHealthSheetPage = (template, labels) => printRenderer.createSheetPage({
+        template: labelRegistry.get(template.registryId),
+        items: labels,
+        pageClass: `print-sheet-page health-sheet-page ${template.className}`,
+        dataAttribute: "data-health-sheet-page",
+        renderItem: createHealthLabel,
+        renderBlank: createHealthBlankLabel,
+      });
+
+      const fitHealthLabelText = (root = document) => {
+        root.querySelectorAll(".health-label h4").forEach((name) => {
+          const isLarge = Boolean(name.closest(".sheet-94256"));
+          const isMedium = Boolean(name.closest(".sheet-6874"));
+          const max = isLarge ? 28 : isMedium ? 21 : 23;
+          printRenderer.fitText(name, max, 9, { allowWrap: false });
+        });
+        root.querySelectorAll(".health-label-list").forEach((list) => {
+          const isLarge = Boolean(list.closest(".sheet-94256"));
+          const isMedium = Boolean(list.closest(".sheet-6874"));
+          const max = isLarge ? 13.5 : isMedium ? 10.5 : 9.5;
+          const min = isMedium ? 7.5 : 7;
+          list.style.width = "100%";
+          list.style.fontSize = `${max}px`;
+          let size = max;
+          while (size > min && (list.scrollHeight > list.clientHeight || list.scrollWidth > list.clientWidth)) {
+            size -= 0.5;
+            list.style.fontSize = `${size}px`;
+          }
+        });
+      };
+
+      const renderHealthSheetPreview = () => {
+        if (!healthSheetPreview || !healthSheetFrame) {
+          return;
+        }
+
+        const template = getSelectedHealthTemplate();
+        const labels = getHealthLabels();
+        const sheetPages = getHealthSheetPages();
+
+        healthSheetFrame.dataset.healthTemplate = healthTemplateSelect?.value || "94207";
+        healthSheetTitle.textContent = `${template.title.replace("sheet layout", "health labels")}`;
+        healthPrintInfo.textContent = labels.length
+          ? `${template.countLabel} - ${sheetPages.length} page${sheetPages.length === 1 ? "" : "s"}`
+          : `${template.countLabel} - choose at least one item`;
+        healthSheetPreview.replaceChildren(...sheetPages.map((pageLabels) => createHealthSheetPage(template, pageLabels)));
+
+        if (shouldIncludeHealthPhoto()) {
+          applyPhotoToSlots(currentPhotoUrl);
+        }
+
+        fitHealthLabelText(healthSheetPreview);
+      };
+
+      const makeHealthPreviewPdfBytes = async () => {
+        if (!healthSheetPreview) {
+          throw new Error("The health label preview is not available.");
+        }
+
+        const labels = getHealthLabels();
+        if (!labels.length) {
+          throw new Error("Choose at least one allergy, food preference, or medication before downloading.");
+        }
+
+        renderHealthSheetPreview();
+        await document.fonts?.ready;
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+        const renderedPages = [];
+        for (const page of Array.from(healthSheetPreview.children)) {
+          renderedPages.push(await renderPreviewElementToJpeg(page));
+        }
+
+        return buildImagePagesPdf(renderedPages);
+      };
+
+      const downloadHealthLabelsPdf = async () => {
+        if (!downloadHealthPdfButton) {
+          return;
+        }
+
+        const originalText = downloadHealthPdfButton.textContent;
+        downloadHealthPdfButton.disabled = true;
+        downloadHealthPdfButton.textContent = "Building PDF...";
+
+        try {
+          const childName = childNameInput?.value.trim() || "child";
+          const safeChildName = childName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+          const template = getSelectedHealthTemplate();
+          const bytes = await makeHealthPreviewPdfBytes();
+
+          saveBytesAsPdf(bytes, `carecheck-health-labels-${template.className}-${safeChildName || "student"}-${CLASSROOM_PDF_BUILD_VERSION}.pdf`);
+        } catch (error) {
+          console.error("Unable to create health labels PDF.", error);
+          alert(error.message || "The health labels PDF could not be created. Please try again.");
+        } finally {
+          downloadHealthPdfButton.textContent = originalText;
+          downloadHealthPdfButton.disabled = false;
         }
       };
 
@@ -3372,6 +3730,7 @@
         renderPrintSheetPreview();
         scheduleCommunityPreviewUpdate();
         scheduleFeedingPreviewUpdate();
+        scheduleHealthPreviewUpdate();
       });
       const scheduleAveryPreviewUpdate = debounce(renderPrintSheetPreview);
       const scheduleBottlePreviewUpdate = debounce(updateInfantFeedingPreviews);
@@ -3384,6 +3743,7 @@
           renderPrintSheetPreview();
           updateCommunityPlaythingsPreviews();
           updateInfantFeedingPreviews();
+          renderHealthSheetPreview();
           return;
         }
 
@@ -3392,12 +3752,14 @@
           renderPrintSheetPreview();
           updateCommunityPlaythingsPreviews();
           updateInfantFeedingPreviews();
+          renderHealthSheetPreview();
         } catch (error) {
           console.error("Unable to prepare child photo preview.", error);
           resetPhotoSlots();
           renderPrintSheetPreview();
           updateCommunityPlaythingsPreviews();
           updateInfantFeedingPreviews();
+          renderHealthSheetPreview();
           alert("The selected photo could not be prepared. Please try a different image.");
         }
       });
@@ -3407,11 +3769,15 @@
       childNameInput?.addEventListener("input", () => {
         scheduleProfilePreviewUpdate();
       });
-      childDobInput?.addEventListener("input", scheduleBottlePreviewUpdate);
+      childDobInput?.addEventListener("input", () => {
+        scheduleBottlePreviewUpdate();
+        scheduleHealthPreviewUpdate();
+      });
       classroomInput?.addEventListener("input", () => {
         scheduleAveryPreviewUpdate();
         scheduleCommunityPreviewUpdate();
         scheduleBottlePreviewUpdate();
+        scheduleHealthPreviewUpdate();
       });
       document.querySelectorAll("#avery-labels .ready-checkbox-card input").forEach((checkbox) => {
         checkbox.addEventListener("change", renderPrintSheetPreview);
@@ -3429,6 +3795,13 @@
         radio.addEventListener("change", updateInfantFeedingPreviews);
       });
       feedingSheetPhotoToggle?.addEventListener("change", updateInfantFeedingPreviews);
+      healthTemplateSelect?.addEventListener("change", renderHealthSheetPreview);
+      healthPhotoToggle?.addEventListener("change", renderHealthSheetPreview);
+      document.querySelectorAll("[data-health-allergy], [data-health-food], [data-health-medication], [data-health-expiration-for], [data-health-allergy-custom], [data-health-allergy-custom-toggle], [data-health-food-custom], [data-health-food-custom-toggle], #health-allergy-quantity, #health-food-quantity, #health-medication-quantity, #health-antibiotic-name").forEach((control) => {
+        control.addEventListener("input", scheduleHealthPreviewUpdate);
+        control.addEventListener("change", scheduleHealthPreviewUpdate);
+      });
+      downloadHealthPdfButton?.addEventListener("click", downloadHealthLabelsPdf);
       if (downloadFeedingSheetButton) {
         downloadFeedingSheetButton.onclick = downloadFeedingSheetPdf;
       }
@@ -3498,9 +3871,11 @@
       updateCommunityPlaythingsPreviews();
       updateSelectedCommunityVisibility();
       updateInfantFeedingPreviews();
+      renderHealthSheetPreview();
       document.fonts?.ready?.then?.(() => {
         fitCommunityPreviewNames();
         fitFeedingSheetNames(feedingSheetPreview);
+        fitHealthLabelText(healthSheetPreview || document);
       });
     </script>
   </body>
