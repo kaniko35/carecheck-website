@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260625-35" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260625-36" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -319,15 +319,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260625-35"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260625-35"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260625-35"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260625-35"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260625-36"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260625-36"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260625-36"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260625-36"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260625-35";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260625-36";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -931,28 +931,31 @@
         const type = getSelectedFeedingSheetType();
         const template = getSelectedFeedingTemplate();
         const contentTemplate = labelRegistry.get(type);
+        const templateId = feedingTemplateSelect?.value || "61503";
 
         if (type === "breastmilk") {
           return {
+            type,
             title: "Breast Milk Labels",
             labelTitle: contentTemplate.fieldModel.title,
             className: "feeding-breastmilk-label",
             fields: contentTemplate.fieldModel.fields,
             checks: contentTemplate.fieldModel.checks,
             followUpFields: contentTemplate.fieldModel.followUpFields,
-            filename: `carecheck-breast-milk-labels-${feedingTemplateSelect?.value || "61503"}.pdf`,
+            filename: `carecheck-breast-milk-labels-${templateId}-${CLASSROOM_PDF_BUILD_VERSION}.pdf`,
             template,
             contentTemplate,
           };
         }
 
         return {
+          type,
           title: "Formula Labels",
           labelTitle: contentTemplate.fieldModel.title,
           className: "feeding-formula-label",
           fields: contentTemplate.fieldModel.fields,
           weekdays: contentTemplate.fieldModel.weekdays,
-          filename: `carecheck-formula-labels-${feedingTemplateSelect?.value || "61503"}.pdf`,
+          filename: `carecheck-formula-labels-${templateId}-${CLASSROOM_PDF_BUILD_VERSION}.pdf`,
           template,
           contentTemplate,
         };
@@ -3119,7 +3122,8 @@
           }
 
           wrapper.remove();
-          pdf.save(`carecheck-bulk-${labelType.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.pdf`);
+          const filenameSlug = labelType.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+          pdf.save(`carecheck-bulk-${filenameSlug}-${CLASSROOM_PDF_BUILD_VERSION}.pdf`);
         } catch (error) {
           console.error("Unable to create bulk roster PDF.", error);
           alert(error.message || "The bulk upload PDF could not be created. Please try again.");
