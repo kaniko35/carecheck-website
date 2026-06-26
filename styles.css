@@ -4052,6 +4052,18 @@ a {
   color: var(--green-dark);
 }
 
+.ready-page-footer {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(11, 122, 52, 0.18);
+  border-radius: 14px;
+  color: var(--green-dark);
+  background: #f7fbf8;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
 .print-sheet-frame {
   display: grid;
   gap: clamp(18px, 3vw, 30px);
