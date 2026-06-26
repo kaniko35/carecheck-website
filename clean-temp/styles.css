@@ -4631,7 +4631,7 @@ a {
 }
 
 .sheet-94256 .health-label-photo {
-  width: min(34%, 138px);
+  width: min(26%, 96px);
 }
 
 .sheet-6874 .health-label-copy,
@@ -4645,7 +4645,7 @@ a {
 }
 
 .sheet-94256 .health-label h4 {
-  font-size: clamp(1.4rem, 3.2vw, 2.25rem);
+  font-size: clamp(1.18rem, 2.55vw, 1.72rem);
 }
 
 .sheet-6874 .health-label small {
@@ -4653,7 +4653,7 @@ a {
 }
 
 .sheet-94256 .health-label small {
-  font-size: clamp(0.62rem, 1.35vw, 0.88rem);
+  font-size: clamp(0.56rem, 1.15vw, 0.76rem);
 }
 
 .sheet-6874 .health-label-title {
@@ -4661,7 +4661,7 @@ a {
 }
 
 .sheet-94256 .health-label-title {
-  font-size: clamp(0.72rem, 1.5vw, 0.96rem);
+  font-size: clamp(0.66rem, 1.3vw, 0.84rem);
 }
 
 .sheet-6874 .health-label-list,
@@ -4675,7 +4675,7 @@ a {
 
 .sheet-94256 .health-label-list {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  font-size: clamp(0.72rem, 1.45vw, 0.98rem);
+  font-size: clamp(0.62rem, 1.25vw, 0.84rem);
 }
 
 .community-checkbox-grid {
