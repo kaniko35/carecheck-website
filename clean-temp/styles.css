@@ -2617,7 +2617,7 @@ a {
   margin: 0;
   max-width: 100%;
   min-width: 0;
-  overflow: visible;
+  overflow: hidden;
   justify-self: center;
   text-align: center;
   white-space: nowrap;
