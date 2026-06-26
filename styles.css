@@ -4544,6 +4544,7 @@ a {
 .health-label-photo {
   width: 100%;
   aspect-ratio: 1;
+  margin-bottom: 4px;
   border: 1px solid var(--green-light);
   border-radius: 8px;
 }
@@ -4599,6 +4600,7 @@ a {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
   gap: 2px 8px;
   min-height: 0;
   padding-left: 16px;
@@ -4627,11 +4629,11 @@ a {
 }
 
 .sheet-6874 .health-label-photo {
-  width: min(34%, 88px);
+  width: min(24%, 58px);
 }
 
 .sheet-94256 .health-label-photo {
-  width: min(26%, 96px);
+  width: min(23%, 82px);
 }
 
 .sheet-6874 .health-label-copy,
@@ -4641,27 +4643,27 @@ a {
 }
 
 .sheet-6874 .health-label h4 {
-  font-size: clamp(1.12rem, 2.75vw, 1.62rem);
+  font-size: clamp(1rem, 2.2vw, 1.24rem);
 }
 
 .sheet-94256 .health-label h4 {
-  font-size: clamp(1.18rem, 2.55vw, 1.72rem);
+  font-size: clamp(1.05rem, 2.2vw, 1.48rem);
 }
 
 .sheet-6874 .health-label small {
-  font-size: clamp(0.52rem, 1.2vw, 0.76rem);
+  font-size: clamp(0.48rem, 1vw, 0.64rem);
 }
 
 .sheet-94256 .health-label small {
-  font-size: clamp(0.56rem, 1.15vw, 0.76rem);
+  font-size: clamp(0.5rem, 1.05vw, 0.68rem);
 }
 
 .sheet-6874 .health-label-title {
-  font-size: clamp(0.62rem, 1.35vw, 0.84rem);
+  font-size: clamp(0.55rem, 1.05vw, 0.68rem);
 }
 
 .sheet-94256 .health-label-title {
-  font-size: clamp(0.66rem, 1.3vw, 0.84rem);
+  font-size: clamp(0.58rem, 1.1vw, 0.74rem);
 }
 
 .sheet-6874 .health-label-list,
@@ -4669,13 +4671,13 @@ a {
   width: 100%;
   grid-template-columns: 1fr;
   justify-items: start;
-  font-size: clamp(0.62rem, 1.28vw, 0.82rem);
-  line-height: 1.1;
+  font-size: clamp(0.52rem, 1.05vw, 0.66rem);
+  line-height: 1.06;
 }
 
 .sheet-94256 .health-label-list {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  font-size: clamp(0.62rem, 1.25vw, 0.84rem);
+  font-size: clamp(0.56rem, 1.1vw, 0.72rem);
 }
 
 .community-checkbox-grid {
