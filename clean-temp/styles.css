@@ -2616,7 +2616,10 @@ a {
 .bulk-pdf-label small {
   margin: 0;
   max-width: 100%;
-  overflow: hidden;
+  min-width: 0;
+  overflow: visible;
+  justify-self: center;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -2664,6 +2667,8 @@ a {
   font-size: 21px;
   line-height: 1.18;
   min-height: 25px;
+  width: max-content;
+  max-width: 100%;
 }
 
 .bulk-water-label p {
@@ -2671,6 +2676,8 @@ a {
   font-size: 13px;
   line-height: 1.05;
   min-height: 14px;
+  width: max-content;
+  max-width: 100%;
 }
 
 .bulk-water-label p[data-empty="true"] {
