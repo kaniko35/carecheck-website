@@ -2036,9 +2036,11 @@ a {
 
 .custom-label-type-control {
   display: grid;
-  gap: 7px;
+  grid-template-columns: minmax(128px, auto) minmax(180px, 1fr);
+  gap: 8px 10px;
+  align-items: center;
   margin-top: 12px;
-  max-width: 360px;
+  max-width: 620px;
 }
 
 .custom-label-type-control > input {
@@ -3657,7 +3659,7 @@ a {
   border-radius: 8px;
   background: #eef4f0;
   color: var(--muted);
-  font-size: 9px;
+  font-size: clamp(18px, 18%, 34px);
   font-weight: 700;
 }
 
@@ -4395,8 +4397,20 @@ a {
 .health-option-grid .ready-checkbox-card {
   min-height: 42px;
   align-content: center;
+  justify-content: flex-start;
   border-radius: 10px;
   padding: 9px 10px;
+  text-align: left;
+}
+
+.health-option-grid .ready-checkbox-card,
+.health-custom-row span,
+.health-medication-row span {
+  display: grid !important;
+  grid-template-columns: 22px minmax(0, 1fr);
+  justify-items: start;
+  align-items: center;
+  gap: 10px !important;
 }
 
 .health-custom-grid {
@@ -4433,9 +4447,10 @@ a {
 
 .health-medication-row {
   display: grid !important;
-  grid-template-columns: minmax(170px, max-content) minmax(150px, 1fr);
+  grid-template-columns: minmax(178px, 178px) minmax(150px, 1fr);
   gap: 8px !important;
   align-items: center;
+  justify-items: stretch;
   min-height: 42px;
   padding: 9px 10px;
   border: 1px solid var(--line);
@@ -4444,11 +4459,8 @@ a {
 }
 
 .health-medication-row span {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
   width: 100%;
+  text-align: left;
 }
 
 .health-antibiotic-row {
@@ -4523,6 +4535,13 @@ a {
   overflow: hidden;
 }
 
+.sheet-94207 .health-label.has-photo.has-many-items {
+  grid-template-rows: minmax(42px, auto) auto minmax(0, 1fr);
+  gap: 2px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
 .health-label-empty {
   border-color: rgba(91, 106, 98, 0.16);
   background: #fcfdfc;
@@ -4534,6 +4553,12 @@ a {
   gap: clamp(6px, 1.3vw, 10px);
   align-items: center;
   min-width: 0;
+}
+
+.sheet-94207 .health-label.has-photo.has-many-items .health-label-profile {
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 6px;
+  align-items: start;
 }
 
 .health-label.has-no-photo .health-label-profile {
@@ -4549,10 +4574,19 @@ a {
   border-radius: 8px;
 }
 
+.sheet-94207 .health-label.has-photo.has-many-items .health-label-photo {
+  width: 44px;
+  margin-bottom: 0;
+}
+
 .health-label-copy {
   display: grid;
   gap: 2px;
   min-width: 0;
+}
+
+.sheet-94207 .health-label.has-photo.has-many-items .health-label-copy {
+  gap: 0;
 }
 
 .health-label h4,
@@ -4564,16 +4598,25 @@ a {
 
 .health-label h4 {
   color: var(--ink);
-  font-size: clamp(1rem, 2.45vw, 1.5rem);
+  font-size: clamp(0.92rem, 2.15vw, 1.34rem);
   line-height: 1.02;
   white-space: nowrap;
 }
 
 .health-label small {
   color: var(--muted);
-  font-size: clamp(0.48rem, 1.05vw, 0.72rem);
+  font-size: clamp(0.44rem, 0.95vw, 0.66rem);
   font-weight: 700;
   line-height: 1.1;
+}
+
+.sheet-94207 .health-label.has-photo.has-many-items small {
+  font-size: clamp(0.38rem, 0.82vw, 0.56rem);
+  line-height: 1.02;
+}
+
+.sheet-94207 .health-label.has-photo.has-many-items .health-label-title {
+  font-size: clamp(0.48rem, 0.95vw, 0.62rem);
 }
 
 .health-label-title {
@@ -4599,9 +4642,9 @@ a {
 .health-label-list {
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   align-content: start;
-  gap: 2px 8px;
+  gap: 2px;
   min-height: 0;
   padding-left: 16px;
   color: var(--ink);
@@ -4611,13 +4654,19 @@ a {
   overflow: hidden;
 }
 
+.sheet-94207 .health-label.has-photo.has-many-items .health-label-list {
+  gap: 0;
+  padding-left: 12px;
+  line-height: 1.02;
+}
+
 .health-label-list li {
   min-width: 0;
 }
 
 .sheet-6874 .health-label,
 .sheet-94256 .health-label {
-  gap: 5px;
+  gap: 4px;
   padding: clamp(8px, 1.65vw, 13px);
 }
 
@@ -4625,15 +4674,16 @@ a {
 .sheet-94256 .health-label-profile {
   grid-template-columns: 1fr;
   justify-items: center;
+  align-items: start;
   text-align: center;
 }
 
 .sheet-6874 .health-label-photo {
-  width: min(24%, 58px);
+  width: min(34%, 112px);
 }
 
 .sheet-94256 .health-label-photo {
-  width: min(23%, 82px);
+  width: min(34%, 150px);
 }
 
 .sheet-6874 .health-label-copy,
@@ -4643,11 +4693,11 @@ a {
 }
 
 .sheet-6874 .health-label h4 {
-  font-size: clamp(1rem, 2.2vw, 1.24rem);
+  font-size: clamp(1.08rem, 2.35vw, 1.48rem);
 }
 
 .sheet-94256 .health-label h4 {
-  font-size: clamp(1.05rem, 2.2vw, 1.48rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.74rem);
 }
 
 .sheet-6874 .health-label small {
@@ -4670,13 +4720,13 @@ a {
 .sheet-94256 .health-label-list {
   width: 100%;
   grid-template-columns: 1fr;
-  justify-items: start;
+  justify-items: center;
+  text-align: center;
   font-size: clamp(0.52rem, 1.05vw, 0.66rem);
   line-height: 1.06;
 }
 
 .sheet-94256 .health-label-list {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   font-size: clamp(0.56rem, 1.1vw, 0.72rem);
 }
 
@@ -4691,8 +4741,8 @@ a {
 
 .community-label-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 22px 20px;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 20px;
   align-items: start;
 }
 
@@ -4723,19 +4773,314 @@ a {
 }
 
 .community-preview-viewport[data-community-preview="community-standard-cubby"] {
-  --preview-scale: 0.66;
+  --preview-scale: 0.5;
 }
 
 .community-preview-viewport[data-community-preview="community-compact-cubby"] {
-  --preview-scale: 0.84;
+  --preview-scale: 0.66;
 }
 
 .community-preview-viewport[data-community-preview="community-infant-cubby"] {
-  --preview-scale: 0.62;
+  --preview-scale: 0.48;
 }
 
 .community-preview-viewport[data-community-preview="community-basket-label"] {
-  --preview-scale: 0.92;
+  --preview-scale: 0.68;
+}
+
+.picture-label-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(360px, 1.18fr);
+  gap: clamp(18px, 3vw, 28px);
+  align-items: start;
+}
+
+.picture-label-controls,
+.picture-sheet-preview {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.picture-label-controls {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.picture-label-controls h3 {
+  margin: 0;
+  color: var(--ink);
+}
+
+.picture-label-controls label {
+  display: grid;
+  gap: 7px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.picture-label-controls [hidden] {
+  display: none !important;
+}
+
+.picture-label-controls select,
+.picture-label-controls input[type="file"],
+.picture-label-controls input[type="text"] {
+  width: 100%;
+}
+
+.picture-upload-field span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.picture-label-items {
+  display: grid;
+  gap: 10px;
+  max-height: 470px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.picture-label-text-row {
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fbf9;
+}
+
+.picture-label-text-row img {
+  width: 48px;
+  height: 48px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.picture-photo-position-control {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  z-index: 3;
+  display: grid;
+  padding: 5px 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 4px 10px rgba(9, 37, 31, 0.14);
+}
+
+.picture-photo-position-control input {
+  width: 100%;
+  accent-color: var(--green);
+}
+
+.picture-sheet-frame {
+  display: grid;
+  justify-items: center;
+  padding: clamp(14px, 2.5vw, 24px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f7fbf8;
+}
+
+.picture-sheet-pages {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+
+.picture-sheet-page .picture-label {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(0, 1fr) minmax(36px, auto);
+  gap: clamp(7px, 1.6vw, 12px);
+  align-items: stretch;
+  justify-items: center;
+  min-width: 0;
+  padding: clamp(7px, 1.7vw, 12px);
+  border: 1px dashed rgba(11, 122, 52, 0.42);
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.picture-sheet-page.picture-square35,
+.picture-sheet-page.picture-long125x8,
+.picture-sheet-page.picture-business-card,
+.picture-sheet-page.picture-pocket-chart,
+.picture-sheet-page.picture-full-page {
+  grid-template-columns: repeat(var(--picture-cutout-columns), var(--picture-cutout-width));
+  grid-template-rows: repeat(var(--picture-cutout-rows), var(--picture-cutout-height));
+  justify-content: center;
+  align-content: center;
+  gap: var(--picture-cutout-gap-y) var(--picture-cutout-gap-x);
+  width: min(100%, var(--picture-cutout-page-width));
+  aspect-ratio: 8.5 / 11;
+  padding: 0;
+}
+
+.picture-sheet-page.picture-square35 .picture-label,
+.picture-sheet-page.picture-business-card .picture-label,
+.picture-sheet-page.picture-pocket-chart .picture-label,
+.picture-sheet-page.picture-full-page .picture-label {
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(0, 1fr) minmax(42px, auto);
+  gap: 8px;
+  padding: 14px;
+  text-align: center;
+}
+
+.picture-sheet-page.picture-long125x8 .picture-label {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 14px;
+  padding: 10px 16px;
+}
+
+.picture-sheet-page.picture-business-card .picture-label {
+  grid-template-rows: minmax(0, 1fr) minmax(32px, auto);
+  padding: 10px;
+}
+
+.picture-sheet-page.picture-business-card .picture-label-photo {
+  aspect-ratio: 1;
+  height: auto;
+  max-height: 104px;
+}
+
+.picture-sheet-page.picture-pocket-chart .picture-label {
+  grid-template-rows: minmax(0, 1fr) minmax(42px, auto);
+}
+
+.picture-label-empty {
+  border-color: rgba(91, 106, 98, 0.16);
+  background: #fcfdfc;
+}
+
+.picture-label-photo {
+  position: relative;
+  width: min(100%, 138px);
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--green-light);
+  border-radius: 8px;
+  background: #eef4f0;
+}
+
+.picture-label-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.picture-label-photo[data-drag-photo-position] {
+  cursor: ns-resize;
+  touch-action: none;
+}
+
+.picture-label p {
+  align-self: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  color: var(--ink);
+  font-family: var(--picture-font);
+  font-size: var(--picture-font-size);
+  font-weight: 700;
+  line-height: 1.05;
+  text-align: center;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.picture-label-cutout .picture-label-photo {
+  width: min(100%, 184px);
+  justify-self: center;
+}
+
+.picture-label-split .picture-label-photo {
+  width: 100%;
+  height: 100%;
+}
+
+.picture-sheet-page.picture-full-page .picture-label {
+  padding: 36px;
+}
+
+.picture-sheet-page.picture-full-page-landscape {
+  width: min(100%, 792px);
+  aspect-ratio: 11 / 8.5;
+  zoom: 0.82;
+}
+
+.picture-sheet-page.picture-full-page .picture-label-photo {
+  width: min(100%, 560px);
+}
+
+.picture-sheet-page.picture-full-page .picture-label p {
+  font-size: min(var(--picture-font-size), 54px);
+}
+
+.sheet-6874 .picture-label,
+.sheet-94256 .picture-label {
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(0, 1fr) minmax(42px, auto);
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.sheet-6874 .picture-label-photo {
+  width: min(100%, 156px);
+}
+
+.sheet-94256 .picture-label-photo {
+  width: min(100%, 210px);
+}
+
+.sheet-94207 .picture-label-photo {
+  width: min(100%, 118px);
+}
+
+.sheet-94207 .picture-label {
+  grid-template-columns: minmax(72px, 34%) minmax(0, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: stretch;
+  text-align: center;
+}
+
+.sheet-94207 .picture-label-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  justify-self: center;
+}
+
+.sheet-94207 .picture-label p {
+  align-self: center;
+}
+
+.picture-sheet-page.picture-pocket-chart {
+  width: min(100%, 660px);
+  aspect-ratio: 11 / 8.5;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 18px;
 }
 
 .community-label-card {
@@ -5815,8 +6160,10 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .community-basket-label {
-    grid-column: auto;
+  .custom-label-type-control,
+  .picture-label-layout,
+  .community-label-grid {
+    grid-template-columns: 1fr;
   }
 
   .ready-panel-heading,
