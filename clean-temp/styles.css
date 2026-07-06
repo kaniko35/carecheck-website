@@ -4821,6 +4821,10 @@ a {
   font-weight: 800;
 }
 
+.picture-label-controls [hidden] {
+  display: none !important;
+}
+
 .picture-label-controls select,
 .picture-label-controls input[type="file"],
 .picture-label-controls input[type="text"] {
@@ -5073,6 +5077,10 @@ a {
 .picture-sheet-page.picture-pocket-chart {
   width: min(100%, 660px);
   aspect-ratio: 11 / 8.5;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 18px;
 }
 
 .community-label-card {
