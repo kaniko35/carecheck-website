@@ -25,6 +25,7 @@
             <button type="button" data-ready-tab="community-playthings-labels">Community Playthings</button>
             <button type="button" data-ready-tab="infant-feeding-labels">Infant Feeding</button>
             <button type="button" data-ready-tab="health-labels">Allergies, Food & Medication</button>
+            <button type="button" data-ready-tab="picture-labels">Picture Labels</button>
             <button type="button" data-ready-tab="bulk-upload">Bulk Upload</button>
           </nav>
         </header>
@@ -100,8 +101,14 @@
                     <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Backpack" /> Backpack</label>
                   </div>
                   <div class="custom-label-type-control">
-                    <label class="ready-checkbox-card custom-label-checkbox"><input id="custom-label-type-toggle" type="checkbox" /> Custom label type</label>
-                    <input id="custom-label-type-input" type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type" />
+                    <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 1</label>
+                    <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 1" />
+                    <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 2</label>
+                    <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 2" />
+                    <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 3</label>
+                    <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 3" />
+                    <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 4</label>
+                    <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 4" />
                   </div>
                 </fieldset>
 
@@ -351,6 +358,81 @@
               <p class="template-reminder ready-page-footer">Always double check that your labels meet the appropriate licensing standards before putting into use.</p>
             </section>
 
+            <section id="picture-labels" class="ready-product-panel picture-labels-panel" data-ready-page data-section="Picture Labels" hidden>
+              <div class="ready-panel-heading">
+                <div>
+                  <p class="ready-eyebrow">Picture Labels</p>
+                  <h2>Create photo and text labels</h2>
+                  <p class="ready-panel-note">Upload up to 20 photos, add custom text for each picture, choose an Avery size, then download a matching PDF.</p>
+                </div>
+              </div>
+
+              <div class="picture-label-layout">
+                <section class="picture-label-controls" aria-labelledby="picture-label-options-title">
+                  <h3 id="picture-label-options-title">Label setup</h3>
+                  <label>
+                    Label Size
+                    <select id="picture-template-select" aria-label="Picture label size">
+                      <option value="94207">Avery 94207 - Small, 2&quot; x 4&quot;</option>
+                      <option value="6874">Avery 6874 - Medium, 3&quot; x 3.75&quot;</option>
+                      <option value="94256">Avery 94256 - Large, 5&quot; x 3.5&quot;</option>
+                      <option value="square35" selected>Cut-out Square - 3.5&quot; x 3.5&quot;</option>
+                      <option value="long125x8">Cut-out Long - 1.25&quot; x 8&quot;</option>
+                      <option value="businessCard">Cut-out Business Card - 2&quot; x 3.5&quot;</option>
+                      <option value="pocketChart">Cut-out Pocket Chart - 3&quot; x 5&quot;</option>
+                      <option value="fullPage">Cut-out Full Page - 8.5&quot; x 11&quot;</option>
+                    </select>
+                  </label>
+                  <label>
+                    Font
+                    <select id="picture-font-select" aria-label="Picture label font">
+                      <option value="'Quicksand', Arial, sans-serif" selected>Quicksand</option>
+                      <option value="Arial, Helvetica, sans-serif">Arial</option>
+                      <option value="Georgia, serif">Georgia</option>
+                      <option value="'Comic Sans MS', 'Comic Sans', cursive">Comic Sans MS</option>
+                    </select>
+                  </label>
+                  <label>
+                    Font Size
+                    <input id="picture-font-size" type="range" min="12" max="42" value="24" aria-label="Picture label font size" />
+                  </label>
+                  <label id="picture-full-page-orientation-control" hidden>
+                    Full Page Orientation
+                    <select id="picture-full-page-orientation" aria-label="Full page picture label orientation">
+                      <option value="portrait" selected>Portrait</option>
+                      <option value="landscape">Landscape</option>
+                    </select>
+                  </label>
+                  <label class="picture-upload-field">
+                    Photos
+                    <input id="picture-photo-upload" type="file" accept="image/*" multiple aria-label="Picture label photo upload" />
+                    <span data-picture-upload-status>No photos selected</span>
+                  </label>
+                  <div class="picture-label-items" data-picture-label-items></div>
+                </section>
+
+                <section class="picture-sheet-preview" aria-labelledby="picture-sheet-preview-title">
+                  <div class="print-sheet-heading">
+                    <div>
+                      <p class="ready-eyebrow">Print Sheet Preview</p>
+                      <h3 id="picture-sheet-preview-title">Avery 94207 picture labels</h3>
+                      <p class="picture-print-info" data-picture-print-info>10 labels per sheet</p>
+                    </div>
+                    <div class="print-sheet-actions">
+                      <button id="picture-prev-page" class="download-pdf-button secondary-action" type="button" disabled>Previous</button>
+                      <span data-picture-page-status>Page 1 of 1</span>
+                      <button id="picture-next-page" class="download-pdf-button secondary-action" type="button" disabled>Next</button>
+                      <button id="download-picture-pdf-button" class="download-pdf-button" type="button" disabled>Download PDF</button>
+                    </div>
+                  </div>
+                  <div class="picture-sheet-frame" data-picture-template="94207" aria-label="Selected picture label sheet preview">
+                    <div class="picture-sheet-pages" data-picture-sheet-preview></div>
+                  </div>
+                </section>
+              </div>
+              <p class="template-reminder ready-page-footer">Always double check that your labels meet the appropriate licensing standards before putting into use.</p>
+            </section>
+
             <section id="bulk-upload" class="ready-product-panel bulk-upload-panel" data-ready-page data-section="Bulk Upload" hidden>
               <section class="bulk-upload-card bulk-upload-header-card" aria-labelledby="bulk-upload-title">
                 <div>
@@ -564,8 +646,8 @@
       const printSheet = document.querySelector("[data-print-sheet]");
       const downloadPdfButton = document.querySelector("#download-pdf-button");
       const classroomPdfRenderStatus = document.querySelector("#classroom-pdf-render-status");
-      const customLabelTypeToggle = document.querySelector("#custom-label-type-toggle");
-      const customLabelTypeInput = document.querySelector("#custom-label-type-input");
+      const customLabelTypeToggles = Array.from(document.querySelectorAll("[data-custom-label-type-toggle]"));
+      const customLabelTypeInputs = Array.from(document.querySelectorAll("[data-custom-label-type-input]"));
       const welcomeSignSingleToggle = document.querySelector("#welcome-sign-single-toggle");
       const welcomeSignPhotoToggle = document.querySelector("#welcome-sign-photo-toggle");
       const downloadWelcomeSignButton = document.querySelector("#download-welcome-sign-button");
@@ -592,12 +674,31 @@
       const healthPrintInfo = document.querySelector("[data-health-print-info]");
       const downloadHealthPdfButton = document.querySelector("#download-health-pdf-button");
       const healthAntibioticNameInput = document.querySelector("#health-antibiotic-name");
+      const pictureTemplateSelect = document.querySelector("#picture-template-select");
+      const pictureFontSelect = document.querySelector("#picture-font-select");
+      const pictureFontSizeInput = document.querySelector("#picture-font-size");
+      const pictureFullPageOrientationControl = document.querySelector("#picture-full-page-orientation-control");
+      const pictureFullPageOrientationSelect = document.querySelector("#picture-full-page-orientation");
+      const picturePhotoUpload = document.querySelector("#picture-photo-upload");
+      const pictureUploadStatus = document.querySelector("[data-picture-upload-status]");
+      const pictureLabelItems = document.querySelector("[data-picture-label-items]");
+      const pictureSheetPreview = document.querySelector("[data-picture-sheet-preview]");
+      const pictureSheetFrame = document.querySelector(".picture-sheet-frame");
+      const pictureSheetTitle = document.querySelector("#picture-sheet-preview-title");
+      const picturePrintInfo = document.querySelector("[data-picture-print-info]");
+      const picturePageStatus = document.querySelector("[data-picture-page-status]");
+      const picturePrevPageButton = document.querySelector("#picture-prev-page");
+      const pictureNextPageButton = document.querySelector("#picture-next-page");
+      const downloadPicturePdfButton = document.querySelector("#download-picture-pdf-button");
       let currentPhotoUrl = "";
+      let pictureLabels = [];
+      let activePicturePageIndex = 0;
       let bulkRoster = [];
       let scheduledAveryFrame = 0;
       let scheduledFeedingFrame = 0;
       let scheduledCommunityFrame = 0;
       let scheduledHealthFrame = 0;
+      let scheduledPictureFrame = 0;
 
       const shouldIncludeClassroomPhoto = () => welcomeSignPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldIncludeCommunityCubbyPhoto = () => communityCubbyPhotoToggle?.checked !== false;
@@ -621,7 +722,7 @@
         });
 
         if (childProfilePanel) {
-          childProfilePanel.hidden = pageId === "bulk-upload";
+          childProfilePanel.hidden = pageId === "bulk-upload" || pageId === "picture-labels";
         }
 
         if (pageId === "community-playthings-labels") {
@@ -632,6 +733,8 @@
           scheduleAveryPreviewUpdate();
         } else if (pageId === "health-labels") {
           scheduleHealthPreviewUpdate();
+        } else if (pageId === "picture-labels") {
+          schedulePicturePreviewUpdate();
         } else if (pageId === "bulk-upload") {
           requestAnimationFrame(() => updateBulkCellPreview());
         }
@@ -709,6 +812,11 @@
       const scheduleHealthPreviewUpdate = () => {
         window.cancelAnimationFrame(scheduledHealthFrame);
         scheduledHealthFrame = window.requestAnimationFrame(renderHealthSheetPreview);
+      };
+
+      const schedulePicturePreviewUpdate = () => {
+        window.cancelAnimationFrame(scheduledPictureFrame);
+        scheduledPictureFrame = window.requestAnimationFrame(renderPictureSheetPreview);
       };
 
       const getChildPhotoSlots = () => document.querySelectorAll("[data-child-photo]");
@@ -795,11 +903,13 @@
           .filter((checkbox) => checkbox.checked)
           .map((checkbox) => checkbox.dataset.labelType)
           .filter(Boolean);
-        const customLabel = customLabelTypeToggle?.checked ? customLabelTypeInput?.value.trim() : "";
 
-        if (customLabel && !selectedLabels.some((label) => label.toLowerCase() === customLabel.toLowerCase())) {
-          selectedLabels.push(customLabel);
-        }
+        customLabelTypeInputs.forEach((input, index) => {
+          const customLabel = customLabelTypeToggles[index]?.checked ? input.value.trim() : "";
+          if (customLabel && !selectedLabels.some((label) => label.toLowerCase() === customLabel.toLowerCase())) {
+            selectedLabels.push(customLabel);
+          }
+        });
 
         return selectedLabels;
       };
@@ -958,7 +1068,7 @@
         viewport.style.setProperty("--preview-offset-y", `${labelY}px`);
         viewport.append(page);
         note.className = "community-label-note";
-        note.textContent = templateMeta.id === "basket" ? 'Basket Label - 1.5" x 5" finished label.' : templateMeta.title;
+        note.textContent = templateMeta.title;
         card.append(viewport, note);
         return card;
       };
@@ -1406,7 +1516,7 @@
         const title = document.createElement("p");
         const list = document.createElement("ul");
 
-        label.className = `health-label health-label-${labelData.type} ${hasPhoto ? "has-photo" : "has-no-photo"}`;
+        label.className = `health-label health-label-${labelData.type} ${hasPhoto ? "has-photo" : "has-no-photo"} ${labelData.items.length >= 3 ? "has-many-items" : ""}`;
         header.className = "health-label-profile";
         copy.className = "health-label-copy";
         name.textContent = childNameInput?.value.trim() || "Child Name";
@@ -1415,7 +1525,7 @@
         title.className = `health-label-title health-accent-${labelData.accent}`;
         list.className = "health-label-list";
 
-        labelData.items.slice(0, 8).forEach((item) => {
+        labelData.items.slice(0, 12).forEach((item) => {
           const listItem = document.createElement("li");
           listItem.textContent = item;
           list.append(listItem);
@@ -1454,16 +1564,20 @@
         root.querySelectorAll(".health-label h4").forEach((name) => {
           const isLarge = Boolean(name.closest(".sheet-94256"));
           const isMedium = Boolean(name.closest(".sheet-6874"));
+          const isSmall = Boolean(name.closest(".sheet-94207"));
           const hasPhoto = Boolean(name.closest(".has-photo"));
-          const max = isLarge ? (hasPhoto ? 19 : 22) : isMedium ? (hasPhoto ? 16 : 20) : 23;
-          printRenderer.fitText(name, max, 9, { allowWrap: false });
+          const hasManyItems = Boolean(name.closest(".has-many-items"));
+          const max = isLarge ? (hasPhoto ? 18 : 22) : isMedium ? (hasPhoto ? 15 : 20) : (hasPhoto && hasManyItems && isSmall ? 16 : hasPhoto ? 20 : 23);
+          printRenderer.fitText(name, max, 8, { allowWrap: false });
         });
         root.querySelectorAll(".health-label-list").forEach((list) => {
           const isLarge = Boolean(list.closest(".sheet-94256"));
           const isMedium = Boolean(list.closest(".sheet-6874"));
+          const isSmall = Boolean(list.closest(".sheet-94207"));
           const hasPhoto = Boolean(list.closest(".has-photo"));
-          const max = isLarge ? (hasPhoto ? 9.5 : 11.5) : isMedium ? (hasPhoto ? 8.5 : 10) : 9.5;
-          const min = isLarge ? 6.5 : isMedium ? 6.5 : 7;
+          const hasManyItems = Boolean(list.closest(".has-many-items"));
+          const max = isLarge ? (hasPhoto ? 10.5 : 11.5) : isMedium ? (hasPhoto ? 9.5 : 10) : (hasPhoto && hasManyItems && isSmall ? 8.8 : 9.5);
+          const min = isLarge ? 6 : isMedium ? 6 : 5.8;
           list.style.width = "100%";
           list.style.fontSize = `${max}px`;
           let size = max;
@@ -1510,23 +1624,135 @@
         fitHealthLabelText(healthSheetPreview);
       };
 
-      const makeHealthPreviewPdfBytes = async () => {
-        if (!healthSheetPreview) {
-          throw new Error("The health label preview is not available.");
+      const getHealthOutputTemplate = () => {
+        const template = getSelectedHealthTemplate();
+        const registryTemplate = labelRegistry.get(template.registryId);
+        const metrics = labelRegistry.getSheetMetrics(registryTemplate);
+
+        return {
+          ...template,
+          pageWidth: labelRegistry.toPoints(registryTemplate.pageSize.width),
+          pageHeight: labelRegistry.toPoints(registryTemplate.pageSize.height),
+          columns: metrics.cols,
+          rows: metrics.rows,
+          labelWidth: metrics.labelWidth,
+          labelHeight: metrics.labelHeight,
+          marginX: metrics.marginX,
+          marginY: metrics.marginY,
+          gapX: metrics.gapX,
+          gapY: metrics.gapY,
+        };
+      };
+
+      const drawHealthLabelOnCanvas = async (context, labelData, box, template) => {
+        const hasPhoto = shouldIncludeHealthPhoto() && Boolean(currentPhotoUrl);
+        const manyItems = labelData.items.length >= 3;
+        const isSmall = template.className === "sheet-94207";
+        const photoOnSide = hasPhoto && isSmall;
+        const padding = isSmall ? 10 : 14;
+        const photoSize = hasPhoto
+          ? isSmall
+            ? (manyItems ? 32 : 42)
+            : Math.min(template.className === "sheet-94256" ? 118 : 90, box.height * 0.36)
+          : 0;
+        const headerHeight = hasPhoto
+          ? isSmall
+            ? (manyItems ? 40 : 50)
+            : Math.min(template.className === "sheet-94256" ? 150 : 118, box.height * 0.46)
+          : isSmall ? 44 : 60;
+        const titleSize = isSmall && manyItems ? 8 : isSmall ? 10 : 13;
+        const nameSize = isSmall && hasPhoto && manyItems ? 13 : isSmall && hasPhoto ? 16 : isSmall ? 18 : template.className === "sheet-94256" ? 26 : 21;
+        const metaSize = isSmall && manyItems ? 7 : isSmall ? 8 : template.className === "sheet-94256" ? 13 : 11;
+        const listSize = isSmall && hasPhoto && manyItems ? 7.5 : isSmall ? 8.5 : template.className === "sheet-94256" ? 13.5 : 11.5;
+        const accent = labelData.accent === "red" ? "#b42318" : labelData.accent === "blue" ? "#245c8a" : "#0B7A34";
+
+        context.save();
+        context.strokeStyle = "rgba(11, 122, 52, 0.55)";
+        context.lineWidth = 1.1;
+        drawRoundedRect(context, box.x, box.y, box.width, box.height, 8);
+        context.stroke();
+
+        if (hasPhoto) {
+          const image = await loadCanvasImage(currentPhotoUrl);
+          const photoX = photoOnSide ? box.x + padding : box.x + (box.width - photoSize) / 2;
+          const photoY = box.y + padding;
+          drawCoverImage(context, image, photoX, photoY, photoSize, photoSize, 50);
         }
 
+        const copyX = photoOnSide ? box.x + padding + photoSize + 8 : box.x + padding;
+        const copyY = hasPhoto && !photoOnSide ? box.y + padding + photoSize + 8 : box.y + padding;
+        const copyWidth = photoOnSide ? box.width - (copyX - box.x) - padding : box.width - padding * 2;
+        context.fillStyle = "#09251f";
+        context.textAlign = photoOnSide ? "left" : "center";
+        context.textBaseline = "top";
+        context.font = `700 ${nameSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+        context.fillText(childNameInput?.value.trim() || "Child Name", photoOnSide ? copyX : box.x + box.width / 2, copyY, copyWidth);
+        context.font = `700 ${metaSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+        context.fillText([formatDob(childDobInput?.value), getOptionalClassroom()].filter(Boolean).join(" - "), photoOnSide ? copyX : box.x + box.width / 2, copyY + nameSize + 3, copyWidth);
+
+        const titleY = box.y + padding + headerHeight;
+        context.fillStyle = accent;
+        context.font = `900 ${titleSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+        context.textAlign = "center";
+        context.fillText(String(labelData.title || "").toUpperCase(), box.x + box.width / 2, titleY);
+
+        context.fillStyle = "#09251f";
+        context.font = `700 ${listSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+        const lineHeight = listSize * 1.18;
+        let y = titleY + titleSize + 7;
+        labelData.items.slice(0, 12).forEach((item) => {
+          if (y + lineHeight > box.y + box.height - padding) return;
+          context.fillText(`- ${item}`, box.x + box.width / 2, y);
+          y += lineHeight;
+        });
+        context.restore();
+      };
+
+      const renderHealthPageToCanvas = async (pageLabels, outputTemplate) => {
+        const scale = 3;
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        canvas.width = Math.round(outputTemplate.pageWidth * scale);
+        canvas.height = Math.round(outputTemplate.pageHeight * scale);
+        context.scale(scale, scale);
+        context.fillStyle = "#ffffff";
+        context.fillRect(0, 0, outputTemplate.pageWidth, outputTemplate.pageHeight);
+
+        for (const [index, labelData] of pageLabels.entries()) {
+          if (!labelData) continue;
+          const col = index % outputTemplate.columns;
+          const row = Math.floor(index / outputTemplate.columns);
+          const box = {
+            x: outputTemplate.marginX + col * (outputTemplate.labelWidth + outputTemplate.gapX),
+            y: outputTemplate.marginY + row * (outputTemplate.labelHeight + outputTemplate.gapY),
+            width: outputTemplate.labelWidth,
+            height: outputTemplate.labelHeight,
+          };
+          await drawHealthLabelOnCanvas(context, labelData, box, outputTemplate);
+        }
+
+        return {
+          dataUrl: canvas.toDataURL("image/jpeg", 0.96),
+          imageWidth: canvas.width,
+          imageHeight: canvas.height,
+          pageWidth: outputTemplate.pageWidth,
+          pageHeight: outputTemplate.pageHeight,
+        };
+      };
+
+      const makeHealthPreviewPdfBytes = async () => {
         const labels = getHealthLabels();
         if (!labels.length) {
           throw new Error("Choose at least one allergy, food preference, or medication before downloading.");
         }
 
-        renderHealthSheetPreview();
-        await document.fonts?.ready;
-        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-
+        const outputTemplate = getHealthOutputTemplate();
+        const sheetPages = getHealthSheetPages();
         const renderedPages = [];
-        for (const page of Array.from(healthSheetPreview.children)) {
-          renderedPages.push(await renderPreviewElementToJpeg(page));
+
+        for (const pageLabels of sheetPages) {
+          renderedPages.push(await renderHealthPageToCanvas(pageLabels, outputTemplate));
         }
 
         return buildImagePagesPdf(renderedPages);
@@ -1554,6 +1780,593 @@
         } finally {
           downloadHealthPdfButton.textContent = originalText;
           downloadHealthPdfButton.disabled = false;
+        }
+      };
+
+      const pictureTemplateOptions = {
+        94207: {
+          ...averyTemplates["94207"],
+          registryId: "avery-94207-classroom",
+        },
+        6874: {
+          ...averyTemplates["6874"],
+          registryId: "avery-6874-classroom",
+        },
+        94256: {
+          ...averyTemplates["94256"],
+          registryId: "avery-94256-classroom",
+        },
+        square35: {
+          title: 'Cut-out 3.5" square sheet layout',
+          countLabel: "6 labels per page",
+          className: "picture-square35",
+          labelsPerSheet: 6,
+          registryId: null,
+          isCutOut: true,
+          columns: 2,
+          rows: 3,
+          labelWidth: 3.5,
+          labelHeight: 3.5,
+          layout: "stack",
+        },
+        long125x8: {
+          title: 'Cut-out 1.25" x 8" long sheet layout',
+          countLabel: "8 labels per page",
+          className: "picture-long125x8",
+          labelsPerSheet: 8,
+          registryId: null,
+          isCutOut: true,
+          columns: 1,
+          rows: 8,
+          labelWidth: 8,
+          labelHeight: 1.25,
+          layout: "split",
+        },
+        businessCard: {
+          title: 'Cut-out business card sheet layout',
+          countLabel: "10 labels per page",
+          className: "picture-business-card",
+          labelsPerSheet: 10,
+          registryId: null,
+          isCutOut: true,
+          columns: 2,
+          rows: 5,
+          labelWidth: 3.5,
+          labelHeight: 2,
+          layout: "stack",
+        },
+        pocketChart: {
+          title: 'Cut-out pocket chart sheet layout',
+          countLabel: "4 labels per page",
+          className: "picture-pocket-chart",
+          labelsPerSheet: 4,
+          registryId: null,
+          isCutOut: true,
+          columns: 2,
+          rows: 2,
+          labelWidth: 5,
+          labelHeight: 3,
+          pageWidth: 11,
+          pageHeight: 8.5,
+          layout: "stack",
+        },
+        fullPage: {
+          title: "Full page picture label",
+          countLabel: "1 label per page",
+          className: "picture-full-page",
+          labelsPerSheet: 1,
+          registryId: null,
+          isCutOut: true,
+          columns: 1,
+          rows: 1,
+          labelWidth: 8.5,
+          labelHeight: 11,
+          layout: "stack",
+        },
+        fullPageLandscape: {
+          title: "Full page landscape picture label",
+          countLabel: "1 label per page",
+          className: "picture-full-page picture-full-page-landscape",
+          labelsPerSheet: 1,
+          registryId: null,
+          isCutOut: true,
+          columns: 1,
+          rows: 1,
+          labelWidth: 11,
+          labelHeight: 8.5,
+          pageWidth: 11,
+          pageHeight: 8.5,
+          layout: "stack",
+        },
+      };
+
+      const getSelectedPictureTemplate = () => {
+        if ((pictureTemplateSelect?.value || "") === "fullPage" && getPicturePageOrientation() === "landscape") {
+          return pictureTemplateOptions.fullPageLandscape;
+        }
+
+        return pictureTemplateOptions[pictureTemplateSelect?.value] || pictureTemplateOptions["94207"];
+      };
+      const shouldShowPicturePhotoPosition = () => ["long125x8", "businessCard"].includes(pictureTemplateSelect?.value || "");
+      const getPictureFontFamily = () => pictureFontSelect?.value || "'Quicksand', Arial, sans-serif";
+      const getPictureFontSize = () => {
+        const value = Number.parseInt(pictureFontSizeInput?.value || "24", 10);
+        return Number.isFinite(value) ? Math.max(12, Math.min(value, 42)) : 24;
+      };
+      const getPicturePageOrientation = () => pictureFullPageOrientationSelect?.value || "portrait";
+      const updatePictureConditionalControls = () => {
+        if (pictureFullPageOrientationControl) {
+          pictureFullPageOrientationControl.hidden = (pictureTemplateSelect?.value || "") !== "fullPage";
+        }
+      };
+
+      const createPictureBlankLabel = () => {
+        const label = document.createElement("article");
+        label.className = "picture-label picture-label-empty";
+        label.setAttribute("aria-label", "Blank Avery picture label position");
+        return label;
+      };
+
+      const createPictureLabel = (labelData) => {
+        const label = document.createElement("article");
+        const photo = document.createElement("div");
+        const image = document.createElement("img");
+        const text = document.createElement("p");
+
+        const selectedTemplate = getSelectedPictureTemplate();
+
+        label.className = `picture-label ${selectedTemplate.isCutOut ? `picture-label-cutout picture-label-${selectedTemplate.layout}` : ""}`;
+        label.dataset.pictureLabelId = labelData.id || "";
+        label.style.setProperty("--picture-font", getPictureFontFamily());
+        label.style.setProperty("--picture-font-size", `${getPictureFontSize()}px`);
+        photo.className = "picture-label-photo";
+        image.alt = "";
+        image.src = labelData.photoUrl;
+        image.style.objectPosition = `50% ${labelData.photoY ?? 50}%`;
+        photo.append(image);
+        text.textContent = labelData.text || "Label Text";
+        label.append(photo, text);
+        return label;
+      };
+
+      const getPictureSheetPages = () => {
+        const template = getSelectedPictureTemplate();
+        const capacity = template.labelsPerSheet;
+        const labels = pictureLabels.length ? pictureLabels : [{
+          id: "sample",
+          photoUrl: "",
+          text: "Label Text",
+        }];
+
+        return printRenderer.chunkItems(labels, capacity)
+          .map((chunk) => printRenderer.fillToCapacity(chunk, capacity));
+      };
+
+      const createPictureSheetPage = (template, labels) => {
+        if (template.isCutOut) {
+          const page = document.createElement("div");
+          const pageWidth = Math.round((template.pageWidth || 8.5) * 72);
+          const pageHeight = Math.round((template.pageHeight || 11) * 72);
+          const labelWidth = Math.round(template.labelWidth * 72);
+          const labelHeight = Math.round(template.labelHeight * 72);
+          const gapX = template.columns > 1 ? Math.max(0, (pageWidth - (labelWidth * template.columns)) / (template.columns + 1)) : 0;
+          const gapY = template.rows > 1 ? Math.max(0, (pageHeight - (labelHeight * template.rows)) / (template.rows + 1)) : 0;
+
+          page.className = `print-sheet-page picture-sheet-page ${template.className}`;
+          page.setAttribute("data-picture-sheet-page", "");
+          page.style.setProperty("--picture-cutout-columns", template.columns);
+          page.style.setProperty("--picture-cutout-rows", template.rows);
+          page.style.setProperty("--picture-cutout-width", `${labelWidth}px`);
+          page.style.setProperty("--picture-cutout-height", `${labelHeight}px`);
+          page.style.setProperty("--picture-cutout-gap-x", `${gapX}px`);
+          page.style.setProperty("--picture-cutout-gap-y", `${gapY}px`);
+          page.style.setProperty("--picture-cutout-page-width", `${pageWidth}px`);
+          page.style.setProperty("--picture-cutout-page-height", `${pageHeight}px`);
+          printRenderer.fillToCapacity(labels, template.labelsPerSheet).forEach((labelData) => {
+            page.append(labelData?.photoUrl ? createPictureLabel(labelData) : createPictureBlankLabel());
+          });
+          return page;
+        }
+
+        return printRenderer.createSheetPage({
+          template: labelRegistry.get(template.registryId),
+          items: labels,
+          pageClass: `print-sheet-page picture-sheet-page ${template.className}`,
+          dataAttribute: "data-picture-sheet-page",
+          renderItem: (labelData) => labelData?.photoUrl ? createPictureLabel(labelData) : createPictureBlankLabel(),
+          renderBlank: createPictureBlankLabel,
+        });
+      };
+
+      const fitPictureLabelText = (root = document) => {
+        root.querySelectorAll(".picture-label p").forEach((text) => {
+          const selectedSize = getPictureFontSize();
+
+          text.style.fontSize = `${selectedSize}px`;
+          text.style.whiteSpace = "normal";
+          text.style.overflowWrap = "anywhere";
+          text.style.wordBreak = "normal";
+          text.style.lineHeight = "1.05";
+          text.style.maxHeight = `${selectedSize * 1.05 * 2}px`;
+        });
+      };
+
+      const renderPictureLabelControls = () => {
+        if (!pictureLabelItems) {
+          return;
+        }
+
+        if (!pictureLabels.length) {
+          const empty = document.createElement("p");
+          empty.className = "ready-panel-note";
+          empty.textContent = "Choose photos to create editable label text fields.";
+          pictureLabelItems.replaceChildren(empty);
+          return;
+        }
+
+        pictureLabelItems.replaceChildren(...pictureLabels.map((labelData, index) => {
+          const row = document.createElement("label");
+          const thumb = document.createElement("img");
+          const input = document.createElement("input");
+
+          row.className = "picture-label-text-row";
+          thumb.alt = "";
+          thumb.src = labelData.photoUrl;
+          thumb.style.objectPosition = `50% ${labelData.photoY ?? 50}%`;
+          input.type = "text";
+          input.value = labelData.text;
+          input.placeholder = `Label ${index + 1} text`;
+          input.setAttribute("aria-label", `Picture label ${index + 1} text`);
+          input.addEventListener("input", () => {
+            pictureLabels[index].text = input.value;
+            schedulePicturePreviewUpdate();
+          });
+          row.append(thumb, input);
+          return row;
+        }));
+      };
+
+      const updatePicturePageControls = (pageCount) => {
+        activePicturePageIndex = Math.min(activePicturePageIndex, Math.max(0, pageCount - 1));
+        if (picturePageStatus) {
+          picturePageStatus.textContent = `Page ${activePicturePageIndex + 1} of ${Math.max(1, pageCount)}`;
+        }
+        if (picturePrevPageButton) {
+          picturePrevPageButton.disabled = activePicturePageIndex <= 0;
+        }
+        if (pictureNextPageButton) {
+          pictureNextPageButton.disabled = activePicturePageIndex >= pageCount - 1;
+        }
+        if (downloadPicturePdfButton) {
+          downloadPicturePdfButton.disabled = !pictureLabels.length;
+        }
+      };
+
+      const renderPictureSheetPreview = () => {
+        if (!pictureSheetPreview || !pictureSheetFrame) {
+          return;
+        }
+
+        const template = getSelectedPictureTemplate();
+        const sheetPages = getPictureSheetPages();
+        const visiblePage = sheetPages[activePicturePageIndex] || sheetPages[0] || [];
+
+        pictureSheetFrame.dataset.pictureTemplate = pictureTemplateSelect?.value || "94207";
+        if (pictureSheetTitle) {
+          pictureSheetTitle.textContent = `${template.title.replace("sheet layout", "picture labels")}`;
+        }
+        if (picturePrintInfo) {
+          picturePrintInfo.textContent = pictureLabels.length
+            ? `${template.countLabel} - ${sheetPages.length} page${sheetPages.length === 1 ? "" : "s"}`
+            : `${template.countLabel} - choose photos to begin`;
+        }
+        pictureSheetPreview.replaceChildren(createPictureSheetPage(template, visiblePage));
+        fitPictureLabelText(pictureSheetPreview);
+        attachPicturePhotoDragHandlers();
+        updatePicturePageControls(sheetPages.length);
+      };
+
+      const syncPicturePositionInputs = (labelId, value) => {
+        pictureSheetPreview?.querySelectorAll(`[data-picture-position-for="${CSS.escape(labelId)}"]`).forEach((input) => {
+          input.value = String(value);
+        });
+      };
+
+      const attachPicturePhotoDragHandlers = () => {
+        if (!shouldShowPicturePhotoPosition() || !pictureSheetPreview) {
+          return;
+        }
+
+        pictureSheetPreview.querySelectorAll(".picture-label-photo").forEach((photo) => {
+          const label = photo.closest(".picture-label");
+          const labelId = label?.dataset.pictureLabelId;
+          const item = pictureLabels.find((candidate) => candidate.id === labelId);
+          const image = photo.querySelector("img");
+
+          if (!item || !image) {
+            return;
+          }
+
+          photo.dataset.dragPhotoPosition = "";
+          if (!photo.querySelector(".picture-photo-position-control")) {
+            const overlay = document.createElement("div");
+            const range = document.createElement("input");
+
+            overlay.className = "picture-photo-position-control";
+            range.type = "range";
+            range.min = "0";
+            range.max = "100";
+            range.value = String(item.photoY ?? 50);
+            range.dataset.picturePositionFor = labelId;
+            range.setAttribute("aria-label", "Photo vertical position");
+            range.addEventListener("input", () => {
+              item.photoY = Number.parseInt(range.value, 10);
+              image.style.objectPosition = `50% ${item.photoY}%`;
+            });
+            overlay.append(range);
+            photo.append(overlay);
+          }
+
+          photo.addEventListener("pointerdown", (event) => {
+            if (event.target.closest(".picture-photo-position-control")) {
+              return;
+            }
+
+            event.preventDefault();
+            photo.setPointerCapture?.(event.pointerId);
+            const startY = event.clientY;
+            const startPosition = item.photoY ?? 50;
+            const move = (moveEvent) => {
+              const delta = moveEvent.clientY - startY;
+              const next = Math.max(0, Math.min(100, Math.round(startPosition + (delta / Math.max(1, photo.clientHeight)) * 100)));
+              item.photoY = next;
+              image.style.objectPosition = `50% ${next}%`;
+              syncPicturePositionInputs(labelId, next);
+            };
+            const stop = () => {
+              window.removeEventListener("pointermove", move);
+              window.removeEventListener("pointerup", stop);
+            };
+
+            window.addEventListener("pointermove", move);
+            window.addEventListener("pointerup", stop, { once: true });
+          });
+        });
+      };
+
+      const getPictureOutputTemplate = () => {
+        const template = getSelectedPictureTemplate();
+
+        if (!template.isCutOut) {
+          const registryTemplate = labelRegistry.get(template.registryId);
+          const metrics = labelRegistry.getSheetMetrics(registryTemplate);
+          return {
+            ...template,
+            pageWidth: labelRegistry.toPoints(registryTemplate.pageSize.width),
+            pageHeight: labelRegistry.toPoints(registryTemplate.pageSize.height),
+            columns: metrics.cols,
+            rows: metrics.rows,
+            labelWidth: metrics.labelWidth,
+            labelHeight: metrics.labelHeight,
+            marginX: metrics.marginX,
+            marginY: metrics.marginY,
+            gapX: metrics.gapX,
+            gapY: metrics.gapY,
+            layout: template.registryId === "avery-94207-classroom" ? "side" : "stack",
+          };
+        }
+
+        const pageWidth = Math.round((template.pageWidth || 8.5) * 72);
+        const pageHeight = Math.round((template.pageHeight || 11) * 72);
+        const labelWidth = Math.round(template.labelWidth * 72);
+        const labelHeight = Math.round(template.labelHeight * 72);
+        const gapX = template.columns > 1 ? Math.max(0, (pageWidth - (labelWidth * template.columns)) / (template.columns + 1)) : 0;
+        const gapY = template.rows > 1 ? Math.max(0, (pageHeight - (labelHeight * template.rows)) / (template.rows + 1)) : 0;
+
+        return {
+          ...template,
+          pageWidth,
+          pageHeight,
+          labelWidth,
+          labelHeight,
+          marginX: template.columns > 1 ? gapX : Math.max(0, (pageWidth - labelWidth) / 2),
+          marginY: template.rows > 1 ? gapY : Math.max(0, (pageHeight - labelHeight) / 2),
+          gapX,
+          gapY,
+        };
+      };
+
+      const drawRoundedRect = (context, x, y, width, height, radius) => {
+        const safeRadius = Math.min(radius, width / 2, height / 2);
+
+        context.beginPath();
+        context.moveTo(x + safeRadius, y);
+        context.lineTo(x + width - safeRadius, y);
+        context.quadraticCurveTo(x + width, y, x + width, y + safeRadius);
+        context.lineTo(x + width, y + height - safeRadius);
+        context.quadraticCurveTo(x + width, y + height, x + width - safeRadius, y + height);
+        context.lineTo(x + safeRadius, y + height);
+        context.quadraticCurveTo(x, y + height, x, y + height - safeRadius);
+        context.lineTo(x, y + safeRadius);
+        context.quadraticCurveTo(x, y, x + safeRadius, y);
+        context.closePath();
+      };
+
+      const drawCoverImage = (context, image, x, y, width, height, positionY = 50) => {
+        const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight);
+        const drawWidth = image.naturalWidth * scale;
+        const drawHeight = image.naturalHeight * scale;
+        const overflowY = Math.max(0, drawHeight - height);
+        const drawX = x + (width - drawWidth) / 2;
+        const drawY = y - overflowY * (Math.max(0, Math.min(100, positionY)) / 100);
+
+        context.save();
+        drawRoundedRect(context, x, y, width, height, 8);
+        context.clip();
+        context.drawImage(image, drawX, drawY, drawWidth, drawHeight);
+        context.restore();
+      };
+
+      const wrapCanvasLines = (context, text, maxWidth, maxLines = 2) => {
+        const words = String(text || "").trim().split(/\s+/).filter(Boolean);
+        const lines = [];
+        let line = "";
+
+        words.forEach((word) => {
+          const candidate = line ? `${line} ${word}` : word;
+          if (!line || context.measureText(candidate).width <= maxWidth) {
+            line = candidate;
+            return;
+          }
+          lines.push(line);
+          line = word;
+        });
+        if (line) lines.push(line);
+        return lines.slice(0, maxLines);
+      };
+
+      const drawPictureLabelOnCanvas = async (context, labelData, box, template) => {
+        const padding = Math.max(8, Math.min(18, box.height * 0.08));
+        const fontSize = getPictureFontSize();
+        const fontFamily = getPictureFontFamily();
+        const lineHeight = fontSize * 1.05;
+        const textHeight = lineHeight * 2;
+        const image = await loadCanvasImage(labelData.photoUrl);
+
+        context.save();
+        context.strokeStyle = "rgba(11, 122, 52, 0.45)";
+        context.setLineDash([3, 3]);
+        context.lineWidth = 1;
+        drawRoundedRect(context, box.x, box.y, box.width, box.height, 8);
+        context.stroke();
+        context.setLineDash([]);
+
+        if (template.layout === "split" || template.layout === "side") {
+          const isSide = template.layout === "side";
+          const photoBox = {
+            x: box.x + padding,
+            y: box.y + padding,
+            width: isSide ? Math.min(box.height - padding * 2, box.width * 0.38) : (box.width - padding * 3) / 2,
+            height: box.height - padding * 2,
+          };
+          const textBox = {
+            x: photoBox.x + photoBox.width + padding,
+            y: box.y + padding,
+            width: box.x + box.width - padding - (photoBox.x + photoBox.width + padding),
+            height: photoBox.height,
+          };
+
+          drawCoverImage(context, image, photoBox.x, photoBox.y, photoBox.width, photoBox.height, labelData.photoY);
+          context.fillStyle = "#09251f";
+          context.textAlign = "center";
+          context.textBaseline = "middle";
+          context.font = `700 ${fontSize}px ${fontFamily}`;
+          const lines = wrapCanvasLines(context, labelData.text || "Label Text", textBox.width, 2);
+          const startY = textBox.y + textBox.height / 2 - ((lines.length - 1) * lineHeight) / 2;
+          lines.forEach((line, index) => context.fillText(line, textBox.x + textBox.width / 2, startY + index * lineHeight));
+          context.restore();
+          return;
+        }
+
+        const textBox = {
+          x: box.x + padding,
+          y: box.y + box.height - padding - textHeight,
+          width: box.width - padding * 2,
+          height: textHeight,
+        };
+        const photoHeight = Math.max(24, textBox.y - box.y - padding * 2);
+        const photoWidth = template.className?.includes("business-card")
+          ? Math.min(photoHeight, box.width - padding * 2)
+          : Math.min(box.width - padding * 2, photoHeight * 1.35);
+        const photoBox = {
+          x: box.x + (box.width - photoWidth) / 2,
+          y: box.y + padding,
+          width: photoWidth,
+          height: template.className?.includes("business-card") ? photoWidth : photoHeight,
+        };
+
+        drawCoverImage(context, image, photoBox.x, photoBox.y, photoBox.width, Math.min(photoBox.height, photoHeight), labelData.photoY);
+        context.fillStyle = "#09251f";
+        context.textAlign = "center";
+        context.textBaseline = "top";
+        context.font = `700 ${fontSize}px ${fontFamily}`;
+        const lines = wrapCanvasLines(context, labelData.text || "Label Text", textBox.width, 2);
+        lines.forEach((line, index) => context.fillText(line, textBox.x + textBox.width / 2, textBox.y + index * lineHeight));
+        context.restore();
+      };
+
+      const renderPicturePageToCanvas = async (pageLabels, outputTemplate) => {
+        const scale = 3;
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        canvas.width = Math.round(outputTemplate.pageWidth * scale);
+        canvas.height = Math.round(outputTemplate.pageHeight * scale);
+        context.scale(scale, scale);
+        context.fillStyle = "#ffffff";
+        context.fillRect(0, 0, outputTemplate.pageWidth, outputTemplate.pageHeight);
+
+        for (const [index, labelData] of pageLabels.entries()) {
+          if (!labelData?.photoUrl) {
+            continue;
+          }
+
+          const col = index % outputTemplate.columns;
+          const row = Math.floor(index / outputTemplate.columns);
+          const box = {
+            x: outputTemplate.marginX + col * (outputTemplate.labelWidth + outputTemplate.gapX),
+            y: outputTemplate.marginY + row * (outputTemplate.labelHeight + outputTemplate.gapY),
+            width: outputTemplate.labelWidth,
+            height: outputTemplate.labelHeight,
+          };
+
+          await drawPictureLabelOnCanvas(context, labelData, box, outputTemplate);
+        }
+
+        return {
+          dataUrl: canvas.toDataURL("image/jpeg", 0.96),
+          imageWidth: canvas.width,
+          imageHeight: canvas.height,
+          pageWidth: outputTemplate.pageWidth,
+          pageHeight: outputTemplate.pageHeight,
+        };
+      };
+
+      const makePicturePreviewPdfBytes = async () => {
+        if (!pictureLabels.length) {
+          throw new Error("Choose at least one photo before downloading picture labels.");
+        }
+
+        const outputTemplate = getPictureOutputTemplate();
+        const sheetPages = getPictureSheetPages();
+        const renderedPages = [];
+
+        for (const pageLabels of sheetPages) {
+          renderedPages.push(await renderPicturePageToCanvas(pageLabels, outputTemplate));
+        }
+
+        return buildImagePagesPdf(renderedPages);
+      };
+
+      const downloadPictureLabelsPdf = async () => {
+        if (!downloadPicturePdfButton) {
+          return;
+        }
+
+        const originalText = downloadPicturePdfButton.textContent;
+        downloadPicturePdfButton.disabled = true;
+        downloadPicturePdfButton.textContent = "Building PDF...";
+
+        try {
+          const template = getSelectedPictureTemplate();
+          const bytes = await makePicturePreviewPdfBytes();
+          saveBytesAsPdf(bytes, `carecheck-picture-labels-${template.className}-${CLASSROOM_PDF_BUILD_VERSION}.pdf`);
+        } catch (error) {
+          console.error("Unable to create picture labels PDF.", error);
+          alert(error.message || "The picture labels PDF could not be created. Please try again.");
+        } finally {
+          downloadPicturePdfButton.textContent = originalText;
+          downloadPicturePdfButton.disabled = !pictureLabels.length;
         }
       };
 
@@ -2214,7 +3027,9 @@
         clone.style.width = `${width}px`;
         clone.style.height = `${height}px`;
 
-        const css = `@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');\n${getForeignObjectStyles()}`.replace(/<\/style/gi, "<\\/style");
+        const css = getForeignObjectStyles()
+          .replace(/@import[^;]+;/g, "")
+          .replace(/<\/style/gi, "<\\/style");
         const html = `
           <div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;background:#ffffff;">
             <style>${css}</style>
@@ -2229,13 +3044,36 @@
         const image = new Image();
         const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 
-        await new Promise((resolve, reject) => {
-          image.onload = resolve;
-          image.onerror = reject;
-          image.src = svgUrl;
-        });
+        try {
+          await new Promise((resolve, reject) => {
+            image.onload = resolve;
+            image.onerror = () => reject(new Error("Preview image rendering failed."));
+            image.src = svgUrl;
+          });
 
-        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+          context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        } catch (error) {
+          if (!window.html2canvas) {
+            throw error;
+          }
+
+          const fallbackCanvas = await window.html2canvas(element, {
+            backgroundColor: "#ffffff",
+            scale,
+            useCORS: true,
+            width,
+            height,
+            windowWidth: width,
+            windowHeight: height,
+          });
+          return {
+            dataUrl: fallbackCanvas.toDataURL("image/jpeg", 0.96),
+            imageWidth: fallbackCanvas.width,
+            imageHeight: fallbackCanvas.height,
+            pageWidth: width,
+            pageHeight: height,
+          };
+        }
 
         await Promise.all(imageDraws.map(({ image }) => {
           if (image.complete && image.naturalWidth) {
@@ -2936,7 +3774,7 @@
         document.body.append(link);
         link.click();
         link.remove();
-        URL.revokeObjectURL(url);
+        window.setTimeout(() => URL.revokeObjectURL(url), 1000);
       };
 
       const normalizeRosterKey = (key) => String(key || "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -3759,6 +4597,7 @@
           updateCommunityPlaythingsPreviews();
           updateInfantFeedingPreviews();
           renderHealthSheetPreview();
+          schedulePicturePreviewUpdate();
           return;
         }
 
@@ -3768,6 +4607,7 @@
           updateCommunityPlaythingsPreviews();
           updateInfantFeedingPreviews();
           renderHealthSheetPreview();
+          schedulePicturePreviewUpdate();
         } catch (error) {
           console.error("Unable to prepare child photo preview.", error);
           resetPhotoSlots();
@@ -3775,6 +4615,7 @@
           updateCommunityPlaythingsPreviews();
           updateInfantFeedingPreviews();
           renderHealthSheetPreview();
+          schedulePicturePreviewUpdate();
           alert("The selected photo could not be prepared. Please try a different image.");
         }
       });
@@ -3797,8 +4638,8 @@
       document.querySelectorAll("#avery-labels .ready-checkbox-card input").forEach((checkbox) => {
         checkbox.addEventListener("change", renderPrintSheetPreview);
       });
-      customLabelTypeInput?.addEventListener("input", scheduleAveryPreviewUpdate);
-      customLabelTypeToggle?.addEventListener("change", scheduleAveryPreviewUpdate);
+      customLabelTypeInputs.forEach((input) => input.addEventListener("input", scheduleAveryPreviewUpdate));
+      customLabelTypeToggles.forEach((toggle) => toggle.addEventListener("change", scheduleAveryPreviewUpdate));
       document.querySelectorAll("[data-community-label-type]").forEach((checkbox) => {
         checkbox.addEventListener("change", updateSelectedCommunityVisibility);
       });
@@ -3817,6 +4658,61 @@
         control.addEventListener("change", scheduleHealthPreviewUpdate);
       });
       downloadHealthPdfButton?.addEventListener("click", downloadHealthLabelsPdf);
+      pictureTemplateSelect?.addEventListener("change", () => {
+        activePicturePageIndex = 0;
+        updatePictureConditionalControls();
+        renderPictureLabelControls();
+        renderPictureSheetPreview();
+      });
+      pictureFullPageOrientationSelect?.addEventListener("change", () => {
+        activePicturePageIndex = 0;
+        renderPictureSheetPreview();
+      });
+      pictureFontSelect?.addEventListener("change", renderPictureSheetPreview);
+      pictureFontSizeInput?.addEventListener("input", renderPictureSheetPreview);
+      picturePrevPageButton?.addEventListener("click", () => {
+        activePicturePageIndex = Math.max(0, activePicturePageIndex - 1);
+        renderPictureSheetPreview();
+      });
+      pictureNextPageButton?.addEventListener("click", () => {
+        activePicturePageIndex += 1;
+        renderPictureSheetPreview();
+      });
+      picturePhotoUpload?.addEventListener("change", async (event) => {
+        const files = Array.from(event.target.files || []).filter((file) => file.type.startsWith("image/")).slice(0, 20);
+
+        if (pictureUploadStatus) {
+          pictureUploadStatus.textContent = files.length ? `Preparing ${files.length} photo${files.length === 1 ? "" : "s"}...` : "No photos selected";
+        }
+
+        try {
+          pictureLabels = await Promise.all(files.map(async (file, index) => ({
+            id: `${file.name}-${file.lastModified}-${index}`,
+            photoUrl: await createPreviewPhotoDataUrl(file),
+            photoY: 50,
+            text: file.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").trim() || `Label ${index + 1}`,
+          })));
+          activePicturePageIndex = 0;
+          if (pictureUploadStatus) {
+            const moreText = (event.target.files?.length || 0) > 20 ? " Only the first 20 were added." : "";
+            pictureUploadStatus.textContent = pictureLabels.length
+              ? `${pictureLabels.length} photo${pictureLabels.length === 1 ? "" : "s"} ready.${moreText}`
+              : "No photos selected";
+          }
+          renderPictureLabelControls();
+          renderPictureSheetPreview();
+        } catch (error) {
+          console.error("Unable to prepare picture labels.", error);
+          pictureLabels = [];
+          renderPictureLabelControls();
+          renderPictureSheetPreview();
+          if (pictureUploadStatus) {
+            pictureUploadStatus.textContent = "Photos could not be prepared";
+          }
+          alert("One or more photos could not be prepared. Please try different images.");
+        }
+      });
+      downloadPicturePdfButton?.addEventListener("click", downloadPictureLabelsPdf);
       if (downloadFeedingSheetButton) {
         downloadFeedingSheetButton.onclick = downloadFeedingSheetPdf;
       }
@@ -3887,10 +4783,14 @@
       updateSelectedCommunityVisibility();
       updateInfantFeedingPreviews();
       renderHealthSheetPreview();
+      updatePictureConditionalControls();
+      renderPictureLabelControls();
+      renderPictureSheetPreview();
       document.fonts?.ready?.then?.(() => {
         fitCommunityPreviewNames();
         fitFeedingSheetNames(feedingSheetPreview);
         fitHealthLabelText(healthSheetPreview || document);
+        fitPictureLabelText(pictureSheetPreview || document);
       });
     </script>
   </body>
