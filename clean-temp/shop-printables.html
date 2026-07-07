@@ -101,6 +101,14 @@
                   <p class="ready-panel-note">Purchase compatible sheets directly from <a href="https://www.avery.com/" target="_blank" rel="noopener noreferrer">Avery</a>.</p>
                 </div>
 
+                <aside class="classroom-print-options" aria-label="Classroom label printing options">
+                  <h4>Printing options</h4>
+                  <ul>
+                    <li>Print on Avery label sheets.</li>
+                    <li>Print on regular paper or cardstock, cut out labels, and place them in a <a href="https://www.amazon.com/Self-Adhesive-Business-Pockets-Organizing-Protecting/dp/B084NSYS1B/ref=sr_1_8?crid=1UBJVC0YPWGE6&dib=eyJ2IjoiMSJ9.CVZysiP5b7f2TH1Qv_PdWhMSNvgfAKOZlDAtwDy2IBfhPN5GXO9BbT9mrLmqdTJ42-MBy3jRkj0UL2O3tGDrF5b_GXejFtyxevNzJlkpbBI8dYn9UerIyUC2xA5sEXtSJQmcFpri57_ANfTvRaWV207JNgQ9go9Gdu9fuDhdmJ2vByHQjxyeB_ncJW5ciWJQORU1qzTIzEYV4pe5wnm-oImLSUanpF6ZfKmA6LxonJBSgxwK15gfiGq2Glir3ARtuL3duZnvErEQAFJW8ah6dkWmWHCavPAc79iBZweXGBA.QRkJicInKuij2dZ-KXtsrfPF5aPdC0mWCQl7dPYc340&dib_tag=se&keywords=clear%2Bplastic%2Bcard%2Bholder%2Bsleeve%2Badhesive&qid=1782438934&sprefix=clear%2Bplastic%2Bcard%2Bholder%2Bsleeve%2Badhesive%2Caps%2C255&sr=8-8&th=1" target="_blank" rel="noopener noreferrer">card holder</a>.</li>
+                  </ul>
+                </aside>
+
                 <label>
                   Avery Template Label Size Options
                   <select id="avery-template-select" aria-label="Avery classroom template">
@@ -159,7 +167,7 @@
                   </div>
 
                   <aside class="printing-instructions" aria-labelledby="printing-instructions-title">
-                    <h4 id="printing-instructions-title">Printing Instructions</h4>
+                    <h4 id="printing-instructions-title">Avery Label Printing Instructions</h4>
                     <div class="printing-instructions-grid">
                       <div>
                         <h5>Printer Settings</h5>
@@ -224,28 +232,30 @@
                 </div>
               </div>
 
-              <label class="feeding-template-control">
-                Avery Template
-                <select id="feeding-template-select" aria-label="Infant feeding label template">
-                  <option value="61503" selected>Avery 61503 - 2&quot; x 3-3/4&quot; Removable bottle labels</option>
-                  <option value="94069">Avery 94069 - 2&quot; x 2&quot; Square waterproof label format</option>
-                </select>
-              </label>
+              <div class="feeding-setup-row">
+                <label class="feeding-template-control">
+                  Avery Template
+                  <select id="feeding-template-select" aria-label="Infant feeding label template">
+                    <option value="61503" selected>Avery 61503 - 2&quot; x 3-3/4&quot; Removable bottle labels</option>
+                    <option value="94069">Avery 94069 - 2&quot; x 2&quot; Square waterproof label format</option>
+                  </select>
+                </label>
 
-              <fieldset class="ready-fieldset feeding-output-fieldset feeding-label-type-fieldset">
-                <legend>Label type</legend>
-                <div class="ready-checkbox-grid">
-                  <label class="ready-checkbox-card"><input type="radio" name="feeding-sheet-type" value="formula" checked /> Formula Labels</label>
-                  <label class="ready-checkbox-card"><input type="radio" name="feeding-sheet-type" value="breastmilk" /> Breast Milk Labels</label>
-                </div>
-              </fieldset>
+                <fieldset class="ready-fieldset feeding-output-fieldset feeding-label-type-fieldset">
+                  <legend>Label type</legend>
+                  <div class="ready-checkbox-grid feeding-inline-options">
+                    <label class="ready-checkbox-card"><input type="radio" name="feeding-sheet-type" value="formula" checked /> Formula Labels</label>
+                    <label class="ready-checkbox-card"><input type="radio" name="feeding-sheet-type" value="breastmilk" /> Breast Milk Labels</label>
+                  </div>
+                </fieldset>
 
-              <fieldset class="ready-fieldset feeding-output-fieldset">
-                <legend>Photo option</legend>
-                <div class="ready-checkbox-grid">
-                  <label class="ready-checkbox-card"><input id="feeding-sheet-photo-toggle" type="checkbox" /> Include Photo</label>
-                </div>
-              </fieldset>
+                <fieldset class="ready-fieldset feeding-output-fieldset">
+                  <legend>Photo option</legend>
+                  <div class="ready-checkbox-grid feeding-inline-options">
+                    <label class="ready-checkbox-card"><input id="feeding-sheet-photo-toggle" type="checkbox" /> Include Photo</label>
+                  </div>
+                </fieldset>
+              </div>
 
               <section class="feeding-sheet-preview" aria-labelledby="feeding-sheet-preview-title">
                 <div class="print-sheet-heading">
@@ -262,7 +272,7 @@
                   <div class="feeding-sheet-page" data-feeding-sheet-preview></div>
                 </div>
                 <aside class="printing-instructions avery-printing-footer" aria-labelledby="feeding-printing-instructions-title">
-                  <h4 id="feeding-printing-instructions-title">Printing Instructions</h4>
+                  <h4 id="feeding-printing-instructions-title">Avery Label Printing Instructions</h4>
                   <div class="printing-instructions-grid">
                     <div>
                       <h5>Printer Settings</h5>
@@ -375,6 +385,19 @@
                   <div class="health-sheet-pages" data-health-sheet-preview></div>
                 </div>
               </section>
+              <aside class="printing-instructions avery-printing-footer" aria-labelledby="health-printing-instructions-title">
+                <h4 id="health-printing-instructions-title">Avery Label Printing Instructions</h4>
+                <div class="printing-instructions-grid">
+                  <div>
+                    <h5>Printer Settings</h5>
+                    <p>Use the manual feed tray for your printer, or place a short stack of paper beneath the Avery product in the regular print tray. Be sure the paper size is set correctly and that you are printing 100% or Actual size. You can find additional troubleshooting tips <a href="https://www.avery.com/help/article/recommended-printer-settings-specific-printer-settings?utm_source=vanity&utm_campaign=printingtips" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                  </div>
+                  <div>
+                    <h5>Printer Feed Tips</h5>
+                    <p>Change your printer settings in the Print window under Properties to Labels or Heavyweight or Cardstock and be sure the alignment guides are snug against the product. This will help your printer feed more accurately.</p>
+                  </div>
+                </div>
+              </aside>
               <p class="template-reminder ready-page-footer">Always double check that your labels meet the appropriate licensing standards before putting into use.</p>
             </section>
 
@@ -460,6 +483,19 @@
                   </div>
                 </section>
               </div>
+              <aside class="printing-instructions avery-printing-footer" aria-labelledby="picture-printing-instructions-title">
+                <h4 id="picture-printing-instructions-title">Avery Label Printing Instructions</h4>
+                <div class="printing-instructions-grid">
+                  <div>
+                    <h5>Printer Settings</h5>
+                    <p>Use the manual feed tray for your printer, or place a short stack of paper beneath the Avery product in the regular print tray. Be sure the paper size is set correctly and that you are printing 100% or Actual size. You can find additional troubleshooting tips <a href="https://www.avery.com/help/article/recommended-printer-settings-specific-printer-settings?utm_source=vanity&utm_campaign=printingtips" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                  </div>
+                  <div>
+                    <h5>Printer Feed Tips</h5>
+                    <p>Change your printer settings in the Print window under Properties to Labels or Heavyweight or Cardstock and be sure the alignment guides are snug against the product. This will help your printer feed more accurately.</p>
+                  </div>
+                </div>
+              </aside>
               <p class="template-reminder ready-page-footer">Always double check that your labels meet the appropriate licensing standards before putting into use.</p>
             </section>
 
@@ -468,7 +504,7 @@
                 <div>
                   <p class="ready-eyebrow">Bulk Upload</p>
                   <h2 id="bulk-upload-title">Upload roster</h2>
-                  <p class="ready-panel-note">Supported columns: First Name and Last Name.</p>
+                  <p class="ready-panel-note">Choose a roster format, then upload a .csv or .xlsx file.</p>
                 </div>
 
                 <label class="bulk-dropzone">
@@ -477,7 +513,15 @@
                   <small data-bulk-file-status>No roster selected</small>
                 </label>
 
-                <button id="download-bulk-template-button" class="download-pdf-button" type="button">Download sample template</button>
+                <fieldset class="ready-fieldset bulk-roster-format-fieldset">
+                  <legend>Roster format</legend>
+                  <div class="ready-checkbox-grid bulk-roster-format-options">
+                    <label class="ready-checkbox-card"><input type="radio" name="bulk-roster-format" value="name-only" checked /> Student name only</label>
+                    <label class="ready-checkbox-card"><input type="radio" name="bulk-roster-format" value="name-classroom" /> Student name and classroom</label>
+                  </div>
+                </fieldset>
+
+                <button id="download-bulk-template-button" class="download-pdf-button" type="button">Download selected sample template</button>
               </section>
 
               <div class="bulk-upload-layout">
@@ -510,14 +554,28 @@
                   <div class="bulk-cell-preview-shell">
                     <article class="bulk-pdf-label bulk-water-label bulk-cell-preview" data-bulk-cell-preview>
                       <h4 data-bulk-preview-name>Student Name</h4>
+                      <small data-bulk-preview-classroom hidden>Classroom</small>
                       <p data-bulk-preview-title>Water</p>
                     </article>
                   </div>
                 </section>
               </div>
 
+              <div class="bulk-table-wrap" aria-label="Uploaded roster preview">
+                <table class="bulk-roster-table">
+                  <thead>
+                    <tr>
+                      <th>Select</th>
+                      <th>Student Name</th>
+                      <th>Classroom</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bulk-roster-body"></tbody>
+                </table>
+              </div>
+
               <aside class="printing-instructions avery-printing-footer" aria-labelledby="bulk-printing-instructions-title">
-                <h4 id="bulk-printing-instructions-title">Printing Instructions</h4>
+                <h4 id="bulk-printing-instructions-title">Avery Label Printing Instructions</h4>
                 <div class="printing-instructions-grid">
                   <div>
                     <h5>Printer Settings</h5>
@@ -695,8 +753,10 @@
       const bulkFileStatus = document.querySelector("[data-bulk-file-status]");
       const bulkDownloadPdfButton = document.querySelector("#bulk-download-pdf-button");
       const bulkTemplateButton = document.querySelector("#download-bulk-template-button");
+      const bulkRosterFormatInputs = Array.from(document.querySelectorAll("[name='bulk-roster-format']"));
       const bulkCustomLabelInput = document.querySelector("#bulk-custom-label-input");
       const bulkPreviewName = document.querySelector("[data-bulk-preview-name]");
+      const bulkPreviewClassroom = document.querySelector("[data-bulk-preview-classroom]");
       const bulkPreviewTitle = document.querySelector("[data-bulk-preview-title]");
       const healthTemplateSelect = document.querySelector("#health-template-select");
       const healthPhotoToggle = document.querySelector("#health-photo-toggle");
@@ -3937,6 +3997,7 @@
         return labelType;
       };
 
+      const shouldIncludeBulkClassroom = () => document.querySelector("[name='bulk-roster-format']:checked")?.value === "name-classroom";
       const getSelectedBulkChildren = () => bulkRoster.filter((child) => child.selected);
 
       const makeWelcomeChildSection = (child) => {
@@ -4230,11 +4291,17 @@
       const updateBulkCellPreview = () => {
         const labelType = getSelectedBulkLabelType();
         const labelTitle = getBulkLabelTitle(labelType);
-        const previewChildName = bulkRoster.find((child) => child.selected)?.childName || "Student Name";
+        const previewChild = bulkRoster.find((child) => child.selected);
+        const previewChildName = previewChild?.childName || "Student Name";
+        const previewClassroom = shouldIncludeBulkClassroom() ? previewChild?.classroom || "Classroom" : "";
 
         if (bulkPreviewName) {
           bulkPreviewName.textContent = previewChildName;
           fitBulkNameElement(bulkPreviewName);
+        }
+        if (bulkPreviewClassroom) {
+          bulkPreviewClassroom.textContent = previewClassroom;
+          bulkPreviewClassroom.hidden = !previewClassroom;
         }
         if (bulkPreviewTitle) {
           bulkPreviewTitle.textContent = labelTitle || "\u00a0";
@@ -4286,13 +4353,18 @@
       };
 
       const downloadBulkSampleTemplate = () => {
-        const csv = "First Name,Last Name,Child Name\nMaya,Johnson,\nAlexander,Thompson,\n,,Charlotte Elizabeth\n";
+        const includeClassroom = shouldIncludeBulkClassroom();
+        const csv = includeClassroom
+          ? "First Name,Last Name,Child Name,Classroom\nMaya,Johnson,,Infant Room A\nAlexander,Thompson,,Toddler Room B\n,,Charlotte Elizabeth,Preschool Room C\n"
+          : "First Name,Last Name,Child Name\nMaya,Johnson,\nAlexander,Thompson,\n,,Charlotte Elizabeth\n";
         const blob = new Blob([csv], { type: "text/csv" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
 
         link.href = url;
-        link.download = "carecheck-ready-bulk-upload-template.csv";
+        link.download = includeClassroom
+          ? "carecheck-ready-bulk-upload-template-with-classroom.csv"
+          : "carecheck-ready-bulk-upload-template.csv";
         link.click();
         URL.revokeObjectURL(url);
       };
@@ -4301,6 +4373,7 @@
         const label = document.createElement("article");
         const title = document.createElement("p");
         const name = document.createElement("h4");
+        const classroom = document.createElement("small");
         const labelTitle = getBulkLabelTitle(labelType);
 
         label.className = "bulk-pdf-label bulk-water-label";
@@ -4308,7 +4381,9 @@
         title.dataset.empty = labelTitle ? "false" : "true";
 
         name.textContent = child.childName;
-        label.append(name, title);
+        classroom.textContent = shouldIncludeBulkClassroom() && child.classroom ? child.classroom : "";
+        classroom.hidden = !classroom.textContent;
+        label.append(name, classroom, title);
 
         return label;
       };
@@ -4812,6 +4887,12 @@
       });
       document.querySelectorAll("[name='bulk-label-type']").forEach((radio) => {
         radio.addEventListener("change", updateBulkCellPreview);
+      });
+      bulkRosterFormatInputs.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          renderBulkRosterTable();
+          updateBulkCellPreview();
+        });
       });
       bulkCustomLabelInput?.addEventListener("focus", () => {
         const customLabelRadio = document.querySelector("[name='bulk-label-type'][value='Custom Label']");
