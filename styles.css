@@ -6259,6 +6259,12 @@ a {
 }
 
 @media (max-width: 720px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   .ready-app {
     width: min(100% - 16px, 1240px);
     padding-top: 12px;
@@ -6279,11 +6285,29 @@ a {
 
   .ready-profile-panel,
   .ready-product-panel {
+    width: 100%;
+    max-width: 100%;
     padding: 16px;
+    overflow: hidden;
   }
 
   .ready-profile-panel-compact {
     padding: 12px;
+  }
+
+  .ready-profile-fields {
+    gap: 12px;
+  }
+
+  .ready-profile-panel-compact .ready-photo-field {
+    grid-template-columns: 1fr;
+  }
+
+  .ready-profile-panel-compact .ready-photo-thumb {
+    grid-column: auto;
+    grid-row: auto;
+    width: 92px;
+    height: 92px;
   }
 
   .ready-checkbox-grid {
@@ -6309,6 +6333,11 @@ a {
     flex-direction: column;
   }
 
+  .print-sheet-heading,
+  .picture-sheet-heading {
+    gap: 10px;
+  }
+
   .ready-panel-heading h2 {
     font-size: clamp(1.55rem, 9vw, 2.1rem);
   }
@@ -6319,6 +6348,26 @@ a {
 
   .print-sheet-actions {
     justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .picture-sheet-preview .print-sheet-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .picture-sheet-preview .print-sheet-actions > span,
+  .picture-sheet-preview .print-sheet-actions .download-pdf-button:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .download-pdf-button,
+  .secondary-action {
+    min-width: 0;
+    width: 100%;
+    padding-inline: 14px;
+    white-space: normal;
   }
 
   .print-sheet-frame,
@@ -6327,10 +6376,88 @@ a {
   .picture-sheet-frame {
     max-width: 100%;
     overflow-x: auto;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .feeding-sheet-frame,
+  .health-sheet-frame,
+  .picture-sheet-frame {
+    justify-items: start;
+  }
+
+  .feeding-sheet-page,
+  .health-sheet-pages,
+  .picture-sheet-pages {
+    transform: scale(0.52);
+    transform-origin: top left;
+  }
+
+  .feeding-sheet-frame {
+    min-height: 470px;
+  }
+
+  .health-sheet-frame,
+  .picture-sheet-frame {
+    min-height: 500px;
   }
 
   .printing-instructions-grid {
     grid-template-columns: 1fr;
+  }
+
+  .health-controls-grid,
+  .health-template-card {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .health-template-card,
+  .health-allergy-card,
+  .health-food-card,
+  .health-medication-card {
+    grid-area: auto;
+  }
+
+  .health-section-heading {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+  }
+
+  .health-section-heading label {
+    justify-self: stretch;
+  }
+
+  .health-medication-row,
+  .health-antibiotic-row {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .health-medication-row span {
+    min-width: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .picture-label-controls,
+  .picture-sheet-preview,
+  .bulk-upload-card,
+  .health-control-card {
+    padding: 14px;
+  }
+
+  .picture-label-items {
+    max-height: 320px;
+  }
+
+  .picture-label-text-row {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .picture-label-text-row img {
+    width: 42px;
+    height: 42px;
   }
 
   .bulk-upload-layout,
@@ -6341,6 +6468,28 @@ a {
 
   .bulk-upload-header-card {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .bulk-dropzone {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .bulk-upload-header-card > .download-pdf-button {
+    justify-self: stretch;
+  }
+
+  .bulk-upload-layout {
+    gap: 14px;
+  }
+
+  .bulk-cell-preview-shell {
+    overflow: auto;
+  }
+
+  .bulk-roster-table {
+    min-width: 520px;
   }
 
   .bulk-actions {
@@ -6387,7 +6536,32 @@ a {
   }
 
   .community-preview-viewport {
+    --preview-scale: 0.22;
+    --preview-pad: 6px;
+    --preview-pad-total: 12px;
     margin-inline: auto;
+  }
+
+  .community-preview-viewport[data-community-preview="community-standard-cubby"] {
+    --preview-scale: 0.22;
+  }
+
+  .community-preview-viewport[data-community-preview="community-compact-cubby"] {
+    --preview-scale: 0.28;
+  }
+
+  .community-preview-viewport[data-community-preview="community-infant-cubby"] {
+    --preview-scale: 0.22;
+  }
+
+  .community-preview-viewport[data-community-preview="community-basket-label"] {
+    --preview-scale: 0.3;
+  }
+
+  .community-label-note {
+    width: 100%;
+    border-radius: 10px;
+    font-size: 0.7rem;
   }
 
   .classroom-label-card,
@@ -6441,6 +6615,15 @@ a {
 
   .ready-child-card dd {
     text-align: left;
+  }
+
+  .picture-sheet-frame {
+    min-height: 430px;
+  }
+
+  .picture-sheet-page.picture-pocket-chart,
+  .picture-sheet-page.picture-full-page-landscape {
+    width: 560px;
   }
 }
 
