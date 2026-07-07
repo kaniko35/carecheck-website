@@ -6,7 +6,7 @@
     <title>CareCheck Ready Labels&trade;</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260625-46" />
   </head>
   <body class="labels-app-body">
@@ -61,6 +61,26 @@
               Classroom
               <input id="classroom-input" type="text" value="Infant Room A" aria-label="Classroom" />
             </label>
+
+            <label>
+              Label Font
+              <select id="label-font-select" aria-label="Label font">
+                <option value="'Quicksand', Arial, sans-serif" selected>Quicksand</option>
+                <option value="'Montserrat', Arial, sans-serif">Montserrat</option>
+                <option value="'Poppins', Arial, sans-serif">Poppins</option>
+                <option value="'Nunito Sans', Arial, sans-serif">Nunito Sans</option>
+                <option value="'Lexend', Arial, sans-serif">Lexend</option>
+                <option value="Arial, Helvetica, sans-serif">Arial</option>
+                <option value="Calibri, Arial, sans-serif">Calibri</option>
+                <option value="'Comic Sans MS', 'Comic Sans', cursive">Comic Sans MS</option>
+                <option value="Helvetica, Arial, sans-serif">Helvetica</option>
+                <option value="'Times New Roman', Times, serif">Times New Roman</option>
+                <option value="'Courier New', Courier, monospace">Courier New</option>
+                <option value="'Chalkboard SE', 'Comic Sans MS', cursive">Chalkboard SE</option>
+                <option value="'Questrial', Arial, sans-serif">Questrial</option>
+                <option value="Georgia, serif">Georgia</option>
+              </select>
+            </label>
             </div>
 
           </section>
@@ -70,18 +90,19 @@
               <div class="ready-panel-heading">
                 <div>
                   <p class="ready-eyebrow">Classroom Labels</p>
-                  <h2>Classroom label previews</h2>
+                  <h2>Classroom labels</h2>
+                  <p class="ready-panel-note">Create classroom labels with the child photo, name, classroom, and selected label type.</p>
                 </div>
               </div>
 
               <section id="avery-labels" class="classroom-label-group" data-section="Avery Labels">
                 <div>
                   <h3>Avery Labels</h3>
-                  <p class="ready-panel-note">Use child photo, child name, classroom, and selected classroom label type.</p>
+                  <p class="ready-panel-note">Purchase compatible sheets directly from <a href="https://www.avery.com/" target="_blank" rel="noopener noreferrer">Avery</a>.</p>
                 </div>
 
                 <label>
-                  Avery Template
+                  Avery Template Label Size Options
                   <select id="avery-template-select" aria-label="Avery classroom template">
                     <option value="94207" selected>Avery 94207 - Small, 2&quot; x 4&quot;</option>
                     <option value="6874">Avery 6874 - Medium, 3&quot; x 3.75&quot;</option>
@@ -161,11 +182,13 @@
             </section>
 
             <section id="community-playthings-labels" class="ready-product-panel" data-ready-page data-section="Community Playthings Labels" hidden>
+              <div class="ready-panel-heading">
                 <div>
                   <p class="ready-eyebrow">Community Playthings Labels</p>
                   <h2>Community Playthings label previews</h2>
                   <p class="ready-panel-note">Simple insert labels use only child photo and child name.</p>
                 </div>
+              </div>
 
                 <fieldset class="ready-fieldset">
                   <legend>Community Playthings label types</legend>
@@ -197,12 +220,9 @@
                 <div>
                   <p class="ready-eyebrow">Infant Feeding Labels</p>
                   <h2>Formula and breast milk labels</h2>
+                  <p class="ready-panel-note">Print out the customized labels for parents.</p>
                 </div>
               </div>
-
-              <p class="ready-panel-note">
-                Full-sheet infant feeding labels with blank writing fields for daily classroom use.
-              </p>
 
               <label class="feeding-template-control">
                 Avery Template
@@ -387,9 +407,19 @@
                     Font
                     <select id="picture-font-select" aria-label="Picture label font">
                       <option value="'Quicksand', Arial, sans-serif" selected>Quicksand</option>
+                      <option value="'Montserrat', Arial, sans-serif">Montserrat</option>
+                      <option value="'Poppins', Arial, sans-serif">Poppins</option>
+                      <option value="'Nunito Sans', Arial, sans-serif">Nunito Sans</option>
+                      <option value="'Lexend', Arial, sans-serif">Lexend</option>
                       <option value="Arial, Helvetica, sans-serif">Arial</option>
-                      <option value="Georgia, serif">Georgia</option>
+                      <option value="Calibri, Arial, sans-serif">Calibri</option>
                       <option value="'Comic Sans MS', 'Comic Sans', cursive">Comic Sans MS</option>
+                      <option value="Helvetica, Arial, sans-serif">Helvetica</option>
+                      <option value="'Times New Roman', Times, serif">Times New Roman</option>
+                      <option value="'Courier New', Courier, monospace">Courier New</option>
+                      <option value="'Chalkboard SE', 'Comic Sans MS', cursive">Chalkboard SE</option>
+                      <option value="'Questrial', Arial, sans-serif">Questrial</option>
+                      <option value="Georgia, serif">Georgia</option>
                     </select>
                   </label>
                   <label>
@@ -628,9 +658,11 @@
         },
       };
 
+      const readyApp = document.querySelector(".ready-app");
       const childNameInput = document.querySelector("#child-name-input");
       const childDobInput = document.querySelector("#child-dob-input");
       const classroomInput = document.querySelector("#classroom-input");
+      const labelFontSelect = document.querySelector("#label-font-select");
       const childPhotoInput = document.querySelector("#child-photo-upload");
       const averyTemplateSelect = document.querySelector("#avery-template-select");
       const feedingTemplateSelect = document.querySelector("#feeding-template-select");
@@ -924,6 +956,11 @@
       };
 
       const getOptionalClassroom = () => classroomInput?.value.trim() || "";
+      const getSelectedLabelFontFamily = () => labelFontSelect?.value || "'Quicksand', Arial, sans-serif";
+      const applySelectedLabelFont = () => {
+        readyApp?.style.setProperty("--ready-label-font", getSelectedLabelFontFamily());
+        document.documentElement.style.setProperty("--ready-label-font", getSelectedLabelFontFamily());
+      };
 
       const updateOptionalClassroomElement = (element, classroom) => {
         if (!element) {
@@ -1685,19 +1722,20 @@
         context.fillStyle = "#09251f";
         context.textAlign = photoOnSide ? "left" : "center";
         context.textBaseline = "top";
-        context.font = `700 ${nameSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+        const labelFontFamily = getSelectedLabelFontFamily();
+        context.font = `700 ${nameSize}px ${labelFontFamily}`;
         context.fillText(childNameInput?.value.trim() || "Child Name", photoOnSide ? copyX : box.x + box.width / 2, copyY, copyWidth);
-        context.font = `700 ${metaSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+        context.font = `700 ${metaSize}px ${labelFontFamily}`;
         context.fillText([formatDob(childDobInput?.value), getOptionalClassroom()].filter(Boolean).join(" - "), photoOnSide ? copyX : box.x + box.width / 2, copyY + nameSize + 3, copyWidth);
 
         const titleY = box.y + padding + headerHeight;
         context.fillStyle = accent;
-        context.font = `900 ${titleSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+        context.font = `900 ${titleSize}px ${labelFontFamily}`;
         context.textAlign = "center";
         context.fillText(String(labelData.title || "").toUpperCase(), box.x + box.width / 2, titleY);
 
         context.fillStyle = "#09251f";
-        context.font = `700 ${listSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+        context.font = `700 ${listSize}px ${labelFontFamily}`;
         const lineHeight = listSize * 1.18;
         let y = titleY + titleSize + 7;
         labelData.items.slice(0, 12).forEach((item) => {
@@ -2634,7 +2672,7 @@
         let lines = [];
 
         do {
-          context.font = `${weight} ${fontSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+          context.font = `${weight} ${fontSize}px ${getSelectedLabelFontFamily()}`;
           lines = wrapCanvasText(context, text, width);
           if (lines.length <= maxLines && lines.every((line) => context.measureText(line).width <= width)) {
             break;
@@ -2647,7 +2685,7 @@
         const totalHeight = visibleLines.length * lineStep;
         let cursorY = y - totalHeight / 2 + fontSize * 0.78;
 
-        context.font = `${weight} ${fontSize}px ${getComputedStyle(document.body).fontFamily || "Arial, sans-serif"}`;
+        context.font = `${weight} ${fontSize}px ${getSelectedLabelFontFamily()}`;
         context.textAlign = "center";
         context.textBaseline = "alphabetic";
         visibleLines.forEach((line) => {
@@ -4635,6 +4673,13 @@
         scheduleBottlePreviewUpdate();
         scheduleHealthPreviewUpdate();
       });
+      labelFontSelect?.addEventListener("change", () => {
+        applySelectedLabelFont();
+        scheduleAveryPreviewUpdate();
+        scheduleCommunityPreviewUpdate();
+        scheduleBottlePreviewUpdate();
+        scheduleHealthPreviewUpdate();
+      });
       document.querySelectorAll("#avery-labels .ready-checkbox-card input").forEach((checkbox) => {
         checkbox.addEventListener("change", renderPrintSheetPreview);
       });
@@ -4774,6 +4819,7 @@
       downloadWelcomeSignButton?.addEventListener("click", downloadSingleWelcomeSignPdf);
       downloadCommunityPdfButton?.addEventListener("click", downloadCommunityPlaythingsPdf);
 
+      applySelectedLabelFont();
       renderPrintSheetPreview();
       updateClassroomPdfRenderStatus();
       renderBulkRosterTable();
