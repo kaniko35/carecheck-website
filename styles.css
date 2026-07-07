@@ -2589,7 +2589,7 @@ a {
   gap: 24px;
   background: #ffffff;
   color: var(--ink);
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   pointer-events: none;
 }
 
@@ -2603,7 +2603,7 @@ a {
   height: 792px;
   padding: 46px 12px;
   background: #ffffff;
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
 }
 
 .bulk-pdf-slot {
@@ -2736,7 +2736,7 @@ a {
   padding-top: 24px;
   background: #ffffff;
   color: var(--ink);
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   opacity: 0;
   pointer-events: none;
 }
@@ -2749,7 +2749,7 @@ a {
   width: 612px;
   height: 792px;
   background: #ffffff;
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
 }
 
 .feeding-sheet-61503 {
@@ -3611,7 +3611,7 @@ a {
   gap: 24px;
   background: #ffffff;
   color: var(--ink);
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   pointer-events: none;
 }
 
@@ -3624,7 +3624,7 @@ a {
   gap: 24px;
   background: #ffffff;
   color: var(--ink);
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   pointer-events: none;
 }
 
@@ -3642,7 +3642,7 @@ a {
   overflow: visible;
   background: #ffffff;
   color: var(--ink);
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
 }
 
 .fixed-label-boundary {
@@ -3699,7 +3699,7 @@ a {
   box-sizing: border-box;
   margin: 0;
   overflow: visible;
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   letter-spacing: 0;
 }
 
@@ -3891,7 +3891,7 @@ a {
   overflow: hidden;
   padding: 0;
   background: #ffffff;
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   text-align: center;
 }
 
@@ -3977,7 +3977,7 @@ a {
 .welcome-template-copy > p:first-child {
   max-width: 100%;
   color: #000000;
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   font-size: 32px;
   font-weight: 700;
   line-height: 1.05;
@@ -3989,7 +3989,7 @@ a {
 .welcome-template-copy p:not(:first-child) {
   max-width: 100%;
   color: #000000;
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   font-size: 22px;
   font-weight: 400;
   line-height: 1.1;
@@ -4097,6 +4097,7 @@ a {
   aspect-ratio: 8.5 / 11;
   border: 1px solid #d4dad7;
   background: var(--white);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   box-shadow: 0 18px 36px rgba(16, 90, 49, 0.12);
   break-after: page;
   page-break-after: always;
@@ -5423,7 +5424,7 @@ a {
   gap: 24px;
   background: #ffffff;
   color: var(--ink);
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   pointer-events: none;
 }
 
@@ -5431,7 +5432,7 @@ a {
   position: relative;
   overflow: visible;
   background: #ffffff;
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
 }
 
 .community-pdf-label {
@@ -5443,7 +5444,7 @@ a {
   overflow: visible;
   background: #ffffff;
   color: var(--ink);
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
 }
 
 .community-pdf-arch {
@@ -5492,7 +5493,7 @@ a {
   border-radius: 8px;
   background: #eef1ef;
   color: #69766f;
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   font-size: 11px;
   font-weight: 700;
 }
@@ -5560,7 +5561,7 @@ a {
   width: 100%;
   overflow: visible;
   color: var(--ink);
-  font-family: var(--carecheck-ready-font);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
   font-weight: 700;
   line-height: 1.08;
   text-align: inherit;

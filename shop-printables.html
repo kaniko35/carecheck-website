@@ -957,9 +957,18 @@
 
       const getOptionalClassroom = () => classroomInput?.value.trim() || "";
       const getSelectedLabelFontFamily = () => labelFontSelect?.value || "'Quicksand', Arial, sans-serif";
+      const applyFontPreviewSelectStyles = (select) => {
+        if (!select) return;
+        select.style.fontFamily = select.value || "'Quicksand', Arial, sans-serif";
+        Array.from(select.options || []).forEach((option) => {
+          option.style.fontFamily = option.value || "'Quicksand', Arial, sans-serif";
+          option.style.fontWeight = "700";
+        });
+      };
       const applySelectedLabelFont = () => {
         readyApp?.style.setProperty("--ready-label-font", getSelectedLabelFontFamily());
         document.documentElement.style.setProperty("--ready-label-font", getSelectedLabelFontFamily());
+        applyFontPreviewSelectStyles(labelFontSelect);
       };
 
       const updateOptionalClassroomElement = (element, classroom) => {
@@ -1927,6 +1936,9 @@
       };
       const shouldShowPicturePhotoPosition = () => ["long125x8", "businessCard"].includes(pictureTemplateSelect?.value || "");
       const getPictureFontFamily = () => pictureFontSelect?.value || "'Quicksand', Arial, sans-serif";
+      const applyPictureFontSelectPreview = () => {
+        applyFontPreviewSelectStyles(pictureFontSelect);
+      };
       const getPictureFontSize = () => {
         const value = Number.parseInt(pictureFontSizeInput?.value || "24", 10);
         return Number.isFinite(value) ? Math.max(12, Math.min(value, 42)) : 24;
@@ -4713,7 +4725,10 @@
         activePicturePageIndex = 0;
         renderPictureSheetPreview();
       });
-      pictureFontSelect?.addEventListener("change", renderPictureSheetPreview);
+      pictureFontSelect?.addEventListener("change", () => {
+        applyPictureFontSelectPreview();
+        renderPictureSheetPreview();
+      });
       pictureFontSizeInput?.addEventListener("input", renderPictureSheetPreview);
       picturePrevPageButton?.addEventListener("click", () => {
         activePicturePageIndex = Math.max(0, activePicturePageIndex - 1);
@@ -4820,6 +4835,7 @@
       downloadCommunityPdfButton?.addEventListener("click", downloadCommunityPlaythingsPdf);
 
       applySelectedLabelFont();
+      applyPictureFontSelectPreview();
       renderPrintSheetPreview();
       updateClassroomPdfRenderStatus();
       renderBulkRosterTable();
