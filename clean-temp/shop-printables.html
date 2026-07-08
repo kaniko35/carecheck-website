@@ -22,9 +22,9 @@
           </div>
           <nav class="ready-section-tabs" aria-label="CareCheck Ready sections">
             <button class="is-active" type="button" data-ready-tab="classroom-labels">Classroom Labels</button>
-            <button type="button" data-ready-tab="community-playthings-labels">Community Playthings</button>
             <button type="button" data-ready-tab="infant-feeding-labels">Infant Feeding</button>
             <button type="button" data-ready-tab="health-labels">Allergies, Food & Medication</button>
+            <button type="button" data-ready-tab="community-playthings-labels">Community Playthings</button>
             <button type="button" data-ready-tab="picture-labels">Picture Labels</button>
             <button type="button" data-ready-tab="bulk-upload">Bulk Upload</button>
           </nav>
@@ -96,27 +96,25 @@
               </div>
 
               <section id="avery-labels" class="classroom-label-group" data-section="Avery Labels">
-                <div>
-                  <h3>Avery Labels</h3>
-                  <p class="ready-panel-note">Purchase compatible sheets directly from <a href="https://www.avery.com/" target="_blank" rel="noopener noreferrer">Avery</a>.</p>
-                </div>
-
                 <aside class="classroom-print-options" aria-label="Classroom label printing options">
                   <h4>Printing options</h4>
                   <ul>
-                    <li><strong>Print on Avery label sheets.</strong><span>Use the selected Avery template for peel-and-stick labels.</span></li>
+                    <li><strong>Print on Avery label sheets.</strong><span>Use the selected Avery template for peel-and-stick labels. Purchase labels directly from <a href="https://www.avery.com/" target="_blank" rel="noopener noreferrer">Avery</a>.</span></li>
                     <li><strong>Print and cut out.</strong><span>Use regular paper or cardstock, then place labels in a <a href="https://www.amazon.com/Self-Adhesive-Business-Pockets-Organizing-Protecting/dp/B084NSYS1B/ref=sr_1_8?crid=1UBJVC0YPWGE6&dib=eyJ2IjoiMSJ9.CVZysiP5b7f2TH1Qv_PdWhMSNvgfAKOZlDAtwDy2IBfhPN5GXO9BbT9mrLmqdTJ42-MBy3jRkj0UL2O3tGDrF5b_GXejFtyxevNzJlkpbBI8dYn9UerIyUC2xA5sEXtSJQmcFpri57_ANfTvRaWV207JNgQ9go9Gdu9fuDhdmJ2vByHQjxyeB_ncJW5ciWJQORU1qzTIzEYV4pe5wnm-oImLSUanpF6ZfKmA6LxonJBSgxwK15gfiGq2Glir3ARtuL3duZnvErEQAFJW8ah6dkWmWHCavPAc79iBZweXGBA.QRkJicInKuij2dZ-KXtsrfPF5aPdC0mWCQl7dPYc340&dib_tag=se&keywords=clear%2Bplastic%2Bcard%2Bholder%2Bsleeve%2Badhesive&qid=1782438934&sprefix=clear%2Bplastic%2Bcard%2Bholder%2Bsleeve%2Badhesive%2Caps%2C255&sr=8-8&th=1" target="_blank" rel="noopener noreferrer">card holder</a>.</span></li>
                   </ul>
                 </aside>
 
-                <label>
-                  Avery Template Label Size Options
-                  <select id="avery-template-select" aria-label="Avery classroom template">
-                    <option value="94207" selected>Avery 94207 - Small, 2&quot; x 4&quot;</option>
-                    <option value="6874">Avery 6874 - Medium, 3&quot; x 3.75&quot;</option>
-                    <option value="94256">Avery 94256 - Large, 5&quot; x 3.5&quot;</option>
-                  </select>
-                </label>
+                <div class="classroom-template-row">
+                  <label class="classroom-template-select-control">
+                    Avery Template Label Size Options
+                    <select id="avery-template-select" aria-label="Avery classroom template">
+                      <option value="94207" selected>Avery 94207 - Small, 2&quot; x 4&quot;</option>
+                      <option value="6874">Avery 6874 - Medium, 3&quot; x 3.75&quot;</option>
+                      <option value="94256">Avery 94256 - Large, 5&quot; x 3.5&quot;</option>
+                    </select>
+                  </label>
+                  <label class="ready-checkbox-card classroom-photo-option"><input id="welcome-sign-photo-toggle" type="checkbox" checked /> Include Photo</label>
+                </div>
 
                 <fieldset class="ready-fieldset">
                   <legend>Classroom label types</legend>
@@ -130,14 +128,22 @@
                     <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Backpack" /> Backpack</label>
                   </div>
                   <div class="custom-label-type-control">
-                    <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 1</label>
-                    <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 1" />
-                    <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 2</label>
-                    <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 2" />
-                    <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 3</label>
-                    <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 3" />
-                    <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 4</label>
-                    <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 4" />
+                    <div class="custom-label-option">
+                      <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 1</label>
+                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 1" />
+                    </div>
+                    <div class="custom-label-option">
+                      <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 2</label>
+                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 2" />
+                    </div>
+                    <div class="custom-label-option">
+                      <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 3</label>
+                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 3" />
+                    </div>
+                    <div class="custom-label-option">
+                      <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 4</label>
+                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 4" />
+                    </div>
                   </div>
                 </fieldset>
 
@@ -145,7 +151,6 @@
                   <legend>Generated outputs</legend>
                   <div class="ready-checkbox-grid">
                     <label class="ready-checkbox-card welcome-sign-checkbox"><input id="welcome-sign-single-toggle" type="checkbox" /> Welcome Sign PDF</label>
-                    <label class="ready-checkbox-card"><input id="welcome-sign-photo-toggle" type="checkbox" checked /> Include Photo</label>
                   </div>
                 </fieldset>
 
@@ -189,7 +194,7 @@
               <div class="ready-panel-heading">
                 <div>
                   <p class="ready-eyebrow">Community Playthings Labels</p>
-                  <h2>Community Playthings label previews</h2>
+                  <h2>Community Playthings labels</h2>
                   <p class="ready-panel-note">Simple insert labels use only child photo and child name.</p>
                 </div>
               </div>
@@ -288,7 +293,7 @@
               <div class="ready-panel-heading">
                 <div>
                   <p class="ready-eyebrow">Allergies, Food Preferences and Medication</p>
-                  <h2>Student health label previews</h2>
+                  <h2>Student health labels</h2>
                   <p class="ready-panel-note">Print allergy, food preference, and medication labels from the current child profile.</p>
                 </div>
               </div>
@@ -345,22 +350,22 @@
 
                 <section class="health-control-card health-medication-card">
                   <div class="health-section-heading">
-                    <h3>Medication</h3>
+                    <h3>Medication <span>Select expiration date.</span></h3>
                     <label>Quantity <input id="health-medication-quantity" type="number" min="0" max="30" value="1" /></label>
                   </div>
                   <div class="health-medication-grid">
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Albuterol" /> Albuterol</span><input type="text" data-health-expiration-for="Albuterol" placeholder="Expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="EPI" /> EPI</span><input type="text" data-health-expiration-for="EPI" placeholder="Expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="AviQ" /> AviQ</span><input type="text" data-health-expiration-for="AviQ" placeholder="Expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Benadryl" /> Benadryl</span><input type="text" data-health-expiration-for="Benadryl" placeholder="Expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Zyrtec" /> Zyrtec</span><input type="text" data-health-expiration-for="Zyrtec" placeholder="Expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Tylenol" /> Tylenol</span><input type="text" data-health-expiration-for="Tylenol" placeholder="Expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Ibuprofen" /> Ibuprofen</span><input type="text" data-health-expiration-for="Ibuprofen" placeholder="Expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Prescription Lotion" /> Prescription Lotion</span><input type="text" data-health-expiration-for="Prescription Lotion" placeholder="Expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Albuterol" /> Albuterol</span><input type="date" data-health-expiration-for="Albuterol" aria-label="Albuterol expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="EPI" /> EPI</span><input type="date" data-health-expiration-for="EPI" aria-label="EPI expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="AviQ" /> AviQ</span><input type="date" data-health-expiration-for="AviQ" aria-label="AviQ expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Benadryl" /> Benadryl</span><input type="date" data-health-expiration-for="Benadryl" aria-label="Benadryl expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Zyrtec" /> Zyrtec</span><input type="date" data-health-expiration-for="Zyrtec" aria-label="Zyrtec expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Tylenol" /> Tylenol</span><input type="date" data-health-expiration-for="Tylenol" aria-label="Tylenol expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Ibuprofen" /> Ibuprofen</span><input type="date" data-health-expiration-for="Ibuprofen" aria-label="Ibuprofen expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Prescription Lotion" /> Prescription Lotion</span><input type="date" data-health-expiration-for="Prescription Lotion" aria-label="Prescription lotion expiration date" /></label>
                     <label class="health-medication-row health-antibiotic-row">
                       <span><input type="checkbox" data-health-medication="Antibiotics" /> Antibiotics</span>
                       <input id="health-antibiotic-name" type="text" placeholder="Antibiotic name" aria-label="Antibiotic name" />
-                      <input type="text" data-health-expiration-for="Antibiotics" placeholder="Expiration date" />
+                      <input type="date" data-health-expiration-for="Antibiotics" aria-label="Antibiotics expiration date" />
                     </label>
                   </div>
                 </section>
@@ -1591,11 +1596,24 @@
         return [...selected, ...custom];
       };
 
+      const formatHealthExpirationDate = (value) => {
+        if (!value) {
+          return "";
+        }
+
+        const [year, month, day] = value.split("-");
+        if (year && month && day) {
+          return `${month}/${day}/${year}`;
+        }
+
+        return value;
+      };
+
       const getSelectedHealthMedications = () => Array.from(document.querySelectorAll("[data-health-medication]"))
         .filter((input) => input.checked)
         .map((input) => {
           const medication = input.dataset.healthMedication;
-          const expiration = document.querySelector(`[data-health-expiration-for="${medication}"]`)?.value.trim() || "";
+          const expiration = formatHealthExpirationDate(document.querySelector(`[data-health-expiration-for="${medication}"]`)?.value.trim() || "");
           const antibioticName = medication === "Antibiotics" ? healthAntibioticNameInput?.value.trim() : "";
           const name = antibioticName ? `Antibiotic: ${antibioticName}` : medication;
 
@@ -1699,8 +1717,29 @@
           const isSmall = Boolean(name.closest(".sheet-94207"));
           const hasPhoto = Boolean(name.closest(".has-photo"));
           const hasManyItems = Boolean(name.closest(".has-many-items"));
-          const max = isLarge ? (hasPhoto ? 18 : 22) : isMedium ? (hasPhoto ? 15 : 20) : (hasPhoto && hasManyItems && isSmall ? 16 : hasPhoto ? 20 : 23);
-          printRenderer.fitText(name, max, 8, { allowWrap: false });
+          const max = isLarge
+            ? (hasPhoto ? 24 : hasManyItems ? 28 : 34)
+            : isMedium
+              ? (hasPhoto ? 20 : hasManyItems ? 22 : 28)
+              : (hasManyItems ? 14 : hasPhoto ? 16 : 24);
+          printRenderer.fitText(name, max, isSmall && hasManyItems ? 6 : 8, { allowWrap: false });
+        });
+        root.querySelectorAll(".health-label small").forEach((meta) => {
+          const isLarge = Boolean(meta.closest(".sheet-94256"));
+          const isMedium = Boolean(meta.closest(".sheet-6874"));
+          const isSmall = Boolean(meta.closest(".sheet-94207"));
+          const hasManyItems = Boolean(meta.closest(".has-many-items"));
+          const max = isLarge ? (hasManyItems ? 11 : 13) : isMedium ? (hasManyItems ? 9 : 11) : (hasManyItems ? 6.5 : 8);
+          printRenderer.fitText(meta, max, isSmall && hasManyItems ? 4.5 : 5.5, { allowWrap: false });
+        });
+        root.querySelectorAll(".health-label-title").forEach((title) => {
+          const isLarge = Boolean(title.closest(".sheet-94256"));
+          const isMedium = Boolean(title.closest(".sheet-6874"));
+          const isSmall = Boolean(title.closest(".sheet-94207"));
+          const hasPhoto = Boolean(title.closest(".has-photo"));
+          const hasManyItems = Boolean(title.closest(".has-many-items"));
+          const max = isLarge ? (hasPhoto ? 14 : hasManyItems ? 16 : 20) : isMedium ? (hasPhoto ? 12 : hasManyItems ? 13 : 16) : (hasManyItems ? 7.2 : hasPhoto ? 9.5 : 12);
+          printRenderer.fitText(title, max, isSmall && hasManyItems ? 4.8 : 6, { allowWrap: false });
         });
         root.querySelectorAll(".health-label-list").forEach((list) => {
           const isLarge = Boolean(list.closest(".sheet-94256"));
@@ -1708,8 +1747,8 @@
           const isSmall = Boolean(list.closest(".sheet-94207"));
           const hasPhoto = Boolean(list.closest(".has-photo"));
           const hasManyItems = Boolean(list.closest(".has-many-items"));
-          const max = isLarge ? (hasPhoto ? 10.5 : 11.5) : isMedium ? (hasPhoto ? 9.5 : 10) : (hasPhoto && hasManyItems && isSmall ? 8.8 : 9.5);
-          const min = isLarge ? 6 : isMedium ? 6 : 5.8;
+          const max = isLarge ? (hasPhoto ? 16 : hasManyItems ? 18 : 22) : isMedium ? (hasPhoto ? 13.5 : hasManyItems ? 14.5 : 18) : (hasManyItems ? 7.8 : hasPhoto ? 9.2 : 12.5);
+          const min = isLarge ? 6.5 : isMedium ? 5.8 : 4.2;
           list.style.width = "100%";
           list.style.fontSize = `${max}px`;
           let size = max;
@@ -1725,8 +1764,8 @@
           }
 
           let size = Number.parseFloat(getComputedStyle(list).fontSize) || 9;
-          const min = label.closest(".sheet-6874, .sheet-94256") ? 6.5 : 7;
-          while (size > min && (label.scrollHeight > label.clientHeight || label.scrollWidth > label.clientWidth)) {
+          const min = label.closest(".sheet-6874, .sheet-94256") ? 5.5 : 4.2;
+          while (size > min && label.scrollHeight > label.clientHeight) {
             size -= 0.5;
             list.style.fontSize = `${size}px`;
           }
@@ -1881,11 +1920,20 @@
         }
 
         const outputTemplate = getHealthOutputTemplate();
-        const sheetPages = getHealthSheetPages();
-        const renderedPages = [];
+        renderHealthSheetPreview();
+        await document.fonts?.ready;
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 
-        for (const pageLabels of sheetPages) {
-          renderedPages.push(await renderHealthPageToCanvas(pageLabels, outputTemplate));
+        const renderedPages = [];
+        const pages = Array.from(healthSheetPreview?.querySelectorAll("[data-health-sheet-page]") || []);
+
+        for (const page of pages) {
+          const renderedPage = await renderPreviewElementToJpeg(page);
+          renderedPages.push({
+            ...renderedPage,
+            pageWidth: outputTemplate.pageWidth,
+            pageHeight: outputTemplate.pageHeight,
+          });
         }
 
         return buildImagePagesPdf(renderedPages);
@@ -2224,7 +2272,8 @@
           }
 
           photo.dataset.dragPhotoPosition = "";
-          if (!photo.querySelector(".picture-photo-position-control")) {
+          label.classList.add("picture-label-has-position-control");
+          if (!label.querySelector(".picture-photo-position-control")) {
             const overlay = document.createElement("div");
             const range = document.createElement("input");
 
@@ -2240,7 +2289,7 @@
               image.style.objectPosition = `50% ${item.photoY}%`;
             });
             overlay.append(range);
-            photo.append(overlay);
+            photo.after(overlay);
           }
 
           photo.addEventListener("pointerdown", (event) => {

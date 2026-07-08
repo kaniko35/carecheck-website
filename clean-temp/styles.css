@@ -2015,12 +2015,13 @@ a {
   display: flex !important;
   align-items: center;
   gap: 9px !important;
-  min-height: 44px;
-  padding: 10px 12px;
+  min-height: 38px;
+  padding: 8px 10px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 10px;
   background: #fbfdfc;
   color: var(--ink);
+  font-size: 0.92rem;
   font-weight: 900;
 }
 
@@ -2051,20 +2052,47 @@ a {
 
 .custom-label-type-control {
   display: grid;
-  grid-template-columns: minmax(128px, auto) minmax(180px, 1fr);
-  gap: 8px 10px;
-  align-items: center;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 10px;
   margin-top: 12px;
-  max-width: 620px;
+  max-width: 920px;
+}
+
+.custom-label-option {
+  display: grid;
+  grid-template-columns: minmax(124px, auto) minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
 }
 
 .custom-label-type-control > input {
   min-height: 42px;
 }
 
+.custom-label-option > input {
+  min-height: 38px;
+}
+
 .custom-label-checkbox {
-  width: fit-content;
-  min-height: 40px;
+  width: 100%;
+  min-height: 38px;
+}
+
+.classroom-template-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 460px) minmax(160px, max-content);
+  gap: 14px;
+  align-items: end;
+}
+
+.classroom-template-select-control {
+  min-width: 0;
+}
+
+.classroom-photo-option {
+  min-height: 44px;
+  align-self: end;
 }
 
 .classroom-label-grid {
@@ -4433,9 +4461,10 @@ a {
 
 .health-template-card {
   grid-area: template;
-  grid-template-columns: minmax(0, 1fr) minmax(180px, max-content);
+  grid-template-columns: minmax(220px, 460px) minmax(160px, max-content);
   align-items: end;
-  gap: 18px;
+  justify-content: start;
+  gap: 14px;
 }
 
 .health-template-card h3 {
@@ -4447,7 +4476,7 @@ a {
 }
 
 .health-template-card .ready-checkbox-card {
-  min-height: 58px;
+  min-height: 40px;
   align-self: end;
 }
 
@@ -4471,12 +4500,20 @@ a {
   line-height: 1.1;
 }
 
+.health-section-heading h3 span {
+  display: inline;
+  margin-left: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 .health-section-heading {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 14px;
-  min-height: 44px;
+  min-height: 36px;
 }
 
 .health-section-heading label {
@@ -4488,16 +4525,16 @@ a {
 .health-custom-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+  gap: 6px;
   align-content: start;
 }
 
 .health-option-grid .ready-checkbox-card {
-  min-height: 42px;
+  min-height: 36px;
   align-content: center;
   justify-content: flex-start;
   border-radius: 10px;
-  padding: 9px 10px;
+  padding: 7px 9px;
   text-align: left;
 }
 
@@ -4520,8 +4557,8 @@ a {
   grid-template-columns: minmax(94px, 0.36fr) minmax(0, 1fr);
   gap: 8px !important;
   align-items: center;
-  min-height: 42px;
-  padding: 9px 10px;
+  min-height: 36px;
+  padding: 7px 9px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--white);
@@ -4540,17 +4577,18 @@ a {
 
 .health-medication-grid {
   display: grid;
-  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
 }
 
 .health-medication-row {
   display: grid !important;
-  grid-template-columns: minmax(178px, 178px) minmax(150px, 1fr);
-  gap: 8px !important;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 6px !important;
+  align-items: start;
   justify-items: stretch;
-  min-height: 42px;
-  padding: 9px 10px;
+  min-height: 76px;
+  padding: 8px 9px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--white);
@@ -4561,8 +4599,15 @@ a {
   text-align: left;
 }
 
+.health-medication-row input[type="date"],
+.health-medication-row input[type="text"] {
+  min-height: 34px;
+  padding: 7px 9px;
+  font-size: 0.86rem;
+}
+
 .health-antibiotic-row {
-  grid-template-columns: minmax(130px, 0.8fr) minmax(140px, 1fr) minmax(140px, 1fr);
+  grid-template-columns: 1fr;
 }
 
 @media (max-width: 900px) {
@@ -4578,6 +4623,10 @@ a {
   .health-template-card {
     grid-template-columns: 1fr;
     align-items: stretch;
+  }
+
+  .health-medication-grid {
+    grid-template-columns: 1fr;
   }
 
   .health-photo-option {
@@ -4623,21 +4672,27 @@ a {
 
 .health-label {
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr);
-  gap: 4px;
+  grid-template-rows: minmax(0, auto) auto minmax(0, 1fr);
+  align-content: start;
+  gap: 3px;
   min-width: 0;
-  padding: clamp(7px, 1.6vw, 12px);
+  padding: clamp(6px, 1.35vw, 10px);
   border: 1.2px solid rgba(11, 122, 52, 0.48);
   border-radius: 8px;
   background: var(--white);
   overflow: hidden;
 }
 
+.health-label.has-photo {
+  grid-template-rows: auto auto auto;
+  gap: 4px;
+  align-content: center;
+}
+
 .sheet-94207 .health-label.has-photo.has-many-items {
-  grid-template-rows: minmax(42px, auto) auto minmax(0, 1fr);
-  gap: 2px;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  grid-template-rows: auto auto auto;
+  gap: 1px;
+  padding: 5px 7px;
 }
 
 .health-label-empty {
@@ -4647,44 +4702,94 @@ a {
 
 .health-label-profile {
   display: grid;
-  grid-template-columns: clamp(44px, 25%, 82px) minmax(0, 1fr);
-  gap: clamp(6px, 1.3vw, 10px);
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  align-items: start;
+  justify-items: center;
+  text-align: center;
   min-width: 0;
 }
 
+.health-label.has-photo .health-label-profile {
+  grid-template-columns: 1fr;
+  gap: 2px;
+  align-items: start;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  width: 100%;
+}
+
 .sheet-94207 .health-label.has-photo.has-many-items .health-label-profile {
-  grid-template-columns: 44px minmax(0, 1fr);
-  gap: 6px;
+  grid-template-columns: 1fr;
+  gap: 1px;
   align-items: start;
 }
 
 .health-label.has-no-photo .health-label-profile {
   grid-template-columns: 1fr;
+  justify-items: center;
   text-align: center;
 }
 
 .health-label-photo {
-  width: 100%;
+  width: clamp(38px, 24%, 64px);
   aspect-ratio: 1;
-  margin-bottom: 4px;
+  margin-bottom: 0;
   border: 1px solid var(--green-light);
   border-radius: 8px;
+  justify-self: center;
+  overflow: hidden;
+}
+
+.health-label-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .sheet-94207 .health-label.has-photo.has-many-items .health-label-photo {
-  width: 44px;
+  width: 34px;
   margin-bottom: 0;
 }
 
 .health-label-copy {
   display: grid;
-  gap: 2px;
+  justify-items: center;
+  gap: 1px;
   min-width: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.health-label.has-photo .health-label-copy {
+  justify-items: center;
+  text-align: center;
+  width: auto;
+  max-width: 100%;
 }
 
 .sheet-94207 .health-label.has-photo.has-many-items .health-label-copy {
   gap: 0;
+}
+
+.health-label.has-no-photo {
+  align-content: center;
+  grid-template-rows: auto auto auto;
+  gap: 6px;
+  justify-items: center;
+  text-align: center;
+}
+
+.sheet-94207 .health-label.has-no-photo.has-many-items {
+  gap: 2px;
+  padding: 6px 8px;
+}
+
+.health-label.has-no-photo .health-label-copy {
+  justify-items: center;
+  width: 100%;
 }
 
 .health-label h4,
@@ -4697,8 +4802,17 @@ a {
 .health-label h4 {
   color: var(--ink);
   font-size: clamp(0.92rem, 2.15vw, 1.34rem);
-  line-height: 1.02;
+  line-height: 1.08;
   white-space: nowrap;
+}
+
+.health-label.has-photo h4 {
+  font-size: clamp(0.74rem, 1.55vw, 1rem);
+}
+
+.health-label.has-no-photo h4 {
+  font-size: clamp(1.12rem, 3vw, 1.7rem);
+  text-align: center;
 }
 
 .health-label small {
@@ -4708,21 +4822,38 @@ a {
   line-height: 1.1;
 }
 
+.health-label.has-photo small {
+  font-size: clamp(0.38rem, 0.82vw, 0.58rem);
+  line-height: 1.02;
+}
+
 .sheet-94207 .health-label.has-photo.has-many-items small {
-  font-size: clamp(0.38rem, 0.82vw, 0.56rem);
+  font-size: clamp(0.34rem, 0.72vw, 0.48rem);
   line-height: 1.02;
 }
 
 .sheet-94207 .health-label.has-photo.has-many-items .health-label-title {
-  font-size: clamp(0.48rem, 0.95vw, 0.62rem);
+  font-size: clamp(0.44rem, 0.82vw, 0.56rem);
+}
+
+.sheet-94207 .health-label.has-no-photo.has-many-items .health-label-title {
+  font-size: clamp(0.42rem, 0.9vw, 0.58rem);
 }
 
 .health-label-title {
+  justify-self: center;
+  width: 100%;
   font-size: clamp(0.6rem, 1.2vw, 0.78rem);
   font-weight: 900;
   letter-spacing: 0.08em;
-  line-height: 1;
+  line-height: 1.08;
+  text-align: center;
   text-transform: uppercase;
+}
+
+.health-label.has-no-photo .health-label-title {
+  font-size: clamp(0.72rem, 1.55vw, 1rem);
+  text-align: center;
 }
 
 .health-accent-red {
@@ -4741,21 +4872,40 @@ a {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr;
-  align-content: start;
-  gap: 2px;
+  align-content: center;
+  justify-items: center;
+  gap: 0;
   min-height: 0;
-  padding-left: 16px;
+  padding-left: 0;
   color: var(--ink);
   font-size: clamp(0.54rem, 1.06vw, 0.72rem);
   font-weight: 700;
   line-height: 1.16;
+  list-style: none;
+  text-align: center;
   overflow: hidden;
+}
+
+.health-label.has-no-photo .health-label-list {
+  justify-items: center;
+  padding-left: 0;
+  list-style-position: inside;
+  text-align: center;
 }
 
 .sheet-94207 .health-label.has-photo.has-many-items .health-label-list {
   gap: 0;
-  padding-left: 12px;
   line-height: 1.02;
+  align-content: start;
+}
+
+.sheet-94207 .health-label.has-no-photo.has-many-items .health-label-list {
+  gap: 0;
+  line-height: 1.02;
+}
+
+.sheet-94207 .health-label-list li {
+  text-align: center;
 }
 
 .health-label-list li {
@@ -4765,7 +4915,7 @@ a {
 .sheet-6874 .health-label,
 .sheet-94256 .health-label {
   gap: 4px;
-  padding: clamp(8px, 1.65vw, 13px);
+  padding: clamp(9px, 1.55vw, 13px);
 }
 
 .sheet-6874 .health-label-profile,
@@ -4776,42 +4926,76 @@ a {
   text-align: center;
 }
 
+.sheet-6874 .health-label.has-photo .health-label-profile {
+  grid-template-columns: 1fr;
+  align-items: start;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.sheet-94256 .health-label.has-photo .health-label-profile {
+  grid-template-columns: 1fr;
+  align-items: start;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
 .sheet-6874 .health-label-photo {
-  width: min(34%, 112px);
+  width: clamp(58px, 24%, 82px);
 }
 
 .sheet-94256 .health-label-photo {
-  width: min(34%, 150px);
+  width: clamp(72px, 25%, 108px);
 }
 
-.sheet-6874 .health-label-copy,
-.sheet-94256 .health-label-copy {
+.sheet-6874 .health-label.has-photo .health-label-copy,
+.sheet-94256 .health-label.has-photo .health-label-copy {
   justify-items: center;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  text-align: center;
 }
 
 .sheet-6874 .health-label h4 {
-  font-size: clamp(1.08rem, 2.35vw, 1.48rem);
+  font-size: clamp(1.18rem, 2.7vw, 1.72rem);
+}
+
+.sheet-6874 .health-label.has-photo h4 {
+  font-size: clamp(0.92rem, 1.95vw, 1.24rem);
 }
 
 .sheet-94256 .health-label h4 {
-  font-size: clamp(1.2rem, 2.5vw, 1.74rem);
+  font-size: clamp(1.36rem, 3vw, 2.1rem);
+}
+
+.sheet-94256 .health-label.has-photo h4 {
+  font-size: clamp(1rem, 2.15vw, 1.48rem);
 }
 
 .sheet-6874 .health-label small {
   font-size: clamp(0.48rem, 1vw, 0.64rem);
 }
 
+.sheet-6874 .health-label.has-photo small {
+  font-size: clamp(0.44rem, 0.9vw, 0.58rem);
+}
+
 .sheet-94256 .health-label small {
   font-size: clamp(0.5rem, 1.05vw, 0.68rem);
 }
 
+.sheet-94256 .health-label.has-photo small {
+  font-size: clamp(0.46rem, 0.95vw, 0.62rem);
+}
+
 .sheet-6874 .health-label-title {
-  font-size: clamp(0.55rem, 1.05vw, 0.68rem);
+  font-size: clamp(0.68rem, 1.25vw, 0.86rem);
 }
 
 .sheet-94256 .health-label-title {
-  font-size: clamp(0.58rem, 1.1vw, 0.74rem);
+  font-size: clamp(0.74rem, 1.38vw, 0.98rem);
 }
 
 .sheet-6874 .health-label-list,
@@ -4820,12 +5004,14 @@ a {
   grid-template-columns: 1fr;
   justify-items: center;
   text-align: center;
-  font-size: clamp(0.52rem, 1.05vw, 0.66rem);
-  line-height: 1.06;
+  padding-left: 0;
+  list-style-position: inside;
+  font-size: clamp(0.72rem, 1.35vw, 0.92rem);
+  line-height: 1.12;
 }
 
 .sheet-94256 .health-label-list {
-  font-size: clamp(0.56rem, 1.1vw, 0.72rem);
+  font-size: clamp(0.82rem, 1.55vw, 1.08rem);
 }
 
 .community-checkbox-grid {
@@ -4966,15 +5152,24 @@ a {
 
 .picture-photo-position-control {
   position: absolute;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  z-index: 3;
+  right: 12px;
+  bottom: 10px;
+  z-index: 4;
   display: grid;
-  padding: 5px 7px;
+  width: min(44%, 210px);
+  padding: 5px 8px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 10px rgba(9, 37, 31, 0.14);
+  opacity: 0.22;
+  pointer-events: auto;
+  transition: opacity 0.16s ease;
+}
+
+.picture-label-has-position-control:hover .picture-photo-position-control,
+.picture-label-has-position-control:focus-within .picture-photo-position-control,
+.picture-label-has-position-control:active .picture-photo-position-control {
+  opacity: 1;
 }
 
 .picture-photo-position-control input {
@@ -5001,6 +5196,7 @@ a {
 
 .picture-sheet-page .picture-label {
   display: grid;
+  position: relative;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(0, 1fr) minmax(36px, auto);
   gap: clamp(7px, 1.6vw, 12px);

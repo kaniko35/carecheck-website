@@ -107,7 +107,7 @@
       margins: { top: 0.5, right: 0.5, bottom: 0.5, left: 0.5, unit: "in" },
       gaps: { row: 0, column: 0, unit: "in" },
       safeZone: { top: 0.1, right: 0.1, bottom: 0.1, left: 0.1, unit: "in" },
-      photoBox: { x: 2.55, y: 0.12, width: 0.96, height: 1.1, unit: "in", fit: "cover", radius: 0.08 },
+      photoBox: { x: 2.62, y: 0.12, width: 0.96, height: 1.1, unit: "in", fit: "cover", radius: 0.08 },
       textRules: {
         name: { max: 38, min: 9, lineHeight: 1, wrap: false },
         title: { max: 11, min: 6, lineHeight: 1 },
@@ -127,7 +127,7 @@
       margins: { top: 0.5, right: 0.25, bottom: 0.5, left: 0.25, unit: "in" },
       gaps: { row: 0, column: 0, unit: "in" },
       safeZone: { top: 0.08, right: 0.08, bottom: 0.08, left: 0.08, unit: "in" },
-      photoBox: { x: 1.28, y: 0.2, width: 0.52, height: 0.52, unit: "in", fit: "cover", radius: 0.08 },
+      photoBox: { x: 1.34, y: 0.2, width: 0.52, height: 0.52, unit: "in", fit: "cover", radius: 0.08 },
       textRules: {
         name: { max: 24, min: 8, lineHeight: 1, wrap: false },
         photoName: { max: 15.5, min: 7, lineHeight: 1, wrap: false },
