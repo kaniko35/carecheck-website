@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260625-46" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260625-52" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -58,11 +58,6 @@
             </label>
 
             <label>
-              Classroom
-              <input id="classroom-input" type="text" value="Infant Room A" aria-label="Classroom" />
-            </label>
-
-            <label>
               Label Font
               <select id="label-font-select" aria-label="Label font">
                 <option value="Arial, Helvetica, sans-serif">Arial</option>
@@ -80,6 +75,11 @@
                 <option value="'Quicksand', Arial, sans-serif" selected>Quicksand</option>
                 <option value="'Times New Roman', Times, serif">Times New Roman</option>
               </select>
+            </label>
+
+            <label>
+              Classroom
+              <input id="classroom-input" type="text" value="Infant Room A" aria-label="Classroom" />
             </label>
             </div>
 
@@ -126,32 +126,39 @@
                     <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Clothes" /> Clothes</label>
                     <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Snacks" /> Snacks</label>
                     <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Backpack" /> Backpack</label>
-                  </div>
-                  <div class="custom-label-type-control">
                     <div class="custom-label-option">
-                      <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 1</label>
-                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 1" />
+                      <label class="custom-label-toggle-only"><input data-custom-label-type-toggle type="checkbox" aria-label="Use custom classroom label 1" /></label>
+                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Custom label" aria-label="Custom classroom label type 1" />
                     </div>
                     <div class="custom-label-option">
-                      <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 2</label>
-                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 2" />
+                      <label class="custom-label-toggle-only"><input data-custom-label-type-toggle type="checkbox" aria-label="Use custom classroom label 2" /></label>
+                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Custom label" aria-label="Custom classroom label type 2" />
                     </div>
                     <div class="custom-label-option">
-                      <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 3</label>
-                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 3" />
+                      <label class="custom-label-toggle-only"><input data-custom-label-type-toggle type="checkbox" aria-label="Use custom classroom label 3" /></label>
+                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Custom label" aria-label="Custom classroom label type 3" />
                     </div>
                     <div class="custom-label-option">
-                      <label class="ready-checkbox-card custom-label-checkbox"><input data-custom-label-type-toggle type="checkbox" /> Custom label 4</label>
-                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Type a custom label" aria-label="Custom classroom label type 4" />
+                      <label class="custom-label-toggle-only"><input data-custom-label-type-toggle type="checkbox" aria-label="Use custom classroom label 4" /></label>
+                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Custom label" aria-label="Custom classroom label type 4" />
+                    </div>
+                    <div class="custom-label-option">
+                      <label class="custom-label-toggle-only"><input data-custom-label-type-toggle type="checkbox" aria-label="Use custom classroom label 5" /></label>
+                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Custom label" aria-label="Custom classroom label type 5" />
                     </div>
                   </div>
                 </fieldset>
 
                 <fieldset class="ready-fieldset classroom-output-fieldset">
-                  <legend>Generated outputs</legend>
-                  <div class="ready-checkbox-grid">
-                    <label class="ready-checkbox-card welcome-sign-checkbox"><input id="welcome-sign-single-toggle" type="checkbox" /> Welcome Sign PDF</label>
-                  </div>
+                  <legend class="visually-hidden">Classroom sign output</legend>
+                  <label class="classroom-output-select-control">
+                    Sign template
+                    <select id="classroom-sign-template-select" aria-label="Classroom sign template">
+                      <option value="welcome" selected>Welcome sign</option>
+                      <option value="birthday">Happy birthday</option>
+                      <option value="tour">Tour greeting</option>
+                    </select>
+                  </label>
                 </fieldset>
 
                 <section class="print-sheet-preview" aria-labelledby="print-sheet-preview-title">
@@ -323,10 +330,9 @@
                     <label class="ready-checkbox-card"><input type="checkbox" data-health-allergy="Dairy" /> Dairy</label>
                     <label class="ready-checkbox-card"><input type="checkbox" data-health-allergy="Sesame" /> Sesame</label>
                     <label class="ready-checkbox-card"><input type="checkbox" data-health-allergy="Gluten" /> Gluten</label>
-                  </div>
-                  <div class="health-custom-grid">
-                    <label class="health-custom-row"><span><input type="checkbox" data-health-allergy-custom-toggle /> Custom</span><input type="text" data-health-allergy-custom placeholder="Custom allergy" aria-label="Custom allergy 1" /></label>
-                    <label class="health-custom-row"><span><input type="checkbox" data-health-allergy-custom-toggle /> Custom</span><input type="text" data-health-allergy-custom placeholder="Custom allergy" aria-label="Custom allergy 2" /></label>
+                    <label class="health-custom-row"><span><input type="checkbox" data-health-allergy-custom-toggle /></span><input type="text" data-health-allergy-custom placeholder="Custom allergy" aria-label="Custom allergy 1" /></label>
+                    <label class="health-custom-row"><span><input type="checkbox" data-health-allergy-custom-toggle /></span><input type="text" data-health-allergy-custom placeholder="Custom allergy" aria-label="Custom allergy 2" /></label>
+                    <label class="health-custom-row"><span><input type="checkbox" data-health-allergy-custom-toggle /></span><input type="text" data-health-allergy-custom placeholder="Custom allergy" aria-label="Custom allergy 3" /></label>
                   </div>
                 </section>
 
@@ -342,9 +348,9 @@
                     <label class="ready-checkbox-card"><input type="checkbox" data-health-food="Dairy Free" /> Dairy Free</label>
                     <label class="ready-checkbox-card"><input type="checkbox" data-health-food="Kosher" /> Kosher</label>
                     <label class="ready-checkbox-card"><input type="checkbox" data-health-food="No Beef" /> No Beef</label>
-                  </div>
-                  <div class="health-custom-grid">
-                    <label class="health-custom-row"><span><input type="checkbox" data-health-food-custom-toggle /> Custom</span><input type="text" data-health-food-custom placeholder="Custom food preference" aria-label="Custom food preference" /></label>
+                    <label class="health-custom-row"><span><input type="checkbox" data-health-food-custom-toggle /></span><input type="text" data-health-food-custom placeholder="Custom food preference" aria-label="Custom food preference" /></label>
+                    <label class="health-custom-row"><span><input type="checkbox" data-health-food-custom-toggle /></span><input type="text" data-health-food-custom placeholder="Custom food preference" aria-label="Custom food preference 2" /></label>
+                    <label class="health-custom-row"><span><input type="checkbox" data-health-food-custom-toggle /></span><input type="text" data-health-food-custom placeholder="Custom food preference" aria-label="Custom food preference 3" /></label>
                   </div>
                 </section>
 
@@ -366,6 +372,21 @@
                       <span><input type="checkbox" data-health-medication="Antibiotics" /> Antibiotics</span>
                       <input id="health-antibiotic-name" type="text" placeholder="Antibiotic name" aria-label="Antibiotic name" />
                       <input type="date" data-health-expiration-for="Antibiotics" aria-label="Antibiotics expiration date" />
+                    </label>
+                    <label class="health-medication-row health-medication-custom-row">
+                      <span><input type="checkbox" data-health-medication-custom-toggle /> Custom</span>
+                      <input type="text" data-health-medication-custom placeholder="Medication name" aria-label="Custom medication 1" />
+                      <input type="date" data-health-medication-custom-expiration aria-label="Custom medication 1 expiration date" />
+                    </label>
+                    <label class="health-medication-row health-medication-custom-row">
+                      <span><input type="checkbox" data-health-medication-custom-toggle /> Custom</span>
+                      <input type="text" data-health-medication-custom placeholder="Medication name" aria-label="Custom medication 2" />
+                      <input type="date" data-health-medication-custom-expiration aria-label="Custom medication 2 expiration date" />
+                    </label>
+                    <label class="health-medication-row health-medication-custom-row">
+                      <span><input type="checkbox" data-health-medication-custom-toggle /> Custom</span>
+                      <input type="text" data-health-medication-custom placeholder="Medication name" aria-label="Custom medication 3" />
+                      <input type="date" data-health-medication-custom-expiration aria-label="Custom medication 3 expiration date" />
                     </label>
                   </div>
                 </section>
@@ -614,15 +635,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260625-46"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260625-46"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260625-46"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260625-46"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260625-52"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260625-52"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260625-52"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260625-52"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260625-46";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260625-52";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -759,7 +780,7 @@
       const classroomPdfRenderStatus = document.querySelector("#classroom-pdf-render-status");
       const customLabelTypeToggles = Array.from(document.querySelectorAll("[data-custom-label-type-toggle]"));
       const customLabelTypeInputs = Array.from(document.querySelectorAll("[data-custom-label-type-input]"));
-      const welcomeSignSingleToggle = document.querySelector("#welcome-sign-single-toggle");
+      const classroomSignTemplateSelect = document.querySelector("#classroom-sign-template-select");
       const welcomeSignPhotoToggle = document.querySelector("#welcome-sign-photo-toggle");
       const downloadWelcomeSignButton = document.querySelector("#download-welcome-sign-button");
       const downloadCommunityPdfButton = document.querySelector("#download-community-pdf-button");
@@ -958,9 +979,13 @@
         });
       };
 
-      const applyPhotoToSlots = (photoUrl) => {
+      const applyPhotoToSlots = (photoUrl, root = document) => {
         currentPhotoUrl = photoUrl;
-        getChildPhotoSlots().forEach((slot) => {
+        const slots = root === document
+          ? getChildPhotoSlots()
+          : Array.from(root.querySelectorAll("[data-child-photo]"));
+
+        slots.forEach((slot) => {
           const image = slot.querySelector("img");
           const placeholder = slot.querySelector("span");
 
@@ -1472,16 +1497,30 @@
           throw new Error("The feeding label preview is not available.");
         }
 
-        renderFeedingSheetPreview();
-        await document.fonts?.ready;
-        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        const wrapper = document.createElement("div");
+        const page = makeFeedingSheetPage();
 
-        const renderedPage = await renderPreviewElementToJpeg(feedingSheetPreview);
-        return buildImagePagesPdf([{
-          ...renderedPage,
-          pageWidth: 612,
-          pageHeight: 792,
-        }]);
+        wrapper.className = "fixed-pdf-render-root";
+        wrapper.append(page);
+        document.body.append(wrapper);
+
+        try {
+          fixedPrintRenderer.fitFixedText(page);
+          await document.fonts?.ready;
+          await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+          const renderedPage = await renderPreviewElementToJpegWithHtml2Canvas(page, {
+            pageWidth: 612,
+            pageHeight: 792,
+          });
+          return buildImagePagesPdf([{
+            ...renderedPage,
+            pageWidth: 612,
+            pageHeight: 792,
+          }]);
+        } finally {
+          wrapper.remove();
+        }
       };
 
       const fitFeedingSheetNames = (root = document) => {
@@ -1530,10 +1569,19 @@
 
         try {
           const config = getFeedingSheetConfig();
+          const rendererVersion = getClassroomRendererVersion();
+
+          updateClassroomPdfRenderStatus();
+
+          if (rendererVersion !== CLASSROOM_PDF_BUILD_VERSION) {
+            throw new Error(`Reload needed before PDF download. Loaded ${rendererVersion}; expected ${CLASSROOM_PDF_BUILD_VERSION}.`);
+          }
+
           const previewBytes = await makeFeedingPreviewPdfBytes();
 
           console.info("[CareCheck feeding PDF render]", {
             mode: "preview-image-source-of-truth",
+            rendererVersion,
             template: config.template.registryId,
             variant: config.type,
             includePhoto: shouldIncludeFeedingSheetPhoto(),
@@ -1609,7 +1657,8 @@
         return value;
       };
 
-      const getSelectedHealthMedications = () => Array.from(document.querySelectorAll("[data-health-medication]"))
+      const getSelectedHealthMedications = () => {
+        const standard = Array.from(document.querySelectorAll("[data-health-medication]"))
         .filter((input) => input.checked)
         .map((input) => {
           const medication = input.dataset.healthMedication;
@@ -1619,6 +1668,22 @@
 
           return expiration ? `${name} - Exp. ${expiration}` : name;
         });
+        const custom = Array.from(document.querySelectorAll(".health-medication-custom-row"))
+          .filter((row) => row.querySelector("[data-health-medication-custom-toggle]")?.checked)
+          .map((row) => {
+            const name = row.querySelector("[data-health-medication-custom]")?.value.trim() || "";
+            const expiration = formatHealthExpirationDate(row.querySelector("[data-health-medication-custom-expiration]")?.value.trim() || "");
+
+            if (!name) {
+              return "";
+            }
+
+            return expiration ? `${name} - Exp. ${expiration}` : name;
+          })
+          .filter(Boolean);
+
+        return [...standard, ...custom];
+      };
 
       const repeatHealthLabel = (items, quantity, label) => {
         if (!items.length || quantity <= 0) {
@@ -1667,6 +1732,7 @@
         const list = document.createElement("ul");
 
         label.className = `health-label health-label-${labelData.type} ${hasPhoto ? "has-photo" : "has-no-photo"} ${labelData.items.length >= 3 ? "has-many-items" : ""}`;
+        label.dataset.itemCount = String(labelData.items.length);
         header.className = "health-label-profile";
         copy.className = "health-label-copy";
         name.textContent = childNameInput?.value.trim() || "Child Name";
@@ -1747,7 +1813,10 @@
           const isSmall = Boolean(list.closest(".sheet-94207"));
           const hasPhoto = Boolean(list.closest(".has-photo"));
           const hasManyItems = Boolean(list.closest(".has-many-items"));
-          const max = isLarge ? (hasPhoto ? 16 : hasManyItems ? 18 : 22) : isMedium ? (hasPhoto ? 13.5 : hasManyItems ? 14.5 : 18) : (hasManyItems ? 7.8 : hasPhoto ? 9.2 : 12.5);
+          const itemCount = Number.parseInt(list.closest(".health-label")?.dataset.itemCount || "0", 10);
+          const shrink = Math.max(0, itemCount - 2) * (isLarge ? 1.25 : isMedium ? 1 : 0.65);
+          const baseMax = isLarge ? (hasPhoto ? 16 : hasManyItems ? 18 : 22) : isMedium ? (hasPhoto ? 13.5 : hasManyItems ? 14.5 : 18) : (hasManyItems ? 7.8 : hasPhoto ? 9.2 : 12.5);
+          const max = Math.max(isLarge ? 10 : isMedium ? 8.5 : 5.2, baseMax - shrink);
           const min = isLarge ? 6.5 : isMedium ? 5.8 : 4.2;
           list.style.width = "100%";
           list.style.fontSize = `${max}px`;
@@ -1764,8 +1833,16 @@
           }
 
           let size = Number.parseFloat(getComputedStyle(list).fontSize) || 9;
-          const min = label.closest(".sheet-6874, .sheet-94256") ? 5.5 : 4.2;
-          while (size > min && label.scrollHeight > label.clientHeight) {
+          const min = label.closest(".sheet-6874, .sheet-94256") ? 5.5 : 3.6;
+          const isOverflowing = () => {
+            const labelRect = label.getBoundingClientRect();
+            const listRect = list.getBoundingClientRect();
+            return label.scrollHeight > label.clientHeight + 1
+              || list.scrollHeight > list.clientHeight + 1
+              || listRect.bottom > labelRect.bottom - 3;
+          };
+
+          while (size > min && isOverflowing()) {
             size -= 0.5;
             list.style.fontSize = `${size}px`;
           }
@@ -1919,21 +1996,37 @@
           throw new Error("Choose at least one allergy, food preference, or medication before downloading.");
         }
 
+        const template = getSelectedHealthTemplate();
         const outputTemplate = getHealthOutputTemplate();
-        renderHealthSheetPreview();
-        await document.fonts?.ready;
-        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-
+        const sheetPages = getHealthSheetPages();
         const renderedPages = [];
-        const pages = Array.from(healthSheetPreview?.querySelectorAll("[data-health-sheet-page]") || []);
+        const wrapper = document.createElement("div");
 
-        for (const page of pages) {
-          const renderedPage = await renderPreviewElementToJpeg(page);
+        wrapper.className = "fixed-pdf-render-root";
+        document.body.append(wrapper);
+
+        try {
+          for (const pageLabels of sheetPages) {
+            const page = createHealthSheetPage(template, pageLabels);
+            wrapper.replaceChildren(page);
+            if (shouldIncludeHealthPhoto()) {
+              applyPhotoToSlots(currentPhotoUrl, wrapper);
+            }
+            fitHealthLabelText(wrapper);
+            await document.fonts?.ready;
+            await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+            const renderedPage = await renderPreviewElementToJpegWithHtml2Canvas(page, {
+              pageWidth: outputTemplate.pageWidth,
+              pageHeight: outputTemplate.pageHeight,
+            });
           renderedPages.push({
             ...renderedPage,
             pageWidth: outputTemplate.pageWidth,
             pageHeight: outputTemplate.pageHeight,
           });
+          }
+        } finally {
+          wrapper.remove();
         }
 
         return buildImagePagesPdf(renderedPages);
@@ -1952,7 +2045,21 @@
           const childName = childNameInput?.value.trim() || "child";
           const safeChildName = childName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
           const template = getSelectedHealthTemplate();
+          const rendererVersion = getClassroomRendererVersion();
+
+          updateClassroomPdfRenderStatus();
+
+          if (rendererVersion !== CLASSROOM_PDF_BUILD_VERSION) {
+            throw new Error(`Reload needed before PDF download. Loaded ${rendererVersion}; expected ${CLASSROOM_PDF_BUILD_VERSION}.`);
+          }
+
           const bytes = await makeHealthPreviewPdfBytes();
+          console.info("[CareCheck health PDF render]", {
+            mode: "preview-image-source-of-truth",
+            buildVersion: CLASSROOM_PDF_BUILD_VERSION,
+            rendererVersion,
+            template: template.registryId,
+          });
 
           saveBytesAsPdf(bytes, `carecheck-health-labels-${template.className}-${safeChildName || "student"}-${CLASSROOM_PDF_BUILD_VERSION}.pdf`);
         } catch (error) {
@@ -2069,6 +2176,14 @@
         return pictureTemplateOptions[pictureTemplateSelect?.value] || pictureTemplateOptions["94207"];
       };
       const shouldShowPicturePhotoPosition = () => ["long125x8", "businessCard"].includes(pictureTemplateSelect?.value || "");
+      const getPicturePhotoPositionKey = () => pictureTemplateSelect?.value || "default";
+      const isPicturePhotoPositionClosed = (item) => Boolean(item.photoControlClosedByTemplate?.[getPicturePhotoPositionKey()]);
+      const closePicturePhotoPositionForCurrentTemplate = (item) => {
+        item.photoControlClosedByTemplate = {
+          ...(item.photoControlClosedByTemplate || {}),
+          [getPicturePhotoPositionKey()]: true,
+        };
+      };
       const getPictureFontFamily = () => pictureFontSelect?.value || "'Quicksand', Arial, sans-serif";
       const applyPictureFontSelectPreview = () => {
         applyFontPreviewSelectStyles(pictureFontSelect);
@@ -2109,6 +2224,17 @@
         image.style.objectPosition = `50% ${labelData.photoY ?? 50}%`;
         photo.append(image);
         text.textContent = labelData.text || "Label Text";
+        text.contentEditable = "true";
+        text.spellcheck = false;
+        text.setAttribute("role", "textbox");
+        text.setAttribute("aria-label", "Picture label text");
+        text.addEventListener("input", () => {
+          const item = pictureLabels.find((candidate) => candidate.id === labelData.id);
+          if (item) {
+            item.text = text.textContent.trim();
+          }
+          fitPictureLabelText(label);
+        });
         label.append(photo, text);
         return label;
       };
@@ -2180,34 +2306,7 @@
           return;
         }
 
-        if (!pictureLabels.length) {
-          const empty = document.createElement("p");
-          empty.className = "ready-panel-note";
-          empty.textContent = "Choose photos to create editable label text fields.";
-          pictureLabelItems.replaceChildren(empty);
-          return;
-        }
-
-        pictureLabelItems.replaceChildren(...pictureLabels.map((labelData, index) => {
-          const row = document.createElement("label");
-          const thumb = document.createElement("img");
-          const input = document.createElement("input");
-
-          row.className = "picture-label-text-row";
-          thumb.alt = "";
-          thumb.src = labelData.photoUrl;
-          thumb.style.objectPosition = `50% ${labelData.photoY ?? 50}%`;
-          input.type = "text";
-          input.value = labelData.text;
-          input.placeholder = `Label ${index + 1} text`;
-          input.setAttribute("aria-label", `Picture label ${index + 1} text`);
-          input.addEventListener("input", () => {
-            pictureLabels[index].text = input.value;
-            schedulePicturePreviewUpdate();
-          });
-          row.append(thumb, input);
-          return row;
-        }));
+        pictureLabelItems.replaceChildren();
       };
 
       const updatePicturePageControls = (pageCount) => {
@@ -2272,10 +2371,12 @@
           }
 
           photo.dataset.dragPhotoPosition = "";
-          label.classList.add("picture-label-has-position-control");
-          if (!label.querySelector(".picture-photo-position-control")) {
+          const isClosedForTemplate = isPicturePhotoPositionClosed(item);
+          label.classList.toggle("picture-label-has-position-control", !isClosedForTemplate);
+          if (!isClosedForTemplate && !label.querySelector(".picture-photo-position-control")) {
             const overlay = document.createElement("div");
             const range = document.createElement("input");
+            const close = document.createElement("button");
 
             overlay.className = "picture-photo-position-control";
             range.type = "range";
@@ -2288,7 +2389,16 @@
               item.photoY = Number.parseInt(range.value, 10);
               image.style.objectPosition = `50% ${item.photoY}%`;
             });
-            overlay.append(range);
+            close.type = "button";
+            close.className = "picture-photo-position-close";
+            close.textContent = "X";
+            close.setAttribute("aria-label", "Close photo position control");
+            close.addEventListener("click", () => {
+              closePicturePhotoPositionForCurrentTemplate(item);
+              overlay.remove();
+              label.classList.remove("picture-label-has-position-control");
+            });
+            overlay.append(range, close);
             photo.after(overlay);
           }
 
@@ -2525,9 +2635,29 @@
         const outputTemplate = getPictureOutputTemplate();
         const sheetPages = getPictureSheetPages();
         const renderedPages = [];
+        const wrapper = document.createElement("div");
 
-        for (const pageLabels of sheetPages) {
-          renderedPages.push(await renderPicturePageToCanvas(pageLabels, outputTemplate));
+        if (document.activeElement?.matches?.(".picture-label p[contenteditable='true']")) {
+          document.activeElement.blur();
+        }
+
+        wrapper.className = "fixed-pdf-render-root";
+        document.body.append(wrapper);
+
+        try {
+          for (const pageLabels of sheetPages) {
+            const page = createPictureSheetPage(getSelectedPictureTemplate(), pageLabels);
+            wrapper.replaceChildren(page);
+            fitPictureLabelText(wrapper);
+            await document.fonts?.ready;
+            await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+            renderedPages.push(await renderPreviewElementToJpegWithHtml2Canvas(page, {
+              pageWidth: outputTemplate.pageWidth,
+              pageHeight: outputTemplate.pageHeight,
+            }));
+          }
+        } finally {
+          wrapper.remove();
         }
 
         return buildImagePagesPdf(renderedPages);
@@ -2544,6 +2674,14 @@
 
         try {
           const template = getSelectedPictureTemplate();
+          const rendererVersion = getClassroomRendererVersion();
+
+          updateClassroomPdfRenderStatus();
+
+          if (rendererVersion !== CLASSROOM_PDF_BUILD_VERSION) {
+            throw new Error(`Reload needed before PDF download. Loaded ${rendererVersion}; expected ${CLASSROOM_PDF_BUILD_VERSION}.`);
+          }
+
           const bytes = await makePicturePreviewPdfBytes();
           saveBytesAsPdf(bytes, `carecheck-picture-labels-${template.className}-${CLASSROOM_PDF_BUILD_VERSION}.pdf`);
         } catch (error) {
@@ -3346,6 +3484,34 @@
         };
       };
 
+      const renderPreviewElementToJpegWithHtml2Canvas = async (element, pageSize = {}) => {
+        await ensurePdfLibraries();
+        if (!window.html2canvas) {
+          return renderPreviewElementToJpeg(element);
+        }
+
+        const rect = element.getBoundingClientRect();
+        const width = Math.ceil(rect.width);
+        const height = Math.ceil(rect.height);
+        const canvas = await window.html2canvas(element, {
+          backgroundColor: "#ffffff",
+          scale: 3,
+          useCORS: true,
+          width,
+          height,
+          windowWidth: width,
+          windowHeight: height,
+        });
+
+        return {
+          dataUrl: canvas.toDataURL("image/jpeg", 0.96),
+          imageWidth: canvas.width,
+          imageHeight: canvas.height,
+          pageWidth: pageSize.pageWidth || width,
+          pageHeight: pageSize.pageHeight || height,
+        };
+      };
+
       const buildImagePagesPdf = (renderedPages) => {
         const pageObjects = [];
         const contentObjects = [];
@@ -3385,22 +3551,39 @@
         const templates = getSelectedCommunityTemplates();
         const childName = childNameInput?.value.trim() || "Child Name";
 
-        updateCommunityPlaythingsPreviews();
-        await document.fonts?.ready;
-        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-
-        const previews = getUniqueCommunityTemplatesForChild(templates, childName).map((template) => {
-          const registryTemplate = labelRegistry.get(template.registryId);
-          return communityPreviewGrid?.querySelector(`[data-community-preview="${registryTemplate.id}"]`);
-        }).filter(Boolean);
-
-        if (!previews.length) {
+        if (!templates.length) {
           throw new Error("Choose at least one Community Playthings label type.");
         }
 
         const renderedPages = [];
-        for (const preview of previews) {
-          renderedPages.push(await renderPreviewElementToJpeg(preview));
+        const wrapper = document.createElement("div");
+
+        wrapper.className = "fixed-pdf-render-root";
+        document.body.append(wrapper);
+
+        try {
+          for (const templateMeta of getUniqueCommunityTemplatesForChild(templates, childName)) {
+            const registryTemplate = labelRegistry.get(templateMeta.registryId);
+            const pageWidth = labelRegistry.toPoints(registryTemplate.labelSize.width);
+            const pageHeight = labelRegistry.toPoints(registryTemplate.labelSize.height);
+            const page = fixedPrintRenderer.createCommunityLabel({
+              template: registryTemplate,
+              childName,
+              photoUrl: currentPhotoUrl,
+              includePhoto: registryTemplate.cutGuide === "community-arch" ? shouldIncludeCommunityCubbyPhoto() : true,
+              cropToLabel: true,
+            });
+            wrapper.replaceChildren(page);
+            fixedPrintRenderer.fitFixedText(page);
+            await document.fonts?.ready;
+            await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+            renderedPages.push(await renderPreviewElementToJpegWithHtml2Canvas(page, {
+              pageWidth,
+              pageHeight,
+            }));
+          }
+        } finally {
+          wrapper.remove();
         }
 
         return buildImagePagesPdf(renderedPages);
@@ -4074,10 +4257,32 @@
 
       const shouldIncludeBulkClassroom = () => document.querySelector("[name='bulk-roster-format']:checked")?.value === "name-classroom";
       const getSelectedBulkChildren = () => bulkRoster.filter((child) => child.selected);
+      const classroomSignTemplates = {
+        welcome: {
+          label: "Welcome Sign",
+          button: "Download Welcome Sign PDF",
+          filename: "welcome-sign",
+          className: "welcome-sign-theme-welcome",
+        },
+        birthday: {
+          label: "Happy Birthday",
+          button: "Download Happy Birthday PDF",
+          filename: "happy-birthday",
+          className: "welcome-sign-theme-birthday",
+        },
+        tour: {
+          label: "Tour Greeting",
+          button: "Download Tour Greeting PDF",
+          filename: "tour-greeting",
+          className: "welcome-sign-theme-tour",
+        },
+      };
+      const getSelectedClassroomSignTemplate = () => classroomSignTemplates[classroomSignTemplateSelect?.value] || classroomSignTemplates.welcome;
 
       const makeWelcomeChildSection = (child) => {
         const section = document.createElement("article");
         const hasPhoto = Boolean(child.photoUrl);
+        const signTemplate = child.signTemplate || classroomSignTemplates.welcome;
         const templateImage = document.createElement("img");
         const overlay = document.createElement("div");
         const copy = document.createElement("div");
@@ -4085,7 +4290,7 @@
         const name = document.createElement("p");
         const classroom = document.createElement("p");
 
-        section.className = `welcome-template-sign ${hasPhoto ? "has-photo" : "has-no-photo"}`;
+        section.className = `welcome-template-sign ${signTemplate.className} ${hasPhoto ? "has-photo" : "has-no-photo"}`;
         templateImage.className = "welcome-template-image";
         templateImage.alt = "";
         templateImage.src = "assets/welcome-sign-template.png";
@@ -4154,16 +4359,32 @@
         };
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
-        const templateSource = window.CareCheckWelcomeSignTemplateDataUrl
-          || await fetchImageAsDataUrl("assets/welcome-sign-template.png");
-        const templateImage = await loadCanvasImage(templateSource);
+        const signTemplate = child.signTemplate || classroomSignTemplates.welcome;
 
         canvas.width = pageWidth * scale;
         canvas.height = pageHeight * scale;
         context.scale(scale, scale);
-        context.fillStyle = "#ffffff";
+        context.fillStyle = signTemplate.filename === "happy-birthday"
+          ? "#fff9ef"
+          : signTemplate.filename === "tour-greeting"
+            ? "#f9fbf5"
+            : "#fbf8ef";
         context.fillRect(0, 0, pageWidth, pageHeight);
-        context.drawImage(templateImage, 0, 0, pageWidth, pageHeight);
+        context.fillStyle = signTemplate.filename === "happy-birthday"
+          ? "#8a6838"
+          : signTemplate.filename === "tour-greeting"
+            ? "#4e6f55"
+            : "#5f6f54";
+        context.font = `800 54px ${getSelectedLabelFontFamily()}`;
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillText(signTemplate.label, pageWidth / 2, 104, pageWidth - 120);
+        context.fillStyle = "#b8945f";
+        drawRoundedRect(context, 152, 253, 291, 290, 20);
+        context.fill();
+        context.fillStyle = "#ffffff";
+        drawRoundedRect(context, 166, 267, 263, 262, 10);
+        context.fill();
 
         if (child.photoUrl) {
           try {
@@ -4277,7 +4498,9 @@
 
       const updateWelcomeSignAction = () => {
         if (downloadWelcomeSignButton) {
-          downloadWelcomeSignButton.disabled = !welcomeSignSingleToggle?.checked;
+          const signTemplate = getSelectedClassroomSignTemplate();
+          downloadWelcomeSignButton.disabled = false;
+          downloadWelcomeSignButton.textContent = signTemplate.button;
         }
       };
 
@@ -4292,6 +4515,7 @@
 
         try {
           const includePhoto = welcomeSignPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
+          const signTemplate = getSelectedClassroomSignTemplate();
           const childName = childNameInput?.value.trim() || "Child Name";
           const classroom = getOptionalClassroom();
           const safeChildName = childName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "child";
@@ -4300,7 +4524,8 @@
             childName,
             classroom,
             photoUrl: includePhoto ? currentPhotoUrl : "",
-          }, `carecheck-welcome-sign-${safeChildName}.pdf`);
+            signTemplate,
+          }, `carecheck-${signTemplate.filename}-${safeChildName}.pdf`);
         } catch (error) {
           console.error("Unable to create welcome sign PDF.", error);
           alert(error.message || "The welcome sign PDF could not be created. Please try again.");
@@ -4765,7 +4990,7 @@
           const previewBytes = await makeCommunityPreviewPdfBytes();
 
           console.info("[CareCheck community PDF render]", {
-            mode: "preview-image-source-of-truth",
+            mode: "fixed-preview-cropped-label-source",
             filename,
             selectedTemplates: getSelectedCommunityTemplates().map((template) => template.registryId),
           });
@@ -4864,7 +5089,7 @@
       feedingSheetPhotoToggle?.addEventListener("change", updateInfantFeedingPreviews);
       healthTemplateSelect?.addEventListener("change", renderHealthSheetPreview);
       healthPhotoToggle?.addEventListener("change", renderHealthSheetPreview);
-      document.querySelectorAll("[data-health-allergy], [data-health-food], [data-health-medication], [data-health-expiration-for], [data-health-allergy-custom], [data-health-allergy-custom-toggle], [data-health-food-custom], [data-health-food-custom-toggle], #health-allergy-quantity, #health-food-quantity, #health-medication-quantity, #health-antibiotic-name").forEach((control) => {
+      document.querySelectorAll("[data-health-allergy], [data-health-food], [data-health-medication], [data-health-expiration-for], [data-health-allergy-custom], [data-health-allergy-custom-toggle], [data-health-food-custom], [data-health-food-custom-toggle], [data-health-medication-custom-toggle], [data-health-medication-custom], [data-health-medication-custom-expiration], #health-allergy-quantity, #health-food-quantity, #health-medication-quantity, #health-antibiotic-name").forEach((control) => {
         control.addEventListener("input", scheduleHealthPreviewUpdate);
         control.addEventListener("change", scheduleHealthPreviewUpdate);
       });
@@ -4986,7 +5211,7 @@
       bulkTemplateButton?.addEventListener("click", downloadBulkSampleTemplate);
       bulkDownloadPdfButton?.addEventListener("click", downloadBulkRosterPdf);
       downloadPdfButton?.addEventListener("click", downloadPrintSheetPdf);
-      welcomeSignSingleToggle?.addEventListener("change", updateWelcomeSignAction);
+      classroomSignTemplateSelect?.addEventListener("change", updateWelcomeSignAction);
       welcomeSignPhotoToggle?.addEventListener("change", () => {
         renderPrintSheetPreview();
         updateWelcomeSignAction();

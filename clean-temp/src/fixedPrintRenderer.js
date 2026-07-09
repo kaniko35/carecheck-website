@@ -4,7 +4,7 @@
   const PT = registry.INCH_TO_PT;
   const GREEN = "#0B7A34";
   const RED = "#C62828";
-  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260625-46";
+  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260625-52";
 
   const px = (value) => `${value}px`;
   const points = (inches) => inches * PT;
@@ -279,6 +279,21 @@
     }
 
     if (hasPhoto) {
+      if (isBreastMilk) {
+        return {
+          titleY: safe.y + 2,
+          nameY: safe.y + 15,
+          nameHeight: 15,
+          dobY: safe.y + 32,
+          fieldStart: safe.y + 50,
+          rowGap: 12.7,
+          fieldHeight: 11,
+          titleSize: 8.5,
+          photoBox,
+          fieldLineWidth: calculateTextAreaWidth(safe, photoBox),
+        };
+      }
+
       return {
         titleY: safe.y + 4,
         nameY: safe.y + 18,
