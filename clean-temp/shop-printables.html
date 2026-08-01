@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260801-71" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260801-80" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -241,7 +241,7 @@
                   <p class="ready-eyebrow">Infant Feeding Labels</p>
                   <h2>Formula and breast milk labels</h2>
                   <p class="ready-panel-note">Print out the customized labels for parents.</p>
-                  <p class="ready-panel-note">Avery label templates only. Labels can be purchased <a href="https://www.avery.com/" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                  <p class="ready-panel-note">Avery label templates only. Labels can be purchased <a href="https://www.avery.com/" target="_blank" rel="noopener noreferrer">here</a>. For reusable labels, use a <a href="https://www.amazon.com/Minecook-Peel-Off-Grease-Pencils-Cellophane/dp/B0CBRB9D5J/ref=sr_1_41?crid=1HP9GSANNSWAZ&amp;dib=eyJ2IjoiMSJ9.BKcqEEpGBTiUdKwOhvVTbjM05ZjTyx59oKYl66tBMPd7CNISVPFfuNeiL-AexKJq5sWv_t4JlS-O-NATz_f7wF6ZGzyh-vxsLSOa_Kry8TDR6yMgNLpz7KorfjPtL2hP8Mg5_uZAL-qGFJ7dpZGigRS2JF39gugxKm7pL1clDjl0AqdVnxo3p1m9tOqt6bt_iiqoSim4KMh4yPM4RbfmOcMkkV1gmzEEXcDaCvyiVOpAOvyXfgslcuVRq8xxyeij8LMlEWA1jthR9c2_11URdDj5uoUNA5KgwTpZ4KjwfCE.GT8AWqp1ig_fdtEMIxk_TeltN1xD0njGVYTj7qPe5is&amp;dib_tag=se&amp;keywords=grease+pencil&amp;qid=1785620374&amp;sprefix=grease+pencil%2Caps%2C141&amp;sr=8-41" target="_blank" rel="noopener noreferrer">recommended Wax Pencil</a>.</p>
                 </div>
               </div>
 
@@ -637,15 +637,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260801-71"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260801-71"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260801-71"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260801-71"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260801-80"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260801-80"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260801-80"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260801-80"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260801-71";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260801-80";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -2026,26 +2026,26 @@
 
         try {
           for (const pageLabels of sheetPages) {
-            const previewPageIndex = renderedPages.length;
-            const visiblePage = healthSheetPreview?.children?.[previewPageIndex];
-            const page = visiblePage || createHealthSheetPage(template, pageLabels);
+            const page = createHealthSheetPage(template, pageLabels);
 
-            if (!visiblePage) {
-              wrapper.replaceChildren(page);
-              if (shouldIncludeHealthPhoto()) {
-                applyPhotoToSlots(currentPhotoUrl, wrapper);
-              }
-              fitHealthLabelText(wrapper);
+            page.style.width = `${outputTemplate.pageWidth}px`;
+            page.style.height = `${outputTemplate.pageHeight}px`;
+            page.style.maxWidth = "none";
+            page.style.aspectRatio = "auto";
+            wrapper.replaceChildren(page);
+            if (shouldIncludeHealthPhoto()) {
+              applyPhotoToSlots(currentPhotoUrl, wrapper);
             }
+            fitHealthLabelText(wrapper);
 
             await document.fonts?.ready;
             await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
             const renderedPage = await renderPreviewElementToJpeg(page);
-          renderedPages.push({
-            ...renderedPage,
-            pageWidth: outputTemplate.pageWidth,
-            pageHeight: outputTemplate.pageHeight,
-          });
+            renderedPages.push({
+              ...renderedPage,
+              pageWidth: outputTemplate.pageWidth,
+              pageHeight: outputTemplate.pageHeight,
+            });
           }
         } finally {
           wrapper.remove();
@@ -3643,24 +3643,24 @@
         try {
           for (const templateMeta of getUniqueCommunityTemplatesForChild(templates, childName)) {
             const registryTemplate = labelRegistry.get(templateMeta.registryId);
-            const pageWidth = labelRegistry.toPoints(registryTemplate.labelSize.width);
-            const pageHeight = labelRegistry.toPoints(registryTemplate.labelSize.height);
-            const visiblePreview = communityPreviewGrid?.querySelector(`[data-community-preview="${registryTemplate.id}"] .fixed-print-page`);
-            const page = visiblePreview
-              ? visiblePreview.cloneNode(true)
-              : fixedPrintRenderer.createCommunityLabel({
-                template: registryTemplate,
-                childName,
-                photoUrl: currentPhotoUrl,
-                includePhoto: registryTemplate.cutGuide === "community-arch" ? shouldIncludeCommunityCubbyPhoto() : true,
-                cropToLabel: true,
-              });
+            const labelWidth = labelRegistry.toPoints(registryTemplate.labelSize.width);
+            const labelHeight = labelRegistry.toPoints(registryTemplate.labelSize.height);
+            const cutMargin = 18;
+            const pageWidth = labelWidth + cutMargin * 2;
+            const pageHeight = labelHeight + cutMargin * 2;
+            const page = fixedPrintRenderer.createCommunityLabel({
+              template: registryTemplate,
+              childName,
+              photoUrl: currentPhotoUrl,
+              includePhoto: registryTemplate.cutGuide === "community-arch" ? shouldIncludeCommunityCubbyPhoto() : true,
+              cropToLabel: true,
+            });
             page.style.width = `${pageWidth}px`;
             page.style.height = `${pageHeight}px`;
             const label = page.querySelector(".fixed-community-label");
             if (label) {
-              label.style.left = "0";
-              label.style.top = "0";
+              label.style.left = `${cutMargin}px`;
+              label.style.top = `${cutMargin}px`;
             }
             wrapper.replaceChildren(page);
             fixedPrintRenderer.fitFixedText(page);

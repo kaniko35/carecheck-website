@@ -4,7 +4,7 @@
   const PT = registry.INCH_TO_PT;
   const GREEN = "#0B7A34";
   const RED = "#C62828";
-  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260801-71";
+  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260801-80";
 
   const px = (value) => `${value}px`;
   const points = (inches) => inches * PT;
@@ -491,7 +491,7 @@
       const isCompact = template.id === "community-compact-cubby";
       const textInset = points(isCompact ? 1.16 : 1.62);
       const textHeight = isCompact ? points(0.7) : points(0.86);
-      const textY = points(template.safeZone.top) + points(isCompact ? 0.05 : 0.06);
+      const textY = points(isCompact ? -0.08 : -0.03);
       addFitText(label, "strong", "fixed-community-name", childName || "Child Name", {
         x: textInset,
         y: textY,
@@ -500,12 +500,13 @@
       }, template.textRules.name, { allowWrap: false, maxLines: 1 });
     } else if (template.cutGuide === "community-oval") {
       const photo = template.photoBox;
-      addPhoto(label, { x: points(photo.x), y: points(photo.y), width: points(photo.width), height: points(photo.height) }, photoUrl);
+      const ovalPhoto = addPhoto(label, { x: points(photo.x), y: points(photo.y), width: points(photo.width), height: points(photo.height) }, photoUrl);
+      ovalPhoto.classList.add("fixed-community-oval-photo");
       addFitText(label, "strong", "fixed-community-name", childName || "Child Name", {
         x: points(0.66),
-        y: points(4.46),
+        y: points(3.55),
         width: labelWidth - points(1.32),
-        height: points(0.9),
+        height: points(1.0),
       }, template.textRules.name, { allowWrap: true, maxLines: 2, preferSingleLine: true });
     } else {
       const photo = template.photoBox;
@@ -513,7 +514,7 @@
       addPhoto(label, photoBox, photoUrl);
       addFitText(label, "strong", "fixed-community-name fixed-basket-name", childName || "Child Name", {
         x: photoBox.x + photoBox.width + 18,
-        y: safe.y,
+        y: Math.max(0, safe.y - points(0.08)),
         width: safe.width - photoBox.width - 26,
         height: safe.height,
       }, template.textRules.name);

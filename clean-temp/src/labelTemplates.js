@@ -216,7 +216,7 @@
       gaps: { row: 0, column: 0, unit: "in" },
       safeZone: { top: 0.48, right: 0.4, bottom: 0.7, left: 0.4, unit: "in" },
       supportsPhoto: true,
-      photoBox: { x: 0.9, y: 1.94, width: 2.45, height: 2.45, unit: "in", fit: "contain", radius: 0.08 },
+      photoBox: { x: 0.45, y: 0.38, width: 3.34, height: 2.8, unit: "in", fit: "cover", radius: 0 },
       textRules: { name: { max: 34, min: 18, lineHeight: 1.04, wrap: true, maxLines: 2 } },
       pdfMode: "single",
       cutGuide: "community-oval",

@@ -3837,6 +3837,10 @@ a {
   object-position: center;
 }
 
+.fixed-community-oval-photo {
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
 .fixed-feeding-title,
 .fixed-feeding-name,
 .fixed-feeding-dob,
@@ -3985,11 +3989,15 @@ a {
 }
 
 .fixed-community-name {
-  display: grid;
+  display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   text-align: center;
   font-weight: 700;
+}
+
+.fixed-community-label.community-arch .fixed-community-name {
+  align-items: flex-start;
 }
 
 .fixed-basket-name {
@@ -5309,6 +5317,16 @@ a {
 
 .community-preview-viewport[data-community-preview="community-compact-cubby"] {
   --preview-scale: 0.66;
+}
+
+/* The PDF rasterizer uses a lower text baseline for the arch labels. These
+   offsets affect only the live previews and preserve the verified PDF layout. */
+.community-preview-viewport[data-community-preview="community-standard-cubby"] .fixed-community-name {
+  transform: translateY(34px);
+}
+
+.community-preview-viewport[data-community-preview="community-compact-cubby"] .fixed-community-name {
+  transform: translateY(30px);
 }
 
 .community-preview-viewport[data-community-preview="community-infant-cubby"] {
