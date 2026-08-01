@@ -4,7 +4,7 @@
   const PT = registry.INCH_TO_PT;
   const GREEN = "#0B7A34";
   const RED = "#C62828";
-  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260625-52";
+  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260801-71";
 
   const px = (value) => `${value}px`;
   const points = (inches) => inches * PT;

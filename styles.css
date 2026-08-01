@@ -3763,57 +3763,22 @@ a {
   pointer-events: none;
 }
 
+.health-preview-export-root {
+  position: fixed;
+  left: -100000px;
+  top: 0;
+  z-index: -1;
+  display: block;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: var(--ready-label-font, var(--carecheck-ready-font));
+  pointer-events: none;
+}
+
 .fixed-pdf-render-root .health-sheet-page {
   width: 612px;
   height: 792px;
   aspect-ratio: auto;
-}
-
-.fixed-pdf-render-root .health-label {
-  padding: 6px 8px;
-  gap: 2px;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label {
-  padding: 5px 7px;
-  gap: 1px;
-}
-
-.fixed-pdf-render-root .health-label h4 {
-  font-size: 18px;
-  line-height: 1;
-}
-
-.fixed-pdf-render-root .health-label small {
-  font-size: 7px;
-  line-height: 1;
-}
-
-.fixed-pdf-render-root .health-label-title {
-  font-size: 9px;
-  line-height: 1;
-}
-
-.fixed-pdf-render-root .health-label-list {
-  font-size: 8px;
-  line-height: 1.02;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label.has-no-photo.has-many-items h4 {
-  font-size: 15px;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label.has-no-photo.has-many-items small {
-  font-size: 6px;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label.has-no-photo.has-many-items .health-label-title {
-  font-size: 7px;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label.has-no-photo.has-many-items .health-label-list {
-  font-size: 6.5px;
-  line-height: 0.98;
 }
 
 .fixed-preview-scale {
@@ -4681,7 +4646,9 @@ a {
 }
 
 .health-option-grid .ready-checkbox-card {
-  min-height: 36px;
+  box-sizing: border-box;
+  min-height: 44px;
+  height: 44px;
   align-content: center;
   justify-content: flex-start;
   border-radius: 10px;
@@ -4700,11 +4667,13 @@ a {
 }
 
 .health-custom-row {
+  box-sizing: border-box;
   display: grid !important;
   grid-template-columns: 22px minmax(0, 1fr);
   gap: 8px !important;
   align-items: center;
-  min-height: 36px;
+  min-height: 44px;
+  height: 44px;
   padding: 7px 9px;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -4732,6 +4701,8 @@ a {
 }
 
 .health-custom-row input[type="text"] {
+  width: 100%;
+  height: 30px;
   min-height: 30px;
   padding: 5px 10px;
   font-size: 0.92rem;
@@ -4834,6 +4805,7 @@ a {
 }
 
 .health-label {
+  box-sizing: border-box;
   display: grid;
   grid-template-rows: minmax(0, auto) auto minmax(0, 1fr);
   align-content: start;
@@ -4858,6 +4830,54 @@ a {
   grid-template-rows: auto auto auto;
   gap: 1px;
   padding: 5px 7px;
+}
+
+.sheet-94207 .health-label.has-photo {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 2px;
+  align-content: stretch;
+  padding: 5px 7px;
+}
+
+.sheet-94207 .health-label.has-photo .health-label-profile {
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+  justify-items: stretch;
+  margin-bottom: 3px;
+  text-align: left;
+}
+
+.sheet-94207 .health-label.has-photo .health-label-photo,
+.sheet-94207 .health-label.has-photo.has-many-items .health-label-photo {
+  width: 38px;
+  margin: 0;
+}
+
+.sheet-94207 .health-label.has-photo .health-label-copy {
+  justify-items: start;
+  text-align: left;
+}
+
+.sheet-94207 .health-label.has-photo h4,
+.sheet-94207 .health-label.has-photo small {
+  text-align: left;
+}
+
+.sheet-94207 .health-label.has-photo h4 {
+  max-height: 2.08em;
+  line-height: 1.04;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.sheet-94207 .health-label.has-photo .health-label-title {
+  align-self: center;
+}
+
+.sheet-94207 .health-label.has-photo .health-label-list {
+  align-content: start;
+  line-height: 1.06;
 }
 
 .health-label-empty {
@@ -4886,9 +4906,11 @@ a {
 }
 
 .sheet-94207 .health-label.has-photo.has-many-items .health-label-profile {
-  grid-template-columns: 1fr;
-  gap: 1px;
-  align-items: start;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+  justify-items: stretch;
+  text-align: left;
 }
 
 .health-label.has-no-photo .health-label-profile {
@@ -4915,8 +4937,8 @@ a {
 }
 
 .sheet-94207 .health-label.has-photo.has-many-items .health-label-photo {
-  width: 34px;
-  margin-bottom: 0;
+  width: 38px;
+  margin: 0;
 }
 
 .health-label-copy {
@@ -5007,7 +5029,8 @@ a {
 
 .health-label-title {
   justify-self: center;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   font-size: clamp(0.6rem, 1.2vw, 0.78rem);
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -5041,6 +5064,8 @@ a {
   justify-items: center;
   gap: 0;
   min-height: 0;
+  width: auto;
+  max-width: 100%;
   padding-left: 0;
   color: var(--ink);
   font-size: clamp(0.54rem, 1.06vw, 0.72rem);
@@ -5064,25 +5089,28 @@ a {
 }
 
 .sheet-94207 .health-label.has-photo.has-many-items .health-label-list {
-  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 6px;
+  row-gap: 0;
   line-height: 1.02;
   align-content: start;
 }
 
 .sheet-94207 .health-label.has-no-photo.has-many-items .health-label-list {
+  width: 100%;
   gap: 0;
-  font-size: clamp(0.36rem, 0.76vw, 0.52rem);
-  line-height: 0.98;
+  font-size: clamp(0.48rem, 0.92vw, 0.62rem);
+  line-height: 1.04;
 }
 
 .sheet-94207 .health-label.has-no-photo.has-many-items h4 {
-  font-size: clamp(0.92rem, 2.15vw, 1.22rem);
-  line-height: 1;
+  font-size: clamp(1.08rem, 2.65vw, 1.46rem);
+  line-height: 1.04;
 }
 
 .sheet-94207 .health-label.has-no-photo.has-many-items small {
-  font-size: clamp(0.34rem, 0.7vw, 0.48rem);
-  line-height: 1;
+  font-size: clamp(0.4rem, 0.82vw, 0.54rem);
+  line-height: 1.04;
 }
 
 .sheet-94207 .health-label-list li {
@@ -5115,6 +5143,11 @@ a {
   text-align: center;
 }
 
+.sheet-6874 .health-label.has-photo {
+  gap: 1px;
+  padding: 8px;
+}
+
 .sheet-94256 .health-label.has-photo .health-label-profile {
   grid-template-columns: 1fr;
   align-items: start;
@@ -5123,12 +5156,21 @@ a {
   text-align: center;
 }
 
+.sheet-94256 .health-label.has-photo {
+  gap: 3px;
+  padding: 10px;
+}
+
 .sheet-6874 .health-label-photo {
   width: clamp(58px, 24%, 82px);
 }
 
 .sheet-94256 .health-label-photo {
   width: clamp(72px, 25%, 108px);
+}
+
+.sheet-94256 .health-label.has-photo .health-label-photo {
+  width: 52px;
 }
 
 .sheet-6874 .health-label.has-photo .health-label-copy,
@@ -5155,6 +5197,10 @@ a {
   font-size: clamp(1rem, 2.15vw, 1.48rem);
 }
 
+.sheet-94256 .health-label.has-photo h4 {
+  font-size: clamp(0.9rem, 1.85vw, 1.22rem);
+}
+
 .sheet-6874 .health-label small {
   font-size: clamp(0.48rem, 1vw, 0.64rem);
 }
@@ -5171,6 +5217,10 @@ a {
   font-size: clamp(0.46rem, 0.95vw, 0.62rem);
 }
 
+.sheet-94256 .health-label.has-photo small {
+  font-size: clamp(0.42rem, 0.78vw, 0.54rem);
+}
+
 .sheet-6874 .health-label-title {
   font-size: clamp(0.68rem, 1.25vw, 0.86rem);
 }
@@ -5181,7 +5231,8 @@ a {
 
 .sheet-6874 .health-label-list,
 .sheet-94256 .health-label-list {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   grid-template-columns: 1fr;
   justify-items: center;
   text-align: center;
@@ -5195,153 +5246,14 @@ a {
   font-size: clamp(0.82rem, 1.55vw, 1.08rem);
 }
 
-.fixed-pdf-render-root .health-label {
-  align-content: center !important;
-  justify-items: center !important;
-  text-align: center !important;
+.sheet-94256 .health-label.has-photo .health-label-list {
+  width: 100%;
+  font-size: clamp(0.92rem, 1.65vw, 1.15rem);
+  line-height: 1.08;
 }
 
-.fixed-pdf-render-root .health-label-copy,
-.fixed-pdf-render-root .health-label-list,
-.fixed-pdf-render-root .health-label-title,
-.fixed-pdf-render-root .health-label h4,
-.fixed-pdf-render-root .health-label small {
-  box-sizing: border-box !important;
-  justify-self: center !important;
-  max-width: 100% !important;
-  text-align: center !important;
-}
-
-.fixed-pdf-render-root .health-label h4 {
-  width: 100% !important;
-  overflow: hidden !important;
-  font-size: 18px !important;
-  line-height: 1.02 !important;
-  text-overflow: clip !important;
-}
-
-.fixed-pdf-render-root .health-label small {
-  width: 100% !important;
-  overflow: hidden !important;
-  font-size: 7px !important;
-  line-height: 1.02 !important;
-}
-
-.fixed-pdf-render-root .health-label-title {
-  overflow: hidden !important;
-  font-size: 9px !important;
-  line-height: 1.02 !important;
-}
-
-.fixed-pdf-render-root .health-label-list {
-  overflow: hidden !important;
-  font-size: 8px !important;
-  line-height: 1.04 !important;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label h4 {
-  font-size: 14px !important;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label small {
-  font-size: 5.8px !important;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label-title {
-  font-size: 7px !important;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label-list {
-  font-size: 6.2px !important;
-}
-
-.fixed-pdf-render-root .sheet-6874 .health-label h4 {
-  font-size: 19px !important;
-}
-
-.fixed-pdf-render-root .sheet-6874 .health-label small {
-  font-size: 7.2px !important;
-}
-
-.fixed-pdf-render-root .sheet-6874 .health-label-title {
-  font-size: 10px !important;
-}
-
-.fixed-pdf-render-root .sheet-6874 .health-label-list {
-  font-size: 9px !important;
-}
-
-.fixed-pdf-render-root .sheet-94256 .health-label h4 {
-  font-size: 23px !important;
-}
-
-.fixed-pdf-render-root .sheet-94256 .health-label small {
-  font-size: 8.4px !important;
-}
-
-.fixed-pdf-render-root .sheet-94256 .health-label-title {
-  font-size: 11.5px !important;
-}
-
-.fixed-pdf-render-root .sheet-94256 .health-label-list {
-  font-size: 10.5px !important;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="3"] .health-label-list,
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="4"] .health-label-list {
-  font-size: 5.4px !important;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="5"] .health-label-list,
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="6"] .health-label-list {
-  font-size: 4.8px !important;
-}
-
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="7"] .health-label-list,
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="8"] .health-label-list,
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="9"] .health-label-list,
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="10"] .health-label-list,
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="11"] .health-label-list,
-.fixed-pdf-render-root .sheet-94207 .health-label[data-item-count="12"] .health-label-list {
-  font-size: 4.2px !important;
-}
-
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="3"] .health-label-list,
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="4"] .health-label-list {
-  font-size: 8px !important;
-}
-
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="5"] .health-label-list,
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="6"] .health-label-list {
-  font-size: 7px !important;
-}
-
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="7"] .health-label-list,
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="8"] .health-label-list,
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="9"] .health-label-list,
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="10"] .health-label-list,
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="11"] .health-label-list,
-.fixed-pdf-render-root .sheet-6874 .health-label[data-item-count="12"] .health-label-list {
-  font-size: 6px !important;
-}
-
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="3"] .health-label-list,
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="4"] .health-label-list {
-  font-size: 9.4px !important;
-}
-
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="5"] .health-label-list,
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="6"] .health-label-list {
-  font-size: 8.2px !important;
-}
-
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="7"] .health-label-list,
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="8"] .health-label-list,
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="9"] .health-label-list,
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="10"] .health-label-list,
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="11"] .health-label-list,
-.fixed-pdf-render-root .sheet-94256 .health-label[data-item-count="12"] .health-label-list {
-  font-size: 7px !important;
+.sheet-6874 .health-label.has-photo .health-label-list {
+  width: 100%;
 }
 
 .community-checkbox-grid {
@@ -6307,9 +6219,48 @@ a {
 
 .feeding-setup-row {
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) minmax(260px, auto) minmax(190px, auto);
+  grid-template-columns: 1fr;
   gap: 14px;
   align-items: start;
+}
+
+.feeding-template-photo-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 560px) minmax(170px, 220px);
+  gap: 14px;
+  align-items: end;
+}
+
+.feeding-photo-option {
+  min-height: 54px;
+}
+
+.feeding-label-type-fieldset {
+  max-width: 760px;
+}
+
+.classroom-output-fieldset {
+  display: grid;
+  grid-template-columns: minmax(240px, 450px) minmax(220px, 360px);
+  gap: 14px;
+  align-items: end;
+}
+
+.classroom-logo-upload {
+  display: grid;
+  gap: 7px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.welcome-template-logo {
+  position: absolute;
+  right: 34px;
+  bottom: 28px;
+  z-index: 4;
+  width: 92px;
+  height: 58px;
+  object-fit: contain;
 }
 
 .feeding-inline-options {
@@ -7196,6 +7147,94 @@ a {
   .picture-sheet-page.picture-pocket-chart,
   .picture-sheet-page.picture-full-page-landscape {
     width: 560px;
+  }
+}
+
+@media (max-width: 720px) {
+  .feeding-template-photo-row,
+  .classroom-output-fieldset {
+    grid-template-columns: 1fr;
+  }
+
+  .picture-sheet-pages {
+    transform: scale(0.62);
+    transform-origin: top left;
+  }
+
+  .picture-sheet-frame {
+    min-height: 620px;
+  }
+
+  .bulk-roster-table {
+    min-width: 0;
+  }
+
+  .bulk-roster-table thead {
+    display: none;
+  }
+
+  .bulk-roster-table,
+  .bulk-roster-table tbody,
+  .bulk-roster-table tr,
+  .bulk-roster-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .bulk-roster-table tr {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    padding: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .bulk-roster-table td {
+    padding: 4px 6px;
+    border: 0;
+  }
+
+  .bulk-roster-table td:first-child {
+    grid-row: 1 / span 2;
+  }
+
+  .bulk-roster-table td:last-child {
+    grid-column: 2;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .picture-labels-panel,
+  .bulk-upload-panel {
+    padding: 12px;
+  }
+
+  .picture-label-controls,
+  .picture-sheet-preview,
+  .bulk-upload-card {
+    padding: 12px;
+  }
+
+  .picture-sheet-preview .print-sheet-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .picture-sheet-preview .print-sheet-actions > * {
+    grid-column: 1;
+  }
+
+  .picture-sheet-pages {
+    transform: scale(0.7);
+  }
+
+  .picture-sheet-frame {
+    min-height: 680px;
+  }
+
+  .bulk-dropzone input[type="file"] {
+    width: 100%;
+    font-size: 0.78rem;
   }
 }
 

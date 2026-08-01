@@ -66,10 +66,16 @@
         ? element.previousElementSibling
         : null;
       const parentStyle = window.getComputedStyle(element.parentElement);
+      const parentContentWidth = Math.max(
+        1,
+        element.parentElement.clientWidth
+          - (Number.parseFloat(parentStyle.paddingLeft) || 0)
+          - (Number.parseFloat(parentStyle.paddingRight) || 0),
+      );
       const gap = Number.parseFloat(parentStyle.columnGap || parentStyle.gap || "0") || 0;
       const availableWidth = previousPhoto
-        ? element.parentElement.clientWidth - previousPhoto.clientWidth - gap - 8
-        : element.parentElement.clientWidth;
+        ? parentContentWidth - previousPhoto.clientWidth - gap - 8
+        : parentContentWidth;
 
       element.style.width = `${Math.max(1, availableWidth)}px`;
     }

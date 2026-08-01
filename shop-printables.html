@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260625-52" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260801-71" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -159,6 +159,10 @@
                       <option value="tour">Tour greeting</option>
                     </select>
                   </label>
+                  <label class="classroom-logo-upload">
+                    Optional logo
+                    <input id="classroom-sign-logo-upload" type="file" accept="image/*" aria-label="Upload an optional logo for the classroom sign" />
+                  </label>
                 </fieldset>
 
                 <section class="print-sheet-preview" aria-labelledby="print-sheet-preview-title">
@@ -237,32 +241,30 @@
                   <p class="ready-eyebrow">Infant Feeding Labels</p>
                   <h2>Formula and breast milk labels</h2>
                   <p class="ready-panel-note">Print out the customized labels for parents.</p>
+                  <p class="ready-panel-note">Avery label templates only. Labels can be purchased <a href="https://www.avery.com/" target="_blank" rel="noopener noreferrer">here</a>.</p>
                 </div>
               </div>
 
               <div class="feeding-setup-row">
-                <label class="feeding-template-control">
-                  Avery Template
-                  <select id="feeding-template-select" aria-label="Infant feeding label template">
-                    <option value="61503" selected>Avery 61503 - 2&quot; x 3-3/4&quot; Removable bottle labels</option>
-                    <option value="94069">Avery 94069 - 2&quot; x 2&quot; Square waterproof label format</option>
-                  </select>
-                </label>
+                <div class="feeding-template-photo-row">
+                  <label class="feeding-template-control">
+                    Avery Template
+                    <select id="feeding-template-select" aria-label="Infant feeding label template">
+                      <option value="61503" selected>Avery 61503 - 2&quot; x 3-3/4&quot; Removable bottle labels</option>
+                      <option value="94069">Avery 94069 - 2&quot; x 2&quot; Square waterproof label format</option>
+                    </select>
+                  </label>
+                  <label class="ready-checkbox-card feeding-photo-option"><input id="feeding-sheet-photo-toggle" type="checkbox" /> Include Photo</label>
+                </div>
 
                 <fieldset class="ready-fieldset feeding-output-fieldset feeding-label-type-fieldset">
-                  <legend>Label type</legend>
+                  <legend>Label selection</legend>
                   <div class="ready-checkbox-grid feeding-inline-options">
                     <label class="ready-checkbox-card"><input type="radio" name="feeding-sheet-type" value="formula" checked /> Formula Labels</label>
                     <label class="ready-checkbox-card"><input type="radio" name="feeding-sheet-type" value="breastmilk" /> Breast Milk Labels</label>
                   </div>
                 </fieldset>
 
-                <fieldset class="ready-fieldset feeding-output-fieldset">
-                  <legend>Photo option</legend>
-                  <div class="ready-checkbox-grid feeding-inline-options">
-                    <label class="ready-checkbox-card"><input id="feeding-sheet-photo-toggle" type="checkbox" /> Include Photo</label>
-                  </div>
-                </fieldset>
               </div>
 
               <section class="feeding-sheet-preview" aria-labelledby="feeding-sheet-preview-title">
@@ -428,7 +430,7 @@
                 <div>
                   <p class="ready-eyebrow">Picture Labels</p>
                   <h2>Create photo and text labels</h2>
-                  <p class="ready-panel-note">Upload up to 20 photos, add custom text for each picture, choose an Avery size, then download a matching PDF.</p>
+                  <p class="ready-panel-note">Upload up to 20 photos, add custom text for each picture, choose a label size or Avery template, then download a matching PDF.</p>
                 </div>
               </div>
 
@@ -635,15 +637,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260625-52"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260625-52"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260625-52"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260625-52"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260801-71"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260801-71"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260801-71"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260801-71"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260625-52";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260801-71";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -781,6 +783,7 @@
       const customLabelTypeToggles = Array.from(document.querySelectorAll("[data-custom-label-type-toggle]"));
       const customLabelTypeInputs = Array.from(document.querySelectorAll("[data-custom-label-type-input]"));
       const classroomSignTemplateSelect = document.querySelector("#classroom-sign-template-select");
+      const classroomSignLogoUpload = document.querySelector("#classroom-sign-logo-upload");
       const welcomeSignPhotoToggle = document.querySelector("#welcome-sign-photo-toggle");
       const downloadWelcomeSignButton = document.querySelector("#download-welcome-sign-button");
       const downloadCommunityPdfButton = document.querySelector("#download-community-pdf-button");
@@ -826,6 +829,7 @@
       const pictureNextPageButton = document.querySelector("#picture-next-page");
       const downloadPicturePdfButton = document.querySelector("#download-picture-pdf-button");
       let currentPhotoUrl = "";
+      let currentClassroomLogoUrl = "";
       let pictureLabels = [];
       let activePicturePageIndex = 0;
       let bulkRoster = [];
@@ -1786,16 +1790,21 @@
           const max = isLarge
             ? (hasPhoto ? 24 : hasManyItems ? 28 : 34)
             : isMedium
-              ? (hasPhoto ? 20 : hasManyItems ? 22 : 28)
-              : (hasManyItems ? 14 : hasPhoto ? 16 : 24);
-          printRenderer.fitText(name, max, isSmall && hasManyItems ? 6 : 8, { allowWrap: false });
+              ? (hasPhoto ? 24 : hasManyItems ? 22 : 28)
+              : (hasPhoto ? (hasManyItems ? 14 : 16) : hasManyItems ? 20 : 24);
+          printRenderer.fitText(name, max, isSmall && hasManyItems ? 6 : 8, {
+            allowWrap: isSmall && hasPhoto,
+            checkHeight: isSmall && hasPhoto,
+            maxHeight: isSmall && hasPhoto ? 32 : undefined,
+          });
         });
         root.querySelectorAll(".health-label small").forEach((meta) => {
           const isLarge = Boolean(meta.closest(".sheet-94256"));
           const isMedium = Boolean(meta.closest(".sheet-6874"));
           const isSmall = Boolean(meta.closest(".sheet-94207"));
+          const hasPhoto = Boolean(meta.closest(".has-photo"));
           const hasManyItems = Boolean(meta.closest(".has-many-items"));
-          const max = isLarge ? (hasManyItems ? 11 : 13) : isMedium ? (hasManyItems ? 9 : 11) : (hasManyItems ? 6.5 : 8);
+          const max = isLarge ? (hasPhoto ? 10 : hasManyItems ? 11 : 13) : isMedium ? (hasManyItems ? 9 : 11) : (hasManyItems ? 7 : 8);
           printRenderer.fitText(meta, max, isSmall && hasManyItems ? 4.5 : 5.5, { allowWrap: false });
         });
         root.querySelectorAll(".health-label-title").forEach((title) => {
@@ -1804,7 +1813,7 @@
           const isSmall = Boolean(title.closest(".sheet-94207"));
           const hasPhoto = Boolean(title.closest(".has-photo"));
           const hasManyItems = Boolean(title.closest(".has-many-items"));
-          const max = isLarge ? (hasPhoto ? 14 : hasManyItems ? 16 : 20) : isMedium ? (hasPhoto ? 12 : hasManyItems ? 13 : 16) : (hasManyItems ? 7.2 : hasPhoto ? 9.5 : 12);
+          const max = isLarge ? (hasPhoto ? 14 : hasManyItems ? 16 : 20) : isMedium ? (hasPhoto ? 12 : hasManyItems ? 13 : 16) : (hasPhoto ? 8 : hasManyItems ? 10 : 12);
           printRenderer.fitText(title, max, isSmall && hasManyItems ? 4.8 : 6, { allowWrap: false });
         });
         root.querySelectorAll(".health-label-list").forEach((list) => {
@@ -1814,11 +1823,21 @@
           const hasPhoto = Boolean(list.closest(".has-photo"));
           const hasManyItems = Boolean(list.closest(".has-many-items"));
           const itemCount = Number.parseInt(list.closest(".health-label")?.dataset.itemCount || "0", 10);
-          const shrink = Math.max(0, itemCount - 2) * (isLarge ? 1.25 : isMedium ? 1 : 0.65);
-          const baseMax = isLarge ? (hasPhoto ? 16 : hasManyItems ? 18 : 22) : isMedium ? (hasPhoto ? 13.5 : hasManyItems ? 14.5 : 18) : (hasManyItems ? 7.8 : hasPhoto ? 9.2 : 12.5);
+          const renderedRows = isSmall && hasPhoto && itemCount >= 3 ? Math.ceil(itemCount / 2) : itemCount;
+          const shrink = Math.max(0, renderedRows - 2) * (isLarge ? 1.25 : isMedium ? 1 : 0.65);
+          const baseMax = isLarge ? (hasPhoto ? 18 : hasManyItems ? 18 : 22) : isMedium ? (hasPhoto ? 13.5 : hasManyItems ? 14.5 : 18) : (hasPhoto ? 10 : hasManyItems ? 10 : 12.5);
           const max = Math.max(isLarge ? 10 : isMedium ? 8.5 : 5.2, baseMax - shrink);
           const min = isLarge ? 6.5 : isMedium ? 5.8 : 4.2;
-          list.style.width = "100%";
+          if (hasPhoto) {
+            const label = list.closest(".health-label");
+            const labelStyle = window.getComputedStyle(label);
+            const contentWidth = label.clientWidth
+              - (Number.parseFloat(labelStyle.paddingLeft) || 0)
+              - (Number.parseFloat(labelStyle.paddingRight) || 0);
+            list.style.width = `${Math.max(1, contentWidth)}px`;
+          } else {
+            list.style.width = "auto";
+          }
           list.style.fontSize = `${max}px`;
           let size = max;
           while (size > min && (list.scrollHeight > list.clientHeight || list.scrollWidth > list.clientWidth)) {
@@ -2002,23 +2021,26 @@
         const renderedPages = [];
         const wrapper = document.createElement("div");
 
-        wrapper.className = "fixed-pdf-render-root";
+        wrapper.className = "health-preview-export-root";
         document.body.append(wrapper);
 
         try {
           for (const pageLabels of sheetPages) {
-            const page = createHealthSheetPage(template, pageLabels);
-            wrapper.replaceChildren(page);
-            if (shouldIncludeHealthPhoto()) {
-              applyPhotoToSlots(currentPhotoUrl, wrapper);
+            const previewPageIndex = renderedPages.length;
+            const visiblePage = healthSheetPreview?.children?.[previewPageIndex];
+            const page = visiblePage || createHealthSheetPage(template, pageLabels);
+
+            if (!visiblePage) {
+              wrapper.replaceChildren(page);
+              if (shouldIncludeHealthPhoto()) {
+                applyPhotoToSlots(currentPhotoUrl, wrapper);
+              }
+              fitHealthLabelText(wrapper);
             }
-            fitHealthLabelText(wrapper);
+
             await document.fonts?.ready;
             await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-            const renderedPage = await renderPreviewElementToJpegWithHtml2Canvas(page, {
-              pageWidth: outputTemplate.pageWidth,
-              pageHeight: outputTemplate.pageHeight,
-            });
+            const renderedPage = await renderPreviewElementToJpeg(page);
           renderedPages.push({
             ...renderedPage,
             pageWidth: outputTemplate.pageWidth,
@@ -3303,20 +3325,83 @@
         }).filter(Boolean).join("\n");
       };
 
+      const freezeComputedStyles = (sourceRoot, cloneRoot) => {
+        const sourceElements = [sourceRoot, ...sourceRoot.querySelectorAll("*")];
+        const cloneElements = [cloneRoot, ...cloneRoot.querySelectorAll("*")];
+
+        sourceElements.forEach((sourceElement, index) => {
+          const cloneElement = cloneElements[index];
+          if (!cloneElement) {
+            return;
+          }
+
+          const computed = window.getComputedStyle(sourceElement);
+          for (const property of computed) {
+            cloneElement.style.setProperty(
+              property,
+              computed.getPropertyValue(property),
+              computed.getPropertyPriority(property),
+            );
+          }
+        });
+      };
+
       const renderPreviewElementToJpeg = async (element) => {
         const rect = element.getBoundingClientRect();
         const width = Math.ceil(rect.width);
         const height = Math.ceil(rect.height);
         const clone = element.cloneNode(true);
-        const sourceImages = Array.from(element.querySelectorAll("img")).filter((image) => {
-          const imageRect = image.getBoundingClientRect();
-          return !image.hidden && image.src && imageRect.width > 0 && imageRect.height > 0;
-        });
+        freezeComputedStyles(element, clone);
+        const allSourceImages = Array.from(element.querySelectorAll("img"));
         const cloneImages = Array.from(clone.querySelectorAll("img"));
+
+        await Promise.all(allSourceImages.map(async (sourceImage, index) => {
+          if (!sourceImage.src.startsWith("data:") || !cloneImages[index]) {
+            return;
+          }
+
+          if (!sourceImage.complete || !sourceImage.naturalWidth) {
+            await new Promise((resolve, reject) => {
+              sourceImage.addEventListener("load", resolve, { once: true });
+              sourceImage.addEventListener("error", reject, { once: true });
+            });
+          }
+
+          const maxDimension = 256;
+          const scale = Math.min(1, maxDimension / Math.max(sourceImage.naturalWidth, sourceImage.naturalHeight));
+          const imageCanvas = document.createElement("canvas");
+          imageCanvas.width = Math.max(1, Math.round(sourceImage.naturalWidth * scale));
+          imageCanvas.height = Math.max(1, Math.round(sourceImage.naturalHeight * scale));
+          imageCanvas.getContext("2d").drawImage(sourceImage, 0, 0, imageCanvas.width, imageCanvas.height);
+          cloneImages[index].src = imageCanvas.toDataURL("image/jpeg", 0.86);
+        }));
+
+        clone.style.margin = "0";
+        clone.style.position = "relative";
+        clone.style.left = "0";
+        clone.style.top = "0";
+        clone.style.width = `${width}px`;
+        clone.style.height = `${height}px`;
+
+        const measurementHost = document.createElement("div");
+        measurementHost.style.cssText = `position:fixed;left:-10000px;top:0;width:${width}px;height:${height}px;visibility:hidden;pointer-events:none;`;
+        measurementHost.append(clone);
+        document.body.append(measurementHost);
+        const cloneRect = clone.getBoundingClientRect();
+
+        const sourceImages = allSourceImages.filter((image) => {
+          const imageRect = image.getBoundingClientRect();
+          return !image.hidden
+            && image.src
+            && imageRect.width > 0
+            && imageRect.height > 0;
+        });
         const imageDraws = sourceImages.map((image) => {
           const imageIndex = Array.from(element.querySelectorAll("img")).indexOf(image);
           const cloneImage = cloneImages[imageIndex];
-          const imageRect = image.getBoundingClientRect();
+          const imageRect = cloneImage?.closest(".health-label-photo")?.getBoundingClientRect()
+            || cloneImage?.getBoundingClientRect()
+            || image.getBoundingClientRect();
           const computed = window.getComputedStyle(image);
           const parentComputed = window.getComputedStyle(image.parentElement || image);
 
@@ -3327,13 +3412,14 @@
           return {
             image,
             objectFit: computed.objectFit || "fill",
-            x: imageRect.left - rect.left,
-            y: imageRect.top - rect.top,
+            x: imageRect.left - cloneRect.left,
+            y: imageRect.top - cloneRect.top,
             width: imageRect.width,
             height: imageRect.height,
             radius: Number.parseFloat(parentComputed.borderRadius || computed.borderRadius || "0") || 0,
           };
         });
+        measurementHost.remove();
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
         const scale = 3;
@@ -3342,13 +3428,6 @@
         canvas.height = height * scale;
         context.fillStyle = "#ffffff";
         context.fillRect(0, 0, canvas.width, canvas.height);
-
-        clone.style.margin = "0";
-        clone.style.position = "relative";
-        clone.style.left = "0";
-        clone.style.top = "0";
-        clone.style.width = `${width}px`;
-        clone.style.height = `${height}px`;
 
         const css = getForeignObjectStyles()
           .replace(/@import[^;]+;/g, "")
@@ -3566,13 +3645,23 @@
             const registryTemplate = labelRegistry.get(templateMeta.registryId);
             const pageWidth = labelRegistry.toPoints(registryTemplate.labelSize.width);
             const pageHeight = labelRegistry.toPoints(registryTemplate.labelSize.height);
-            const page = fixedPrintRenderer.createCommunityLabel({
-              template: registryTemplate,
-              childName,
-              photoUrl: currentPhotoUrl,
-              includePhoto: registryTemplate.cutGuide === "community-arch" ? shouldIncludeCommunityCubbyPhoto() : true,
-              cropToLabel: true,
-            });
+            const visiblePreview = communityPreviewGrid?.querySelector(`[data-community-preview="${registryTemplate.id}"] .fixed-print-page`);
+            const page = visiblePreview
+              ? visiblePreview.cloneNode(true)
+              : fixedPrintRenderer.createCommunityLabel({
+                template: registryTemplate,
+                childName,
+                photoUrl: currentPhotoUrl,
+                includePhoto: registryTemplate.cutGuide === "community-arch" ? shouldIncludeCommunityCubbyPhoto() : true,
+                cropToLabel: true,
+              });
+            page.style.width = `${pageWidth}px`;
+            page.style.height = `${pageHeight}px`;
+            const label = page.querySelector(".fixed-community-label");
+            if (label) {
+              label.style.left = "0";
+              label.style.top = "0";
+            }
             wrapper.replaceChildren(page);
             fixedPrintRenderer.fitFixedText(page);
             await document.fonts?.ready;
@@ -4289,6 +4378,7 @@
         const textCleaner = document.createElement("div");
         const name = document.createElement("p");
         const classroom = document.createElement("p");
+        const logo = child.logoUrl ? document.createElement("img") : null;
 
         section.className = `welcome-template-sign ${signTemplate.className} ${hasPhoto ? "has-photo" : "has-no-photo"}`;
         templateImage.className = "welcome-template-image";
@@ -4318,6 +4408,12 @@
         }
 
         copy.append(name, classroom);
+        if (logo) {
+          logo.className = "welcome-template-logo";
+          logo.alt = "";
+          logo.src = child.logoUrl;
+          section.append(logo);
+        }
         section.append(templateImage, overlay, textCleaner, copy);
         return section;
       };
@@ -4444,6 +4540,20 @@
           });
         }
 
+        if (child.logoUrl) {
+          try {
+            const logo = await loadCanvasImage(child.logoUrl);
+            const maxLogoWidth = 92;
+            const maxLogoHeight = 58;
+            const logoScale = Math.min(maxLogoWidth / logo.width, maxLogoHeight / logo.height);
+            const logoWidth = logo.width * logoScale;
+            const logoHeight = logo.height * logoScale;
+            context.drawImage(logo, pageWidth - logoWidth - 34, pageHeight - logoHeight - 28, logoWidth, logoHeight);
+          } catch (error) {
+            console.warn("Unable to draw the optional classroom sign logo.", error);
+          }
+        }
+
         saveBytesAsPdf(
           makeSingleImagePdfBytes(canvas.toDataURL("image/jpeg", 0.96), canvas.width, canvas.height, pageWidth, pageHeight),
           filename,
@@ -4524,6 +4634,7 @@
             childName,
             classroom,
             photoUrl: includePhoto ? currentPhotoUrl : "",
+            logoUrl: currentClassroomLogoUrl,
             signTemplate,
           }, `carecheck-${signTemplate.filename}-${safeChildName}.pdf`);
         } catch (error) {
@@ -4655,8 +4766,8 @@
       const downloadBulkSampleTemplate = () => {
         const includeClassroom = shouldIncludeBulkClassroom();
         const csv = includeClassroom
-          ? "First Name,Last Name,Child Name,Classroom\nMaya,Johnson,,Infant Room A\nAlexander,Thompson,,Toddler Room B\n,,Charlotte Elizabeth,Preschool Room C\n"
-          : "First Name,Last Name,Child Name\nMaya,Johnson,\nAlexander,Thompson,\n,,Charlotte Elizabeth\n";
+          ? "First Name,Last Name,Classroom\nMaya,Johnson,Infant Room A\nAlexander,Thompson,Toddler Room B\nCharlotte,Elizabeth,Preschool Room C\n"
+          : "First Name,Last Name\nMaya,Johnson\nAlexander,Thompson\nCharlotte,Elizabeth\n";
         const blob = new Blob([csv], { type: "text/csv" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
@@ -5212,6 +5323,11 @@
       bulkDownloadPdfButton?.addEventListener("click", downloadBulkRosterPdf);
       downloadPdfButton?.addEventListener("click", downloadPrintSheetPdf);
       classroomSignTemplateSelect?.addEventListener("change", updateWelcomeSignAction);
+      classroomSignLogoUpload?.addEventListener("change", async (event) => {
+        const file = event.target.files?.[0];
+        currentClassroomLogoUrl = file ? await createPreviewPhotoDataUrl(file) : "";
+        updateWelcomeSignAction();
+      });
       welcomeSignPhotoToggle?.addEventListener("change", () => {
         renderPrintSheetPreview();
         updateWelcomeSignAction();
