@@ -6943,6 +6943,22 @@ a {
     zoom: 0.48;
   }
 
+  .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-label {
+    --fixed-field-size: 7.2px !important;
+  }
+
+  .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-title {
+    font-size: 8.5px !important;
+  }
+
+  .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-name {
+    font-size: 28px !important;
+  }
+
+  .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-dob {
+    font-size: 7.5px !important;
+  }
+
   .health-sheet-pages,
   .picture-sheet-pages {
     justify-items: start;
@@ -7093,6 +7109,16 @@ a {
 }
 
 @media (max-width: 500px) {
+  .print-sheet-frame[data-template="6874"] .sheet-6874 .sheet-label-copy p,
+  .print-sheet-frame[data-template="6874"] .sheet-6874 .sheet-label-copy small {
+    font-size: 8px;
+  }
+
+  .print-sheet-frame[data-template="94256"] .sheet-94256 .sheet-label-copy p,
+  .print-sheet-frame[data-template="94256"] .sheet-94256 .sheet-label-copy small {
+    font-size: 9px;
+  }
+
   .print-sheet-frame[data-template="94256"] .print-sheet-page.sheet-94256 {
     width: 82%;
   }
@@ -7313,7 +7339,8 @@ a {
   }
 
   .picture-sheet-pages {
-    width: max-content;
+    width: 680px;
+    height: 380px;
     transform: scale(0.48);
     transform-origin: top left;
     zoom: 1;
@@ -7343,7 +7370,8 @@ a {
 
 @media (max-width: 360px) {
   .picture-sheet-pages {
-    width: max-content;
+    width: 680px;
+    height: 285px;
     transform: scale(0.36);
     transform-origin: top left;
     zoom: 1;

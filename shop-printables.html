@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-83" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-85" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -641,15 +641,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-83"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-83"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-83"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-83"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-85"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-85"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-85"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-85"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-83";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-85";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -740,7 +740,7 @@
           pageHeight: 450,
           pdfMargin: 0,
           slots: [
-            { x: 0, y: 0, width: 305.28, height: 450, type: "oval", photo: 176.4, photoX: 64.8, photoY: 133.92, nameY: 92, nameWidth: 210.24, nameHeight: 64.8 },
+            { x: 0, y: 0, width: 305.28, height: 450, type: "oval", photo: 176.4, photoX: 64.8, photoY: 64.8, nameY: 92, nameWidth: 210.24, nameHeight: 64.8 },
           ],
           nameSize: labelRegistry.get("community-infant-cubby").css.nameSize,
           nameMin: labelRegistry.get("community-infant-cubby").css.nameMin,
@@ -1127,10 +1127,16 @@
         const rules = template.textRules.name;
         const previewBump = context === "preview" ? 1.22 : 1;
         const isAvery94207 = template.id === "avery-94207-classroom";
+        const isMobileSheet = context === "sheet" && window.matchMedia("(max-width: 500px)").matches;
+        const mobileSheetMax = template.id === "avery-6874-classroom"
+          ? 14
+          : template.id === "avery-94256-classroom"
+            ? 16
+            : null;
 
         return {
-          max: isAvery94207 ? Math.min(rules.max * previewBump, context === "preview" ? 28 : 26) : rules.max * previewBump,
-          min: isAvery94207 ? 7 : Math.max(8, rules.min * previewBump),
+          max: mobileSheetMax ?? (isAvery94207 ? Math.min(rules.max * previewBump, context === "preview" ? 28 : 26) : rules.max * previewBump),
+          min: isAvery94207 || isMobileSheet ? 7 : Math.max(8, rules.min * previewBump),
           preventWrap: isAvery94207,
         };
       };
