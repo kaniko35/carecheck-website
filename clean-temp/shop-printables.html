@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-82" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-83" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -641,15 +641,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-82"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-82"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-82"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-82"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-83"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-83"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-83"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-83"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-82";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-83";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -842,6 +842,24 @@
       let scheduledCommunityFrame = 0;
       let scheduledHealthFrame = 0;
       let scheduledPictureFrame = 0;
+
+      const healthCustomPlaceholderInputs = Array.from(document.querySelectorAll(
+        "[data-health-allergy-custom], [data-health-food-custom], [data-health-medication-custom]",
+      ));
+      const mobileHealthPlaceholderQuery = window.matchMedia("(max-width: 720px)");
+      const updateHealthCustomPlaceholders = () => {
+        healthCustomPlaceholderInputs.forEach((input) => {
+          if (!input.dataset.desktopPlaceholder) {
+            input.dataset.desktopPlaceholder = input.placeholder;
+          }
+          input.placeholder = mobileHealthPlaceholderQuery.matches
+            ? "Custom"
+            : input.dataset.desktopPlaceholder;
+        });
+      };
+
+      updateHealthCustomPlaceholders();
+      mobileHealthPlaceholderQuery.addEventListener?.("change", updateHealthCustomPlaceholders);
 
       const shouldIncludeClassroomPhoto = () => welcomeSignPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldIncludeCommunityCubbyPhoto = () => communityCubbyPhotoToggle?.checked !== false;
