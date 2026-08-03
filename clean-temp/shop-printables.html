@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-91" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260803-96" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -492,8 +492,8 @@
                     <input id="picture-font-size" type="range" min="12" max="42" value="24" aria-label="Picture label font size" />
                   </label>
                   <label id="picture-full-page-orientation-control" hidden>
-                    Full Page Orientation
-                    <select id="picture-full-page-orientation" aria-label="Full page picture label orientation">
+                    <span id="picture-orientation-label">Full Page Orientation</span>
+                    <select id="picture-full-page-orientation" aria-label="Picture label orientation">
                       <option value="portrait" selected>Portrait</option>
                       <option value="landscape">Landscape</option>
                     </select>
@@ -655,15 +655,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-91"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-91"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-91"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-91"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260803-96"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260803-96"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260803-96"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260803-96"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-91";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260803-96";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -836,6 +836,7 @@
       const pictureFontSelect = document.querySelector("#picture-font-select");
       const pictureFontSizeInput = document.querySelector("#picture-font-size");
       const pictureFullPageOrientationControl = document.querySelector("#picture-full-page-orientation-control");
+      const pictureOrientationLabel = document.querySelector("#picture-orientation-label");
       const pictureFullPageOrientationSelect = document.querySelector("#picture-full-page-orientation");
       const picturePhotoUpload = document.querySelector("#picture-photo-upload");
       const pictureUploadStatus = document.querySelector("[data-picture-upload-status]");
@@ -879,7 +880,7 @@
 
       const shouldIncludeClassroomPhoto = () => welcomeSignPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldIncludeCommunityCubbyPhoto = () => communityCubbyPhotoToggle?.checked !== false;
-      const shouldIncludeCommunityBasketPhoto = () => communityBasketPhotoToggle?.checked !== false;
+      const shouldIncludeCommunityBasketPhoto = () => communityBasketPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldIncludeCommunityInfantPhoto = () => communityInfantPhotoToggle?.checked !== false;
       const shouldIncludeHealthPhoto = () => healthPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldShowBlankLabelSlots = () => !new URLSearchParams(window.location.search).has("hideBlankLabels")
@@ -2285,8 +2286,12 @@
       };
       const getPicturePageOrientation = () => pictureFullPageOrientationSelect?.value || "portrait";
       const updatePictureConditionalControls = () => {
+        const selectedTemplateId = pictureTemplateSelect?.value || "";
         if (pictureFullPageOrientationControl) {
-          pictureFullPageOrientationControl.hidden = (pictureTemplateSelect?.value || "") !== "fullPage";
+          pictureFullPageOrientationControl.hidden = !["fullPage", "94256"].includes(selectedTemplateId);
+        }
+        if (pictureOrientationLabel) {
+          pictureOrientationLabel.textContent = selectedTemplateId === "94256" ? "Photo Orientation" : "Full Page Orientation";
         }
       };
 
@@ -2305,7 +2310,10 @@
 
         const selectedTemplate = getSelectedPictureTemplate();
 
-        label.className = `picture-label ${selectedTemplate.isCutOut ? `picture-label-cutout picture-label-${selectedTemplate.layout}` : ""}`;
+        const largePhotoOrientationClass = (pictureTemplateSelect?.value || "") === "94256"
+          ? ` picture-photo-orientation-${getPicturePageOrientation()}`
+          : "";
+        label.className = `picture-label${largePhotoOrientationClass} ${selectedTemplate.isCutOut ? `picture-label-cutout picture-label-${selectedTemplate.layout}` : ""}`;
         label.dataset.pictureLabelId = labelData.id || "";
         label.style.setProperty("--picture-font", getPictureFontFamily());
         label.style.setProperty("--picture-font-size", `${getPictureFontSize()}px`);
@@ -5093,6 +5101,36 @@
           const filename = `carecheck-${template.className}-${safeChildName || "labels"}-${rendererVersion}.pdf`;
 
           await ensurePdfLibraries();
+
+          // Classroom previews are the visual source of truth. Capture those exact
+          // rendered pages, then place them on the registry's physical page size.
+          renderPrintSheetPreview();
+          await document.fonts?.ready;
+          await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+          fitAveryNames();
+          const outputTemplate = labelRegistry.get(template.registryId);
+          const outputWidth = labelRegistry.toPoints(outputTemplate.pageSize.width);
+          const outputHeight = labelRegistry.toPoints(outputTemplate.pageSize.height);
+          const previewPages = Array.from(printSheetFrame.querySelectorAll("[data-print-sheet]"));
+          const renderedPreviewPages = [];
+
+          for (const previewPage of previewPages) {
+            renderedPreviewPages.push(await renderPreviewElementToJpegWithHtml2Canvas(previewPage, {
+              pageWidth: outputWidth,
+              pageHeight: outputHeight,
+            }));
+          }
+
+          console.info("[CareCheck PDF render]", {
+            mode: "classroom-preview-source-of-truth",
+            rendererVersion,
+            template: template.registryId,
+            includePhoto: shouldIncludeClassroomPhoto(),
+            outputWidth,
+            outputHeight,
+          });
+          await saveBytesAsPdf(buildImagePagesPdf(renderedPreviewPages), filename);
+          return;
 
           if (window.html2canvas && window.jspdf?.jsPDF) {
             {
