@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260801-80" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-81" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -362,32 +362,36 @@
                     <label>Quantity <input id="health-medication-quantity" type="number" min="0" max="30" value="1" /></label>
                   </div>
                   <div class="health-medication-grid">
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Albuterol" /> Albuterol</span><input type="date" data-health-expiration-for="Albuterol" aria-label="Albuterol expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="EPI" /> EPI</span><input type="date" data-health-expiration-for="EPI" aria-label="EPI expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="AviQ" /> AviQ</span><input type="date" data-health-expiration-for="AviQ" aria-label="AviQ expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Benadryl" /> Benadryl</span><input type="date" data-health-expiration-for="Benadryl" aria-label="Benadryl expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Zyrtec" /> Zyrtec</span><input type="date" data-health-expiration-for="Zyrtec" aria-label="Zyrtec expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Tylenol" /> Tylenol</span><input type="date" data-health-expiration-for="Tylenol" aria-label="Tylenol expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Ibuprofen" /> Ibuprofen</span><input type="date" data-health-expiration-for="Ibuprofen" aria-label="Ibuprofen expiration date" /></label>
-                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Prescription Lotion" /> Prescription Lotion</span><input type="date" data-health-expiration-for="Prescription Lotion" aria-label="Prescription lotion expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Albuterol" /> Albuterol</span><small class="health-expiration-label">Expiration date</small><input type="date" data-health-expiration-for="Albuterol" aria-label="Albuterol expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="EPI" /> EPI</span><small class="health-expiration-label">Expiration date</small><input type="date" data-health-expiration-for="EPI" aria-label="EPI expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="AviQ" /> AviQ</span><small class="health-expiration-label">Expiration date</small><input type="date" data-health-expiration-for="AviQ" aria-label="AviQ expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Benadryl" /> Benadryl</span><small class="health-expiration-label">Expiration date</small><input type="date" data-health-expiration-for="Benadryl" aria-label="Benadryl expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Zyrtec" /> Zyrtec</span><small class="health-expiration-label">Expiration date</small><input type="date" data-health-expiration-for="Zyrtec" aria-label="Zyrtec expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Tylenol" /> Tylenol</span><small class="health-expiration-label">Expiration date</small><input type="date" data-health-expiration-for="Tylenol" aria-label="Tylenol expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Ibuprofen" /> Ibuprofen</span><small class="health-expiration-label">Expiration date</small><input type="date" data-health-expiration-for="Ibuprofen" aria-label="Ibuprofen expiration date" /></label>
+                    <label class="health-medication-row"><span><input type="checkbox" data-health-medication="Prescription Lotion" /> Prescription Lotion</span><small class="health-expiration-label">Expiration date</small><input type="date" data-health-expiration-for="Prescription Lotion" aria-label="Prescription lotion expiration date" /></label>
                     <label class="health-medication-row health-antibiotic-row">
                       <span><input type="checkbox" data-health-medication="Antibiotics" /> Antibiotics</span>
                       <input id="health-antibiotic-name" type="text" placeholder="Antibiotic name" aria-label="Antibiotic name" />
+                      <small class="health-expiration-label">Expiration date</small>
                       <input type="date" data-health-expiration-for="Antibiotics" aria-label="Antibiotics expiration date" />
                     </label>
                     <label class="health-medication-row health-medication-custom-row">
                       <span><input type="checkbox" data-health-medication-custom-toggle /> Custom</span>
                       <input type="text" data-health-medication-custom placeholder="Medication name" aria-label="Custom medication 1" />
+                      <small class="health-expiration-label">Expiration date</small>
                       <input type="date" data-health-medication-custom-expiration aria-label="Custom medication 1 expiration date" />
                     </label>
                     <label class="health-medication-row health-medication-custom-row">
                       <span><input type="checkbox" data-health-medication-custom-toggle /> Custom</span>
                       <input type="text" data-health-medication-custom placeholder="Medication name" aria-label="Custom medication 2" />
+                      <small class="health-expiration-label">Expiration date</small>
                       <input type="date" data-health-medication-custom-expiration aria-label="Custom medication 2 expiration date" />
                     </label>
                     <label class="health-medication-row health-medication-custom-row">
                       <span><input type="checkbox" data-health-medication-custom-toggle /> Custom</span>
                       <input type="text" data-health-medication-custom placeholder="Medication name" aria-label="Custom medication 3" />
+                      <small class="health-expiration-label">Expiration date</small>
                       <input type="date" data-health-medication-custom-expiration aria-label="Custom medication 3 expiration date" />
                     </label>
                   </div>
@@ -637,15 +641,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260801-80"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260801-80"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260801-80"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260801-80"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-81"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-81"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-81"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-81"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260801-80";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-81";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,

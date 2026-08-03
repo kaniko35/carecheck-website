@@ -4748,6 +4748,10 @@ a {
   font-size: 0.78rem;
 }
 
+.health-expiration-label {
+  display: none;
+}
+
 .health-antibiotic-row {
   grid-template-columns: 1fr;
 }
@@ -6930,8 +6934,14 @@ a {
   .feeding-sheet-page,
   .health-sheet-pages,
   .picture-sheet-pages {
-    transform: scale(0.52);
-    transform-origin: top left;
+    width: calc(100% / 0.52);
+    transform: none;
+    zoom: 0.52;
+  }
+
+  .health-sheet-pages,
+  .picture-sheet-pages {
+    justify-items: start;
   }
 
   .feeding-sheet-frame {
@@ -6981,6 +6991,15 @@ a {
     justify-content: flex-start;
   }
 
+  .health-expiration-label {
+    display: block;
+    margin: 0 2px -3px;
+    color: var(--muted);
+    font-size: 0.66rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
   .picture-label-controls,
   .picture-sheet-preview,
   .bulk-upload-card,
@@ -7018,7 +7037,19 @@ a {
   }
 
   .bulk-upload-header-card > .download-pdf-button {
+    grid-column: 1;
     justify-self: stretch;
+  }
+
+  .bulk-upload-header-card > *,
+  .bulk-font-control,
+  .bulk-font-control select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .bulk-output-card span {
+    white-space: normal;
   }
 
   .bulk-upload-layout {
@@ -7175,8 +7206,9 @@ a {
   }
 
   .picture-sheet-pages {
-    transform: scale(0.62);
-    transform-origin: top left;
+    width: calc(100% / 0.62);
+    transform: none;
+    zoom: 0.62;
   }
 
   .picture-sheet-frame {
@@ -7243,16 +7275,50 @@ a {
   }
 
   .picture-sheet-pages {
-    transform: scale(0.7);
+    width: calc(100% / 0.48);
+    transform: none;
+    zoom: 0.48;
+  }
+
+  .health-sheet-pages {
+    width: calc(100% / 0.46);
+    transform: none;
+    zoom: 0.46;
   }
 
   .picture-sheet-frame {
-    min-height: 680px;
+    min-height: 430px;
+    overflow-x: hidden;
+  }
+
+  .health-sheet-frame {
+    min-height: 380px;
+    overflow-x: hidden;
   }
 
   .bulk-dropzone input[type="file"] {
     width: 100%;
     font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .picture-sheet-pages {
+    width: calc(100% / 0.36);
+    zoom: 0.36;
+  }
+
+  .health-sheet-pages {
+    width: calc(100% / 0.35);
+    zoom: 0.35;
+  }
+
+  .picture-sheet-frame {
+    min-height: 320px;
+  }
+
+  .health-sheet-frame {
+    min-height: 310px;
   }
 }
 
