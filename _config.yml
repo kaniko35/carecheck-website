@@ -1,0 +1,3 @@
+exclude:
+  - clean-temp
+  - _archive
