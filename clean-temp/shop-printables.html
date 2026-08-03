@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-85" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-87" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -451,7 +451,7 @@
                       <option value="long125x8">Cut-out Long - 1.25&quot; x 8&quot;</option>
                       <option value="businessCard">Cut-out Business Card - 2&quot; x 3.5&quot;</option>
                       <option value="pocketChart">Cut-out Pocket Chart - 3&quot; x 5&quot;</option>
-                      <option value="fullPage">Cut-out Full Page - 8.5&quot; x 11&quot;</option>
+                      <option value="fullPage">Full Page - 8.5&quot; x 11&quot;</option>
                     </select>
                   </label>
                   <label>
@@ -641,15 +641,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-85"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-85"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-85"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-85"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-87"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-87"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-87"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-87"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-85";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-87";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -1145,6 +1145,17 @@
         const label = name.closest(".sheet-label");
         if (!label?.classList.contains("has-no-photo")) {
           return { ...baseConfig, allowWrap: false };
+        }
+
+        const isMobileSheet = window.matchMedia("(max-width: 500px)").matches;
+        if (isMobileSheet && label.closest(".sheet-6874, .sheet-94256")) {
+          return {
+            max: label.closest(".sheet-94256") ? 15 : 14,
+            min: 7,
+            allowWrap: true,
+            checkHeight: true,
+            maxLines: 2,
+          };
         }
 
         if (label.closest(".sheet-94207")) {
@@ -2385,6 +2396,7 @@
         const visiblePage = sheetPages[activePicturePageIndex] || sheetPages[0] || [];
 
         pictureSheetFrame.dataset.pictureTemplate = pictureTemplateSelect?.value || "94207";
+        pictureSheetFrame.dataset.pictureOrientation = getPicturePageOrientation();
         if (pictureSheetTitle) {
           pictureSheetTitle.textContent = `${template.title.replace("sheet layout", "picture labels")}`;
         }
@@ -2697,6 +2709,10 @@
         try {
           for (const pageLabels of sheetPages) {
             const page = createPictureSheetPage(getSelectedPictureTemplate(), pageLabels);
+            page.style.width = `${outputTemplate.pageWidth}px`;
+            page.style.height = `${outputTemplate.pageHeight}px`;
+            page.style.maxWidth = "none";
+            page.style.aspectRatio = "auto";
             wrapper.replaceChildren(page);
             fitPictureLabelText(wrapper);
             await document.fonts?.ready;
