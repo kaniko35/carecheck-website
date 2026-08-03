@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-87" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260802-91" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -224,6 +224,20 @@
                   <legend>Standard and Compact Cubby photo</legend>
                   <div class="ready-checkbox-grid community-checkbox-grid">
                     <label class="ready-checkbox-card"><input id="community-cubby-photo-toggle" type="checkbox" checked /> Include Photo</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="ready-fieldset">
+                  <legend>Basket label photo</legend>
+                  <div class="ready-checkbox-grid community-checkbox-grid">
+                    <label class="ready-checkbox-card"><input id="community-basket-photo-toggle" type="checkbox" checked /> Include Photo</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="ready-fieldset">
+                  <legend>Infant cubby photo</legend>
+                  <div class="ready-checkbox-grid community-checkbox-grid">
+                    <label class="ready-checkbox-card"><input id="community-infant-photo-toggle" type="checkbox" checked /> Include Photo</label>
                   </div>
                 </fieldset>
 
@@ -641,15 +655,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-87"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-87"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-87"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-87"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260802-91"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260802-91"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260802-91"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260802-91"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-87";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260802-91";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -792,6 +806,8 @@
       const downloadWelcomeSignButton = document.querySelector("#download-welcome-sign-button");
       const downloadCommunityPdfButton = document.querySelector("#download-community-pdf-button");
       const communityCubbyPhotoToggle = document.querySelector("#community-cubby-photo-toggle");
+      const communityBasketPhotoToggle = document.querySelector("#community-basket-photo-toggle");
+      const communityInfantPhotoToggle = document.querySelector("#community-infant-photo-toggle");
       const readyTabs = Array.from(document.querySelectorAll("[data-ready-tab]"));
       const readyPages = Array.from(document.querySelectorAll("[data-ready-page]"));
       const childProfilePanel = document.querySelector("#child-profile");
@@ -863,6 +879,8 @@
 
       const shouldIncludeClassroomPhoto = () => welcomeSignPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldIncludeCommunityCubbyPhoto = () => communityCubbyPhotoToggle?.checked !== false;
+      const shouldIncludeCommunityBasketPhoto = () => communityBasketPhotoToggle?.checked !== false;
+      const shouldIncludeCommunityInfantPhoto = () => communityInfantPhotoToggle?.checked !== false;
       const shouldIncludeHealthPhoto = () => healthPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldShowBlankLabelSlots = () => !new URLSearchParams(window.location.search).has("hideBlankLabels")
         && window.localStorage?.getItem("carecheckHideBlankLabels") !== "1";
@@ -1242,7 +1260,7 @@
         fixedPrintRenderer.fitFixedText(communityPreviewGrid || document);
       };
 
-      const createCommunityPreviewCard = (templateMeta, childName, includeCubbyPhoto) => {
+      const createCommunityPreviewCard = (templateMeta, childName, includeCubbyPhoto, includeBasketPhoto, includeInfantPhoto) => {
         const registryTemplate = labelRegistry.get(templateMeta.registryId);
         const card = document.createElement("article");
         const viewport = document.createElement("div");
@@ -1261,7 +1279,11 @@
           template: registryTemplate,
           childName,
           photoUrl: currentPhotoUrl,
-          includePhoto: registryTemplate.cutGuide === "community-arch" ? includeCubbyPhoto : true,
+          includePhoto: registryTemplate.cutGuide === "community-arch"
+            ? includeCubbyPhoto
+            : registryTemplate.id === "community-basket-label"
+              ? includeBasketPhoto
+              : registryTemplate.id === "community-infant-cubby" ? includeInfantPhoto : true,
         });
 
         card.className = `community-label-card community-${templateMeta.id}-label`;
@@ -1306,13 +1328,21 @@
       const updateCommunityPlaythingsPreviews = () => {
         const childName = childNameInput?.value.trim() || "Child Name";
         const includeCubbyPhoto = shouldIncludeCommunityCubbyPhoto();
+        const includeBasketPhoto = shouldIncludeCommunityBasketPhoto();
+        const includeInfantPhoto = shouldIncludeCommunityInfantPhoto();
         const templates = getSelectedCommunityTemplates();
 
         if (!communityPreviewGrid) {
           return;
         }
 
-        communityPreviewGrid.replaceChildren(...templates.map((template) => createCommunityPreviewCard(template, childName, includeCubbyPhoto)));
+        communityPreviewGrid.replaceChildren(...templates.map((template) => createCommunityPreviewCard(
+          template,
+          childName,
+          includeCubbyPhoto,
+          includeBasketPhoto,
+          includeInfantPhoto,
+        )));
         fitCommunityPreviewNames();
       };
 
@@ -3742,7 +3772,11 @@
               template: registryTemplate,
               childName,
               photoUrl: currentPhotoUrl,
-              includePhoto: registryTemplate.cutGuide === "community-arch" ? shouldIncludeCommunityCubbyPhoto() : true,
+              includePhoto: registryTemplate.cutGuide === "community-arch"
+                ? shouldIncludeCommunityCubbyPhoto()
+                : registryTemplate.id === "community-basket-label"
+                  ? shouldIncludeCommunityBasketPhoto()
+                  : registryTemplate.id === "community-infant-cubby" ? shouldIncludeCommunityInfantPhoto() : true,
               cropToLabel: true,
             });
             page.style.width = `${pageWidth}px`;
@@ -5284,6 +5318,8 @@
         tab.addEventListener("click", () => setReadyPage(tab.dataset.readyTab));
       });
       communityCubbyPhotoToggle?.addEventListener("change", updateCommunityPlaythingsPreviews);
+      communityBasketPhotoToggle?.addEventListener("change", updateCommunityPlaythingsPreviews);
+      communityInfantPhotoToggle?.addEventListener("change", updateCommunityPlaythingsPreviews);
       document.querySelectorAll("[name='feeding-sheet-type']").forEach((radio) => {
         radio.addEventListener("change", updateInfantFeedingPreviews);
       });

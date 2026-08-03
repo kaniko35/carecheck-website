@@ -4,7 +4,7 @@
   const PT = registry.INCH_TO_PT;
   const GREEN = "#0B7A34";
   const RED = "#C62828";
-  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260802-87";
+  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260802-91";
 
   const px = (value) => `${value}px`;
   const points = (inches) => inches * PT;
@@ -500,23 +500,42 @@
       }, template.textRules.name, { allowWrap: false, maxLines: 1 });
     } else if (template.cutGuide === "community-oval") {
       const photo = template.photoBox;
-      const ovalPhoto = addPhoto(label, { x: points(photo.x), y: points(photo.y), width: points(photo.width), height: points(photo.height) }, photoUrl);
-      ovalPhoto.classList.add("fixed-community-oval-photo");
-      addFitText(label, "strong", "fixed-community-name", childName || "Child Name", {
+      if (includePhoto) {
+        const ovalPhoto = addPhoto(label, { x: points(photo.x), y: points(photo.y), width: points(photo.width), height: points(photo.height) }, photoUrl);
+        ovalPhoto.classList.add("fixed-community-oval-photo");
+      }
+      addFitText(label, "strong", `fixed-community-name${includePhoto ? "" : " fixed-community-infant-name-only"}`, childName || "Child Name", includePhoto ? {
         x: points(0.66),
         y: points(3.55),
         width: labelWidth - points(1.32),
         height: points(1.0),
-      }, template.textRules.name, { allowWrap: true, maxLines: 2, preferSingleLine: true });
+      } : {
+        x: points(0.52),
+        y: points(1.12),
+        width: labelWidth - points(1.04),
+        height: labelHeight - points(2.24),
+      }, includePhoto ? template.textRules.name : { ...template.textRules.name, max: 38, min: 38 }, {
+        allowWrap: true,
+        maxLines: 2,
+        preferSingleLine: includePhoto,
+      });
     } else {
       const photo = template.photoBox;
       const photoBox = { x: points(photo.x), y: points(photo.y), width: points(photo.width), height: points(photo.height) };
-      addPhoto(label, photoBox, photoUrl);
-      addFitText(label, "strong", "fixed-community-name fixed-basket-name", childName || "Child Name", {
+      if (includePhoto) addPhoto(label, photoBox, photoUrl);
+      const basketNameBox = includePhoto ? {
         x: photoBox.x + photoBox.width + 18,
         y: Math.max(0, safe.y - points(0.08)),
         width: safe.width - photoBox.width - 26,
         height: safe.height,
+      } : {
+        x: safe.x,
+        y: safe.y,
+        width: safe.width,
+        height: safe.height,
+      };
+      addFitText(label, "strong", "fixed-community-name fixed-basket-name", childName || "Child Name", {
+        ...basketNameBox,
       }, template.textRules.name);
     }
 

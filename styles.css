@@ -6845,6 +6845,19 @@ a {
     gap: 12px;
   }
 
+  .ready-profile-fields > label {
+    min-width: 0;
+  }
+
+  .ready-profile-panel-compact #child-dob-input {
+    box-sizing: border-box;
+    width: min(100%, 150px);
+    min-width: 0;
+    max-width: 150px;
+    justify-self: start;
+    padding-inline: 10px;
+  }
+
   .ready-profile-panel-compact .ready-photo-field {
     grid-template-columns: 1fr;
   }
@@ -6956,7 +6969,7 @@ a {
   }
 
   .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-94069 {
-    zoom: 0.48;
+    zoom: 0.4;
   }
 
   .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-label {
@@ -7127,9 +7140,10 @@ a {
 @media (max-width: 500px) {
   .ready-profile-panel-compact #child-dob-input {
     box-sizing: border-box;
-    width: 100%;
+    width: min(100%, 150px);
     min-width: 0;
-    max-width: 100%;
+    max-width: 150px;
+    justify-self: start;
     padding-inline: 10px;
   }
 
