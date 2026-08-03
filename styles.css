@@ -1827,6 +1827,10 @@ a {
   padding: 9px;
 }
 
+.mobile-font-picker {
+  display: none;
+}
+
 .ready-photo-field {
   display: grid;
   grid-column: span 2;
@@ -6873,6 +6877,51 @@ a {
     max-width: 100%;
   }
 
+  #child-dob-input,
+  #child-dob-input::-webkit-date-and-time-value {
+    text-align: left;
+    text-align-last: left;
+  }
+
+  #label-font-select {
+    display: none;
+  }
+
+  .mobile-font-picker {
+    display: flex;
+    gap: 7px;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 7px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--soft);
+  }
+
+  .mobile-font-picker button {
+    flex: 0 0 108px;
+    min-width: 0;
+    min-height: 38px;
+    padding: 7px 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--ink);
+    background: var(--white);
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-font-picker button.is-selected {
+    border-color: var(--green);
+    color: var(--green-dark);
+    background: var(--green-light);
+    box-shadow: inset 0 0 0 1px var(--green);
+  }
+
   .ready-profile-panel-compact #child-dob-input {
     box-sizing: border-box;
     width: min(100%, 150px);
@@ -6993,7 +7042,11 @@ a {
   }
 
   .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-94069 {
-    zoom: 0.4;
+    zoom: 0.34;
+  }
+
+  .feeding-sheet-frame[data-feeding-template="94069"] {
+    min-height: 325px;
   }
 
   .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-label {

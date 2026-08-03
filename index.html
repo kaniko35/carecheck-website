@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260803-96" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260803-97" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -75,6 +75,7 @@
                 <option value="'Quicksand', Arial, sans-serif" selected>Quicksand</option>
                 <option value="'Times New Roman', Times, serif">Times New Roman</option>
               </select>
+              <div id="label-font-mobile-picker" class="mobile-font-picker" aria-label="Choose label font"></div>
             </label>
 
             <label>
@@ -126,14 +127,8 @@
                     <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Clothes" /> Clothes</label>
                     <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Snacks" /> Snacks</label>
                     <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Backpack" /> Backpack</label>
-                    <div class="custom-label-option">
-                      <label class="custom-label-toggle-only"><input data-custom-label-type-toggle type="checkbox" aria-label="Use custom classroom label 1" /></label>
-                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Custom label" aria-label="Custom classroom label type 1" />
-                    </div>
-                    <div class="custom-label-option">
-                      <label class="custom-label-toggle-only"><input data-custom-label-type-toggle type="checkbox" aria-label="Use custom classroom label 2" /></label>
-                      <input data-custom-label-type-input type="text" maxlength="32" placeholder="Custom label" aria-label="Custom classroom label type 2" />
-                    </div>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Orientation" /> Orientation</label>
+                    <label class="ready-checkbox-card"><input type="checkbox" data-label-type="Parent Teacher Conference" /> Parent Teacher Conference</label>
                     <div class="custom-label-option">
                       <label class="custom-label-toggle-only"><input data-custom-label-type-toggle type="checkbox" aria-label="Use custom classroom label 3" /></label>
                       <input data-custom-label-type-input type="text" maxlength="32" placeholder="Custom label" aria-label="Custom classroom label type 3" />
@@ -655,15 +650,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260803-96"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260803-96"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260803-96"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260803-96"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260803-97"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260803-97"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260803-97"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260803-97"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260803-96";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260803-97";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -783,11 +778,13 @@
       const childDobInput = document.querySelector("#child-dob-input");
       const classroomInput = document.querySelector("#classroom-input");
       const labelFontSelect = document.querySelector("#label-font-select");
+      const labelFontMobilePicker = document.querySelector("#label-font-mobile-picker");
       const childPhotoInput = document.querySelector("#child-photo-upload");
       const averyTemplateSelect = document.querySelector("#avery-template-select");
       const feedingTemplateSelect = document.querySelector("#feeding-template-select");
       const feedingSheetPhotoToggle = document.querySelector("#feeding-sheet-photo-toggle");
       const feedingSheetPreview = document.querySelector("[data-feeding-sheet-preview]");
+      const feedingSheetFrame = document.querySelector(".feeding-sheet-frame");
       const feedingSheetTitle = document.querySelector("#feeding-sheet-preview-title");
       const feedingPrintInfo = document.querySelector("[data-feeding-print-info]");
       const downloadFeedingSheetButton = document.querySelector("#download-feeding-sheet-button");
@@ -1125,11 +1122,35 @@
           option.style.fontWeight = "700";
         });
       };
+      const syncMobileFontPicker = () => {
+        labelFontMobilePicker?.querySelectorAll("button[data-font-value]").forEach((button) => {
+          const isSelected = button.dataset.fontValue === labelFontSelect?.value;
+          button.classList.toggle("is-selected", isSelected);
+          button.setAttribute("aria-pressed", isSelected ? "true" : "false");
+        });
+      };
+      const buildMobileFontPicker = () => {
+        if (!labelFontMobilePicker || !labelFontSelect) return;
+        labelFontMobilePicker.replaceChildren(...Array.from(labelFontSelect.options).map((option) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.dataset.fontValue = option.value;
+          button.textContent = option.textContent;
+          button.style.fontFamily = option.value;
+          button.addEventListener("click", () => {
+            labelFontSelect.value = option.value;
+            labelFontSelect.dispatchEvent(new Event("change", { bubbles: true }));
+          });
+          return button;
+        }));
+        syncMobileFontPicker();
+      };
       const applySelectedLabelFont = () => {
         readyApp?.style.setProperty("--ready-label-font", getSelectedLabelFontFamily());
         document.documentElement.style.setProperty("--ready-label-font", getSelectedLabelFontFamily());
         applyFontPreviewSelectStyles(labelFontSelect);
         applyFontPreviewSelectStyles(bulkLabelFontSelect);
+        syncMobileFontPicker();
       };
 
       const updateOptionalClassroomElement = (element, classroom) => {
@@ -1538,6 +1559,7 @@
 
       const makeFeedingSheetPage = () => {
         const config = getFeedingSheetConfig();
+        if (feedingSheetFrame) feedingSheetFrame.dataset.feedingTemplate = feedingTemplateSelect?.value || "61503";
         return fixedPrintRenderer.createFeedingSheet({
           template: labelRegistry.get(config.template.registryId),
           variant: getSelectedFeedingSheetType(),
@@ -5077,6 +5099,94 @@
         },
       };
 
+      const classroomAveryAssetLayouts = {
+        "avery-94207-classroom": {
+          pageWidth: 612,
+          pageHeight: 792,
+          slots: Array.from({ length: 10 }, (_, index) => ({
+            x: index % 2 ? 312.75 : 11.2,
+            y: 36 + Math.floor(index / 2) * 144,
+            width: 288,
+            height: 144,
+          })),
+        },
+        "avery-6874-classroom": {
+          pageWidth: 612,
+          pageHeight: 792,
+          slots: Array.from({ length: 6 }, (_, index) => ({
+            x: index % 2 ? 315 : 27,
+            y: 45 + Math.floor(index / 2) * 243,
+            width: 270,
+            height: 216,
+          })),
+        },
+        "avery-94256-classroom": {
+          pageWidth: 612,
+          pageHeight: 792,
+          rotateLabels: true,
+          slots: Array.from({ length: 4 }, (_, index) => ({
+            x: index % 2 ? 324 : 36,
+            y: 30.6 + Math.floor(index / 2) * 370.8,
+            width: 252,
+            height: 360,
+          })),
+        },
+      };
+
+      const renderClassroomPreviewPageOnAveryTemplate = async (previewPage, assetLayout) => {
+        const { pageWidth, pageHeight } = assetLayout;
+        const renderScale = 3;
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        canvas.width = Math.round(pageWidth * renderScale);
+        canvas.height = Math.round(pageHeight * renderScale);
+        context.fillStyle = "#ffffff";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (const [index, label] of Array.from(previewPage.children).entries()) {
+          if (label.classList.contains("sheet-label-empty")) continue;
+          const renderedLabel = await renderPreviewElementToJpegWithHtml2Canvas(label);
+          const image = new Image();
+          await new Promise((resolve, reject) => {
+            image.onload = resolve;
+            image.onerror = reject;
+            image.src = renderedLabel.dataUrl;
+          });
+          const slot = assetLayout.slots[index];
+          if (!slot) continue;
+          if (assetLayout.rotateLabels) {
+            context.save();
+            context.translate((slot.x + slot.width / 2) * renderScale, (slot.y + slot.height / 2) * renderScale);
+            context.rotate(Math.PI / 2);
+            context.drawImage(
+              image,
+              -slot.height * renderScale / 2,
+              -slot.width * renderScale / 2,
+              slot.height * renderScale,
+              slot.width * renderScale,
+            );
+            context.restore();
+          } else {
+            context.drawImage(
+              image,
+              Math.round(slot.x * renderScale),
+              Math.round(slot.y * renderScale),
+              Math.round(slot.width * renderScale),
+              Math.round(slot.height * renderScale),
+            );
+          }
+        }
+
+        return {
+          dataUrl: canvas.toDataURL("image/jpeg", 0.96),
+          imageWidth: canvas.width,
+          imageHeight: canvas.height,
+          pageWidth,
+          pageHeight,
+        };
+      };
+
       const downloadPrintSheetPdf = async () => {
         if (!printSheetFrame || !downloadPdfButton) {
           return;
@@ -5108,21 +5218,18 @@
           await document.fonts?.ready;
           await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
           fitAveryNames();
-          const outputTemplate = labelRegistry.get(template.registryId);
-          const outputWidth = labelRegistry.toPoints(outputTemplate.pageSize.width);
-          const outputHeight = labelRegistry.toPoints(outputTemplate.pageSize.height);
+          const assetLayout = classroomAveryAssetLayouts[template.registryId];
+          const outputWidth = assetLayout.pageWidth;
+          const outputHeight = assetLayout.pageHeight;
           const previewPages = Array.from(printSheetFrame.querySelectorAll("[data-print-sheet]"));
           const renderedPreviewPages = [];
 
           for (const previewPage of previewPages) {
-            renderedPreviewPages.push(await renderPreviewElementToJpegWithHtml2Canvas(previewPage, {
-              pageWidth: outputWidth,
-              pageHeight: outputHeight,
-            }));
+            renderedPreviewPages.push(await renderClassroomPreviewPageOnAveryTemplate(previewPage, assetLayout));
           }
 
           console.info("[CareCheck PDF render]", {
-            mode: "classroom-preview-source-of-truth",
+            mode: "classroom-preview-labels-on-exact-avery-template",
             rendererVersion,
             template: template.registryId,
             includePhoto: shouldIncludeClassroomPhoto(),
@@ -5499,6 +5606,7 @@
       downloadWelcomeSignButton?.addEventListener("click", downloadSingleWelcomeSignPdf);
       downloadCommunityPdfButton?.addEventListener("click", downloadCommunityPlaythingsPdf);
 
+      buildMobileFontPicker();
       applySelectedLabelFont();
       applyPictureFontSelectPreview();
       renderPrintSheetPreview();
