@@ -2219,8 +2219,8 @@ a {
 }
 
 .mini-label-photo {
-  width: 92px;
-  height: 92px;
+  width: 76px;
+  height: 76px;
   border-radius: 8px;
 }
 
@@ -2288,8 +2288,8 @@ a {
 }
 
 #avery-labels.avery-template-medium .mini-label-photo {
-  width: 112px;
-  height: 112px;
+  width: 92px;
+  height: 92px;
 }
 
 #avery-labels.avery-template-large .mini-label-photo {
@@ -2323,27 +2323,27 @@ a {
 }
 
 #avery-labels.avery-template-medium .classroom-label-card p {
-  font-size: 1.08rem;
+  font-size: 1rem;
 }
 
 #avery-labels.avery-template-large .classroom-label-card p {
-  font-size: 1.16rem;
+  font-size: 1rem;
 }
 
 #avery-labels.avery-template-medium .classroom-label-card h3 {
-  font-size: 2rem;
+  font-size: 2.6rem;
 }
 
 #avery-labels.avery-template-large .classroom-label-card h3 {
-  font-size: 2.55rem;
+  font-size: 3.5rem;
 }
 
 #avery-labels.avery-template-medium .classroom-label-card small {
-  font-size: 1.04rem;
+  font-size: 1rem;
 }
 
 #avery-labels.avery-template-large .classroom-label-card small {
-  font-size: 1.18rem;
+  font-size: 1rem;
 }
 
 .print-sheet-preview {
@@ -3924,6 +3924,17 @@ a {
   gap: 4px;
 }
 
+/* html2canvas paints the breast-milk checkbox row above its positioned box.
+   Correct only the detached PDF clone; the visible preview is already right. */
+.feeding-pdf-capture-page .fixed-breastmilk-check-row {
+  transform: translateY(4px);
+}
+
+.feeding-pdf-capture-page .fixed-breastmilk-check-row i {
+  width: 9px;
+  height: 9px;
+}
+
 .fixed-check-row i,
 .fixed-weekday-row i {
   display: inline-block;
@@ -4456,9 +4467,32 @@ a {
   gap: 3px;
 }
 
-.sheet-94207 .sheet-label.has-no-photo .sheet-label-copy {
-  gap: 2px;
+.sheet-94207 .sheet-label.has-photo .sheet-label-copy {
   align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.sheet-94207 .sheet-label.has-photo .sheet-label-copy > * {
+  width: 100%;
+  text-align: center;
+}
+
+.sheet-94207 .sheet-label.has-no-photo .sheet-label-copy {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 5px;
+  height: 100%;
+  justify-content: stretch;
+  justify-items: center;
+  text-align: center;
+}
+
+.sheet-94207 .sheet-label.has-no-photo .sheet-label-copy > * {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  text-align: center;
 }
 
 .sheet-94207 .sheet-label-copy p {
@@ -4466,15 +4500,65 @@ a {
 }
 
 .sheet-94207 .sheet-label-copy h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 1.18em;
   font-size: clamp(1.18rem, 3.05vw, 1.82rem);
+  text-align: center;
 }
 
 .sheet-94207 .sheet-label.has-no-photo .sheet-label-copy h4 {
+  position: static;
+  grid-row: 2;
+  align-self: center;
+  transform: none;
   font-size: clamp(1.25rem, 3.8vw, 2rem);
+  line-height: 1.15;
+  padding: 0;
+}
+
+.sheet-94207 .sheet-label.has-no-photo .sheet-label-copy p {
+  position: static;
+  grid-row: 1;
+  align-self: end;
+}
+
+.sheet-94207 .sheet-label.has-no-photo .sheet-label-copy small {
+  position: static;
+  grid-row: 3;
+  align-self: start;
+}
+
+/* The live preview is intentionally more compact than the full-size capture.
+   PDF capture clones do not live inside .print-sheet-frame and retain the
+   physical Avery photo dimensions. */
+.print-sheet-frame .sheet-94207 .sheet-label.has-photo {
+  grid-template-columns: clamp(48px, 29%, 76px) minmax(0, 1fr);
+}
+
+.print-sheet-frame .sheet-94207 .sheet-label-photo {
+  width: 78%;
+  justify-self: center;
+}
+
+.print-sheet-frame .sheet-6874 .sheet-label-photo {
+  width: min(40%, 88px);
 }
 
 .sheet-94207 .sheet-label-copy small {
   font-size: clamp(0.52rem, 1.22vw, 0.74rem);
+}
+
+.sheet-94207 .sheet-label.has-no-photo .sheet-label-copy small {
+  line-height: 1.2;
+}
+
+/* The detached classroom capture paints the centered grid row low. Keep the
+   browser preview untouched and align the exported small-label name midpoint. */
+.classroom-label-capture-page .sheet-94207 .sheet-label.has-no-photo .sheet-label-copy h4 {
+  transform: translateY(-5px);
 }
 
 .sheet-6874 .sheet-label {
@@ -4494,6 +4578,7 @@ a {
   justify-items: center;
   gap: 4px;
   width: 100%;
+  text-align: center;
 }
 
 .sheet-6874 .sheet-label.has-no-photo .sheet-label-copy {
@@ -4507,11 +4592,13 @@ a {
 
 .sheet-6874 .sheet-label-copy h4 {
   order: 1;
-  font-size: clamp(1.14rem, 3vw, 1.78rem);
+  line-height: 1.05;
+  font-size: clamp(1.8rem, 5vw, 2.9rem);
+  text-align: center;
 }
 
 .sheet-6874 .sheet-label.has-no-photo .sheet-label-copy h4 {
-  font-size: clamp(1.45rem, 4.4vw, 2.55rem);
+  font-size: clamp(1.9rem, 5.3vw, 3.1rem);
 }
 
 .sheet-6874 .sheet-label-copy small {
@@ -4536,6 +4623,7 @@ a {
   justify-items: center;
   gap: 6px;
   width: 100%;
+  text-align: center;
 }
 
 .sheet-94256 .sheet-label.has-no-photo .sheet-label-copy {
@@ -4544,21 +4632,23 @@ a {
 
 .sheet-94256 .sheet-label-copy p {
   order: 3;
-  font-size: clamp(0.82rem, 2.15vw, 1.22rem);
+  font-size: clamp(0.82rem, 2.15vw, 1rem);
 }
 
 .sheet-94256 .sheet-label-copy h4 {
   order: 1;
-  font-size: clamp(1.38rem, 3.25vw, 2rem);
+  line-height: 1.05;
+  font-size: clamp(2.2rem, 5.7vw, 3.7rem);
+  text-align: center;
 }
 
 .sheet-94256 .sheet-label.has-no-photo .sheet-label-copy h4 {
-  font-size: clamp(1.75rem, 4.8vw, 3rem);
+  font-size: clamp(2.35rem, 6vw, 4rem);
 }
 
 .sheet-94256 .sheet-label-copy small {
   order: 2;
-  font-size: clamp(0.8rem, 1.9vw, 1.12rem);
+  font-size: clamp(0.8rem, 1.9vw, 1rem);
 }
 
 .health-controls-grid {
@@ -7047,22 +7137,6 @@ a {
 
   .feeding-sheet-frame[data-feeding-template="94069"] {
     min-height: 325px;
-  }
-
-  .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-label {
-    --fixed-field-size: 7.2px !important;
-  }
-
-  .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-title {
-    font-size: 8.5px !important;
-  }
-
-  .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-name {
-    font-size: 28px !important;
-  }
-
-  .feeding-sheet-frame .fixed-preview-scale.feeding-sheet-61503 .fixed-feeding-dob {
-    font-size: 7.5px !important;
   }
 
   .health-sheet-pages,

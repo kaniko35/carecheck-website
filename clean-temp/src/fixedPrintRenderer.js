@@ -4,7 +4,7 @@
   const PT = registry.INCH_TO_PT;
   const GREEN = "#0B7A34";
   const RED = "#C62828";
-  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260803-97";
+  const CLASSROOM_RENDERER_VERSION = "classroom-pdf-20260804-119";
 
   const px = (value) => `${value}px`;
   const points = (inches) => inches * PT;
@@ -179,7 +179,7 @@
 
     if (template.id === "avery-94207-classroom") {
       const centerY = safe.y + safe.height / 2;
-      const nameY = centerY - nameHeight / 2 - 18;
+      const nameY = centerY - nameHeight / 2;
       const titleY = Math.max(safe.y, nameY - titleHeight - 3);
       const classroomY = Math.min(safe.y + safe.height - roomHeight, nameY + nameHeight + 12);
       return {
@@ -362,6 +362,7 @@
 
   const appendChecks = (label, checks, box) => {
     const row = makeEl("div", "fixed-check-row");
+    row.classList.add("fixed-breastmilk-check-row");
     place(row, box);
     checks.forEach((check) => {
       const item = makeEl("span");
@@ -404,9 +405,7 @@
     const headerWidth = calculateTextAreaWidth(safe, photoBox);
     const titleSize = layout.titleSize;
     const nameRule = photoBox && template.textRules.photoName ? template.textRules.photoName : template.textRules.name;
-    const feedingNameRule = template.id === "avery-61503-feeding" && isBreastMilk
-      ? { ...nameRule, max: 30, min: Math.max(nameRule.min, 8) }
-      : nameRule;
+    const feedingNameRule = nameRule;
     const dobSize = template.textRules.dob.max;
     const fieldSize = template.textRules.fields.max;
 
@@ -474,6 +473,8 @@
       width: points(template.labelSize.width),
       height: points(template.labelSize.height),
     }, `fixed-label-boundary fixed-community-label ${template.cutGuide || ""}`);
+    const hasPhoto = Boolean(includePhoto && photoUrl);
+    label.classList.add(hasPhoto ? "has-photo" : "has-no-photo");
     const safe = {
       x: points(template.safeZone.left),
       y: points(template.safeZone.top),
@@ -487,7 +488,7 @@
       addCommunityArchGuide(label);
       const photo = template.photoBox;
       const photoBox = { x: points(photo.x), y: points(photo.y), width: points(photo.width), height: points(photo.height) };
-      if (includePhoto) addPhoto(label, photoBox, photoUrl);
+      if (hasPhoto) addPhoto(label, photoBox, photoUrl);
       const isCompact = template.id === "community-compact-cubby";
       const textInset = points(isCompact ? 1.16 : 1.62);
       const textHeight = isCompact ? points(0.7) : points(0.86);
@@ -500,11 +501,11 @@
       }, template.textRules.name, { allowWrap: false, maxLines: 1 });
     } else if (template.cutGuide === "community-oval") {
       const photo = template.photoBox;
-      if (includePhoto) {
+      if (hasPhoto) {
         const ovalPhoto = addPhoto(label, { x: points(photo.x), y: points(photo.y), width: points(photo.width), height: points(photo.height) }, photoUrl);
         ovalPhoto.classList.add("fixed-community-oval-photo");
       }
-      addFitText(label, "strong", `fixed-community-name${includePhoto ? "" : " fixed-community-infant-name-only"}`, childName || "Child Name", includePhoto ? {
+      addFitText(label, "strong", `fixed-community-name${hasPhoto ? "" : " fixed-community-infant-name-only"}`, childName || "Child Name", hasPhoto ? {
         x: points(0.66),
         y: points(3.55),
         width: labelWidth - points(1.32),
@@ -514,16 +515,16 @@
         y: points(1.12),
         width: labelWidth - points(1.04),
         height: labelHeight - points(2.24),
-      }, includePhoto ? template.textRules.name : { ...template.textRules.name, max: 38, min: 38 }, {
+      }, hasPhoto ? template.textRules.name : { ...template.textRules.name, max: 38, min: 38 }, {
         allowWrap: true,
         maxLines: 2,
-        preferSingleLine: includePhoto,
+        preferSingleLine: hasPhoto,
       });
     } else {
       const photo = template.photoBox;
       const photoBox = { x: points(photo.x), y: points(photo.y), width: points(photo.width), height: points(photo.height) };
-      if (includePhoto) addPhoto(label, photoBox, photoUrl);
-      const basketNameBox = includePhoto ? {
+      if (hasPhoto) addPhoto(label, photoBox, photoUrl);
+      const basketNameBox = hasPhoto ? {
         x: photoBox.x + photoBox.width + 18,
         y: Math.max(0, safe.y - points(0.08)),
         width: safe.width - photoBox.width - 26,

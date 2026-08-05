@@ -70,7 +70,7 @@
       photoBox: { x: 1.25, y: 0.24, width: 1.25, height: 1.25, unit: "in", fit: "contain", radius: 0.08 },
       textRules: {
         layout: "vertical",
-        name: { max: 18, min: 12, lineHeight: 1.05, wrap: false },
+        name: { max: 36, min: 14, lineHeight: 1.05, wrap: true, maxLines: 2 },
         title: { max: 11, min: 8, lineHeight: 1 },
         classroom: { max: 10, min: 7, lineHeight: 1.1, optional: true },
       },
@@ -90,7 +90,7 @@
       photoBox: { x: 1.73, y: 0.3, width: 1.55, height: 1.55, unit: "in", fit: "contain", radius: 0.08 },
       textRules: {
         layout: "vertical",
-        name: { max: 28, min: 12, lineHeight: 1.05, wrap: false },
+        name: { max: 48, min: 16, lineHeight: 1.05, wrap: true, maxLines: 2 },
         title: { max: 13, min: 9, lineHeight: 1 },
         classroom: { max: 12.5, min: 8, lineHeight: 1.1, optional: true },
       },
@@ -109,7 +109,8 @@
       safeZone: { top: 0.1, right: 0.1, bottom: 0.1, left: 0.1, unit: "in" },
       photoBox: { x: 2.62, y: 0.12, width: 0.96, height: 1.1, unit: "in", fit: "cover", radius: 0.08 },
       textRules: {
-        name: { max: 38, min: 9, lineHeight: 1, wrap: false },
+        name: { max: 20, min: 9, lineHeight: 1, wrap: false },
+        photoName: { max: 20, min: 9, lineHeight: 1, wrap: false },
         title: { max: 11, min: 6, lineHeight: 1 },
         dob: { max: 9.8, min: 6, lineHeight: 1.1 },
         fields: { max: 9.4, min: 6, lineHeight: 1.1 },
