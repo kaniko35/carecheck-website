@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b7a34" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Ready Labels" />
     <title>CareCheck Ready Labels&trade;</title>
+    <link rel="manifest" href="ready-labels.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/ready-labels-icon-180.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Montserrat:wght@500;700&family=Nunito+Sans:wght@500;700&family=Poppins:wght@500;700&family=Questrial&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260803-97" />
+    <link rel="stylesheet" href="styles.css?v=classroom-pdf-20260804-119" />
   </head>
   <body class="labels-app-body">
     <main id="ready-labels-app" class="labels-app-root">
@@ -216,23 +222,9 @@
                 </fieldset>
 
                 <fieldset class="ready-fieldset">
-                  <legend>Standard and Compact Cubby photo</legend>
+                  <legend>Community Playthings photo</legend>
                   <div class="ready-checkbox-grid community-checkbox-grid">
-                    <label class="ready-checkbox-card"><input id="community-cubby-photo-toggle" type="checkbox" checked /> Include Photo</label>
-                  </div>
-                </fieldset>
-
-                <fieldset class="ready-fieldset">
-                  <legend>Basket label photo</legend>
-                  <div class="ready-checkbox-grid community-checkbox-grid">
-                    <label class="ready-checkbox-card"><input id="community-basket-photo-toggle" type="checkbox" checked /> Include Photo</label>
-                  </div>
-                </fieldset>
-
-                <fieldset class="ready-fieldset">
-                  <legend>Infant cubby photo</legend>
-                  <div class="ready-checkbox-grid community-checkbox-grid">
-                    <label class="ready-checkbox-card"><input id="community-infant-photo-toggle" type="checkbox" checked /> Include Photo</label>
+                    <label class="ready-checkbox-card"><input id="community-photo-toggle" type="checkbox" checked /> Include Photo</label>
                   </div>
                 </fieldset>
 
@@ -650,15 +642,15 @@
         </div>
       </div>
     </main>
-    <script src="src/labelTemplates.js?v=classroom-pdf-20260803-97"></script>
-    <script src="src/labelRenderer.js?v=classroom-pdf-20260803-97"></script>
-    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260803-97"></script>
-    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260803-97"></script>
+    <script src="src/labelTemplates.js?v=classroom-pdf-20260804-119"></script>
+    <script src="src/labelRenderer.js?v=classroom-pdf-20260804-119"></script>
+    <script src="src/fixedPrintRenderer.js?v=classroom-pdf-20260804-119"></script>
+    <script src="assets/welcome-sign-template-data.js?v=classroom-pdf-20260804-119"></script>
     <script>
       const labelRegistry = window.CareCheckLabelRegistry;
       const printRenderer = window.CareCheckPrintRenderer;
       const fixedPrintRenderer = window.CareCheckFixedPrintRenderer;
-      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260803-97";
+      const CLASSROOM_PDF_BUILD_VERSION = "classroom-pdf-20260804-119";
       const averyTemplates = {
         94207: {
           ...labelRegistry.get("avery-94207-classroom").css,
@@ -802,9 +794,7 @@
       const welcomeSignPhotoToggle = document.querySelector("#welcome-sign-photo-toggle");
       const downloadWelcomeSignButton = document.querySelector("#download-welcome-sign-button");
       const downloadCommunityPdfButton = document.querySelector("#download-community-pdf-button");
-      const communityCubbyPhotoToggle = document.querySelector("#community-cubby-photo-toggle");
-      const communityBasketPhotoToggle = document.querySelector("#community-basket-photo-toggle");
-      const communityInfantPhotoToggle = document.querySelector("#community-infant-photo-toggle");
+      const communityPhotoToggle = document.querySelector("#community-photo-toggle");
       const readyTabs = Array.from(document.querySelectorAll("[data-ready-tab]"));
       const readyPages = Array.from(document.querySelectorAll("[data-ready-page]"));
       const childProfilePanel = document.querySelector("#child-profile");
@@ -876,9 +866,10 @@
       mobileHealthPlaceholderQuery.addEventListener?.("change", updateHealthCustomPlaceholders);
 
       const shouldIncludeClassroomPhoto = () => welcomeSignPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
-      const shouldIncludeCommunityCubbyPhoto = () => communityCubbyPhotoToggle?.checked !== false;
-      const shouldIncludeCommunityBasketPhoto = () => communityBasketPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
-      const shouldIncludeCommunityInfantPhoto = () => communityInfantPhotoToggle?.checked !== false;
+      const shouldIncludeCommunityPhoto = () => communityPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
+      const shouldIncludeCommunityCubbyPhoto = shouldIncludeCommunityPhoto;
+      const shouldIncludeCommunityBasketPhoto = shouldIncludeCommunityPhoto;
+      const shouldIncludeCommunityInfantPhoto = shouldIncludeCommunityPhoto;
       const shouldIncludeHealthPhoto = () => healthPhotoToggle?.checked !== false && Boolean(currentPhotoUrl);
       const shouldShowBlankLabelSlots = () => !new URLSearchParams(window.location.search).has("hideBlankLabels")
         && window.localStorage?.getItem("carecheckHideBlankLabels") !== "1";
@@ -1162,12 +1153,12 @@
         element.hidden = !classroom;
       };
 
-      const getNameFitConfig = (templateKey, context) => {
+      const getNameFitConfig = (templateKey, context, forceDesktop = false) => {
         const template = labelRegistry.get(averyTemplates[templateKey]?.registryId || templateKey) || labelRegistry.get("avery-94207-classroom");
         const rules = template.textRules.name;
-        const previewBump = context === "preview" ? 1.22 : 1;
+        const previewBump = context === "preview" ? 1.5 : 1;
         const isAvery94207 = template.id === "avery-94207-classroom";
-        const isMobileSheet = context === "sheet" && window.matchMedia("(max-width: 500px)").matches;
+        const isMobileSheet = !forceDesktop && context === "sheet" && window.matchMedia("(max-width: 500px)").matches;
         const mobileSheetMax = template.id === "avery-6874-classroom"
           ? 14
           : template.id === "avery-94256-classroom"
@@ -1181,13 +1172,22 @@
         };
       };
 
-      const getSheetNameFitConfig = (name, baseConfig) => {
+      const getSheetNameFitConfig = (name, baseConfig, forceDesktop = false) => {
         const label = name.closest(".sheet-label");
         if (!label?.classList.contains("has-no-photo")) {
+          if (label?.closest(".sheet-6874, .sheet-94256")) {
+            return {
+              ...baseConfig,
+              max: baseConfig.max * 1.5,
+              allowWrap: true,
+              checkHeight: true,
+              maxLines: 2,
+            };
+          }
           return { ...baseConfig, allowWrap: false };
         }
 
-        const isMobileSheet = window.matchMedia("(max-width: 500px)").matches;
+        const isMobileSheet = !forceDesktop && window.matchMedia("(max-width: 500px)").matches;
         if (isMobileSheet && label.closest(".sheet-6874, .sheet-94256")) {
           return {
             max: label.closest(".sheet-94256") ? 15 : 14,
@@ -1208,7 +1208,7 @@
         }
 
         return {
-          max: baseConfig.max * 1.35,
+          max: baseConfig.max * 1.65,
           min: baseConfig.min,
           allowWrap: true,
           checkHeight: true,
@@ -1594,20 +1594,35 @@
         }
 
         const wrapper = document.createElement("div");
-        const page = makeFeedingSheetPage();
+        const page = feedingSheetPreview.cloneNode(true);
 
         wrapper.className = "fixed-pdf-render-root";
+        page.classList.add("feeding-pdf-capture-page");
+        page.style.position = "relative";
+        page.style.width = "612px";
+        page.style.height = "792px";
+        page.style.minWidth = "612px";
+        page.style.minHeight = "792px";
+        page.style.maxWidth = "none";
+        page.style.margin = "0";
+        page.style.transform = "none";
+        page.style.zoom = "1";
         wrapper.append(page);
         document.body.append(wrapper);
 
         try {
-          fixedPrintRenderer.fitFixedText(page);
+          // The visible preview has already fitted every text element. Re-fitting
+          // the detached clone can produce different measurements in html2canvas,
+          // especially for the denser breast-milk layouts. Preserve the preview's
+          // inline font sizes and geometry as the export source of truth.
           await document.fonts?.ready;
           await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 
           const renderedPage = await renderPreviewElementToJpegWithHtml2Canvas(page, {
             pageWidth: 612,
             pageHeight: 792,
+            captureWindowWidth: 1200,
+            captureWindowHeight: 900,
           });
           return buildImagePagesPdf([{
             ...renderedPage,
@@ -3569,8 +3584,8 @@
             useCORS: true,
             width,
             height,
-            windowWidth: width,
-            windowHeight: height,
+            windowWidth: Math.max(width, pageSize.captureWindowWidth || width),
+            windowHeight: Math.max(height, pageSize.captureWindowHeight || height),
           });
           return {
             dataUrl: fallbackCanvas.toDataURL("image/jpeg", 0.96),
@@ -3725,8 +3740,8 @@
             useCORS: true,
             width,
             height,
-            windowWidth: width,
-            windowHeight: height,
+            windowWidth: pageSize.captureWindowWidth || width,
+            windowHeight: pageSize.captureWindowHeight || height,
           });
         } finally {
           restoreImageCrops();
@@ -3981,7 +3996,7 @@
           pdf.addImage(imageData, "PNG", 0, 0, pageWidth, pageHeight);
         }
 
-        pdf.save(filename);
+        await saveBytesAsPdf(new Uint8Array(pdf.output("arraybuffer")), filename);
         return true;
       };
 
@@ -4375,7 +4390,16 @@
         return buildPdfBytes(objects);
       };
 
-      const saveBytesAsPdf = (bytes, filename) => {
+      const saveBytesAsPdf = async (bytes, filename) => {
+        if (window.CareCheckNativeBridge?.isNative) {
+          try {
+            const didSaveNatively = await window.CareCheckNativeBridge.savePdf(bytes, filename);
+            if (didSaveNatively) return;
+          } catch (error) {
+            console.error("Unable to open the native PDF share sheet.", error);
+          }
+        }
+
         const blob = new Blob([bytes], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
@@ -4441,7 +4465,7 @@
         const firstNameIndex = findIndex("firstname");
         const lastNameIndex = findIndex("lastname");
         const childNameIndex = findIndex("childname", "name", "studentname");
-        const classroomIndex = findIndex("classroom", "room", "class");
+        const classroomIndex = findIndex("classroom", "classroomname", "room", "roomname", "class", "classname");
 
         return rows.slice(1).map((row, index) => {
           const firstName = String(row[firstNameIndex] || "").trim();
@@ -4751,7 +4775,7 @@
             pdf.addImage(canvas.toDataURL("image/jpeg", 0.96), "JPEG", 0, 0, 612, 792);
           }
 
-          pdf.save(filename);
+          await saveBytesAsPdf(new Uint8Array(pdf.output("arraybuffer")), filename);
         } catch (error) {
           console.warn("Using built-in welcome sign PDF fallback.", error);
           await makeWelcomeSignFallbackPdf(child, filename);
@@ -4934,7 +4958,7 @@
         URL.revokeObjectURL(url);
       };
 
-      const makeBulkLabelElement = (child, labelType) => {
+      const makeBulkLabelElement = (child, labelType, includeClassroom = shouldIncludeBulkClassroom()) => {
         const label = document.createElement("article");
         const title = document.createElement("p");
         const name = document.createElement("h4");
@@ -4946,14 +4970,14 @@
         title.dataset.empty = labelTitle ? "false" : "true";
 
         name.textContent = child.childName;
-        classroom.textContent = shouldIncludeBulkClassroom() && child.classroom ? child.classroom : "";
+        classroom.textContent = includeClassroom && child.classroom ? child.classroom : "";
         classroom.hidden = !classroom.textContent;
         label.append(name, classroom, title);
 
         return label;
       };
 
-      const makeBulkPdfPage = (children, labelType, layout) => {
+      const makeBulkPdfPage = (children, labelType, layout, includeClassroom = shouldIncludeBulkClassroom()) => {
         return printRenderer.createSheetPage({
           template: labelRegistry.get(layout.registryId),
           items: children,
@@ -4962,7 +4986,7 @@
           renderItem: (child) => {
             const slot = document.createElement("div");
             slot.className = "bulk-pdf-slot";
-            slot.append(makeBulkLabelElement(child, labelType));
+            slot.append(makeBulkLabelElement(child, labelType, includeClassroom));
             return slot;
           },
           renderBlank: () => {
@@ -5014,13 +5038,14 @@
           await document.fonts?.ready;
 
           const labelType = getSelectedBulkLabelType();
+          const includeClassroom = shouldIncludeBulkClassroom();
           const layout = bulkPdfLayouts.avery94200;
           const pageChunks = chunkLabelsForSheets(selectedChildren, layout.labelsPerSheet);
           const wrapper = document.createElement("div");
           wrapper.className = "bulk-pdf-render-root";
 
           pageChunks.forEach((children) => {
-            wrapper.append(makeBulkPdfPage(children, labelType, layout));
+            wrapper.append(makeBulkPdfPage(children, labelType, layout, includeClassroom));
           });
           document.body.append(wrapper);
           fitBulkPdfNames(wrapper);
@@ -5042,7 +5067,10 @@
 
           wrapper.remove();
           const filenameSlug = labelType.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-          pdf.save(`carecheck-bulk-${filenameSlug}-${CLASSROOM_PDF_BUILD_VERSION}.pdf`);
+          await saveBytesAsPdf(
+            new Uint8Array(pdf.output("arraybuffer")),
+            `carecheck-bulk-${filenameSlug}-${CLASSROOM_PDF_BUILD_VERSION}.pdf`,
+          );
         } catch (error) {
           console.error("Unable to create bulk roster PDF.", error);
           alert(error.message || "The bulk upload PDF could not be created. Please try again.");
@@ -5056,8 +5084,8 @@
         buildVersion: CLASSROOM_PDF_BUILD_VERSION,
         rendererPath: "downloadBulkRosterPdf -> makeBulkPdfPage -> makeBulkLabelElement -> fitBulkPdfNames -> html2canvas -> jsPDF",
         getLabelTitle: getBulkLabelTitle,
-        makeLabelElement: (childName = "Student Name", labelType = "Student Name + Water") => makeBulkLabelElement({ childName }, labelType),
-        buildPdfDataUri: async ({ labelType = "Student Name", children = [] } = {}) => {
+        makeLabelElement: (childName = "Student Name", labelType = "Student Name + Water", classroom = "", includeClassroom = false) => makeBulkLabelElement({ childName, classroom }, labelType, includeClassroom),
+        buildPdfDataUri: async ({ labelType = "Student Name", children = [], includeClassroom = false } = {}) => {
           const layout = bulkPdfLayouts.avery94200;
           const testChildren = children.length ? children : [
             { childName: "Maya Johnson", selected: true },
@@ -5069,7 +5097,7 @@
           wrapper.className = "bulk-pdf-render-root";
 
           pageChunks.forEach((pageChildren) => {
-            wrapper.append(makeBulkPdfPage(pageChildren, labelType, layout));
+            wrapper.append(makeBulkPdfPage(pageChildren, labelType, layout, includeClassroom));
           });
           document.body.append(wrapper);
           fitBulkPdfNames(wrapper);
@@ -5103,6 +5131,8 @@
         "avery-94207-classroom": {
           pageWidth: 612,
           pageHeight: 792,
+          previewWidth: 520,
+          previewHeight: 520 * 11 / 8.5,
           slots: Array.from({ length: 10 }, (_, index) => ({
             x: index % 2 ? 312.75 : 11.2,
             y: 36 + Math.floor(index / 2) * 144,
@@ -5113,6 +5143,8 @@
         "avery-6874-classroom": {
           pageWidth: 612,
           pageHeight: 792,
+          previewWidth: 520,
+          previewHeight: 520 * 11 / 8.5,
           slots: Array.from({ length: 6 }, (_, index) => ({
             x: index % 2 ? 315 : 27,
             y: 45 + Math.floor(index / 2) * 243,
@@ -5123,6 +5155,8 @@
         "avery-94256-classroom": {
           pageWidth: 612,
           pageHeight: 792,
+          previewWidth: 680,
+          previewHeight: 680 * 8.5 / 11,
           rotateLabels: true,
           slots: Array.from({ length: 4 }, (_, index) => ({
             x: index % 2 ? 324 : 36,
@@ -5143,39 +5177,91 @@
         canvas.height = Math.round(pageHeight * renderScale);
         context.fillStyle = "#ffffff";
         context.fillRect(0, 0, canvas.width, canvas.height);
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = "high";
 
-        for (const [index, label] of Array.from(previewPage.children).entries()) {
-          if (label.classList.contains("sheet-label-empty")) continue;
-          const renderedLabel = await renderPreviewElementToJpegWithHtml2Canvas(label);
+        const drawPreviewContained = (image, source, x, y, width, height) => {
+          const sourceWidth = source.width;
+          const sourceHeight = source.height;
+          const fitScale = Math.min(width / sourceWidth, height / sourceHeight);
+          const drawWidth = sourceWidth * fitScale;
+          const drawHeight = sourceHeight * fitScale;
+          const drawX = x + (width - drawWidth) / 2;
+          const drawY = y + (height - drawHeight) / 2;
+
+          context.drawImage(image, source.x, source.y, source.width, source.height, drawX, drawY, drawWidth, drawHeight);
+        };
+
+        const captureRoot = document.createElement("div");
+        const capturePage = previewPage.cloneNode(true);
+        captureRoot.className = "fixed-pdf-render-root classroom-label-capture-root";
+        capturePage.classList.add("classroom-label-capture-page");
+        capturePage.style.width = `${assetLayout.previewWidth}px`;
+        capturePage.style.height = `${assetLayout.previewHeight}px`;
+        capturePage.style.minWidth = `${assetLayout.previewWidth}px`;
+        capturePage.style.minHeight = `${assetLayout.previewHeight}px`;
+        capturePage.style.maxWidth = "none";
+        capturePage.style.margin = "0";
+        capturePage.style.transform = "none";
+        capturePage.style.zoom = "1";
+        captureRoot.append(capturePage);
+        document.body.append(captureRoot);
+
+        try {
+          // Preserve the visible preview's fitted typography. A second fitting
+          // pass inside the detached clone changes vertical centering and makes
+          // the PDF diverge from the desktop preview.
+          await document.fonts?.ready;
+          await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+          const pageRect = capturePage.getBoundingClientRect();
+          const labelSources = Array.from(capturePage.children).map((label) => {
+            const rect = label.getBoundingClientRect();
+            return {
+              blank: label.classList.contains("sheet-label-empty"),
+              x: rect.left - pageRect.left,
+              y: rect.top - pageRect.top,
+              width: rect.width,
+              height: rect.height,
+            };
+          });
+          const renderedPage = await renderPreviewElementToJpegWithHtml2Canvas(capturePage, {
+            pageWidth: assetLayout.previewWidth,
+            pageHeight: assetLayout.previewHeight,
+            captureWindowWidth: 1200,
+            captureWindowHeight: 900,
+          });
           const image = new Image();
           await new Promise((resolve, reject) => {
             image.onload = resolve;
             image.onerror = reject;
-            image.src = renderedLabel.dataUrl;
+            image.src = renderedPage.dataUrl;
           });
-          const slot = assetLayout.slots[index];
-          if (!slot) continue;
-          if (assetLayout.rotateLabels) {
-            context.save();
-            context.translate((slot.x + slot.width / 2) * renderScale, (slot.y + slot.height / 2) * renderScale);
-            context.rotate(Math.PI / 2);
-            context.drawImage(
-              image,
-              -slot.height * renderScale / 2,
-              -slot.width * renderScale / 2,
-              slot.height * renderScale,
-              slot.width * renderScale,
-            );
-            context.restore();
-          } else {
-            context.drawImage(
-              image,
-              Math.round(slot.x * renderScale),
-              Math.round(slot.y * renderScale),
-              Math.round(slot.width * renderScale),
-              Math.round(slot.height * renderScale),
-            );
-          }
+          const imageScaleX = image.width / pageRect.width;
+          const imageScaleY = image.height / pageRect.height;
+
+          labelSources.forEach((sourceRect, index) => {
+            if (sourceRect.blank) return;
+            const slot = assetLayout.slots[index];
+            if (!slot) return;
+            const source = {
+              x: sourceRect.x * imageScaleX,
+              y: sourceRect.y * imageScaleY,
+              width: sourceRect.width * imageScaleX,
+              height: sourceRect.height * imageScaleY,
+            };
+            if (assetLayout.rotateLabels) {
+              context.save();
+              context.translate((slot.x + slot.width / 2) * renderScale, (slot.y + slot.height / 2) * renderScale);
+              context.rotate(Math.PI / 2);
+              drawPreviewContained(image, source, -slot.height * renderScale / 2, -slot.width * renderScale / 2, slot.height * renderScale, slot.width * renderScale);
+              context.restore();
+            } else {
+              drawPreviewContained(image, source, slot.x * renderScale, slot.y * renderScale, slot.width * renderScale, slot.height * renderScale);
+            }
+          });
+        } finally {
+          captureRoot.remove();
         }
 
         return {
@@ -5310,7 +5396,7 @@
                 pdf.text(`Date Generated: ${getGeneratedDate()}`, 33, outputHeight - 3);
               }
 
-              pdf.save(filename);
+              await saveBytesAsPdf(new Uint8Array(pdf.output("arraybuffer")), filename);
               } finally {
                 wrapper.remove();
               }
@@ -5340,7 +5426,7 @@
             pdf.setTextColor(91, 106, 98);
             pdf.text(`Template: ${getSelectedAveryTemplateName()}`, 0.46, 10.78);
             pdf.text(`Date Generated: ${getGeneratedDate()}`, 0.46, 10.92);
-            pdf.save(filename);
+            await saveBytesAsPdf(new Uint8Array(pdf.output("arraybuffer")), filename);
             return;
           }
 
@@ -5462,9 +5548,7 @@
       readyTabs.forEach((tab) => {
         tab.addEventListener("click", () => setReadyPage(tab.dataset.readyTab));
       });
-      communityCubbyPhotoToggle?.addEventListener("change", updateCommunityPlaythingsPreviews);
-      communityBasketPhotoToggle?.addEventListener("change", updateCommunityPlaythingsPreviews);
-      communityInfantPhotoToggle?.addEventListener("change", updateCommunityPlaythingsPreviews);
+      communityPhotoToggle?.addEventListener("change", updateCommunityPlaythingsPreviews);
       document.querySelectorAll("[name='feeding-sheet-type']").forEach((radio) => {
         radio.addEventListener("change", updateInfantFeedingPreviews);
       });
@@ -5627,6 +5711,14 @@
         fitHealthLabelText(healthSheetPreview || document);
         fitPictureLabelText(pictureSheetPreview || document);
       });
+
+      if ("serviceWorker" in navigator && window.location.protocol === "https:") {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("ready-labels-service-worker.js").catch((error) => {
+            console.warn("Ready Labels offline support could not start.", error);
+          });
+        });
+      }
     </script>
   </body>
 </html>
